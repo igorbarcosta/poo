@@ -1,6 +1,6 @@
 [project]
 site_url = "https://www.example.com/"
-site_name = "Documentation"
+site_name = "Programação Orientada a Objetos"
 # site_description = "Your project description"
 # site_author = "Your name"
 
@@ -11,8 +11,21 @@ site_name = "Documentation"
 # edit_uri = "edit/main/docs/"
 
 nav = [
-  { "Get started" = "index.md" },
-  { "Markdown in 5min" = "markdown.md" },
+  { "Início" = "index.md" },
+  { "Plano de Ensino" = "plano-de-ensino.md" },
+  { "Cronograma" = "cronograma.md" },
+  { "Aulas" = [
+    { "Aulas" = "aulas/index.md" },
+    { "Aula 01 — Apresentação da disciplina" = "aulas/aula-01-apresentacao-da-disciplina.md" },
+    { "Laboratório 01 — Java mínimo e problema inicial" = "aulas/laboratorio-01-java-minimo-e-problema-inicial.md" },
+    { "Aula 02 — Do procedural aos objetos" = "aulas/aula-02-do-procedural-aos-objetos.md" },
+    { "Laboratório 02 — Primeiros objetos em Java" = "aulas/laboratorio-02-primeiros-objetos-em-java.md" },
+    { "Aula 03 — Objetos, referências e identidade" = "aulas/aula-03-objetos-referencias-e-identidade.md" },
+    { "Laboratório 03 — Referências e identidade na prática" = "aulas/laboratorio-03-referencias-e-identidade-na-pratica.md" },
+    { "Aula 04 — Protegendo o estado dos objetos" = "aulas/aula-04-protegendo-o-estado-dos-objetos.md" },
+    { "Laboratório 04 — Controlando alterações de estado" = "aulas/laboratorio-04-controlando-alteracoes-de-estado.md" },
+  ] },
+  { "Materiais" = "materiais/index.md" },
 ]
 
 # extra_css = ["stylesheets/extra.css"]
@@ -22,7 +35,7 @@ nav = [
 # variant = "classic"
 # custom_dir = "overrides"
 # favicon = "images/favicon.png"
-language = "en"
+language = "pt-BR"
 features = [
   "announce.dismiss",
   # "content.action.edit",
