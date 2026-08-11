@@ -31,7 +31,7 @@ Ao final deste laboratório, você deverá ser capaz de:
 - consultar um campo privado por meio de uma operação apropriada;
 - verificar que uma regra simples de alteração do estado é preservada.
 
-## Projeto 1 — Versão 3: estado protegido
+## Projeto 1 — Versão 4: estado protegido
 
 Use a versão anterior do Projeto 1 como base. Nesta evolução, você protegerá somente o campo `quantidade` e fará com que suas alterações passem pelo próprio `ItemPedido`.
 
@@ -201,7 +201,7 @@ Não use exceções nem adicione retorno booleano. O objetivo é aprofundar a id
 
 ## Entrega
 
-> **Projeto 1 — Versão 3: estado protegido**
+> **Projeto 1 — Versão 4: estado protegido**
 
 Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
 

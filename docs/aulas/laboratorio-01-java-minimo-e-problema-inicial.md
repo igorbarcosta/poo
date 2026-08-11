@@ -191,7 +191,7 @@ Você pode usar o repertório anterior que considerar adequado. Não há uma org
 
 ## Entrega
 
-> **Projeto 1 — Versão 0: solução inicial**
+> **Projeto 1 — Versão 1: solução inicial**
 
 O código produzido neste laboratório corresponde à primeira versão do Projeto 1. As práticas de laboratório farão esse projeto evoluir durante a Unidade 1. As orientações de submissão estarão no Google Classroom.
 

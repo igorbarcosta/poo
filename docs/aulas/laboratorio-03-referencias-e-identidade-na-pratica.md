@@ -23,7 +23,7 @@ Ao final deste laboratório, você deverá ser capaz de:
 - utilizar `==` para verificar identidade;
 - explicar resultados observados em experimentos com objetos e referências.
 
-## Projeto 1 — Versão 2: referências e identidade
+## Projeto 1 — Versão 3: referências e identidade
 
 Use a versão anterior do Projeto 1 como base. Esta evolução não acrescenta uma grande funcionalidade: ela consolida o modelo mental necessário para que o projeto continue evoluindo corretamente.
 
@@ -165,7 +165,7 @@ Depois, execute as comparações e a alteração, verifique suas previsões e ex
 
 ## Entrega
 
-> **Projeto 1 — Versão 2: referências e identidade**
+> **Projeto 1 — Versão 3: referências e identidade**
 
 Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
 

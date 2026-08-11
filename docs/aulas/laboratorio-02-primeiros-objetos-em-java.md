@@ -28,9 +28,9 @@ Ao final deste laboratório, você deverá ser capaz de:
 - implementar um comportamento que utiliza o estado do próprio objeto;
 - evoluir uma solução procedural simples para uma primeira solução organizada em objetos.
 
-## Projeto 1 — Versão 1: primeiros objetos
+## Projeto 1 — Versão 2: primeiros objetos
 
-Use como ponto de partida a **Versão 0** produzida no Laboratório 01. Nesta versão, cada item da compra passará a ser representado por um objeto.
+Use como ponto de partida a **Versão 1** produzida no Laboratório 01. Nesta versão, cada item da compra passará a ser representado por um objeto.
 
 Trabalhe inicialmente com estes arquivos:
 
@@ -153,7 +153,7 @@ Não implemente validação de valores inválidos e não introduza encapsulament
 
 ## Entrega
 
-> **Projeto 1 — Versão 1: primeiros objetos**
+> **Projeto 1 — Versão 2: primeiros objetos**
 
 Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
 
