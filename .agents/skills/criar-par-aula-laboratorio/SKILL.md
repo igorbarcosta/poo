@@ -56,7 +56,7 @@ Não inventar datas, prazos, calendário, regras de entrega, critérios de avali
 
 ## Validar e entregar
 
-1. Executar `zensical build`.
+1. Executar `.venv/bin/zensical build`.
 2. Corrigir eventuais erros.
 3. Verificar `git diff` e `git status`, preservando alterações preexistentes do usuário.
 4. Informar:

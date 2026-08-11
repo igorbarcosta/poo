@@ -1,0 +1,17 @@
+{
+  "name": "poo-disciplina",
+  "private": true,
+  "scripts": {
+    "slides:prepare": "node -e \"require('fs').mkdirSync('.slides-build', { recursive: true })\"",
+    "preslides:html": "npm run slides:prepare",
+    "slides:html": "marp slides/aula-03-objetos-referencias-e-identidade.md --theme-set slides/theme/poo.css --html --output .slides-build/aula-03-objetos-referencias-e-identidade.html",
+    "preslides:pdf": "npm run slides:prepare",
+    "slides:pdf": "marp slides/aula-03-objetos-referencias-e-identidade.md --theme-set slides/theme/poo.css --pdf --output .slides-build/aula-03-objetos-referencias-e-identidade.pdf",
+    "preslides:pptx": "npm run slides:prepare",
+    "slides:pptx": "marp slides/aula-03-objetos-referencias-e-identidade.md --theme-set slides/theme/poo.css --pptx --output .slides-build/aula-03-objetos-referencias-e-identidade.pptx",
+    "slides:preview": "marp --server slides --theme-set slides/theme/poo.css"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "4.5.0"
+  }
+}

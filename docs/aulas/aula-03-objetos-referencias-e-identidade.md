@@ -150,7 +150,7 @@ Considere:
 - quantos objetos existem?
 - por que uma alteração feita usando `item2` pode ser observada usando `item1`?
 
-O programa apresenta `7`. Existe um único objeto, e as duas variáveis mantêm referências para ele. A alteração feita por `item2` modifica o estado desse objeto; `item1` permite observar o mesmo estado.
+O programa exibe `7` no console. Existe um único objeto, e as duas variáveis mantêm referências para ele. A alteração feita por `item2` modifica o estado desse objeto; `item1` permite observar o mesmo estado.
 
 ### Identidade e estado
 
@@ -201,7 +201,7 @@ O resultado é `true`.
 
 ## Atividade de compreensão
 
-Antes de conferir os resultados, leia o código e faça suas previsões:
+Antes de conferir os resultados, leia o código e formule suas previsões:
 
 ```java
 ItemPedido a = new ItemPedido();

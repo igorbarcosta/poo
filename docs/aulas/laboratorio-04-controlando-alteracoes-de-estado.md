@@ -45,7 +45,7 @@ Antes de proteger o campo, atribua uma quantidade inadequada a um dos itens:
 item.quantidade = -10;
 ```
 
-Em seguida, calcule e apresente o subtotal:
+Em seguida, calcule o subtotal e exiba-o no console:
 
 ```java
 System.out.println(item.calcularSubtotal());
@@ -135,7 +135,7 @@ Em seguida, execute esta sequência:
 1. consulte a quantidade inicial;
 2. aumente a quantidade em `2` e consulte novamente;
 3. tente aumentá-la em `-5` e consulte novamente;
-4. aumente-a em `3` e faça uma nova consulta;
+4. aumente-a em `3` e consulte novamente;
 5. calcule o subtotal usando o estado atual.
 
 Compare os resultados observados com os esperados:
@@ -147,7 +147,7 @@ Compare os resultados observados com os esperados:
 | aumentar em `-5` | `2` |
 | aumentar em `3` | `5` |
 
-Ao final, calcule e apresente o subtotal. Com preço unitário `150.0` e quantidade `5`, o resultado esperado é `750.0`.
+Ao final, calcule o subtotal e exiba-o no console. Com preço unitário `150.0` e quantidade `5`, o resultado esperado é `750.0`.
 
 Neste laboratório, não torne `descricao` e `precoUnitario` privados e não crie getters ou setters para esses campos. O foco é compreender a proteção de `quantidade`.
 

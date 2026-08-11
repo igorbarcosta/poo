@@ -20,33 +20,59 @@ Essa solução será o ponto de partida para uma discussão posterior sobre orie
 
 Ao final deste encontro, você deverá ser capaz de:
 
+- verificar se o Java 25 está disponível no ambiente de desenvolvimento;
 - compilar e executar um programa Java simples;
 - reconhecer a estrutura mínima de um programa Java;
 - mapear para Java construções básicas que já conhece;
 - implementar uma pequena solução no estilo procedural;
 - começar a identificar dados e operações que parecem pertencer juntos.
 
-## Conteúdo
+## Verificação do ambiente
 
-### Parte 1 — Java mínimo operacional
+Antes de iniciar a atividade principal, confirme que o Java está disponível fora da IDE. Se precisar instalar ou ajustar alguma ferramenta, consulte [Ambiente de Desenvolvimento](../materiais/ambiente-de-desenvolvimento.md).
 
-Crie um arquivo chamado `Main.java` com este conteúdo:
+No terminal, execute:
+
+```bash
+java --version
+javac --version
+```
+
+Os dois comandos devem indicar a versão 25. Em seguida, crie um arquivo chamado `Main.java` com este conteúdo:
 
 ```java
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Olá, POO!");
+        System.out.println("Ambiente configurado!");
     }
+
 }
 ```
 
-No terminal, dentro da pasta em que o arquivo foi salvo, execute:
+No terminal, dentro da pasta em que o arquivo foi salvo, compile:
 
 ```bash
 javac Main.java
+```
+
+Depois, execute:
+
+```bash
 java Main
 ```
+
+O resultado esperado é:
+
+```text
+Ambiente configurado!
+```
+
+Mesmo que você use IntelliJ IDEA ou outra IDE, realize esta primeira compilação e execução pelo terminal. Depois da verificação, você poderá continuar usando normalmente os recursos de sua ferramenta.
+
+## Conteúdo
+
+### Parte 1 — Java mínimo operacional
 
 O fluxo básico é:
 
@@ -87,7 +113,7 @@ Uma loja precisa registrar um item de uma compra. Para cada item, conhecemos:
 - preço unitário;
 - quantidade.
 
-O programa deve calcular e apresentar o subtotal. Use esta solução inicial como ponto de partida:
+O programa deve calcular o subtotal e exibi-lo no console. Use esta solução inicial como ponto de partida:
 
 ```java
 public class Main {
@@ -115,7 +141,7 @@ Esta solução permanece próxima do estilo procedural que você já conhece. N�
 
 ## Atividade
 
-Comece executando o programa. Antes de modificá-lo, certifique-se de que consegue explicar o papel de cada trecho. Em seguida, experimente pequenas alterações nos valores.
+Depois de verificar o ambiente, substitua o conteúdo de `Main.java` pela solução inicial da Parte 2 e execute o programa. Antes de modificá-lo, certifique-se de que consegue explicar o papel de cada trecho. Em seguida, experimente pequenas alterações nos valores.
 
 ### Incremento A — Segundo item
 
@@ -123,32 +149,38 @@ Adicione à compra um segundo item, com descrição, preço unitário e quantida
 
 Ao final desta etapa, o programa deve manter os dados dos dois itens e calcular corretamente o subtotal de cada um.
 
-### Incremento B — Apresentação da compra
+### Incremento B — Exibir a compra
 
-Apresente, para cada item:
+Exiba no console os dados de cada item, incluindo:
 
 - descrição;
 - quantidade;
 - preço unitário;
 - subtotal.
 
-Os valores apresentados devem corresponder aos dados daquele item.
+Os valores exibidos devem corresponder aos dados daquele item.
 
 ### Incremento C — Total da compra
 
-Calcule e apresente o valor total da compra. O total deve corresponder à soma dos subtotais dos itens registrados.
+Calcule o valor total da compra e exiba-o no console. O total deve corresponder à soma dos subtotais dos itens armazenados.
 
 Não há uma única forma obrigatória de organizar esses incrementos. É aceitável que a solução comece a apresentar repetição ou algum desconforto: observe o que acontece com o código à medida que o problema cresce.
 
 !!! success "Critérios de conclusão"
 
-    Verifique se sua solução:
+    Verifique se você:
 
-    - compila e executa;
-    - mantém dois itens com dados independentes;
-    - calcula corretamente o subtotal de cada item;
-    - apresenta os dados dos dois itens;
-    - calcula um total correspondente à soma dos subtotais.
+    - confirmou que `java` e `javac` estão disponíveis na versão 25;
+    - compilou e executou pelo terminal o programa da verificação do ambiente;
+    - concluiu uma solução principal que compila e executa;
+    - armazenou dois itens com dados independentes;
+    - calculou corretamente o subtotal de cada item;
+    - exibiu no console os dados dos dois itens;
+    - calculou e exibiu no console um total correspondente à soma dos subtotais;
+    - realizou o envio conforme as orientações do Google Classroom;
+    - formulou respostas para as questões propostas ao final do roteiro.
+
+Depois de atender aos critérios e realizar o envio, você poderá ser liberado. O desafio a seguir permanece opcional.
 
 ## Desafio opcional — Mais itens, menos repetição
 
@@ -162,8 +194,8 @@ O programa deve:
 
 - manter os dados dos cinco itens;
 - calcular corretamente o subtotal de cada item;
-- apresentar os dados e o subtotal de todos os itens;
-- calcular e apresentar o valor total da compra.
+- exibir no console os dados e o subtotal de todos os itens;
+- calcular o valor total da compra e exibi-lo no console.
 
 > Evite simplesmente copiar cinco vezes o mesmo bloco de código. Utilize estruturas de programação que você já conhece para reduzir a repetição.
 
@@ -177,13 +209,13 @@ Você pode usar o repertório anterior que considerar adequado. Não há uma org
 
     - mantém cinco itens com dados independentes;
     - calcula corretamente o subtotal de cada item;
-    - apresenta os cinco itens;
-    - calcula um total correspondente à soma dos cinco subtotais;
+    - exibe no console os cinco itens;
+    - calcula e exibe no console um total correspondente à soma dos cinco subtotais;
     - evita repetir manualmente cinco vezes o mesmo bloco de código.
 
 !!! question "Para a próxima aula"
 
-    Vamos retomar estas questões na Aula 02 — Do procedural aos objetos, incluindo as estratégias usadas no desafio opcional. Não é necessário respondê-las por escrito.
+    Formule uma resposta para cada questão. Não é necessário entregá-las por escrito nem discuti-las coletivamente ao final do laboratório. Vamos retomá-las na Aula 02 — Do procedural aos objetos, incluindo as estratégias usadas no desafio opcional.
 
     1. Quais variáveis parecem representar partes de uma mesma coisa?
     2. O que acontece com a organização do código quando aumentamos o número de itens?
@@ -197,5 +229,6 @@ O código produzido neste laboratório corresponde à primeira versão do Projet
 
 ## Materiais relacionados
 
+- [Ambiente de Desenvolvimento](../materiais/ambiente-de-desenvolvimento.md)
 - [Java essencial para quem já sabe programar](../materiais/java-essencial.md)
 - [Plano de Ensino](../plano-de-ensino.md)

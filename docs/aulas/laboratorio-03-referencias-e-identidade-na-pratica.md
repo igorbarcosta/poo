@@ -50,8 +50,8 @@ Antes de executar, preveja:
 Depois:
 
 1. altere apenas a quantidade de `item2`;
-2. apresente as quantidades dos dois objetos;
-3. apresente o resultado de `item1 == item2`;
+2. exiba no console as quantidades dos dois objetos;
+3. exiba no console o resultado de `item1 == item2`;
 4. compare os resultados com suas previsões;
 5. explique por que apenas um objeto foi alterado.
 
@@ -85,9 +85,9 @@ Siga esta sequência:
 
 1. registre na tabela suas previsões antes da alteração;
 2. atribua `7` a `outroItem.quantidade`;
-3. apresente `item1.quantidade`;
-4. apresente `outroItem.quantidade`;
-5. apresente o resultado de `item1 == outroItem`;
+3. exiba `item1.quantidade` no console;
+4. exiba `outroItem.quantidade` no console;
+5. exiba no console o resultado de `item1 == outroItem`;
 6. compare as previsões com os resultados;
 7. explique por que os valores observados fazem sentido.
 

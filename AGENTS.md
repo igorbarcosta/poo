@@ -39,11 +39,23 @@ Este repositório contém o site da disciplina de Programação Orientada a Obje
 - Fazer alterações focadas somente no que foi solicitado.
 - Não executar `git commit` ou `git push` sem solicitação explícita.
 
+## Ambiente Python
+
+Não presuma que a `.venv` esteja ativada na sessão do agente. Quando o repositório possuir `.venv/`, use diretamente seus executáveis para não depender do estado do shell que iniciou o Codex:
+
+```bash
+.venv/bin/python
+.venv/bin/python -m pip
+.venv/bin/zensical build
+```
+
+A ativação manual pode ser útil para uso humano, mas não é requisito do workflow dos agentes.
+
 ## Verificação
 
 Após alterações relevantes no site:
 
-1. Execute `zensical build`.
+1. Execute `.venv/bin/zensical build`.
 2. Corrija erros de build antes de considerar a tarefa concluída.
 3. Verifique `git diff` e `git status`.
 4. Informe resumidamente os arquivos alterados.

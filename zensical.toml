@@ -25,7 +25,11 @@ nav = [
     { "Aula 04 — Protegendo o estado dos objetos" = "aulas/aula-04-protegendo-o-estado-dos-objetos.md" },
     { "Laboratório 04 — Controlando alterações de estado" = "aulas/laboratorio-04-controlando-alteracoes-de-estado.md" },
   ] },
-  { "Materiais" = "materiais/index.md" },
+  { "Materiais" = [
+    { "Materiais" = "materiais/index.md" },
+    { "Ambiente de Desenvolvimento" = "materiais/ambiente-de-desenvolvimento.md" },
+    { "Java essencial para quem já sabe programar" = "materiais/java-essencial.md" },
+  ] },
 ]
 
 # extra_css = ["stylesheets/extra.css"]

@@ -74,7 +74,7 @@ Você pode usar estes dados:
 | 1 | Teclado | 150.00 | 2 |
 | 2 | Mouse | 80.00 | 3 |
 
-Altere a quantidade de apenas um dos objetos. Em seguida, apresente novamente a quantidade dos dois objetos e verifique que apenas o objeto escolhido teve seu estado modificado.
+Altere a quantidade de apenas um dos objetos. Em seguida, exiba no console a quantidade dos dois objetos e verifique que apenas o objeto escolhido teve seu estado modificado.
 
 ### Incremento C — Adicionar comportamento
 
@@ -85,20 +85,20 @@ Adicione à classe `ItemPedido` um método chamado `calcularSubtotal`. O método
 - calcular preço unitário × quantidade;
 - utilizar o estado do próprio objeto.
 
-Use o método nos dois objetos e verifique os resultados. Não é necessário criar outro método para esse cálculo no `Main`.
+Use o método nos dois objetos, exiba no console os subtotais retornados e verifique os resultados. Não é necessário criar outro método para esse cálculo no `Main`.
 
-### Incremento D — Apresentar a compra
+### Incremento D — Exibir a compra
 
-No `main`, apresente para os dois objetos:
+No `main`, exiba no console os dados dos dois objetos, incluindo:
 
 - descrição;
 - preço unitário;
 - quantidade;
 - subtotal.
 
-Calcule e apresente também o valor total da compra. O total deve corresponder à soma dos subtotais dos dois itens.
+Calcule também o valor total da compra e exiba-o no console. O total deve corresponder à soma dos subtotais dos dois itens.
 
-Não é necessário que `ItemPedido` imprima seus próprios dados. Também não use `toString()` neste momento.
+Não é necessário que `ItemPedido` exiba seus próprios dados no console. Também não use `toString()` neste momento.
 
 !!! success "Critérios de conclusão"
 
@@ -110,8 +110,8 @@ Não é necessário que `ItemPedido` imprima seus próprios dados. Também não 
     - cria dois objetos distintos, cada um com seus próprios dados;
     - define `calcularSubtotal()` sem parâmetros em `ItemPedido`;
     - calcula o subtotal utilizando o estado do próprio objeto;
-    - apresenta os dados e subtotais dos dois itens;
-    - apresenta corretamente o total da compra.
+    - exibe no console os dados e subtotais dos dois itens;
+    - exibe no console o total correto da compra.
 
 ## Desafio opcional — Alterando o estado por meio de um comportamento
 
@@ -127,8 +127,8 @@ Adicione à classe `ItemPedido` um método chamado `aumentarQuantidade`, que:
 Depois:
 
 1. use o método para adicionar 2 unidades a apenas um dos objetos;
-2. apresente novamente a quantidade desse objeto;
-3. apresente novamente seu subtotal;
+2. exiba novamente no console a quantidade desse objeto;
+3. exiba novamente no console seu subtotal;
 4. verifique que o outro objeto não foi alterado.
 
 Não implemente validação de valores inválidos e não introduza encapsulamento. O objetivo é observar esta sequência:

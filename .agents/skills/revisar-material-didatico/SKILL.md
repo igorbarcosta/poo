@@ -90,7 +90,7 @@ Ao revisar Aula e Laboratório juntos, incluir coerência entre ambos, continuid
 
 1. Modificar somente os pontos solicitados ou aprovados.
 2. Evitar reestruturações não pedidas e preservar alterações preexistentes do usuário.
-3. Executar `zensical build` e corrigir erros.
+3. Executar `.venv/bin/zensical build` e corrigir erros.
 4. Verificar `git diff` e `git status`.
 5. Relatar arquivos alterados e resultado do build.
 

@@ -34,7 +34,7 @@ O comando `javac` compila o código-fonte e gera `Main.class`. O comando `java M
 
 ## Saída no terminal
 
-Use `System.out.println` para apresentar um valor e terminar a linha:
+Use `System.out.println` para exibir um valor no console e terminar a linha:
 
 ```java
 System.out.println("Olá!");

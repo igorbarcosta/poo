@@ -42,7 +42,7 @@ Não executar `git add .` antes dessa auditoria. Não aproveitar a publicação 
 Somente após uma auditoria limpa, executar:
 
 ```bash
-zensical build
+.venv/bin/zensical build
 ```
 
 Se falhar, diagnosticar a causa. Corrigir apenas erro técnico evidente decorrente das alterações atuais, como sintaxe de configuração, Markdown inválido ou link quebrado por renomeação aprovada. Se a correção exigir decisão pedagógica, editorial ou estrutural, interromper e pedir orientação. Repetir o build somente após correção autorizada ou inequivocamente técnica.
