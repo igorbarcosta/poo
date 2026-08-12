@@ -60,6 +60,8 @@ O requisito deve deixar inequívoco **o que** o programa precisa fazer. Isso nã
 
 Sempre que houver liberdade pedagógica de solução, essa liberdade deve ser preservada. Evitar comandos vagos como “registre um segundo item”. Preferir uma descrição que identifique os dados envolvidos e o resultado observável esperado, sem determinar desnecessariamente a organização do código.
 
+Quando a atividade exigir um projeto configurado, o roteiro deve fornecer a preparação mínima necessária antes da implementação. Em ambientes heterogêneos, evitar dependência desnecessária de uma versão exata do Java, de uma única IDE ou da execução obrigatória pelo terminal, desde que o estudante consiga compilar e executar o projeto com uma versão compatível.
+
 ## Identidade visual
 
 Usar admonitions nativas do Zensical com moderação e de acordo com seu significado:

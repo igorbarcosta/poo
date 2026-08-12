@@ -1,6 +1,6 @@
 # Ambiente de Desenvolvimento
 
-Nesta disciplina, usaremos o **Java 25** como versão de referência. As demonstrações serão feitas principalmente no **IntelliJ IDEA**, mas você pode trabalhar com a ferramenta em que se sentir mais confortável.
+Nesta disciplina, usaremos o **Java 25** como ambiente de referência. As atividades iniciais não dependem de recursos exclusivos dessa versão: uma versão recente diferente pode ser utilizada quando conseguir compilar e executar os projetos. As demonstrações serão feitas principalmente no **IntelliJ IDEA**, mas você pode trabalhar com a ferramenta em que se sentir mais confortável.
 
 VS Code, Eclipse, NetBeans, terminal e outras ferramentas são alternativas válidas. O importante é que você consiga compilar, executar e explicar o próprio código.
 
@@ -26,7 +26,9 @@ java --version
 javac --version
 ```
 
-Os dois comandos devem indicar a versão 25. Se `java` funcionar, mas `javac` não estiver disponível, verifique se você instalou o JDK e se seu diretório `bin` está no `PATH`.
+No ambiente de referência, os dois comandos indicam a versão 25. Se sua máquina tiver outra versão recente e conseguir compilar e executar os projetos, continue normalmente.
+
+Se `javac` não estiver disponível no terminal, mas IntelliJ IDEA ou VS Code conseguirem executar o programa, você pode trabalhar pela IDE. Em uma máquina institucional, não tente instalar ou alterar componentes do sistema sem autorização. Se nem o terminal nem a IDE funcionarem, informe o problema ao professor.
 
 ## Primeiro programa
 
@@ -62,11 +64,11 @@ As demonstrações da disciplina usarão o IntelliJ IDEA como IDE de referência
 2. escolha **Java**;
 3. informe um nome e uma pasta para o projeto;
 4. em **Build system**, selecione **IntelliJ**;
-5. em **JDK**, selecione o Temurin 25 instalado;
-6. se ele não aparecer, use **Add JDK from Disk** e indique a pasta do JDK 25;
+5. em **JDK**, selecione uma JDK disponível; use o Temurin 25 quando ele estiver instalado;
+6. se a JDK não aparecer, use **Add JDK from Disk** e indique a pasta correspondente;
 7. crie o projeto e adicione `Main.java` à pasta de código-fonte.
 
-Os nomes exatos de algumas opções podem variar um pouco entre versões da IDE. O ponto essencial é que o projeto esteja configurado para usar o **JDK 25**.
+Os nomes exatos de algumas opções podem variar um pouco entre versões da IDE. O ponto essencial é que o projeto esteja configurado para usar uma JDK capaz de compilar e executar as atividades. O JDK 25 permanece como referência para as demonstrações.
 
 !!! info "Começaremos com o ambiente mínimo"
 
@@ -101,10 +103,8 @@ IDEs podem completar código, organizar importações, gerar trechos e sugerir c
 
 Antes do primeiro laboratório, verifique se:
 
-- [ ] o Eclipse Temurin JDK 25 está instalado;
-- [ ] `java --version` indica a versão 25;
-- [ ] `javac --version` indica a versão 25;
-- [ ] você consegue compilar `Main.java` com `javac Main.java`;
-- [ ] você consegue executar o programa com `java Main`;
-- [ ] sua IDE ou editor está configurado para usar o JDK 25;
+- [ ] uma JDK recente está disponível para o projeto;
+- [ ] você identificou a versão usada pelo terminal ou pela IDE;
+- [ ] você consegue compilar e executar `Main.java` pelo terminal ou pela IDE;
+- [ ] sua IDE ou editor está configurado para usar a JDK selecionada;
 - [ ] o projeto pode ser compreendido e executado sem depender de recursos exclusivos da IDE.

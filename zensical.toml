@@ -29,6 +29,7 @@ nav = [
     { "Materiais" = "materiais/index.md" },
     { "Ambiente de Desenvolvimento" = "materiais/ambiente-de-desenvolvimento.md" },
     { "Java essencial para quem já sabe programar" = "materiais/java-essencial.md" },
+    { "Referências e recursos" = "materiais/referencias.md" },
   ] },
 ]
 

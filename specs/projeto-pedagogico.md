@@ -79,7 +79,7 @@ Mesmo quando há colaboração em projetos, a compreensão individual é verific
 - referências e `null`;
 - `packages` e `imports` introduzidos progressivamente;
 - fundamentos mínimos de compilação e execução;
-- arrays e coleções de forma objetiva, considerando o repertório prévio de Estruturas de Dados em C#;
+- arrays e coleções de forma objetiva, considerando o repertório prévio de programação em Python e C;
 - uso pragmático de `List` e `ArrayList`, sem transformar Generics em tópico;
 - compreensão e tratamento básico de exceções;
 - `toString` e `equals` quando pedagogicamente úteis;

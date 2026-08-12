@@ -36,6 +36,7 @@ Como orientação editorial:
 - usar títulos informativos e linguagem direta, orientada ao estudante;
 - preferir poucas perguntas de alta qualidade;
 - evitar repetir em prosa o que já está claro em código, tabela ou lista;
+- quando uma informação normativa ou estrutural já possuir uma fonte oficial no site, referenciá-la em vez de duplicá-la extensamente na página da aula;
 - reservar cada admonition para uma ideia principal e evitar paredes de texto dentro dela.
 
 Essas diretrizes apoiam a clareza sem impor uniformidade artificial.

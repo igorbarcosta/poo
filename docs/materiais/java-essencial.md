@@ -4,10 +4,10 @@ Este material é uma referência rápida e incremental para quem já sabe progra
 
 ## Estrutura mínima de um programa
 
-Um programa Java simples pode começar assim:
+No primeiro laboratório, o programa começa assim:
 
 ```java
-public class Main {
+public class Laboratorio01 {
 
     public static void main(String[] args) {
         System.out.println("Olá, POO!");
@@ -15,22 +15,56 @@ public class Main {
 }
 ```
 
-O nome do arquivo deve ser `Main.java`, igual ao nome da classe pública. A execução começa no método `main`.
+O nome do arquivo deve ser `Laboratorio01.java`, igual ao nome da classe pública. A execução começa no método `main`.
 
-> Não é necessário compreender imediatamente cada elemento de `public static void main(String[] args)`. Eles serão estudados quando se tornarem relevantes.
+> Neste momento, trate essa assinatura como o ponto de entrada do programa. Elementos como `public`, `static` e os demais detalhes serão estudados quando se tornarem relevantes.
+
+`{` e `}` delimitam blocos em Java, assim como em C. A indentação não define esses blocos, como ocorre principalmente em Python, mas continua importante para tornar o código legível.
 
 ## Compilação e execução
 
-No terminal, dentro da pasta que contém `Main.java`, execute:
+O Java 25 é o ambiente de referência da disciplina, mas as atividades iniciais não dependem de recursos exclusivos dessa versão. Uma versão recente diferente pode ser utilizada quando conseguir compilar e executar os projetos.
+
+Quando o terminal estiver configurado, entre na pasta que contém `Laboratorio01.java` e execute:
 
 ```bash
-javac Main.java
-java Main
+javac Laboratorio01.java
+java Laboratorio01
 ```
 
-O comando `javac` compila o código-fonte e gera `Main.class`. O comando `java Main` executa o programa.
+O comando `javac` compila o código-fonte e gera `Laboratorio01.class`. O comando `java Laboratorio01` executa o programa.
+
+Se `javac` não estiver disponível no terminal, mas a IDE conseguir compilar e executar o programa, use **Run**. Em máquinas institucionais, não instale ou altere componentes do sistema sem autorização; se nenhum dos caminhos funcionar, informe o professor.
 
 **Código-fonte → compilação → execução**
+
+## Projeto, classe e arquivo
+
+Crie ou abra um projeto Java e coloque a classe na área de código-fonte. Para a pasta do projeto, prefira nomes curtos, sem espaços ou acentos, como `poo-lab01`.
+
+Quando uma classe é pública, o arquivo deve ter o mesmo nome:
+
+```text
+Laboratorio01.java
+```
+
+```java
+public class Laboratorio01 {
+}
+```
+
+Não é necessário declarar um `package` no primeiro laboratório.
+
+## Ponte de Python e C para Java
+
+| Conceito | Python | C | Java |
+| --- | --- | --- | --- |
+| inteiro | `x = 10` | `int x = 10;` | `int x = 10;` |
+| saída | `print(x)` | `printf(...)` | `System.out.println(x);` |
+| blocos | indentação | `{ }` | `{ }` |
+| tipo da variável | normalmente não declarado | declarado | declarado |
+
+Em Java, a declaração de uma variável informa explicitamente seu tipo. A tabela serve apenas como ponte para construções que você já conhece.
 
 ## Saída no terminal
 
@@ -193,9 +227,9 @@ double subtotal =
     precoUnitario * quantidade;
 ```
 
-### Classe pública e arquivo
+### Exemplo com outra classe pública
 
-Quando uma classe é pública, o arquivo deve ter o mesmo nome:
+A mesma relação entre classe pública e arquivo vale para as demais classes:
 
 ```java
 public class ItemPedido {
@@ -203,15 +237,3 @@ public class ItemPedido {
 ```
 
 Esse código deve estar em `ItemPedido.java`.
-
-## Mapeamento rápido de C# para Java
-
-| C# | Java |
-| --- | --- |
-| `string` | `String` |
-| `bool` | `boolean` |
-| `Console.WriteLine(x)` | `System.out.println(x)` |
-| `int`, `double` | `int`, `double` |
-| `if`, `else`, `for`, `while` | estruturas muito semelhantes |
-
-Você já conhece essas ideias. Use esta tabela apenas como apoio para começar a expressá-las em Java.

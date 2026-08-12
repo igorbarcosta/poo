@@ -20,28 +20,40 @@ Essa solução será o ponto de partida para uma discussão posterior sobre orie
 
 Ao final deste encontro, você deverá ser capaz de:
 
-- verificar se o Java 25 está disponível no ambiente de desenvolvimento;
-- compilar e executar um programa Java simples;
+- verificar se o ambiente consegue compilar e executar um programa Java;
 - reconhecer a estrutura mínima de um programa Java;
-- mapear para Java construções básicas que já conhece;
+- mapear para Java construções básicas que já conhece em Python e C;
 - implementar uma pequena solução no estilo procedural;
 - começar a identificar dados e operações que parecem pertencer juntos.
 
+## Preparando o projeto
+
+Antes de escrever o código da atividade:
+
+1. crie ou abra um projeto Java;
+2. selecione uma JDK disponível na máquina;
+3. crie `Laboratorio01.java` na área de código-fonte do projeto;
+4. execute o programa pela IDE ou pelo terminal, conforme o ambiente disponível.
+
+Para a pasta do projeto, prefira um nome curto e identificável, como `poo-lab01`. Evite espaços e acentos. Não é necessário declarar um `package` neste laboratório.
+
 ## Verificação do ambiente
 
-Antes de iniciar a atividade principal, confirme que o Java está disponível fora da IDE. Se precisar instalar ou ajustar alguma ferramenta, consulte [Ambiente de Desenvolvimento](../materiais/ambiente-de-desenvolvimento.md).
+O Java 25 é o ambiente de referência da disciplina, mas estas atividades iniciais não usam recursos exclusivos dessa versão. Se uma versão recente diferente conseguir compilar e executar os projetos, continue a atividade normalmente.
 
-No terminal, execute:
+### Caminho A — terminal
+
+Quando os comandos estiverem disponíveis, verifique as versões instaladas:
 
 ```bash
 java --version
 javac --version
 ```
 
-Os dois comandos devem indicar a versão 25. Em seguida, crie um arquivo chamado `Main.java` com este conteúdo:
+Em `Laboratorio01.java`, escreva:
 
 ```java
-public class Main {
+public class Laboratorio01 {
 
     public static void main(String[] args) {
         System.out.println("Ambiente configurado!");
@@ -50,16 +62,11 @@ public class Main {
 }
 ```
 
-No terminal, dentro da pasta em que o arquivo foi salvo, compile:
+Na pasta que contém o arquivo, compile e execute:
 
 ```bash
-javac Main.java
-```
-
-Depois, execute:
-
-```bash
-java Main
+javac Laboratorio01.java
+java Laboratorio01
 ```
 
 O resultado esperado é:
@@ -68,42 +75,91 @@ O resultado esperado é:
 Ambiente configurado!
 ```
 
-Mesmo que você use IntelliJ IDEA ou outra IDE, realize esta primeira compilação e execução pelo terminal. Depois da verificação, você poderá continuar usando normalmente os recursos de sua ferramenta.
+### Caminho B — IDE
+
+Se `javac` não estiver disponível no terminal, mas IntelliJ IDEA ou VS Code conseguirem compilar e executar o programa, use o comando **Run** da IDE e continue a atividade.
+
+Em uma máquina institucional, não tente instalar ou alterar componentes do sistema sem autorização. Se nem o terminal nem a IDE funcionarem, informe o problema ao professor. Para orientações adicionais, consulte [Ambiente de Desenvolvimento](../materiais/ambiente-de-desenvolvimento.md).
 
 ## Conteúdo
 
 ### Parte 1 — Java mínimo operacional
 
-O fluxo básico é:
+Quando o terminal está configurado, o fluxo básico é:
 
-**`Main.java` → `javac` → `Main.class` → JVM → execução**
+**`Laboratorio01.java` → `javac` → `Laboratorio01.class` → JVM → execução**
 
-O arquivo `.java` contém o código-fonte. O comando `javac` o compila e produz o arquivo `.class`, que pode ser executado pela JVM com o comando `java`. Por enquanto, basta compreender o fluxo básico: escrevemos o código-fonte, compilamos e executamos o programa. Os detalhes do funcionamento da plataforma Java não são necessários neste momento.
+O arquivo `.java` contém o código-fonte. O comando `javac` o compila e produz o arquivo `.class`, que pode ser executado pela JVM com o comando `java`. A IDE automatiza esse mesmo fluxo quando você usa **Run**.
 
-A estrutura mínima usada neste momento é:
+Por enquanto, basta compreender que escrevemos o código-fonte, compilamos e executamos o programa. Os detalhes internos da plataforma Java não são necessários neste momento.
+
+### Antes de escrever o primeiro programa
+
+#### Tipos e instruções
+
+Compare a declaração de uma variável nas linguagens que você já conhece:
+
+=== "Python"
+
+    ```python
+    quantidade = 2
+    ```
+
+=== "C"
+
+    ```c
+    int quantidade = 2;
+    ```
+
+=== "Java"
+
+    ```java
+    int quantidade = 2;
+    ```
+
+Em Java, a declaração informa explicitamente o tipo da variável. Muitas instruções Java terminam com `;`:
 
 ```java
-public class Main {
+int quantidade = 2;
+double precoUnitario = 150.0;
+System.out.println(quantidade);
+```
+
+#### Blocos e ponto de entrada
+
+```java
+public class Laboratorio01 {
 
     public static void main(String[] args) {
-        // o programa começa aqui
+        int quantidade = 2;
+        System.out.println(quantidade);
     }
 }
 ```
 
-> Não é necessário compreender ainda cada palavra de `public static void main(String[] args)`. Alguns desses elementos serão estudados progressivamente quando se tornarem relevantes para POO.
+- `{` e `}` delimitam blocos de código em Java, assim como em C;
+- Python usa principalmente a indentação para definir blocos;
+- em Java, a indentação não delimita o bloco, mas continua essencial para a legibilidade.
 
-### Mapeamento rápido de C# para Java
+Neste momento, trate `public static void main(String[] args)` como o ponto de entrada do programa. Elementos como `public`, `static` e os demais detalhes serão compreendidos progressivamente quando tiverem função no curso.
 
-| C# | Java |
-| --- | --- |
-| `string` | `String` |
-| `bool` | `boolean` |
-| `Console.WriteLine(x)` | `System.out.println(x)` |
-| `int`, `double` | `int`, `double` |
-| `if`, `else`, `for`, `while` | estruturas muito semelhantes |
+#### Nomes e arquivos
 
-> Você já conhece essas ideias. Neste momento estamos apenas aprendendo como expressá-las em Java.
+Se uma classe pública se chama `Laboratorio01`, o arquivo deve se chamar `Laboratorio01.java`:
+
+```text
+Laboratorio01.java
+```
+
+```java
+public class Laboratorio01 {
+}
+```
+
+Use estas convenções iniciais:
+
+- **classes:** começam com letra maiúscula e usam PascalCase, como `Laboratorio01`, `ItemPedido` e `Conta`;
+- **variáveis:** começam com letra minúscula e usam camelCase, como `quantidade`, `precoUnitario` e `itemPedido`.
 
 ### Parte 2 — Problema inicial
 
@@ -116,7 +172,7 @@ Uma loja precisa registrar um item de uma compra. Para cada item, conhecemos:
 O programa deve calcular o subtotal e exibi-lo no console. Use esta solução inicial como ponto de partida:
 
 ```java
-public class Main {
+public class Laboratorio01 {
 
     static double calcularSubtotal(double precoUnitario, int quantidade) {
         return precoUnitario * quantidade;
@@ -141,7 +197,7 @@ Esta solução permanece próxima do estilo procedural que você já conhece. N�
 
 ## Atividade
 
-Depois de verificar o ambiente, substitua o conteúdo de `Main.java` pela solução inicial da Parte 2 e execute o programa. Antes de modificá-lo, certifique-se de que consegue explicar o papel de cada trecho. Em seguida, experimente pequenas alterações nos valores.
+Depois de verificar o ambiente, substitua o conteúdo de `Laboratorio01.java` pela solução inicial da Parte 2 e execute o programa. Antes de modificá-lo, certifique-se de que consegue explicar o papel de cada trecho. Em seguida, experimente pequenas alterações nos valores.
 
 ### Incremento A — Segundo item
 
@@ -170,8 +226,8 @@ Não há uma única forma obrigatória de organizar esses incrementos. É aceit�
 
     Verifique se você:
 
-    - confirmou que `java` e `javac` estão disponíveis na versão 25;
-    - compilou e executou pelo terminal o programa da verificação do ambiente;
+    - confirmou que uma versão recente do Java funciona no ambiente disponível;
+    - compilou e executou o programa inicial pelo terminal ou pela IDE;
     - concluiu uma solução principal que compila e executa;
     - armazenou dois itens com dados independentes;
     - calculou corretamente o subtotal de cada item;
