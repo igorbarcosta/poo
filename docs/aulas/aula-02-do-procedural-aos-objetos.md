@@ -8,7 +8,11 @@ No laboratório anterior, resolvemos em Java um problema que já sabíamos resol
 
 !!! question "Pergunta central"
 
-    Quando várias informações e operações representam a mesma coisa no problema, faz sentido mantê-las separadas no programa?
+    Se descrição, preço e quantidade pertencem ao mesmo item, onde está o `Item` no nosso programa?
+
+??? "Ver comentário"
+
+    Na solução procedural, reconhecemos o item no problema, mas ele ainda não aparece como uma unidade explícita no código. Nesta aula, vamos investigar como representá-lo dessa forma.
 
 ## Objetivos
 
@@ -26,7 +30,7 @@ Ao final deste encontro, você deverá ser capaz de:
 
 ### Retomando o Laboratório 01
 
-Uma solução para dois itens pode ter usado variáveis separadas:
+No Laboratório 01, construímos uma solução procedural para registrar dois itens, calcular seus subtotais e obter o total da compra. Parte do código podia ter esta forma:
 
 ```java
 String descricao1 = "Teclado";
@@ -38,7 +42,17 @@ double preco2 = 80.0;
 int quantidade2 = 3;
 ```
 
-Quem realizou o desafio opcional pode ter usado arrays paralelos:
+Retome as questões deixadas ao final do laboratório:
+
+- quais variáveis representam partes de uma mesma coisa?
+- o que acontece com a organização do código quando aumentamos o número de itens?
+- existe alguma forma de manter os dados e os comportamentos relacionados mais próximos?
+
+??? "Ver possível resposta"
+
+    `descricao1`, `preco1` e `quantidade1` representam partes do primeiro item; o segundo conjunto representa outro item. Quando a quantidade de itens cresce, aumentam a repetição e a necessidade de manter relacionados dados que continuam separados no código.
+
+Uma possível tentativa de reduzir a repetição seria usar arrays paralelos:
 
 ```java
 String[] descricoes = {"Teclado", "Mouse", "Monitor"};
@@ -46,20 +60,22 @@ double[] precos = {150.0, 80.0, 900.0};
 int[] quantidades = {2, 3, 1};
 ```
 
-Essa solução não está errada. Em relação às variáveis independentes, ela facilita repetir operações para vários itens. Ainda assim, usa uma convenção importante: `descricoes[i]`, `precos[i]` e `quantidades[i]` representam o mesmo item porque ocupam a mesma posição. Se os arrays deixarem de estar alinhados, essa associação se perde.
+Essa organização facilita repetir operações para vários itens, mas ainda depende de uma convenção: `descricoes[i]`, `precos[i]` e `quantidades[i]` precisam representar o mesmo item. A unidade `Item` existe no problema, mas ainda não aparece explicitamente no código.
 
-Compare as duas possibilidades:
+Mesmo quem não realizou o desafio opcional pode acompanhar a comparação:
 
-- o que melhorou com os arrays?
-- o que ainda depende da posição para manter os dados de um item relacionados?
-- onde o conceito de “item” aparece explicitamente em cada solução?
-- como essas soluções evoluiriam se cada item passasse a possuir muitas outras informações?
+- o que os arrays melhoram?
+- o que ainda depende da posição para manter os dados relacionados?
+
+??? "Ver resposta"
+
+    Os arrays reduzem a repetição e facilitam percorrer vários itens. Porém, a relação entre descrição, preço e quantidade continua dependendo do mesmo índice em estruturas separadas.
 
 Nosso objetivo não é corrigir uma solução procedural “errada”, mas investigar outra forma de tornar explícitas as unidades que reconhecemos no problema.
 
 ### Identificando uma unidade do problema
 
-Em vez de começar pela estrutura do programa, vamos olhar para o domínio. Um item do pedido reúne:
+Em vez de começar pela estrutura do programa, vamos olhar para o problema. Se descrição, preço e quantidade pertencem ao mesmo item, podemos representar explicitamente essa unidade:
 
 **ITEM DO PEDIDO**
 
@@ -69,6 +85,8 @@ Em vez de começar pela estrutura do programa, vamos olhar para o domínio. Um i
 - calcular subtotal.
 
 Os três primeiros elementos são informações sobre o item. O último é uma operação diretamente relacionada a elas. Podemos organizar o programa em torno de elementos que representam conceitos relevantes do problema.
+
+Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso não significa transformar todo substantivo em classe. `ItemPedido` é relevante porque possui estado, comportamento relacionado a esse estado e uma responsabilidade coerente na solução.
 
 ### Objeto, estado, comportamento e classe
 
@@ -108,7 +126,9 @@ Discuta:
 - os objetos precisam possuir o mesmo estado?
 - o que é comum à definição da classe e o que pertence a cada objeto?
 
-Há uma classe `ItemPedido` e três objetos criados a partir dela. A classe fornece a estrutura comum; descrição, preço e quantidade assumem valores próprios em cada objeto.
+??? "Ver resposta"
+
+    Há uma classe `ItemPedido` e três objetos criados a partir dela. A classe fornece a estrutura e os comportamentos comuns; descrição, preço e quantidade assumem valores próprios em cada objeto.
 
 ### Primeira classe em Java
 
@@ -136,46 +156,17 @@ Leia o código conceitualmente:
 
 Como o exemplo declara `public class ItemPedido`, essa classe deve ficar no arquivo `ItemPedido.java`.
 
-!!! tip "Java em foco — nomes e maiúsculas"
+!!! tip "Java em foco — leitura rápida da sintaxe"
 
-    Em Java, seguiremos estas convenções:
+    Para consultar durante a aula:
 
     - **classes:** PascalCase — `ItemPedido`, `ContaBancaria`, `Produto`;
     - **variáveis e campos:** camelCase — `precoUnitario`, `quantidade`;
     - **métodos:** camelCase — `calcularSubtotal`, `adicionarItem`;
-    - **maiúsculas e minúsculas importam:** `ItemPedido` e `itemPedido` são identificadores diferentes.
+    - `{` e `}` delimitam blocos, enquanto a indentação os torna legíveis;
+    - muitas instruções terminam com `;`.
 
-    Para métodos, prefira nomes que expressem claramente uma ação ou comportamento.
-
-!!! tip "Java em foco — blocos e indentação"
-
-    - `{` e `}` delimitam os blocos da classe e do método;
-    - a indentação não define os blocos em Java, mas deve ser consistente para tornar a estrutura legível.
-
-Compare as duas chamadas:
-
-```java
-calcularSubtotal(preco, quantidade);
-```
-
-```java
-item.calcularSubtotal();
-```
-
-Na segunda forma, não precisamos passar novamente preço e quantidade porque o próprio objeto já mantém essas informações.
-
-!!! tip "Java em foco — instruções"
-
-    Nas instruções apresentadas, `;` marca o final. Uma instrução pode ocupar uma linha ou ser quebrada para facilitar a leitura. Nos dois casos abaixo, o significado é o mesmo:
-
-    ```java
-    double subtotal = precoUnitario * quantidade;
-    ```
-
-    ```java
-    double subtotal =
-        precoUnitario * quantidade;
-    ```
+    Esses elementos já apareceram no Laboratório 01. Aqui, eles servem para expressar os conceitos de POO.
 
 ### Criando objetos
 
@@ -223,11 +214,13 @@ Discuta as alternativas:
 - quem parece ser o responsável natural pelo cálculo?
 - qual solução comunica melhor a intenção de calcular o subtotal do próprio item?
 
-As três formas podem produzir o mesmo número. A terceira comunica que calcular o subtotal é uma responsabilidade do item e permite que o comportamento use diretamente seu estado.
+??? "Ver resposta"
+
+    O próprio `ItemPedido` já conhece `precoUnitario` e `quantidade`. As três formas podem produzir o mesmo número, mas `item.calcularSubtotal()` comunica que calcular o subtotal é uma responsabilidade do item e permite que o comportamento use diretamente seu estado.
 
 !!! info "Responsabilidade"
 
-    Orientação a objetos não consiste apenas em colocar dados dentro de classes. Também envolve decidir quais responsabilidades pertencem a cada objeto.
+    Objetos não servem apenas para agrupar dados. Também precisamos decidir quais responsabilidades pertencem a cada objeto.
 
 ## Atividade de compreensão
 
@@ -244,13 +237,17 @@ class Produto {
 }
 ```
 
-Discuta com um colega:
+Em dupla, durante aproximadamente 5 a 7 minutos, discuta:
 
 1. O que a classe representa?
 2. Quais elementos representam estado?
 3. Qual comportamento aparece?
 4. Dois objetos `Produto` precisam possuir o mesmo preço?
 5. Por que `calcularPrecoComDesconto` pode acessar `preco` sem recebê-lo como parâmetro?
+
+??? "Ver resposta"
+
+    `Produto` representa um produto. `nome` e `preco` formam seu estado, e `calcularPrecoComDesconto` é um comportamento. Objetos diferentes podem possuir preços diferentes. O método acessa `preco` porque usa o estado do próprio objeto.
 
 Esta é uma atividade breve de compreensão e discussão em sala, não uma entrega formal.
 
@@ -265,15 +262,22 @@ Sem escrever uma classe Java completa, discuta:
 3. Quais comportamentos poderiam fazer sentido?
 4. Qual responsabilidade parece pertencer ao próprio objeto?
 
+??? "Ver possível resposta"
+
+    `Emprestimo` é uma possibilidade de objeto. Livro, data e situação da devolução podem compor seu estado, enquanto registrar a devolução pode ser um comportamento sob sua responsabilidade. Outras escolhas são possíveis se forem justificadas pelo estado, pelo comportamento e pelo papel do conceito na solução.
+
 O objetivo é transferir as ideias da aula para outro problema, e não encontrar uma única resposta ou memorizar uma estrutura.
 
 ## Síntese
 
-- uma classe define estado e comportamentos comuns;
-- objetos da mesma classe podem manter estados diferentes;
-- `new` cria uma nova instância;
-- um comportamento pode usar o estado do próprio objeto;
-- organizar objetos também envolve decidir responsabilidades.
+- representamos `ItemPedido` explicitamente porque ele é uma unidade relevante do problema;
+- um objeto reúne um estado próprio e comportamentos relacionados;
+- uma classe define a estrutura e os comportamentos comuns aos objetos daquele tipo;
+- a mesma classe pode originar vários objetos, e `new` cria uma nova instância;
+- `calcularSubtotal()` pode ser responsabilidade de `ItemPedido` porque usa o estado que o próprio objeto conhece;
+- organizar objetos exige compreender e explicar as responsabilidades atribuídas a eles.
+
+> Código que você não consegue explicar não é código que você domina.
 
 ## Preparação para o laboratório
 
@@ -288,7 +292,11 @@ ItemPedido item2 = new ItemPedido();
 - os dois objetos precisam possuir o mesmo estado?
 - o que acontece quando alteramos apenas um deles?
 
-No Laboratório 02, você usará essas ideias para transformar a solução procedural do Laboratório 01 em uma primeira solução baseada em objetos.
+??? "Ver resposta"
+
+    Dois usos de `new ItemPedido()` criam dois objetos. Eles podem possuir estados diferentes; alterar o estado de um não altera automaticamente o estado do outro. O papel das variáveis usadas para acessar esses objetos será aprofundado na Aula 03.
+
+Na aula, identificamos uma unidade que estava implícita na solução procedural e a representamos como objeto. No Laboratório 02, você fará essa transformação na solução construída anteriormente, criando objetos com estados próprios e um comportamento que calcula o subtotal.
 
 ## Material da aula
 
