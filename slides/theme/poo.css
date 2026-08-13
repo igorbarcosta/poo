@@ -183,6 +183,8 @@ section.takeaway::before {
 }
 
 section.question {
+  --accent: #7a5b00;
+  --accent-soft: var(--yellow-soft);
   background: var(--question-soft);
   box-shadow: inset 10px 0 0 var(--question);
 }
@@ -198,6 +200,8 @@ section.question::before {
 }
 
 section.concept {
+  --accent: var(--blue-dark);
+  --accent-soft: var(--blue-soft);
   background: var(--concept-soft);
   box-shadow: inset 10px 0 0 var(--concept);
 }
@@ -229,6 +233,8 @@ section.example h2 {
 }
 
 section.activity {
+  --accent: #137333;
+  --accent-soft: var(--green-soft);
   background: var(--activity-soft);
   box-shadow: inset 10px 0 0 var(--activity);
 }

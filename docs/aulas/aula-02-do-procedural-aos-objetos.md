@@ -6,6 +6,8 @@ icon: material/school-outline
 
 No laboratório anterior, resolvemos em Java um problema que já sabíamos resolver com nosso repertório procedural. Agora vamos observar como os dados e as operações desse problema podem ser organizados de outra maneira.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-02-do-procedural-aos-objetos.html) · [PDF](../slides/rendered/aula-02-do-procedural-aos-objetos.pdf)
+
 !!! question "Pergunta central"
 
     Se descrição, preço e quantidade pertencem ao mesmo item, onde está o `Item` no nosso programa?

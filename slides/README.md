@@ -4,10 +4,12 @@ Os slides são escritos em Marp Markdown e constituem o ambiente principal de co
 
 Frames sucessivos podem repetir e evoluir código, perguntas, resultados e diagramas para construir a narrativa sem depender de animações.
 
-- fontes dos decks: `slides/`;
-- tema: `slides/theme/poo.css`;
-- saídas locais: `.slides-build/`;
-- HTML, PDF e PPTX gerados não são versionados nesta etapa.
+- fontes dos decks: `slides/*.md`;
+- tema visual compartilhado: `slides/theme/poo.css`;
+- distribuições oficiais versionadas: `slides/rendered/`;
+- artefatos temporários: `.slides-build/`.
+
+Os arquivos HTML e PDF em `slides/rendered/` são gerados automaticamente a partir do fonte Marp e do tema. Eles podem ser abertos diretamente pelo GitHub ou distribuídos sem Node, Marp ou Chrome e não devem ser editados manualmente.
 
 ## Comandos
 
@@ -21,7 +23,15 @@ npm run slides:pptx
 Os scripts básicos de exportação operam sobre o deck piloto da Aula 03.
 As exportações para PDF e PPTX exigem um navegador compatível com o Marp, como Chrome, Edge ou Firefox, disponível no ambiente local.
 
-Para exportar o deck da Aula 02, use `slides:aula02:html`, `slides:aula02:pdf` ou `slides:aula02:pptx`.
+Para gerar as distribuições oficiais da Aula 02:
+
+```bash
+npm run slides:aula02
+npm run slides:aula02:html
+npm run slides:aula02:pdf
+```
+
+O comando agregado gera HTML e PDF em `slides/rendered/`. PPTX não faz parte do fluxo oficial.
 
 ## Ambiente no WSL
 

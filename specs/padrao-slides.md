@@ -10,6 +10,10 @@ O site permanece como material completo e permanente para estudo e consulta. O q
 
 Ao partir de um roteiro, reconstruir a experiência da aula — problema, pergunta, previsão, comparação, descoberta, explicação, aplicação e síntese. Não usar como regra “uma seção da página = um slide”: uma seção curta pode exigir vários frames sucessivos, enquanto seções de referência podem não gerar nenhum. Cada slide deve possuir uma função clara na condução da aula.
 
+## Fonte e distribuição
+
+Os arquivos `slides/*.md` são a fonte da verdade. Os HTML e PDF em `slides/rendered/` são distribuições oficiais derivadas e versionadas para permitir acesso e download sem o ambiente de build; não devem ser editados manualmente.
+
 ## Densidade, narrativa e progressão
 
 - Trabalhar uma ideia principal por slide, com pouco texto e sem listas extensas.
