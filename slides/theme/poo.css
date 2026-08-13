@@ -5,8 +5,25 @@
 :root {
   --ink: #172033;
   --muted: #506078;
-  --accent: #155e75;
-  --accent-soft: #e0f2fe;
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+  --blue-dark: #174ea6;
+  --blue-soft: #e8f0fe;
+  --red-soft: #fce8e6;
+  --yellow-soft: #fff8e1;
+  --green-soft: #e6f4ea;
+  --accent: var(--google-blue);
+  --accent-soft: var(--blue-soft);
+  --concept: var(--google-blue);
+  --concept-soft: var(--blue-soft);
+  --question: var(--google-yellow);
+  --question-soft: var(--yellow-soft);
+  --activity: var(--google-green);
+  --activity-soft: var(--green-soft);
+  --takeaway: var(--blue-dark);
+  --section: #2b5fb8;
   --surface: #f8fafc;
   --code: #101827;
 }
@@ -18,6 +35,7 @@ section {
   font-size: 30px;
   line-height: 1.28;
   padding: 60px 72px;
+  text-align: left;
 }
 
 h1,
@@ -32,15 +50,25 @@ h1 {
 }
 
 h2 {
-  border-bottom: 3px solid #bae6fd;
+  border-bottom: 3px solid var(--google-blue);
   font-size: 1.35em;
   margin-bottom: 0.7em;
   padding-bottom: 0.18em;
 }
 
+h1 code,
+h2 code {
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+  padding: 0;
+}
+
 p,
-ul {
+ul,
+ol {
   margin-top: 0.45em;
+  text-align: left;
 }
 
 strong {
@@ -53,6 +81,7 @@ pre {
   box-shadow: 0 8px 24px rgb(15 23 42 / 12%);
   font-size: 0.86em;
   padding: 0.75em 0.9em;
+  text-align: left;
 }
 
 code {
@@ -93,7 +122,7 @@ section::after {
 }
 
 section.lead {
-  background: var(--accent);
+  background: var(--section);
   color: white;
   text-align: left;
 }
@@ -109,25 +138,152 @@ section.lead h1 {
   max-width: 900px;
 }
 
+section.lead h2 {
+  border-bottom-color: #aecbfa;
+}
+
+section.lead.section::before {
+  display: none;
+}
+
 section.lead::after {
   color: rgb(255 255 255 / 65%);
 }
 
-section.lead .central-question {
-  border-left-color: #7dd3fc;
+section.lead .statement {
+  border-left-color: #aecbfa;
   color: white;
 }
 
+.chapter {
+  color: var(--muted);
+  font-size: 0.58em;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+section.question::before,
+section.concept::before,
+section.example::before,
+section.activity::before,
+section.section::before,
+section.takeaway::before {
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  font-size: 0.52em;
+  font-weight: 800;
+  height: 1.35em;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  margin-bottom: 0.35em;
+  text-transform: uppercase;
+}
+
 section.question {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  background: var(--question-soft);
+  box-shadow: inset 10px 0 0 var(--question);
 }
 
 section.question h2 {
-  border: 0;
+  border-bottom-color: var(--question);
+  color: #5f4b00;
+}
+
+section.question::before {
+  color: #7a5b00;
+  content: "Pense antes de avançar";
+}
+
+section.concept {
+  background: var(--concept-soft);
+  box-shadow: inset 10px 0 0 var(--concept);
+}
+
+section.concept h2 {
+  border-bottom-color: var(--concept);
+  color: var(--blue-dark);
+}
+
+section.definition::before {
+  color: var(--blue-dark);
+  content: "Conceito-chave";
+}
+
+section.definition .statement {
+  border-left-color: var(--google-blue);
+  font-size: 1.3em;
+  line-height: 1.35;
+  margin-top: 1.05em;
+  max-width: 1000px;
+}
+
+section.example {
+  background: var(--surface);
+}
+
+section.example h2 {
+  border-bottom-color: #a8b2c1;
+}
+
+section.activity {
+  background: var(--activity-soft);
+  box-shadow: inset 10px 0 0 var(--activity);
+}
+
+section.activity::before {
+  color: #137333;
+  content: "Atividade";
+}
+
+section.activity h2 {
+  border-bottom-color: var(--activity);
+  color: #137333;
+}
+
+section.takeaway {
+  background: var(--takeaway);
+  color: white;
+}
+
+section.takeaway h2,
+section.takeaway strong,
+section.takeaway .statement {
+  color: white;
+}
+
+section.takeaway h2 {
+  border-bottom-color: #aecbfa;
+}
+
+section.takeaway::after,
+section.section::after {
+  color: rgb(255 255 255 / 65%);
+}
+
+section.section {
+  background: var(--section);
+  color: white;
+}
+
+section.section h2,
+section.section strong,
+section.section .statement {
+  color: white;
+}
+
+section.section h2 {
+  border-bottom-color: #aecbfa;
+}
+
+section.section .chapter {
+  color: #d2e3fc;
+}
+
+section.lead.section .chapter {
+  display: none;
 }
 
 section.code-focus pre {
@@ -136,11 +292,16 @@ section.code-focus pre {
   min-width: 68%;
 }
 
+section.question.code-focus pre {
+  margin-left: 0;
+  min-width: 72%;
+}
+
 section.compact-code pre {
   font-size: 0.76em;
 }
 
-.central-question {
+.statement {
   border-left: 6px solid var(--accent);
   font-size: 1.2em;
   font-weight: 600;
@@ -166,7 +327,7 @@ section.compact-code pre {
   text-transform: uppercase;
 }
 
-.takeaway {
+.key-point {
   background: var(--accent-soft);
   border-radius: 12px;
   color: var(--accent);
@@ -175,6 +336,20 @@ section.compact-code pre {
   margin-top: 0.8em;
   padding: 0.55em 0.8em;
   text-align: center;
+}
+
+.execution-result {
+  align-items: baseline;
+  border-left: 5px solid var(--google-blue);
+  display: flex;
+  font-size: 1.05em;
+  gap: 0.8em;
+  margin-top: 0.9em;
+  padding: 0.45em 0.75em;
+}
+
+.execution-result strong {
+  color: var(--blue-dark);
 }
 
 .refs {
@@ -238,15 +413,17 @@ section.compact-code pre {
   margin-top: 0.35em;
 }
 
-.identity-card {
+.identity-card,
+.concept-card {
   background: white;
   border: 2px solid #cbd5e1;
   border-radius: 14px;
   padding: 0.65em 0.8em;
-  text-align: center;
+  text-align: left;
 }
 
-.identity-card .state {
+.identity-card .state,
+.concept-card .state {
   color: var(--muted);
   font-family: "Cascadia Code", Consolas, monospace;
   font-size: 0.72em;
@@ -304,7 +481,8 @@ section.compact-code pre {
   text-align: center;
 }
 
-.concept-pair {
+.concept-pair,
+.cards {
   align-items: stretch;
   display: grid;
   gap: 28px;
@@ -322,6 +500,37 @@ section.compact-code pre {
   display: block;
   font-size: 1.1em;
   margin-bottom: 0.35em;
+}
+
+/* Compatibilidade temporária com a Aula 03; novos decks usam os nomes normalizados. */
+.central-question {
+  border-left: 6px solid var(--accent);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 1.2em;
+  max-width: 960px;
+  padding: 0.45em 0.75em;
+}
+
+section.lead .central-question,
+section.takeaway .central-question,
+section.section .central-question {
+  color: white;
+}
+
+section.lead .central-question {
+  border-left-color: #7dd3fc;
+}
+
+.takeaway:not(section) {
+  background: var(--accent-soft);
+  border-radius: 12px;
+  color: var(--accent);
+  font-size: 1.05em;
+  font-weight: 700;
+  margin-top: 0.8em;
+  padding: 0.55em 0.8em;
+  text-align: center;
 }
 
 .sequence {
@@ -350,6 +559,15 @@ section.final-question {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+section.final-question::before {
+  content: "Pergunta em aberto";
+  font-size: 0.52em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8em;
+  text-transform: uppercase;
 }
 
 section.final-question h2 {

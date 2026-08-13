@@ -9,6 +9,12 @@
     "slides:pdf": "marp slides/aula-03-objetos-referencias-e-identidade.md --theme-set slides/theme/poo.css --pdf --output .slides-build/aula-03-objetos-referencias-e-identidade.pdf",
     "preslides:pptx": "npm run slides:prepare",
     "slides:pptx": "marp slides/aula-03-objetos-referencias-e-identidade.md --theme-set slides/theme/poo.css --pptx --output .slides-build/aula-03-objetos-referencias-e-identidade.pptx",
+    "preslides:aula02:html": "npm run slides:prepare",
+    "slides:aula02:html": "marp slides/aula-02-do-procedural-aos-objetos.md --theme-set slides/theme/poo.css --html --output .slides-build/aula-02-do-procedural-aos-objetos.html",
+    "preslides:aula02:pdf": "npm run slides:prepare",
+    "slides:aula02:pdf": "marp slides/aula-02-do-procedural-aos-objetos.md --theme-set slides/theme/poo.css --pdf --output .slides-build/aula-02-do-procedural-aos-objetos.pdf",
+    "preslides:aula02:pptx": "npm run slides:prepare",
+    "slides:aula02:pptx": "marp slides/aula-02-do-procedural-aos-objetos.md --theme-set slides/theme/poo.css --pptx --output .slides-build/aula-02-do-procedural-aos-objetos.pptx",
     "slides:preview": "marp --server slides --theme-set slides/theme/poo.css"
   },
   "devDependencies": {

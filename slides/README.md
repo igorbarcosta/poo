@@ -18,5 +18,11 @@ npm run slides:pdf
 npm run slides:pptx
 ```
 
-Os scripts de exportação atuais operam sobre o deck piloto da Aula 03.
+Os scripts básicos de exportação operam sobre o deck piloto da Aula 03.
 As exportações para PDF e PPTX exigem um navegador compatível com o Marp, como Chrome, Edge ou Firefox, disponível no ambiente local.
+
+Para exportar o deck da Aula 02, use `slides:aula02:html`, `slides:aula02:pdf` ou `slides:aula02:pptx`.
+
+## Ambiente no WSL
+
+O pipeline deve usar Node e npm instalados no Linux. Dentro do WSL, `which node` e `which npm` não devem apontar para caminhos iniciados por `/mnt/c/`. A versão de referência está registrada em `.nvmrc` e pode ser ativada com `nvm use`.
