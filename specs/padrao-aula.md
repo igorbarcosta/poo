@@ -60,6 +60,28 @@ Java deve ser ensinado de maneira incremental e transversal. Características da
 
 Usar `tip` com o título **Java em foco — assunto** para explicações curtas de linguagem, sintaxe ou convenção. Normalmente, um a três blocos por aula são suficientes. Cada bloco deve tratar de um assunto coeso e usar bullets quando reunir regras independentes. A trilha principal continua sendo POO; “Java em foco” explica como expressar corretamente esses conceitos na linguagem.
 
+Quando uma informação de “Java em foco” for necessária para ler o código projetado durante a aula, o deck também deve oferecer esse apoio, em versão mínima. O roteiro pode preservar a explicação mais completa. O quadro continua livre para respostas, desenhos e aprofundamentos espontâneos, mas não deve ser o único lugar de uma explicação de linguagem cuja necessidade já é conhecida.
+
+### Conceitos-chave
+
+Um conceito-chave não deve surgir isoladamente como definição antecipada. A narrativa cria primeiro sua necessidade por meio do problema, da discussão e da observação; quando a definição aparece, deve funcionar como fechamento reconhecível e fácil de recuperar depois.
+
+No roteiro, usar uma admonition `info` com o título **Conceito-chave — nome** para essa formalização. Manter o recurso raro: estado, comportamento ou outros termos não precisam receber o mesmo destaque apenas porque são importantes.
+
+Como heurística de construção do material:
+
+- **narrativa ou problema** → cria a necessidade;
+- **Java em foco** → fornece o mecanismo mínimo da linguagem;
+- **conceito-chave** → formaliza o que a turma acabou de compreender.
+
+Essa sequência não impõe três fases rígidas a toda aula. O princípio é criar uma razão antes de apresentar o mecanismo ou a definição.
+
+### Voz autoral
+
+Os materiais podem usar humor seco, ironia e sarcasmo leve quando isso ajudar a criar conexão ou tornar um problema mais visível. O alvo deve ser o código, a situação ou uma simplificação — nunca o estudante.
+
+Evitar infantilização, memes gratuitos, excesso de gírias, emojis como personalidade e tentativas de parecer jovem. Conceitos, definições e requisitos devem permanecer especialmente claros e precisos; a voz autoral aparece com parcimônia em transições, perguntas e observações laterais.
+
 ## Princípios de uso
 
 - A aula oferece o embasamento conceitual que será aplicado no laboratório relacionado.

@@ -136,7 +136,7 @@ Esperar a turma perceber que o índice precisa manter os três arrays alinhados.
 <div class="concept-card"><strong>posição 1</strong><div class="state">"Mouse"<br>80.0<br>3</div></div>
 </div>
 
-<div class="key-point">Os arrays reduzem repetição, mas o mesmo índice ainda precisa representar o mesmo item.</div>
+<div class="key-point">Os arrays reduzem repetição. Milagre eles ainda não fazem: o mesmo índice precisa representar o mesmo item.</div>
 
 <!--
 O benefício é real. A limitação é depender da posição em estruturas separadas.
@@ -287,7 +287,7 @@ Esperar uma resposta breve. Não transformar em catálogo de heurísticas de mod
 
 <div class="statement"><code>ItemPedido</code> importa porque possui estado, comportamento e um papel coerente na solução.</div>
 
-<div class="key-point">Identificar substantivos ajuda a perceber conceitos — não decide automaticamente as classes.</div>
+<div class="key-point">Se todo substantivo virasse classe, modelagem seria análise sintática. O nome é uma pista, não uma decisão.</div>
 
 <!--
 Consolidar sem aprofundar design. Voltar imediatamente ao exemplo central.
@@ -324,8 +324,10 @@ public class ItemPedido {
 }
 ```
 
+<div class="java-focus"><strong>Java em foco</strong><code>class ItemPedido</code> declara a classe; cada campo informa um tipo e um nome.</div>
+
 <!--
-Ler conceitualmente. Não gastar tempo com chaves, ponto e vírgula ou convenções de nome.
+Ler conceitualmente. Como a classe é public, lembrar brevemente que o arquivo se chama ItemPedido.java. Não gastar tempo com chaves ou ponto e vírgula.
 -->
 
 ---
@@ -363,8 +365,10 @@ item1.precoUnitario = 150.0;
 item1.quantidade = 2;
 ```
 
+<div class="java-focus"><strong>Java em foco</strong><code>new ItemPedido()</code> cria um novo objeto do tipo <code>ItemPedido</code>. Os parênteses pertencem ao mecanismo de construtores; essa caixa fica fechada por enquanto.</div>
+
 <!--
-Tratar como criação e preenchimento de um objeto. Não explicar variável, referência ou identidade; isso pertence à Aula 03.
+Tratar como criação e preenchimento de um objeto. “new” parece importante demais para uma linha pequena; por enquanto, basta a leitura exibida. Não explicar variável, referência ou identidade.
 -->
 
 ---
@@ -589,6 +593,8 @@ double calcularSubtotal() {
 ```
 
 <div class="execution-result"><code>item1.calcularSubtotal()</code><strong>→ <code>300.0</code></strong></div>
+
+<div class="java-focus"><strong>Java em foco</strong>O ponto liga o objeto ao método; os parênteses vazios indicam que esta chamada não envia valores.</div>
 
 <!--
 Execução conceitual fiel para item1: 150.0 × 2. Não é necessário abrir a IDE.

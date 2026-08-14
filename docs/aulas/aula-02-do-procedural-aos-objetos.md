@@ -62,7 +62,9 @@ double[] precos = {150.0, 80.0, 900.0};
 int[] quantidades = {2, 3, 1};
 ```
 
-Essa organização facilita repetir operações para vários itens, mas ainda depende de uma convenção: `descricoes[i]`, `precos[i]` e `quantidades[i]` precisam representar o mesmo item. A unidade `Item` existe no problema, mas ainda não aparece explicitamente no código.
+Essa organização facilita repetir operações para vários itens, mas ainda depende de uma convenção: `descricoes[i]`, `precos[i]` e `quantidades[i]` precisam representar o mesmo item. Os arrays melhoraram a situação. Milagre eles ainda não fazem: agora temos três estruturas que precisam concordar sobre o significado de cada posição.
+
+A unidade `Item` existe no problema, mas ainda não aparece explicitamente no código.
 
 Mesmo quem não realizou o desafio opcional pode acompanhar a comparação:
 
@@ -88,13 +90,13 @@ Em vez de começar pela estrutura do programa, vamos olhar para o problema. Se d
 
 Os três primeiros elementos são informações sobre o item. O último é uma operação diretamente relacionada a elas. Podemos organizar o programa em torno de elementos que representam conceitos relevantes do problema.
 
-Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso não significa transformar todo substantivo em classe. `ItemPedido` é relevante porque possui estado, comportamento relacionado a esse estado e uma responsabilidade coerente na solução.
+Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso não significa transformar todo substantivo em classe. Se fosse assim, modelagem orientada a objetos seria uma modalidade de análise sintática. `ItemPedido` é relevante porque possui estado, comportamento relacionado a esse estado e uma responsabilidade coerente na solução.
 
 ### Objeto, estado, comportamento e classe
 
-**Objeto**
+!!! info "Conceito-chave — Objeto"
 
-Representa uma entidade da solução que reúne informações e operações relacionadas.
+    Uma unidade da solução que reúne informações e operações relacionadas.
 
 **Estado**
 
@@ -108,9 +110,9 @@ São as informações que caracterizam um objeto em determinado momento. Por exe
 
 É uma operação relacionada ao objeto e que pode utilizar seu estado. Para um item, `calcularSubtotal()` usa preço e quantidade.
 
-**Classe**
+!!! info "Conceito-chave — Classe"
 
-Define a estrutura e os comportamentos comuns aos objetos daquele tipo. Objetos da mesma classe podem possuir estados diferentes.
+    Define a estrutura e os comportamentos comuns aos objetos daquele tipo. Objetos da mesma classe podem possuir estados diferentes.
 
 ### Uma classe, vários objetos
 
@@ -158,17 +160,15 @@ Leia o código conceitualmente:
 
 Como o exemplo declara `public class ItemPedido`, essa classe deve ficar no arquivo `ItemPedido.java`.
 
-!!! tip "Java em foco — leitura rápida da sintaxe"
+!!! tip "Java em foco — declarando a classe"
 
-    Para consultar durante a aula:
+    O conceito que queremos representar é `ItemPedido`. Em Java:
 
-    - **classes:** PascalCase — `ItemPedido`, `ContaBancaria`, `Produto`;
-    - **variáveis e campos:** camelCase — `precoUnitario`, `quantidade`;
-    - **métodos:** camelCase — `calcularSubtotal`, `adicionarItem`;
-    - `{` e `}` delimitam blocos, enquanto a indentação os torna legíveis;
-    - muitas instruções terminam com `;`.
+    - `public class ItemPedido` declara uma classe chamada `ItemPedido`;
+    - `String descricao`, `double precoUnitario` e `int quantidade` declaram campos com tipo e nome;
+    - como a classe é pública, o arquivo se chama `ItemPedido.java`.
 
-    Esses elementos já apareceram no Laboratório 01. Aqui, eles servem para expressar os conceitos de POO.
+    A classe e seus campos são mecanismos de Java usados para expressar a estrutura que identificamos no problema.
 
 ### Criando objetos
 
@@ -192,7 +192,13 @@ item2.precoUnitario = 80.0;
 item2.quantidade = 3;
 ```
 
-`new ItemPedido()` cria uma nova instância da classe. Por enquanto, essa ideia é suficiente; o papel das variáveis e referências será retomado posteriormente.
+!!! tip "Java em foco — `new`"
+
+    O conceito é **criar um novo objeto**. Em Java, usamos `new ItemPedido()`.
+
+    Leia, por enquanto, como: “crie um novo objeto do tipo `ItemPedido`”. `new` parece uma palavra importante demais para uma linha tão pequena, mas essa leitura basta hoje.
+
+    Os parênteses fazem parte de um mecanismo ligado aos construtores. Construtores existem; só não precisamos abrir essa caixa agora.
 
 ### Primeira noção de responsabilidade
 
@@ -209,6 +215,12 @@ double subtotal = calcularSubtotal(item);
 ```java
 double subtotal = item.calcularSubtotal();
 ```
+
+!!! tip "Java em foco — chamando um comportamento"
+
+    O conceito é **pedir ao objeto que execute um comportamento**. Em Java, o ponto liga o objeto ao método: `item.calcularSubtotal()` chama `calcularSubtotal` para aquele item.
+
+    Os parênteses fazem parte da chamada. Neste caso ficam vazios porque o método não precisa receber valores: ele já usa o estado do próprio objeto.
 
 Discuta as alternativas:
 

@@ -212,16 +212,46 @@ section.concept h2 {
 }
 
 section.definition::before {
-  color: var(--blue-dark);
+  color: #b3261e;
   content: "Conceito-chave";
 }
 
+section.concept.definition {
+  --accent: #b3261e;
+  --accent-soft: var(--red-soft);
+  --concept: var(--google-red);
+  background: var(--red-soft);
+  box-shadow: inset 10px 0 0 var(--google-red);
+}
+
+section.concept.definition h2 {
+  border-bottom-color: var(--google-red);
+  color: #b3261e;
+}
+
 section.definition .statement {
-  border-left-color: var(--google-blue);
+  border-left-color: var(--google-red);
   font-size: 1.3em;
   line-height: 1.35;
   margin-top: 1.05em;
   max-width: 1000px;
+}
+
+.java-focus {
+  border-left: 4px solid var(--google-blue);
+  color: var(--muted);
+  font-size: 0.72em;
+  margin-top: 0.7em;
+  max-width: 1050px;
+  padding: 0.25em 0.7em;
+}
+
+.java-focus strong {
+  color: var(--blue-dark);
+  font-size: 0.78em;
+  letter-spacing: 0.09em;
+  margin-right: 0.55em;
+  text-transform: uppercase;
 }
 
 section.example {

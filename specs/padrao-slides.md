@@ -8,6 +8,8 @@ O deck é o ambiente principal de condução da aula teórica. Ele deve permitir
 
 O site permanece como material completo e permanente para estudo e consulta. O quadro apoia livremente raciocínios, desenhos e explicações espontâneas, mas o deck não deve depender de um desenho obrigatório para completar a narrativa. Slides não substituem o laboratório nem a explicação do professor, e não devem resultar de uma conversão mecânica das seções da página da aula.
 
+Quando um mecanismo de Java for necessário para compreender o código projetado, o deck deve oferecer o apoio mínimo de leitura no próprio frame ou, se a legibilidade exigir, em um frame curto imediatamente próximo. O roteiro pode explicar mais; o quadro não deve ser o único suporte para uma necessidade previsível. “Java em foco” permanece subordinado ao conceito de POO e não se transforma em unidade de sintaxe.
+
 Ao partir de um roteiro, reconstruir a experiência da aula — problema, pergunta, previsão, comparação, descoberta, explicação, aplicação e síntese. Não usar como regra “uma seção da página = um slide”: uma seção curta pode exigir vários frames sucessivos, enquanto seções de referência podem não gerar nenhum. Cada slide deve possuir uma função clara na condução da aula.
 
 ## Fonte e distribuição
@@ -44,6 +46,8 @@ As funções semânticas de frame são:
 Cada frame possui exatamente uma dessas classes. A classificação responde primeiro à pergunta **“o que o aluno deve fazer neste frame?”**: pensar ou responder (`question`), compreender (`concept`), observar uma solução (`example`), executar ou discutir (`activity`), perceber uma mudança de bloco (`section`) ou fixar uma conclusão (`takeaway`). O conteúdo presente — inclusive código — não muda essa função.
 
 Classes utilitárias descrevem somente a forma de apresentação, como `code-focus`, `compact-code` e `definition`. `definition` marca a consolidação formal de um conceito que já nasceu da investigação, sem criar uma nova função pedagógica. Estruturas como `columns`, `cards` e `sequence` organizam o conteúdo interno. Portanto, combinações como `question code-focus`, `concept definition` e `activity compact-code` são válidas; combinações como `question example`, `activity example` e `concept takeaway` não são.
+
+Um frame `concept definition` é um evento da narrativa: formaliza, com o label **Conceito-chave**, algo cuja necessidade a turma acabou de construir. Não deve antecipar a investigação nem ser usado como destaque genérico. Sua apresentação pode ter identidade cromática própria sem deixar de cumprir a função pedagógica `concept`.
 
 Componentes internos não reutilizam nomes de tipos de frame. `key-point` é uma conclusão curta dentro de outro frame; `statement` é uma afirmação em destaque; `concept-card` agrupa uma pequena unidade conceitual. Em particular, `takeaway` identifica somente frames completos.
 
@@ -83,7 +87,7 @@ A paleta é inspirada, sem reproduzir identidade oficial, nas cores Google: azul
 - azul → compreender e consolidar conceitos; também sustenta a estrutura do deck;
 - amarelo → pensar e responder perguntas, sempre com texto escuro;
 - verde → fazer, executar ou discutir em atividade;
-- vermelho → atenção, erro, limitação ou contraponto pontual; não constitui categoria semântica.
+- vermelho → formalização rara de conceito-chave em `concept definition` e, pontualmente, atenção, erro, limitação ou contraponto; o contexto, o label e a composição devem impedir leitura de alerta.
 
 Exemplos usam fundo neutro e barra discreta. `section` usa azul forte; `takeaway`, azul escuro harmonizado e reservado a conclusões fortes. Cor reforça marcadores, texto e estrutura, mas nunca é o único sinal semântico.
 
