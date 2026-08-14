@@ -445,7 +445,7 @@ Resposta: uma classe e dois objetos. Manter o foco em classe, objeto e estado.
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: example code-focus method-structure -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -456,15 +456,16 @@ public class ItemPedido {
     String descricao;
     double precoUnitario;
     int quantidade;
-
     double calcularSubtotal() {
         return precoUnitario * quantidade;
     }
 }
 ```
 
+<div class="java-focus method-anatomy"><strong>Java em foco</strong><span><code>double</code> → valor retornado</span><span><code>calcularSubtotal</code> → nome</span><span><code>()</code> → parâmetros</span><span><code>{ ... }</code> → corpo</span><span><code>return</code> → valor devolvido</span></div>
+
 <!--
-O código ocupa o slide. Mostrar que o método usa os campos do próprio objeto.
+Ler a anatomia mínima sem aprofundar assinatura, modificadores ou escopo. Mostrar que o método usa os campos do próprio objeto.
 -->
 
 ---
@@ -584,7 +585,10 @@ Esta é a resposta essencial. Dar tempo para a conclusão se estabilizar.
 
 <div class="chapter">Responsabilidade</div>
 
-## O comportamento usa o próprio estado
+## Métodos podem produzir resultados ou ações
+
+<div class="method-contrast">
+<div>
 
 ```java
 double calcularSubtotal() {
@@ -592,12 +596,24 @@ double calcularSubtotal() {
 }
 ```
 
-<div class="execution-result"><code>item1.calcularSubtotal()</code><strong>→ <code>300.0</code></strong></div>
+<span>calcula e devolve um valor <code>double</code></span>
+</div>
+<div>
 
-<div class="java-focus"><strong>Java em foco</strong>O ponto liga o objeto ao método; os parênteses vazios indicam que esta chamada não envia valores.</div>
+```java
+void aumentarQuantidade() {
+    quantidade = quantidade + 1;
+}
+```
+
+<span>altera o estado e não devolve um valor</span>
+</div>
+</div>
+
+<div class="java-focus"><strong>Java em foco</strong><code>void</code> indica que o método não devolve um valor. Isso não significa que ele não fez nada: aqui, a quantidade muda.</div>
 
 <!--
-Execução conceitual fiel para item1: 150.0 × 2. Não é necessário abrir a IDE.
+Contrastar consulta do estado e alteração do estado sem introduzir categorias formais. Não aprofundar outros mecanismos.
 -->
 
 ---

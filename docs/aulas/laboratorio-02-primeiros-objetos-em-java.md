@@ -111,15 +111,16 @@ Não é necessário que `ItemPedido` exiba seus próprios dados no console. Tamb
 
 Adicione à classe `ItemPedido` um método chamado `aumentarQuantidade`, que:
 
+- tenha tipo de retorno `void`, pois realiza uma ação e não devolve um valor;
 - recebe um valor `int` chamado `unidades`;
 - acrescenta esse valor à quantidade atual do próprio objeto.
 
 Depois:
 
-1. use o método para adicionar 2 unidades apenas ao objeto que representa o teclado;
-2. exiba novamente a quantidade e o subtotal desse objeto;
-3. exiba novamente a quantidade e o subtotal do mouse;
-4. verifique que o teclado passou a ter quantidade `5` e subtotal `750.0`, enquanto o mouse permaneceu com quantidade `3` e subtotal `240.0`.
+1. exiba a quantidade e o subtotal dos dois objetos antes da alteração;
+2. chame `aumentarQuantidade(2)` apenas no objeto que representa o teclado;
+3. exiba novamente a quantidade e o subtotal dos dois objetos;
+4. compare o estado antes e depois: o teclado deve passar de quantidade `3` e subtotal `450.0` para quantidade `5` e subtotal `750.0`, enquanto o mouse deve permanecer com quantidade `3` e subtotal `240.0`.
 
 Não implemente validação de valores inválidos e não introduza encapsulamento. A sequência que interessa aqui é:
 
@@ -137,6 +138,7 @@ O método não faz mágica — uma notícia talvez decepcionante, mas útil. Ele
     - cria dois objetos distintos, cada um com seus próprios dados;
     - define `calcularSubtotal()` sem parâmetros em `ItemPedido`;
     - calcula o subtotal utilizando o estado do próprio objeto;
+    - define `aumentarQuantidade(int unidades)` com tipo de retorno `void` e altera a quantidade do próprio objeto;
     - chama comportamentos definidos em `ItemPedido` para calcular o subtotal e aumentar a quantidade;
     - exibe no console os dados e subtotais dos dois itens;
     - executa a solução e confere os resultados esperados antes e depois do aumento de quantidade;

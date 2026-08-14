@@ -254,6 +254,42 @@ section.definition .statement {
   text-transform: uppercase;
 }
 
+.method-anatomy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em 1em;
+}
+
+section.method-structure pre {
+  font-size: 0.74em;
+  padding-block: 0.45em;
+}
+
+section.method-structure .method-anatomy {
+  font-size: 0.62em;
+  margin-top: 0.35em;
+}
+
+.method-anatomy strong {
+  flex-basis: 100%;
+}
+
+.method-contrast {
+  display: grid;
+  gap: 0.8em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.method-contrast pre {
+  font-size: 0.7em;
+  margin-bottom: 0.45em;
+}
+
+.method-contrast span {
+  color: var(--muted);
+  font-size: 0.72em;
+}
+
 section.example {
   background: var(--surface);
 }

@@ -10,6 +10,8 @@ O site permanece como material completo e permanente para estudo e consulta. O q
 
 Quando um mecanismo de Java for necessário para compreender o código projetado, o deck deve oferecer o apoio mínimo de leitura no próprio frame ou, se a legibilidade exigir, em um frame curto imediatamente próximo. O roteiro pode explicar mais; o quadro não deve ser o único suporte para uma necessidade previsível. “Java em foco” permanece subordinado ao conceito de POO e não se transforma em unidade de sintaxe.
 
+“Java em foco” pode apresentar a anatomia mínima de uma construção necessária à aula ou ao laboratório. O objetivo é permitir leitura e compreensão contextualizadas, não criar um catálogo sintático.
+
 Ao partir de um roteiro, reconstruir a experiência da aula — problema, pergunta, previsão, comparação, descoberta, explicação, aplicação e síntese. Não usar como regra “uma seção da página = um slide”: uma seção curta pode exigir vários frames sucessivos, enquanto seções de referência podem não gerar nenhum. Cada slide deve possuir uma função clara na condução da aula.
 
 ## Fonte e distribuição

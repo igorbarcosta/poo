@@ -1,0 +1,16 @@
+.md-typeset .admonition.conceito-chave,
+.md-typeset details.conceito-chave {
+  background-color: #fce8e6;
+  border-color: #ea4335;
+}
+
+.md-typeset .conceito-chave > .admonition-title,
+.md-typeset .conceito-chave > summary {
+  background-color: #fce8e6;
+  color: #b3261e;
+}
+
+.md-typeset .conceito-chave > .admonition-title::before,
+.md-typeset .conceito-chave > summary::before {
+  background-color: #ea4335;
+}

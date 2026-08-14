@@ -94,7 +94,7 @@ Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso 
 
 ### Objeto, estado, comportamento e classe
 
-!!! info "Conceito-chave — Objeto"
+!!! conceito-chave "Conceito-chave — Objeto"
 
     Uma unidade da solução que reúne informações e operações relacionadas.
 
@@ -110,7 +110,7 @@ São as informações que caracterizam um objeto em determinado momento. Por exe
 
 É uma operação relacionada ao objeto e que pode utilizar seu estado. Para um item, `calcularSubtotal()` usa preço e quantidade.
 
-!!! info "Conceito-chave — Classe"
+!!! conceito-chave "Conceito-chave — Classe"
 
     Define a estrutura e os comportamentos comuns aos objetos daquele tipo. Objetos da mesma classe podem possuir estados diferentes.
 
@@ -157,6 +157,20 @@ Leia o código conceitualmente:
 - os três campos representam o estado de cada objeto;
 - `calcularSubtotal()` representa um comportamento;
 - esse comportamento utiliza o estado do próprio objeto.
+
+!!! tip "Java em foco — estrutura de um método"
+
+    Leia `double calcularSubtotal()` por partes:
+
+    - `double` é o tipo do valor que o método devolve;
+    - `calcularSubtotal` é o nome do método;
+    - `()` é a lista de parâmetros; como está vazia, o método não recebe valores;
+    - `{ ... }` delimita o corpo, onde fica o trabalho realizado pelo método;
+    - `return` indica o valor devolvido: neste caso, o resultado de `precoUnitario * quantidade`.
+
+    Nem todo método precisa devolver um valor. Em `void aumentarQuantidade()`, `void` indica que o método não devolve um valor. Ele ainda pode realizar uma ação, como alterar a quantidade do objeto.
+
+    Assim, `calcularSubtotal()` calcula e devolve um `double`; `aumentarQuantidade()` realiza uma ação e pode alterar o estado sem devolver um resultado.
 
 Como o exemplo declara `public class ItemPedido`, essa classe deve ficar no arquivo `ItemPedido.java`.
 

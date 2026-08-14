@@ -60,13 +60,15 @@ Java deve ser ensinado de maneira incremental e transversal. Características da
 
 Usar `tip` com o título **Java em foco — assunto** para explicações curtas de linguagem, sintaxe ou convenção. Normalmente, um a três blocos por aula são suficientes. Cada bloco deve tratar de um assunto coeso e usar bullets quando reunir regras independentes. A trilha principal continua sendo POO; “Java em foco” explica como expressar corretamente esses conceitos na linguagem.
 
+Se o laboratório exigir que o estudante escreva uma construção Java, a aula anterior deve ter apresentado o mecanismo necessário ao menos para leitura, compreensão de sua função e uso básico. Isso não exige antecipar todo o conteúdo da linguagem.
+
 Quando uma informação de “Java em foco” for necessária para ler o código projetado durante a aula, o deck também deve oferecer esse apoio, em versão mínima. O roteiro pode preservar a explicação mais completa. O quadro continua livre para respostas, desenhos e aprofundamentos espontâneos, mas não deve ser o único lugar de uma explicação de linguagem cuja necessidade já é conhecida.
 
 ### Conceitos-chave
 
 Um conceito-chave não deve surgir isoladamente como definição antecipada. A narrativa cria primeiro sua necessidade por meio do problema, da discussão e da observação; quando a definição aparece, deve funcionar como fechamento reconhecível e fácil de recuperar depois.
 
-No roteiro, usar uma admonition `info` com o título **Conceito-chave — nome** para essa formalização. Manter o recurso raro: estado, comportamento ou outros termos não precisam receber o mesmo destaque apenas porque são importantes.
+No roteiro, usar a admonition `conceito-chave` com o título **Conceito-chave — nome** para essa formalização. Sua identidade vermelha indica formalização importante, não erro ou perigo. Manter o recurso raro: estado, comportamento ou outros termos não precisam receber o mesmo destaque apenas porque são importantes.
 
 Como heurística de construção do material:
 
