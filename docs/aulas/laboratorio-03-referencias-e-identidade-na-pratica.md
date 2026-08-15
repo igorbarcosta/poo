@@ -27,6 +27,10 @@ Ao final deste laboratório, você deverá ser capaz de:
 
 Use a versão anterior do Projeto 1 como base. Esta evolução não acrescenta uma grande funcionalidade: ela consolida o modelo mental necessário para que o projeto continue evoluindo corretamente.
 
+!!! tip "Dica — continue abrindo a pasta do projeto"
+
+    Mantenha `Main.java` e `ItemPedido.java` na mesma pasta do laboratório e abra essa pasta na IDE. Este laboratório altera o experimento, não a organização do projeto.
+
 !!! info "Como trabalhar"
 
     Em cada experimento, siga o ciclo **prever → executar → explicar**. Registre ou formule sua previsão antes de executar. Depois, compare o resultado observado e explique o comportamento usando referência, identidade e estado.
@@ -55,7 +59,7 @@ Depois:
 4. compare os resultados com suas previsões;
 5. explique por que apenas um objeto foi alterado.
 
-!!! info "Ideia a observar"
+!!! conceito-chave "Conceito-chave — estado e identidade"
 
     Mesmo estado não significa mesma identidade.
 
@@ -135,7 +139,7 @@ Ao final, você deve conseguir explicar claramente a diferença entre criar um n
 
 ## Desafio opcional — Quantos nomes, quantos objetos?
 
-!!! tip "Quer aprofundar?"
+!!! tip "Dica — desafio opcional"
 
     Use este desafio para praticar o modelo de referências com três variáveis.
 

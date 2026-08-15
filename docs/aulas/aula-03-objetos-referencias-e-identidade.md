@@ -61,7 +61,7 @@ ItemPedido item1;
 item1 = new ItemPedido();
 ```
 
-!!! info "Modelo central"
+!!! conceito-chave "Conceito-chave — referência"
 
     A variável não é o objeto. Ela mantém uma referência que permite acessar o objeto.
 
@@ -169,7 +169,7 @@ item2.quantidade = 2;
 - **estado:** os valores que um objeto possui naquele momento;
 - **identidade:** indica se estamos falando do mesmo objeto ou de objetos diferentes.
 
-!!! info "Estado não determina identidade"
+!!! conceito-chave "Conceito-chave — identidade"
 
     Dois objetos podem possuir o mesmo estado e ainda assim serem objetos distintos.
 
@@ -195,11 +195,15 @@ System.out.println(item1 == item2);
 
 O resultado é `true`.
 
-!!! tip "Java em foco — `==` e referências"
+!!! java-focus "Java em foco — `==` e referências"
 
     Quando trabalhamos com referências a objetos, `==` verifica se duas referências apontam para o mesmo objeto. Neste contexto, ele verifica identidade; comparação de conteúdo será discutida posteriormente, quando houver necessidade.
 
 ## Atividade de compreensão
+
+!!! activity "Atividade — prever, executar e explicar"
+
+    Primeiro façam as quatro previsões sem executar o código. Depois comparem com a execução e expliquem cada resultado usando referência, identidade e estado.
 
 Antes de conferir os resultados, leia o código e formule suas previsões:
 
@@ -236,6 +240,10 @@ Conta conta2 = conta1;
 Se uma operação realizada usando `conta2` modificar esse objeto, o que será observado quando acessarmos o mesmo objeto por `conta1`? Explique usando o modelo de referências desenvolvido nesta aula.
 
 ## Síntese
+
+!!! synthesis "Síntese — referências e identidade"
+
+    `new` cria um objeto; atribuir uma variável de tipo de classe copia a referência. Por isso, duas variáveis podem acessar o mesmo objeto, enquanto dois objetos diferentes podem ter o mesmo estado sem compartilhar identidade.
 
 - `new` cria um novo objeto;
 - uma variável de tipo de classe mantém uma referência;

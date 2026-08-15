@@ -18,7 +18,7 @@ Começar pela experiência do Laboratório 01, sem definir POO. Retomar o que a 
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -40,7 +40,6 @@ Pedir que reconheçam o código. Não apresentar a solução procedural como err
 
 ---
 
-<!-- _class: question -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -56,7 +55,6 @@ Esperar respostas e recuperar as questões finais do laboratório. Aceitar repet
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -75,7 +73,6 @@ Consolidar a leitura do código antes de provocar a pergunta central.
 
 ---
 
-<!-- _class: question -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -87,7 +84,7 @@ Deixar a pergunta existir. Não responder ainda com “classe” ou “objeto”
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -105,7 +102,7 @@ Apresentar como possibilidade, não como algo que todos deveriam ter feito. Não
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -125,7 +122,6 @@ Esperar a turma perceber que o índice precisa manter os três arrays alinhados.
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Problema inicial</div>
 
@@ -158,7 +154,6 @@ Este é o ponto de descoberta que cria a necessidade do próximo conceito.
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -175,7 +170,7 @@ Introduzir ItemPedido como conceito relevante da solução. Ainda não mostrar a
 
 ---
 
-<!-- _class: concept definition -->
+<!-- _class: concept-key -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -189,7 +184,6 @@ Dar nome ao conceito somente depois de a necessidade ter surgido. Evitar defini�
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -208,7 +202,6 @@ Relacionar estado aos dados que já existiam na solução procedural.
 
 ---
 
-<!-- _class: question -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -222,7 +215,6 @@ Esperar ideias. Conduzir para calcular o subtotal, sem ainda discutir responsabi
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -248,7 +240,6 @@ Não transformar ainda em discussão completa de responsabilidade; ela será ret
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -267,8 +258,6 @@ Ressaltar oralmente: substantivos podem sugerir conceitos, mas nem todo substant
 
 ---
 
-<!-- _class: question -->
-
 <div class="chapter">Primeiros objetos</div>
 
 ## Todo substantivo vira classe?
@@ -279,7 +268,7 @@ Esperar uma resposta breve. Não transformar em catálogo de heurísticas de mod
 
 ---
 
-<!-- _class: concept -->
+<!-- _class: trap -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -295,7 +284,7 @@ Consolidar sem aprofundar design. Voltar imediatamente ao exemplo central.
 
 ---
 
-<!-- _class: concept definition -->
+<!-- _class: concept-key -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -309,7 +298,7 @@ Introduzir classe depois de objeto, estado e comportamento terem função clara.
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: java-focus code-focus -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -324,7 +313,7 @@ public class ItemPedido {
 }
 ```
 
-<div class="java-focus"><strong>Java em foco</strong><code>class ItemPedido</code> declara a classe; cada campo informa um tipo e um nome.</div>
+<div class="statement"><code>class ItemPedido</code> declara a classe; cada campo informa um tipo e um nome.</div>
 
 <!--
 Ler conceitualmente. Como a classe é public, lembrar brevemente que o arquivo se chama ItemPedido.java. Não gastar tempo com chaves ou ponto e vírgula.
@@ -332,7 +321,6 @@ Ler conceitualmente. Como a classe é public, lembrar brevemente que o arquivo s
 
 ---
 
-<!-- _class: example -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -351,7 +339,7 @@ Relacionar cada campo aos dados separados do início da aula.
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: java-focus code-focus -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -365,7 +353,7 @@ item1.precoUnitario = 150.0;
 item1.quantidade = 2;
 ```
 
-<div class="java-focus"><strong>Java em foco</strong><code>new ItemPedido()</code> cria um novo objeto do tipo <code>ItemPedido</code>. Os parênteses pertencem ao mecanismo de construtores; essa caixa fica fechada por enquanto.</div>
+<div class="statement"><code>new ItemPedido()</code> cria um novo objeto do tipo <code>ItemPedido</code>. Os parênteses pertencem ao mecanismo de construtores; esse assunto fica adiado por enquanto.</div>
 
 <!--
 Tratar como criação e preenchimento de um objeto. “new” parece importante demais para uma linha pequena; por enquanto, basta a leitura exibida. Não explicar variável, referência ou identidade.
@@ -373,7 +361,6 @@ Tratar como criação e preenchimento de um objeto. “new” parece importante 
 
 ---
 
-<!-- _class: example -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -390,7 +377,7 @@ Representação conceitual do objeto e de seu estado. Evitar setas que antecipem
 
 ---
 
-<!-- _class: example code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -410,7 +397,6 @@ Perguntar antes de avançar se o segundo objeto precisa ter os mesmos valores.
 
 ---
 
-<!-- _class: question -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -426,7 +412,6 @@ Esperar respostas. Não discutir ainda identidade nem o papel das variáveis.
 
 ---
 
-<!-- _class: example -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -445,7 +430,7 @@ Resposta: uma classe e dois objetos. Manter o foco em classe, objeto e estado.
 
 ---
 
-<!-- _class: example code-focus method-structure -->
+<!-- _class: java-focus code-focus method-structure -->
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -462,7 +447,7 @@ public class ItemPedido {
 }
 ```
 
-<div class="java-focus method-anatomy"><strong>Java em foco</strong><span><code>double</code> → valor retornado</span><span><code>calcularSubtotal</code> → nome</span><span><code>()</code> → parâmetros</span><span><code>{ ... }</code> → corpo</span><span><code>return</code> → valor devolvido</span></div>
+<div class="method-anatomy"><span><code>double</code> → valor retornado</span><span><code>calcularSubtotal</code> → nome</span><span><code>()</code> → parâmetros</span><span><code>{ ... }</code> → corpo</span><span><code>return</code> → valor devolvido</span></div>
 
 <!--
 Ler a anatomia mínima sem aprofundar assinatura, modificadores ou escopo. Mostrar que o método usa os campos do próprio objeto.
@@ -470,7 +455,7 @@ Ler a anatomia mínima sem aprofundar assinatura, modificadores ou escopo. Mostr
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -488,7 +473,6 @@ Esperar respostas. O código externo acessa e combina diretamente os dados.
 
 ---
 
-<!-- _class: example -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -508,7 +492,7 @@ Não classificar como “errado”. Apenas tornar explícito quem executa e orga
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -526,7 +510,6 @@ Explicar oralmente que se trata de um método auxiliar disponível no contexto a
 
 ---
 
-<!-- _class: example -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -546,7 +529,7 @@ Não aprofundar static ou organização de classes. O foco continua sendo respon
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -564,7 +547,6 @@ Pausa central da aula. Esperar a turma formular que o próprio item conhece pre�
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -581,7 +563,7 @@ Esta é a resposta essencial. Dar tempo para a conclusão se estabilizar.
 
 ---
 
-<!-- _class: example -->
+<!-- _class: java-focus -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -601,8 +583,8 @@ double calcularSubtotal() {
 <div>
 
 ```java
-void aumentarQuantidade() {
-    quantidade = quantidade + 1;
+void aumentarQuantidade(int unidades) {
+    quantidade = quantidade + unidades;
 }
 ```
 
@@ -610,7 +592,7 @@ void aumentarQuantidade() {
 </div>
 </div>
 
-<div class="java-focus"><strong>Java em foco</strong><code>void</code> indica que o método não devolve um valor. Isso não significa que ele não fez nada: aqui, a quantidade muda.</div>
+<div class="statement"><code>void</code> indica que o método não devolve um valor. Isso não significa ausência de ação: aqui, a quantidade muda.</div>
 
 <!--
 Contrastar consulta do estado e alteração do estado sem introduzir categorias formais. Não aprofundar outros mecanismos.
@@ -618,7 +600,7 @@ Contrastar consulta do estado e alteração do estado sem introduzir categorias 
 
 ---
 
-<!-- _class: takeaway -->
+<!-- _class: synthesis -->
 
 <div class="chapter">Responsabilidade</div>
 
@@ -673,7 +655,6 @@ Atividade em dupla. Esperar antes de avançar. O objetivo é explicação, não 
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Aplicação</div>
 
@@ -714,7 +695,6 @@ Atividade aberta e secundária. Pode ser pulada se o tempo estiver curto sem que
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Aplicação</div>
 
@@ -733,7 +713,7 @@ Possível resposta, não gabarito único. Se a atividade anterior foi pulada, es
 
 ---
 
-<!-- _class: takeaway -->
+<!-- _class: synthesis -->
 
 <div class="chapter">Síntese</div>
 
@@ -755,7 +735,6 @@ Recuperar a história completa, não apenas definições isoladas.
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Síntese</div>
 
@@ -774,7 +753,6 @@ Usar como síntese dialogada. Se houver tempo, pedir uma explicação completa a
 
 ---
 
-<!-- _class: concept -->
 
 <div class="chapter">Síntese</div>
 

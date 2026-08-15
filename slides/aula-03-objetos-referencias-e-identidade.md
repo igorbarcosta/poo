@@ -6,11 +6,11 @@ paginate: true
 lang: pt-BR
 ---
 
-<!-- _class: lead -->
+<!-- _class: section lead -->
 
 # Aula 03 — Objetos, referências e identidade
 
-<div class="central-question">Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?</div>
+<div class="statement">Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?</div>
 
 <!--
 Retomar brevemente o Laboratório 02. A pergunta central deve conduzir toda a aula.
@@ -18,7 +18,7 @@ Retomar brevemente o Laboratório 02. A pergunta central deve conduzir toda a au
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Retomando o Laboratório 02
 
@@ -42,12 +42,12 @@ Esperar hipóteses antes de avançar. Evitar dizer que a variável é o objeto.
 ItemPedido item = new ItemPedido();
 ```
 
-<div class="concept-pair">
+<div class="cards">
 <div class="concept-card"><strong>ItemPedido</strong>tipo da variável</div>
 <div class="concept-card"><strong>item</strong>variável que mantém uma referência</div>
 </div>
 
-<div class="takeaway"><code>new ItemPedido()</code> cria um novo objeto.</div>
+<div class="key-point"><code>new ItemPedido()</code> cria um novo objeto.</div>
 
 <!--
 Enfatizar: a variável permite acessar o objeto; ela não é o objeto. Não mencionar heap ou endereço de memória.
@@ -55,7 +55,7 @@ Enfatizar: a variável permite acessar o objeto; ela não é o objeto. Não menc
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Valores simples
 
@@ -93,7 +93,7 @@ Perguntar por que o console mostra 10. Esta execução é simples e fiel; não h
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Agora, um tipo de classe
 
@@ -137,7 +137,7 @@ O valor é uma referência.
 </div>
 </div>
 
-<div class="takeaway">O objeto não foi copiado.</div>
+<div class="key-point">O objeto não foi copiado.</div>
 
 <!--
 Evitar “b virou a” e “passagem por referência”. Atribuir uma referência copia o valor da variável.
@@ -145,11 +145,11 @@ Evitar “b virou a” e “passagem por referência”. Atribuir uma referênci
 
 ---
 
-<!-- _class: lead -->
+<!-- _class: concept-key -->
 
 ## Modelo central
 
-<div class="central-question">A variável não é o objeto.<br>Ela mantém uma referência que permite acessar o objeto.</div>
+<div class="statement">A variável não é o objeto.<br>Ela mantém uma referência que permite acessar o objeto.</div>
 
 <!--
 Pausa de consolidação. Se houver confusão, redesenhar a relação no quadro, sem falar de memória física.
@@ -157,7 +157,7 @@ Pausa de consolidação. Se houver confusão, redesenhar a relação no quadro, 
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Dois usos de `new`
 
@@ -188,13 +188,11 @@ Existem duas variáveis e dois objetos. O diagrama é conceitual, não um mapa d
 
 ---
 
-<!-- _class: lead -->
-
 ## Dois `new` → dois objetos
 
 Cada expressão `new ItemPedido()` cria um novo objeto.
 
-<div class="takeaway">Os objetos são distintos, mesmo sendo da mesma classe.</div>
+<div class="statement">Os objetos são distintos, mesmo sendo da mesma classe.</div>
 
 <!--
 Concluir sem avançar ainda para estado ou identidade formal.
@@ -202,7 +200,7 @@ Concluir sem avançar ainda para estado ou identidade formal.
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Copiando uma referência
 
@@ -233,11 +231,11 @@ Se necessário, construir novamente no quadro a pedido da turma. Evitar dizer qu
 
 ---
 
-<!-- _class: lead -->
+<!-- _class: concept-key -->
 
 ## Uma referência também é um valor
 
-<div class="central-question">Duas variáveis podem manter referências que permitem acesso ao mesmo objeto.</div>
+<div class="statement">Duas variáveis podem manter referências que permitem acesso ao mesmo objeto.</div>
 
 <!--
 Destacar que copiar a referência não cria nem copia o objeto.
@@ -245,7 +243,7 @@ Destacar que copiar a referência não cria nem copia o objeto.
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: activity code-focus -->
 
 ## Preveja antes de executar
 
@@ -295,7 +293,7 @@ Confirmar a previsão sem abrir a IDE. Perguntar novamente por que a consulta po
   <div class="var second">b</div><div class="arrow second-arrow">↗</div>
 </div>
 
-<div class="takeaway">A alteração ocorreu no único objeto acessado por <code>a</code> e <code>b</code>.</div>
+<div class="key-point">A alteração ocorreu no único objeto acessado por <code>a</code> e <code>b</code>.</div>
 
 <!--
 As duas referências permitem observar o mesmo estado. Pedir uma explicação completa, não apenas “porque b recebeu a”.
@@ -323,7 +321,6 @@ Antes do próximo slide, perguntar o que é igual e o que pode ser diferente.
 
 ---
 
-<!-- _class: question -->
 
 ## Estado × identidade
 
@@ -343,12 +340,12 @@ Esperar as duas respostas. O primeiro “sim” não implica o segundo.
 
 ## Mesmo estado, identidades diferentes
 
-<div class="concept-pair">
+<div class="cards">
 <div class="concept-card"><strong>Estado</strong>valores que o objeto possui naquele momento</div>
 <div class="concept-card"><strong>Identidade</strong>se estamos falando do mesmo objeto ou de objetos diferentes</div>
 </div>
 
-<div class="takeaway">Dois objetos podem ter o mesmo estado e continuar distintos.</div>
+<div class="key-point">Dois objetos podem ter o mesmo estado e continuar distintos.</div>
 
 <!--
 Consolidar a distinção conceitual. Não introduzir cópia ou clonagem.
@@ -356,7 +353,7 @@ Consolidar a distinção conceitual. Não introduzir cópia ou clonagem.
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Primeiro cenário
 
@@ -390,7 +387,7 @@ O resultado é false porque as referências correspondem a objetos distintos.
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Segundo cenário
 
@@ -424,11 +421,11 @@ O resultado é true porque as duas referências correspondem ao mesmo objeto.
 
 ---
 
-<!-- _class: lead -->
+<!-- _class: java-focus -->
 
 ## `==` e referências
 
-<div class="central-question">Neste contexto, <code>==</code> verifica se duas referências correspondem ao mesmo objeto.</div>
+<div class="statement">Neste contexto, <code>==</code> verifica se duas referências correspondem ao mesmo objeto.</div>
 
 <!--
 Limitar a discussão à identidade. Não introduzir equals.
@@ -458,7 +455,7 @@ Dar tempo para leitura silenciosa antes de mostrar as perguntas.
 
 ---
 
-<!-- _class: question -->
+<!-- _class: activity -->
 
 ## Façam a previsão
 
@@ -500,7 +497,7 @@ System.out.println(c.quantidade);</code></pre>
   <div class="console">4<br>4<br>2</div>
 </div>
 
-<div class="takeaway"><code>b.quantidade = 4</code> alterou o estado do objeto acessado por <code>a</code> e <code>b</code>.</div>
+<div class="key-point"><code>b.quantidade = 4</code> alterou o estado do objeto acessado por <code>a</code> e <code>b</code>.</div>
 
 <!--
 Comparar com as previsões. Pedir que expliquem 4, 4 e 2 usando referências, identidade e estado.
@@ -508,7 +505,7 @@ Comparar com as previsões. Pedir que expliquem 4, 4 e 2 usando referências, id
 
 ---
 
-<!-- _class: question code-focus -->
+<!-- _class: code-focus -->
 
 ## Transferindo o modelo
 
@@ -532,7 +529,7 @@ Não implementar Conta. Verificar se os estudantes transferem o modelo sem depen
   <div class="var second">conta2</div><div class="arrow second-arrow">↗</div>
 </div>
 
-<div class="takeaway">A alteração é observável por ambas as referências porque existe um único objeto.</div>
+<div class="key-point">A alteração é observável por ambas as referências porque existe um único objeto.</div>
 
 <!--
 Pedir que o estudante formule a explicação completa. Não introduzir regras bancárias nem novo comportamento.
@@ -550,7 +547,7 @@ Pedir que o estudante formule a explicação completa. Não introduzir regras ba
   <span>a referência permite acessar o objeto</span>
 </div>
 
-<div class="takeaway">Atribuir uma referência a outra variável não copia o objeto.</div>
+<div class="key-point">Atribuir uma referência a outra variável não copia o objeto.</div>
 
 <!--
 Retomar o modelo central em sequência visual.
@@ -558,14 +555,16 @@ Retomar o modelo central em sequência visual.
 
 ---
 
+<!-- _class: synthesis -->
+
 ## Síntese — estado e identidade
 
-<div class="concept-pair">
+<div class="cards">
 <div class="concept-card"><strong>Estado</strong>pode ser observado e alterado por diferentes referências ao mesmo objeto</div>
 <div class="concept-card"><strong>Identidade</strong>objetos diferentes continuam distintos mesmo com valores iguais</div>
 </div>
 
-<div class="takeaway"><code>==</code> foi usado aqui para verificar identidade.</div>
+<div class="key-point"><code>==</code> foi usado aqui para verificar identidade.</div>
 
 <!--
 Não ampliar a semântica de == nem introduzir comparação de conteúdo.
@@ -573,7 +572,7 @@ Não ampliar a semântica de == nem introduzir comparação de conteúdo.
 
 ---
 
-<!-- _class: lead code-focus -->
+<!-- _class: code-focus -->
 
 ## Um problema fica em aberto
 
@@ -589,7 +588,6 @@ Não resolver. Não mencionar private. Preparar a pergunta final.
 
 ---
 
-<!-- _class: final-question -->
 
 ## Se o objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder alterá-lo diretamente?
 

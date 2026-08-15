@@ -39,6 +39,22 @@ Main.java
 ItemPedido.java
 ```
 
+Eles devem ficar na mesma pasta de projeto:
+
+```text
+lab-02/
+├── Main.java
+└── ItemPedido.java
+```
+
+!!! tip "Dica — abra a pasta do projeto"
+
+    Abra `lab-02/` na IDE, não `Main.java` e `ItemPedido.java` separadamente. No VS Code, você pode entrar na pasta e usar `code .`. Assim, a IDE reconhece os dois arquivos como partes da mesma solução sem que seja necessário estudar `package`, classpath ou ferramenta de build agora.
+
+!!! trap "Armadilha — arquivos soltos"
+
+    Criar `Main.java` e `ItemPedido.java` em locais diferentes parece funcionar enquanto olhamos cada arquivo isoladamente. O problema aparece quando `Main` precisa usar `ItemPedido`. Preserve uma unidade simples: um laboratório, uma pasta de projeto, todos os arquivos Java dentro dela.
+
 Em `ItemPedido.java`, comece com a estrutura mínima:
 
 ```java
@@ -74,7 +90,7 @@ Você pode usar estes dados:
 | 1 | Teclado | 150.00 | 2 |
 | 2 | Mouse | 80.00 | 3 |
 
-Altere diretamente a quantidade do primeiro objeto de `2` para `3`. Em seguida, exiba no console a quantidade dos dois objetos e verifique que o primeiro passou a ter `3`, enquanto o segundo continuou com `3`. Os números coincidem no final; os objetos, convenientemente, não precisam combinar entre si para chegar lá.
+Altere diretamente a quantidade do primeiro objeto de `2` para `3`. Em seguida, exiba no console a quantidade dos dois objetos e verifique que o primeiro passou a ter `3`, enquanto o segundo continuou com `3`. Os números coincidem no final, mas cada objeto mantém seu próprio estado.
 
 ### Incremento C — Adicionar comportamento
 
@@ -126,7 +142,7 @@ Não implemente validação de valores inválidos e não introduza encapsulament
 
 **estado → comportamento modifica o estado → outro comportamento utiliza o novo estado**
 
-O método não faz mágica — uma notícia talvez decepcionante, mas útil. Ele altera o campo do objeto em que foi chamado; depois, `calcularSubtotal()` usa esse novo estado.
+Essa linha resolve uma parte do problema: o método altera o campo do objeto em que foi chamado. Depois, `calcularSubtotal()` usa esse novo estado.
 
 !!! success "Critérios de conclusão"
 
@@ -147,11 +163,11 @@ O método não faz mágica — uma notícia talvez decepcionante, mas útil. Ele
 
 Antes de entregar, explique com suas palavras: `ItemPedido` faz sentido como classe por qual motivo? Por que o cálculo do subtotal ficou nessa classe, e não repetido no `main`?
 
-Código que você não consegue explicar não é código que você domina. O compilador, com sua conhecida falta de sensibilidade pedagógica, verifica outra coisa.
+Código que você não consegue explicar não é código que você domina. Compilar é necessário, mas não substitui compreender as decisões da solução.
 
 ## Desafio opcional — Um requisito novo: desconto percentual
 
-!!! tip "Quer aprofundar?"
+!!! tip "Dica — desafio opcional"
 
     Concluiu, verificou os critérios e consegue explicar a solução? Evolua o requisito sem reescrever o projeto.
 

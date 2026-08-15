@@ -30,12 +30,17 @@ Ao final deste encontro, você deverá ser capaz de:
 
 Antes de escrever o código da atividade:
 
-1. crie ou abra um projeto Java;
-2. selecione uma JDK disponível na máquina;
-3. crie `Laboratorio01.java` na área de código-fonte do projeto;
-4. execute o programa pela IDE ou pelo terminal, conforme o ambiente disponível.
+1. crie uma pasta para este laboratório, como `poo-lab01`;
+2. coloque `Laboratorio01.java` dentro dessa pasta;
+3. abra **a pasta do projeto** na IDE, não apenas o arquivo isolado;
+4. selecione uma JDK disponível na máquina;
+5. execute o programa pela IDE ou pelo terminal, conforme o ambiente disponível.
 
 Para a pasta do projeto, prefira um nome curto e identificável, como `poo-lab01`. Evite espaços e acentos. Não é necessário declarar um `package` neste laboratório.
+
+!!! tip "Dica — abra a pasta do projeto"
+
+    No VS Code, entre na pasta e use `code .` quando esse comando estiver disponível. Em outras IDEs, escolha **Abrir pasta** ou **Abrir projeto**. Manter todos os arquivos do laboratório na mesma pasta evita dificuldades quando novas classes aparecerem nos próximos encontros.
 
 ## Verificação do ambiente
 
@@ -240,7 +245,7 @@ Depois de atender aos critérios e realizar o envio, você poderá ser liberado.
 
 ## Desafio opcional — Mais itens, menos repetição
 
-!!! tip "Quer aprofundar?"
+!!! tip "Dica — desafio opcional"
 
     Concluiu a atividade principal? Use este desafio para explorar como organizar mais itens com menos repetição.
 

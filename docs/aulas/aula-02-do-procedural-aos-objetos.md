@@ -62,7 +62,7 @@ double[] precos = {150.0, 80.0, 900.0};
 int[] quantidades = {2, 3, 1};
 ```
 
-Essa organização facilita repetir operações para vários itens, mas ainda depende de uma convenção: `descricoes[i]`, `precos[i]` e `quantidades[i]` precisam representar o mesmo item. Os arrays melhoraram a situação. Milagre eles ainda não fazem: agora temos três estruturas que precisam concordar sobre o significado de cada posição.
+Essa organização facilita repetir operações para vários itens, mas ainda depende de uma convenção: `descricoes[i]`, `precos[i]` e `quantidades[i]` precisam representar o mesmo item. Os arrays melhoraram uma parte da situação. Ainda temos três estruturas que precisam concordar sobre o significado de cada posição.
 
 A unidade `Item` existe no problema, mas ainda não aparece explicitamente no código.
 
@@ -90,7 +90,11 @@ Em vez de começar pela estrutura do programa, vamos olhar para o problema. Se d
 
 Os três primeiros elementos são informações sobre o item. O último é uma operação diretamente relacionada a elas. Podemos organizar o programa em torno de elementos que representam conceitos relevantes do problema.
 
-Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso não significa transformar todo substantivo em classe. Se fosse assim, modelagem orientada a objetos seria uma modalidade de análise sintática. `ItemPedido` é relevante porque possui estado, comportamento relacionado a esse estado e uma responsabilidade coerente na solução.
+Identificar substantivos pode ajudar a perceber conceitos do domínio, mas isso não significa transformar todo substantivo em classe.
+
+!!! trap "Armadilha — todo substantivo vira classe"
+
+    O caminho tentador é transformar automaticamente cada substantivo do enunciado em uma classe. Isso produz classes sem papel claro. O nome é apenas uma pista: `ItemPedido` é relevante porque possui estado, comportamento relacionado e uma responsabilidade coerente na solução.
 
 ### Objeto, estado, comportamento e classe
 
@@ -158,7 +162,7 @@ Leia o código conceitualmente:
 - `calcularSubtotal()` representa um comportamento;
 - esse comportamento utiliza o estado do próprio objeto.
 
-!!! tip "Java em foco — estrutura de um método"
+!!! java-focus "Java em foco — estrutura de um método"
 
     Leia `double calcularSubtotal()` por partes:
 
@@ -174,7 +178,7 @@ Leia o código conceitualmente:
 
 Como o exemplo declara `public class ItemPedido`, essa classe deve ficar no arquivo `ItemPedido.java`.
 
-!!! tip "Java em foco — declarando a classe"
+!!! java-focus "Java em foco — declarando a classe"
 
     O conceito que queremos representar é `ItemPedido`. Em Java:
 
@@ -206,11 +210,11 @@ item2.precoUnitario = 80.0;
 item2.quantidade = 3;
 ```
 
-!!! tip "Java em foco — `new`"
+!!! java-focus "Java em foco — `new`"
 
     O conceito é **criar um novo objeto**. Em Java, usamos `new ItemPedido()`.
 
-    Leia, por enquanto, como: “crie um novo objeto do tipo `ItemPedido`”. `new` parece uma palavra importante demais para uma linha tão pequena, mas essa leitura basta hoje.
+    Leia, por enquanto, como: “crie um novo objeto do tipo `ItemPedido`”. Essa leitura basta para o problema de hoje.
 
     Os parênteses fazem parte de um mecanismo ligado aos construtores. Construtores existem; só não precisamos abrir essa caixa agora.
 
@@ -230,7 +234,7 @@ double subtotal = calcularSubtotal(item);
 double subtotal = item.calcularSubtotal();
 ```
 
-!!! tip "Java em foco — chamando um comportamento"
+!!! java-focus "Java em foco — chamando um comportamento"
 
     O conceito é **pedir ao objeto que execute um comportamento**. Em Java, o ponto liga o objeto ao método: `item.calcularSubtotal()` chama `calcularSubtotal` para aquele item.
 
@@ -246,11 +250,15 @@ Discuta as alternativas:
 
     O próprio `ItemPedido` já conhece `precoUnitario` e `quantidade`. As três formas podem produzir o mesmo número, mas `item.calcularSubtotal()` comunica que calcular o subtotal é uma responsabilidade do item e permite que o comportamento use diretamente seu estado.
 
-!!! info "Responsabilidade"
+!!! synthesis "Síntese — responsabilidade"
 
     Objetos não servem apenas para agrupar dados. Também precisamos decidir quais responsabilidades pertencem a cada objeto.
 
 ## Atividade de compreensão
+
+!!! activity "Atividade — explicar `Produto`"
+
+    Em dupla, reservem de 5 a 7 minutos para ler a classe, identificar estado e comportamento e justificar como o método usa o estado do próprio objeto. Só depois retomaremos a discussão coletiva.
 
 Analise esta classe em um domínio diferente:
 
@@ -265,7 +273,7 @@ class Produto {
 }
 ```
 
-Em dupla, durante aproximadamente 5 a 7 minutos, discuta:
+Discuta:
 
 1. O que a classe representa?
 2. Quais elementos representam estado?
@@ -297,6 +305,10 @@ Sem escrever uma classe Java completa, discuta:
 O objetivo é transferir as ideias da aula para outro problema, e não encontrar uma única resposta ou memorizar uma estrutura.
 
 ## Síntese
+
+!!! synthesis "Síntese — do procedural aos objetos"
+
+    `ItemPedido` tornou explícita uma unidade que já existia no problema. A classe define estrutura e comportamentos comuns; cada objeto mantém seu próprio estado; e a responsabilidade pelo subtotal pode ficar com quem já conhece os dados necessários.
 
 - representamos `ItemPedido` explicitamente porque ele é uma unidade relevante do problema;
 - um objeto reúne um estado próprio e comportamentos relacionados;

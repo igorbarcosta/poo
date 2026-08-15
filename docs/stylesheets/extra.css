@@ -1,16 +1,49 @@
 .md-typeset .admonition.conceito-chave,
 .md-typeset details.conceito-chave {
-  background-color: #fce8e6;
-  border-color: #ea4335;
+  background-color: #fff3e0;
+  border-color: #f29900;
 }
 
 .md-typeset .conceito-chave > .admonition-title,
 .md-typeset .conceito-chave > summary {
-  background-color: #fce8e6;
-  color: #b3261e;
+  background-color: #fff3e0;
+  color: #8a4b00;
 }
 
 .md-typeset .conceito-chave > .admonition-title::before,
 .md-typeset .conceito-chave > summary::before {
-  background-color: #ea4335;
+  background-color: #f29900;
 }
+
+.md-typeset .admonition.java-focus,
+.md-typeset details.java-focus { background-color: #e8f0fe; border-color: #4285f4; }
+.md-typeset .java-focus > .admonition-title,
+.md-typeset .java-focus > summary { background-color: #e8f0fe; color: #174ea6; }
+.md-typeset .java-focus > .admonition-title::before,
+.md-typeset .java-focus > summary::before { background-color: #4285f4; }
+
+.md-typeset .admonition.activity,
+.md-typeset details.activity { background-color: #e6f4ea; border-color: #34a853; }
+.md-typeset .activity > .admonition-title,
+.md-typeset .activity > summary { background-color: #e6f4ea; color: #137333; }
+.md-typeset .activity > .admonition-title::before,
+.md-typeset .activity > summary::before { background-color: #34a853; }
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip { background-color: #fff8e1; border-color: #fbbc05; }
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary { background-color: #fff8e1; color: #7a5b00; }
+
+.md-typeset .admonition.trap,
+.md-typeset details.trap { background-color: #fce8e6; border-color: #ea4335; }
+.md-typeset .trap > .admonition-title,
+.md-typeset .trap > summary { background-color: #fce8e6; color: #b3261e; }
+.md-typeset .trap > .admonition-title::before,
+.md-typeset .trap > summary::before { background-color: #ea4335; }
+
+.md-typeset .admonition.synthesis,
+.md-typeset details.synthesis { background-color: #f3e5f5; border-color: #7e57c2; }
+.md-typeset .synthesis > .admonition-title,
+.md-typeset .synthesis > summary { background-color: #f3e5f5; color: #5e35b1; }
+.md-typeset .synthesis > .admonition-title::before,
+.md-typeset .synthesis > summary::before { background-color: #7e57c2; }

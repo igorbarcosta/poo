@@ -62,22 +62,18 @@ Sempre que houver liberdade pedagógica de solução, essa liberdade deve ser pr
 
 Quando a atividade exigir um projeto configurado, o roteiro deve fornecer a preparação mínima necessária antes da implementação. Em ambientes heterogêneos, evitar dependência desnecessária de uma versão exata do Java, de uma única IDE ou da execução obrigatória pelo terminal, desde que o estudante consiga compilar e executar o projeto com uma versão compatível.
 
-## Identidade visual
+## Narrativa e pausas didáticas
 
-Usar admonitions nativas do Zensical com moderação e de acordo com seu significado:
+O laboratório é organizado principalmente por incrementos. Não marcar cada incremento como `activity`: o próprio encontro já é uma atividade prática. No texto sequencial, perguntas, exemplos e explicações permanecem na narrativa normal.
 
-- `info`: conceito, informação importante ou uso de IA;
-- `tip`: dica;
-- `example`: exemplo;
-- `question`: reflexão;
-- `warning`: atenção;
-- `success`: critérios de conclusão.
+Quando uma interrupção tiver valor real, usar a mesma gramática das aulas: `conceito-chave` (laranja), `java-focus` (azul), `activity` (verde), `tip` (amarelo), `trap` (vermelho) e `synthesis` (roxo). Cada admonition cumpre uma única função. Em laboratórios, `tip`, `java-focus` e `trap` tendem a ser especialmente úteis, mas nenhuma pausa é obrigatória.
 
-Conteúdo principal, explicações e atividades permanecem em Markdown normal. Admonitions são reservadas para informações semanticamente especiais.
+Informações administrativas, política de IA, acompanhamento e critérios de conclusão podem continuar usando admonitions nativas adequadas; elas não são pausas da narrativa conceitual.
 
 ## Princípios de uso
 
 - O laboratório deve priorizar a prática e a evolução do projeto da unidade.
+- Cada laboratório aplica e consolida o que foi preparado na aula teórica imediatamente anterior. Se o laboratório pedir que o estudante escreva uma construção Java, a aula anterior deve tê-la ensinado ao menos para reconhecer, ler, compreender sua função e usar no nível exigido.
 - Instruções conceituais devem se limitar ao necessário para realizar a atividade.
 - Critérios de conclusão devem permitir verificação objetiva sem prescrever arquitetura.
 - Quando o objetivo envolver comportamento de código, o laboratório pode usar o ciclo **prever → executar → explicar**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios.

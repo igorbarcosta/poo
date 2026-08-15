@@ -14,6 +14,12 @@
   --red-soft: #fce8e6;
   --yellow-soft: #fff8e1;
   --green-soft: #e6f4ea;
+  --orange: #f29900;
+  --orange-dark: #8a4b00;
+  --orange-soft: #fff3e0;
+  --purple: #7e57c2;
+  --purple-dark: #5e35b1;
+  --purple-soft: #f3e5f5;
   --accent: var(--google-blue);
   --accent-soft: var(--blue-soft);
   --concept: var(--google-blue);
@@ -237,7 +243,7 @@ section.definition .statement {
   max-width: 1000px;
 }
 
-.java-focus {
+.java-focus:not(section) {
   border-left: 4px solid var(--google-blue);
   color: var(--muted);
   font-size: 0.72em;
@@ -246,7 +252,7 @@ section.definition .statement {
   padding: 0.25em 0.7em;
 }
 
-.java-focus strong {
+.java-focus:not(section) strong {
   color: var(--blue-dark);
   font-size: 0.78em;
   letter-spacing: 0.09em;
@@ -651,4 +657,90 @@ section.final-question h2 {
 
 section.final-question::after {
   color: rgb(255 255 255 / 65%);
+}
+
+/* Gramática didática atual. As regras legadas acima permanecem como aliases. */
+section.concept-key::before,
+section.java-focus::before,
+section.activity::before,
+section.tip::before,
+section.trap::before,
+section.synthesis::before {
+  box-sizing: border-box;
+  display: block;
+  font-size: 0.52em;
+  font-weight: 800;
+  height: 1.35em;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  margin-bottom: 0.35em;
+  text-transform: uppercase;
+}
+
+section.concept-key {
+  --accent: var(--orange-dark);
+  --accent-soft: var(--orange-soft);
+  background: var(--orange-soft);
+  box-shadow: inset 10px 0 0 var(--orange);
+}
+
+section.concept-key::before { color: var(--orange-dark); content: "Conceito-chave"; }
+section.concept-key h2 { border-bottom-color: var(--orange); color: var(--orange-dark); }
+
+section.java-focus {
+  --accent: var(--blue-dark);
+  --accent-soft: var(--blue-soft);
+  background: var(--blue-soft);
+  box-shadow: inset 10px 0 0 var(--google-blue);
+}
+
+section.java-focus::before { color: var(--blue-dark); content: "Java em foco"; }
+section.java-focus h2 { border-bottom-color: var(--google-blue); color: var(--blue-dark); }
+
+section.tip {
+  --accent: #7a5b00;
+  --accent-soft: var(--yellow-soft);
+  background: var(--yellow-soft);
+  box-shadow: inset 10px 0 0 var(--google-yellow);
+}
+
+section.tip::before { color: #7a5b00; content: "Dica"; }
+section.tip h2 { border-bottom-color: var(--google-yellow); color: #7a5b00; }
+
+section.trap {
+  --accent: #b3261e;
+  --accent-soft: var(--red-soft);
+  background: var(--red-soft);
+  box-shadow: inset 10px 0 0 var(--google-red);
+}
+
+section.trap::before { color: #b3261e; content: "Armadilha"; }
+section.trap h2 { border-bottom-color: var(--google-red); color: #b3261e; }
+
+section.synthesis {
+  --accent: white;
+  --accent-soft: var(--purple-soft);
+  background: var(--purple-dark);
+  color: white;
+}
+
+section.synthesis::before { color: #ede7f6; content: "Síntese"; }
+section.synthesis h2 { border-bottom-color: #d1c4e9; color: white; }
+section.synthesis strong,
+section.synthesis .statement { color: white; }
+section.synthesis::after { color: rgb(255 255 255 / 65%); }
+section.synthesis .chapter { color: #ede7f6; }
+
+section.synthesis .concept-card {
+  color: var(--ink);
+}
+
+section.synthesis .concept-card strong {
+  color: var(--purple-dark);
+}
+
+section.synthesis .key-point,
+section.synthesis .sequence span {
+  background: rgb(255 255 255 / 16%);
+  color: white;
 }
