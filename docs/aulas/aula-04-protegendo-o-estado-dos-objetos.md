@@ -4,85 +4,65 @@ icon: material/school-outline
 
 # Aula 04 — Protegendo o estado dos objetos
 
-Na Aula 03, vimos que diferentes variáveis podem permitir acesso ao mesmo objeto. Na estrutura atual do Projeto 1, qualquer trecho que tenha acesso a um `ItemPedido` também pode alterar diretamente seus campos. Agora vamos investigar as consequências dessa liberdade.
+Na Aula 03, vimos que duas variáveis podem permitir acesso ao mesmo objeto. Agora precisamos investigar uma consequência dessa descoberta: se diferentes partes do programa chegam ao mesmo objeto, elas também podem tentar alterar diretamente o estado que compartilham.
 
-**Pergunta central**
+!!! lesson-question "Pergunta central"
 
-> Se um objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder modificá-lo diretamente?
+    Se diferentes partes do programa acessam o mesmo objeto, quem deve controlar como seu estado pode mudar?
 
-## Objetivos
+!!! lesson-objectives "Objetivos"
 
-Ao final deste encontro, você deverá ser capaz de:
+    Ao final deste encontro, você deverá ser capaz de:
 
-- reconhecer problemas causados pela exposição direta do estado de um objeto;
-- distinguir um valor permitido pela linguagem de um valor adequado ao domínio;
-- compreender o efeito básico de `private` sobre o acesso a um campo;
-- compreender que comportamentos podem controlar alterações de estado;
-- diferenciar consulta ao estado de alteração direta do estado;
-- explicar por que encapsulamento não significa simplesmente criar getters e setters para todos os campos;
-- analisar uma classe simples e identificar formas mais adequadas de proteger seu estado.
+    - diagnosticar o problema da exposição direta do estado;
+    - explicar o papel de `private` como fronteira de acesso;
+    - usar comportamentos para controlar mudanças e consultas ao estado;
+    - justificar por que encapsulamento não equivale a gerar getters e setters automaticamente.
 
-## Conteúdo
+## Duas referências, uma alteração
 
-### Retomando o problema da Aula 03
-
-Na estrutura atual de `ItemPedido`, podemos fazer uma alteração adequada ao problema:
+Vamos retomar o cenário construído no laboratório anterior:
 
 ```java
-ItemPedido item = new ItemPedido();
-item.quantidade = 2;
+ItemPedido itemPrincipal = new ItemPedido();
+itemPrincipal.descricao = "Teclado";
+itemPrincipal.precoUnitario = 150.0;
+itemPrincipal.quantidade = 5;
+
+ItemPedido itemObservado = itemPrincipal;
 ```
 
-Mas também podemos escrever:
+Temos duas variáveis, mas apenas um objeto. Até aqui, isso nos ajudou a compreender referências e identidade. O mesmo arranjo também permite que a alteração seja feita por qualquer um dos nomes:
 
 ```java
-item.quantidade = -200;
+itemObservado.quantidade = -3;
 ```
 
-Discuta:
+!!! activity "Atividade — prever antes de executar"
 
-- o Java aceita essa atribuição?
-- o programa pode continuar executando?
-- esse valor faz sentido para um item de pedido?
-- quem deveria decidir se essa alteração é aceitável?
+    Sem executar o código, registre sua previsão:
 
-!!! conceito-chave "Conceito-chave — validade no domínio"
+    1. Qual quantidade será observada por `itemPrincipal`?
+    2. Qual subtotal será calculado por `itemPrincipal.calcularSubtotal()`?
+    3. Quantos objetos existem nesse cenário?
 
-    Um valor ser aceito pela linguagem não significa que seja válido para o problema que estamos modelando.
+    Compare a previsão com a de um colega e justifique sua resposta usando o modelo de referências da Aula 03.
 
-### O problema da exposição direta
+Quando consultamos o estado por `itemPrincipal`, encontramos `-3`. O subtotal também passa a usar esse valor. A alteração foi realizada por outro nome, mas chegou ao mesmo objeto.
 
-Quando o campo está diretamente acessível, diferentes trechos do programa podem decidir seu valor:
+Referências compartilhadas não criaram o problema. Elas apenas o tornaram mais visível: qualquer código com acesso ao objeto também possui acesso direto aos seus campos.
 
-```java
-item.quantidade = 2;
-```
+## O Java aceita. O domínio não.
 
-```java
-item.quantidade = 1000;
-```
+Para o Java, `-3` é um valor possível do tipo `int`. A atribuição está sintaticamente correta e o programa pode continuar executando.
 
-```java
-item.quantidade = -5;
-```
+Para um item de pedido, porém, uma quantidade negativa não representa um estado válido. A linguagem verifica o tipo; a classe precisa preservar as regras do problema que representa.
 
-O problema não se resume aos números negativos. Se qualquer código externo decide diretamente o valor do campo, `ItemPedido` não controla como seu próprio estado evolui.
+Isso nos leva a uma pergunta mais específica: se `quantidade` pertence ao estado de `ItemPedido`, por que qualquer trecho externo pode decidir livremente seu valor?
 
-Se `quantidade` faz parte do estado de `ItemPedido`, faz sentido que o próprio item participe da decisão sobre como essa quantidade pode mudar.
+## Criando uma fronteira
 
-### Estabelecendo uma fronteira com `private`
-
-Compare as declarações:
-
-```java
-int quantidade;
-```
-
-```java
-private int quantidade;
-```
-
-`private` restringe o acesso ao campo ao código da própria classe. Os métodos de `ItemPedido` continuam podendo utilizar `quantidade`:
+Podemos começar restringindo o acesso direto ao campo:
 
 ```java
 public class ItemPedido {
@@ -97,26 +77,28 @@ public class ItemPedido {
 }
 ```
 
-Depois dessa mudança, um acesso externo como este deixa de ser permitido:
+Agora este código externo deixa de compilar:
 
 ```java
-item.quantidade = -200;
+itemObservado.quantidade = -3;
 ```
 
-O erro de compilação é uma informação útil: ele mostra que a classe passou a estabelecer uma fronteira para o acesso direto ao campo.
+O erro é consequência da fronteira que acabamos de criar. `Main` ainda conhece o objeto, mas não pode mais escolher diretamente o valor de `quantidade`.
 
 !!! java-focus "Java em foco — `private` e `public`"
 
-    - `private`: o membro pode ser acessado somente dentro da própria classe;
-    - `public`: o membro é disponibilizado para uso externo à classe.
+    - `private` restringe o acesso ao interior da própria classe;
+    - `public` disponibiliza uma classe ou operação para uso externo;
+    - métodos de `ItemPedido` continuam acessando seus campos privados;
+    - código externo só pode usar os membros que a classe disponibiliza.
 
-Quando nenhum valor é atribuído explicitamente, um campo `int` de um objeto começa com `0`. Assim, `quantidade` pode ser aumentada por um comportamento sem depender de uma atribuição direta em `Main`.
+Nesta etapa, protegeremos apenas `quantidade`. `descricao` e `precoUnitario` permanecerão temporariamente expostos para concentrarmos a atenção em uma mudança por vez.
 
-### Alterando o estado por meio de um comportamento
+## Pedindo ao objeto para mudar
 
-Proteger o campo cria uma nova pergunta: se o código externo não pode mais atribuir diretamente a quantidade, como uma mudança legítima deve acontecer?
+Bloquear o acesso direto resolve uma parte do problema, mas também impede alterações legítimas. Como o código externo pode pedir que a quantidade aumente?
 
-Podemos representar essa mudança como um comportamento de `ItemPedido`:
+Já usamos um comportamento com essa intenção no Projeto 1. Agora ele passa a controlar a regra da mudança:
 
 ```java
 public void aumentarQuantidade(int unidades) {
@@ -126,33 +108,25 @@ public void aumentarQuantidade(int unidades) {
 }
 ```
 
-Compare:
+O código externo não escolhe o novo estado. Ele solicita uma operação:
 
 ```java
-item.quantidade = 5;
+itemObservado.aumentarQuantidade(2);
 ```
+
+O próprio `ItemPedido` decide se a solicitação preserva sua regra. Se `unidades` for menor ou igual a zero, o estado permanece inalterado.
+
+Há um detalhe operacional importante aqui: quando um campo `int` não recebe uma inicialização explícita, cada objeto começa com esse campo em `0`. Assim, podemos construir a quantidade inicial por meio do comportamento, sem reabrir o acesso direto.
+
+## Consultando sem entregar o controle
+
+Depois de tornar `quantidade` privada, este código também deixa de compilar:
 
 ```java
-item.aumentarQuantidade(5);
+System.out.println(itemPrincipal.quantidade);
 ```
 
-Na atribuição direta, o código externo decide o novo estado. No segundo caso, ele solicita uma operação, e o próprio objeto decide como seu estado será alterado.
-
-O comportamento também pode preservar uma regra. Ao receber um valor menor ou igual a zero, o método simplesmente não altera a quantidade:
-
-```java
-item.aumentarQuantidade(-10);
-```
-
-### Consultando sem alterar diretamente
-
-Com `quantidade` privada, este acesso também deixa de ser permitido:
-
-```java
-System.out.println(item.quantidade);
-```
-
-Impedir a alteração direta não significa impedir a consulta. A classe pode disponibilizar uma operação para informar o valor atual:
+Precisamos consultar a quantidade para exibi-la e verificar resultados. Consultar, porém, não exige que o código externo também possa alterá-la livremente.
 
 ```java
 public int getQuantidade() {
@@ -160,19 +134,17 @@ public int getQuantidade() {
 }
 ```
 
-O código externo passa a consultar assim:
+Agora a consulta é explícita:
 
 ```java
-System.out.println(item.getQuantidade());
+System.out.println(itemPrincipal.getQuantidade());
 ```
 
-**Consulta e alteração**
+`getQuantidade()` informa o estado atual. `aumentarQuantidade(...)` solicita uma mudança. As duas operações expõem capacidades diferentes do objeto.
 
-> Permitir consultar um valor não significa permitir modificá-lo diretamente.
+## Uma classe pode esconder o campo e continuar sem controle
 
-### Encapsulamento não é getter mais setter
-
-Considere esta possibilidade:
+Considere outra operação possível:
 
 ```java
 public void setQuantidade(int novaQuantidade) {
@@ -180,60 +152,66 @@ public void setQuantidade(int novaQuantidade) {
 }
 ```
 
-Se qualquer código puder executar `item.setQuantidade(-200)`, o problema foi realmente resolvido?
+Ela esconde o campo, mas ainda permite que qualquer código externo escolha qualquer valor, inclusive `-200`. A escrita mudou de forma; a decisão continua fora do objeto.
 
-Não necessariamente. Encapsular não é apenas esconder campos: é controlar como o estado pode ser observado e modificado. Por isso, não criaremos getters e setters automaticamente para todos os campos. Um método deve existir porque representa uma interação necessária com o objeto, e um comportamento com intenção pode ser mais adequado que um setter genérico.
+!!! activity "Atividade — diagnosticar duas soluções"
 
-Nesta aula, protegeremos primeiro apenas `quantidade` para compreender o mecanismo. `descricao` e `precoUnitario` podem permanecer temporariamente como estão. Ainda não resolveremos como garantir que todos esses dados sejam informados ao criar o objeto.
+    Compare `setQuantidade(int novaQuantidade)` sem validação com `aumentarQuantidade(int unidades)` preservando `unidades > 0`.
 
-## Atividade de compreensão
+    1. Responda individualmente: as duas operações protegem o estado da mesma forma?
+    2. Discuta sua justificativa com um colega.
+    3. Responda novamente e indique qual operação comunica melhor a intenção do domínio.
+    4. Participe do fechamento coletivo, relacionando a escolha à responsabilidade de `ItemPedido`.
 
-Considere outro domínio:
+O nome do método não resolve tudo sozinho. O ponto decisivo é quais mudanças a classe permite e quais regras ela assume a responsabilidade de preservar.
 
-```java
-class Conta {
-    double saldo;
-}
-```
+## Encapsulamento
 
-Com o campo exposto, um trecho externo pode fazer:
+Agora podemos nomear a ideia construída ao longo da aula.
 
-```java
-conta.saldo = -5000;
-```
+!!! conceito-chave "Conceito-chave — encapsulamento"
 
-Discuta com um colega:
+    Encapsular é estabelecer uma fronteira para que o objeto controle como seu estado pode ser consultado e alterado.
 
-1. Qual problema existe na alteração direta de `saldo`?
-2. Quem deveria controlar mudanças nesse estado?
-3. Quais comportamentos poderiam representar melhor operações legítimas?
+    - operações públicas formam a interface disponível ao código externo;
+    - campos privados ajudam a impedir alterações diretas;
+    - comportamentos preservam intenções e regras do objeto;
+    - encapsular não significa gerar getters e setters automaticamente.
 
-Operações como `depositar(...)` e `sacar(...)` podem surgir na discussão. Não é necessário implementar a classe nem definir regras bancárias completas.
+`private` é um mecanismo importante dessa fronteira, mas não decide sozinho se a interface da classe é adequada. Uma classe cheia de setters genéricos pode continuar entregando suas decisões ao código externo.
 
-### Para aprofundar — diagnosticando duas soluções
+## Para aprofundar — transferindo a decisão
 
-!!! activity "Atividade — diagnosticar uma solução aparentemente protegida"
+!!! activity "Atividade — proteger outro estado"
 
-    Compare uma classe que expõe `setQuantidade(int valor)` sem verificar o valor recebido com outra que oferece `aumentarQuantidade(int unidades)` e preserva a regra `unidades > 0`.
+    Considere a classe:
 
-    1. Responda individualmente: as duas soluções protegem o estado da mesma forma?
-    2. Discuta a resposta com um colega.
-    3. Revise sua resposta e justifique qual operação comunica melhor a intenção do domínio.
+    ```java
+    class Conta {
+        double saldo;
+    }
+    ```
 
-    O objetivo não é adicionar outro mecanismo de Java, mas usar encapsulamento e responsabilidade para diagnosticar duas decisões possíveis.
+    Em dupla:
 
-## Síntese
+    1. identifique o problema de permitir `conta.saldo = -5000`;
+    2. proponha operações que expressem mudanças legítimas;
+    3. explique quais decisões deveriam permanecer dentro de `Conta`;
+    4. compare a proposta com a solução construída para `ItemPedido`.
 
-- objetos possuem estado;
-- a exposição direta permite que código externo modifique esse estado;
-- um valor aceito pela linguagem pode ser inadequado para o domínio;
-- `private` restringe o acesso direto;
-- comportamentos podem controlar mudanças;
-- consultas podem ser disponibilizadas sem permitir alteração direta;
-- encapsulamento envolve proteger as regras do objeto;
-- encapsulamento não significa criar getters e setters mecanicamente.
+    Não é necessário implementar a classe nem definir regras bancárias completas. O objetivo é transferir o raciocínio de encapsulamento para outro domínio.
 
-## Questão em aberto
+## Fechando a trajetória
+
+!!! synthesis "Síntese"
+
+    - `private` cria uma fronteira contra o acesso direto ao campo;
+    - código externo solicita operações, em vez de escolher livremente o estado;
+    - comportamentos podem preservar as regras das mudanças;
+    - consultas podem ser oferecidas sem devolver o controle da alteração;
+    - encapsulamento é controle intencional da evolução do estado, não geração mecânica de getters e setters.
+
+## Uma pergunta que ainda permanece
 
 Considere novamente:
 
@@ -241,9 +219,9 @@ Considere novamente:
 ItemPedido item = new ItemPedido();
 ```
 
-Nesse instante, qual é a quantidade? E a descrição e o preço? Quem garante que um `ItemPedido` seja criado já com os dados necessários?
+Nesse instante, `quantidade` começa em `0`, mas descrição e preço ainda não foram informados. Como garantir que um objeto já nasça com os dados necessários e em um estado válido?
 
-Esse problema será retomado posteriormente. Por enquanto, vamos consolidar como o objeto pode proteger as alterações do próprio estado.
+Construtores entram nessa história, mas ainda não precisamos abrir esse assunto. Primeiro vamos consolidar como um objeto controla as alterações feitas depois de sua criação.
 
 ## Material da aula
 

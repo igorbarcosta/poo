@@ -38,6 +38,8 @@ Legibilidade é um requisito pedagógico. O roteiro público deve ajudar o estud
 - apresentar critérios de conclusão objetivos e escaneáveis;
 - reservar cada admonition para uma ideia principal, sem paredes de texto.
 
+Dentro de blocos destacados, uma única ideia curta pode permanecer em uma frase. Informações independentes devem preferir bullets, enquanto sequências, procedimentos e conjuntos de perguntas devem preferir enumeração.
+
 Detalhes internos de planejamento docente, como estimativas de duração de blocos e justificativas de dimensionamento, permanecem nas specs e não precisam aparecer no roteiro do estudante.
 
 ## Duração e dimensionamento

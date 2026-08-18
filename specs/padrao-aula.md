@@ -11,11 +11,14 @@ Este documento registra o padrão das aulas de POO, destinadas principalmente à
 
 ## Estrutura
 
-Cada página deve começar com uma breve contextualização e conter as seguintes seções obrigatórias:
+Cada página deve começar com uma breve contextualização e conter objetivos e uma seção de materiais relacionados. A pergunta central, quando existir, e os objetivos podem aparecer em blocos estruturais próprios, próximos ao início da página:
 
-- **Objetivos**
-- **Conteúdo**
-- **Material da aula**
+- `lesson-question`: explicita o problema que orienta a trajetória;
+- `lesson-objectives`: reúne, em bullets, poucas competências de maior nível.
+
+Esses blocos usam identidade azul/neutra discreta. São elementos de orientação da aula, não pausas didáticas, e não ampliam a gramática das seis pausas.
+
+Os macroblocos reais da narrativa podem aparecer diretamente como seções, de modo que o sumário também revele a trajetória da aula. O contêiner genérico **Conteúdo** é opcional, não uma exigência.
 
 Quando forem pertinentes, podem ser incluídas as seguintes seções opcionais:
 
@@ -50,6 +53,8 @@ Como orientação editorial:
 - evitar repetir em prosa o que já está claro em código, tabela ou lista;
 - quando uma informação normativa ou estrutural já possuir uma fonte oficial no site, referenciá-la em vez de duplicá-la extensamente na página da aula;
 - reservar cada admonition para uma ideia principal e evitar paredes de texto dentro dela.
+
+Dentro de blocos destacados, uma única ideia curta pode permanecer em uma frase. Duas ou mais informações independentes devem preferir bullets; sequências, procedimentos ou conjuntos de perguntas devem preferir enumeração. Não transformar todo conteúdo em lista, mas evitar parágrafos longos dentro de admonitions.
 
 Essas diretrizes apoiam a clareza sem impor uniformidade artificial.
 

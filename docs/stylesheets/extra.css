@@ -1,3 +1,39 @@
+/* Blocos estruturais da aula: orientam a leitura sem se tornarem pausas didáticas. */
+.md-typeset :is(.admonition, details):is(.lesson-question, .lesson-objectives) {
+  --lesson-structure-color: #5f7fa6;
+  --lesson-structure-title: #315979;
+  --lesson-structure-background: #f2f6fa;
+  background-color: var(--lesson-structure-background);
+  border-color: var(--lesson-structure-color);
+}
+
+.md-typeset :is(.admonition, details).lesson-question {
+  --md-admonition-icon: url("../assets/icons/circle-help.svg");
+}
+
+.md-typeset :is(.admonition, details).lesson-objectives {
+  --md-admonition-icon: url("../assets/icons/target.svg");
+}
+
+.md-typeset :is(.lesson-question, .lesson-objectives)
+  > :is(.admonition-title, summary) {
+  background-color: var(--lesson-structure-background);
+  color: var(--lesson-structure-title);
+}
+
+.md-typeset :is(.lesson-question, .lesson-objectives)
+  > :is(.admonition-title, summary)::before {
+  background-color: var(--lesson-structure-color);
+  -webkit-mask-image: var(--md-admonition-icon);
+  mask-image: var(--md-admonition-icon);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 /* Identidade das seis pausas didáticas no site. Os SVGs são da família Lucide
    já distribuída pelo Zensical e foram mantidos como assets locais estáveis. */
 .md-typeset :is(.admonition, details).conceito-chave {
@@ -74,6 +110,25 @@
 }
 
 /* O esquema slate é confirmado pelo HTML gerado pelo Zensical. */
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details):is(
+  .lesson-question,
+  .lesson-objectives
+) {
+  --lesson-structure-color: #83a9d2;
+  --lesson-structure-title: #a9c7e8;
+  --lesson-structure-background: #1b2836;
+  color: #e3e8ef;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.lesson-question, .lesson-objectives) a {
+  color: #8ab4f8;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.lesson-question, .lesson-objectives) code {
+  background-color: rgb(255 255 255 / 10%);
+  color: #f1f5f9;
+}
+
 [data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).conceito-chave {
   --pause-color: #f6ad3c;
   --pause-title-color: #ffc66d;

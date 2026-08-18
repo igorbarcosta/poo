@@ -4,7 +4,7 @@ icon: material/flask-outline
 
 # Laboratório 04 — Controlando alterações de estado
 
-No laboratório anterior, você observou que diferentes referências podem permitir acesso ao mesmo objeto. Agora vamos evoluir o Projeto 1 para que `ItemPedido` controle as alterações realizadas em sua quantidade.
+Na Versão 3 do Projeto 1, `itemPrincipal` e `itemObservado` passaram a acessar o mesmo objeto. Nesta evolução, esse objeto deverá controlar como sua quantidade pode mudar.
 
 !!! info "Uso de IA — Nível 1: Tutor"
 
@@ -18,182 +18,200 @@ No laboratório anterior, você observou que diferentes referências podem permi
 
 !!! warning "Laboratório acompanhado — presença requerida"
 
-    Este laboratório é acompanhado porque introduz a proteção do estado e a alteração controlada por comportamentos.
+    Este laboratório é acompanhado porque usa erros de compilação para analisar o impacto de uma mudança na classe e reconstruir seus acessos de forma controlada.
 
 ## Objetivos
 
 Ao final deste laboratório, você deverá ser capaz de:
 
-- observar o problema causado por um campo diretamente exposto;
-- tornar um campo privado;
-- interpretar o efeito dessa mudança sobre código externo;
-- substituir alteração direta por um comportamento controlado;
-- consultar um campo privado por meio de uma operação apropriada;
-- verificar que uma regra simples de alteração do estado é preservada.
+- identificar dependências causadas por um campo exposto;
+- interpretar o impacto de tornar esse campo privado;
+- substituir acessos diretos por operações de alteração e consulta;
+- verificar que o objeto preserva sua regra mesmo quando possui referências compartilhadas.
 
 ## Projeto 1 — Versão 4: estado protegido
 
-Use a versão anterior do Projeto 1 como base. Nesta evolução, você protegerá somente o campo `quantidade` e fará com que suas alterações passem pelo próprio `ItemPedido`.
+Parta da **Versão 3** que você concluiu no laboratório anterior. Preserve os três nomes usados na investigação:
 
-## Atividade
+- `itemPrincipal` e `itemObservado`, que acessam o mesmo objeto;
+- `itemIndependente`, que acessa outro objeto.
 
-### Incremento A — Observar o problema
+O novo requisito é:
 
-Antes de proteger o campo, atribua uma quantidade inadequada a um dos itens:
+> `ItemPedido` deve controlar as alterações realizadas em sua quantidade.
 
-```java
-item.quantidade = -10;
-```
+!!! tip "Dica — continue na mesma pasta de projeto"
 
-Em seguida, calcule o subtotal e exiba-o no console:
+    Crie uma cópia da Versão 3 para iniciar a Versão 4 e abra a pasta completa na IDE. Mantenha `Main.java` e `ItemPedido.java` juntos; não abra apenas os arquivos separadamente.
 
-```java
-System.out.println(item.calcularSubtotal());
-```
+## Investigação
 
-Observe que:
+### Incremento A — Mapear os acessos atuais
 
-- o código compila;
-- o objeto assume a quantidade informada;
-- o comportamento utiliza esse estado e produz um subtotal afetado por ele.
+Execute a Versão 3 antes de modificá-la e confirme o resultado final conhecido:
 
-O Java impediu que o objeto assumisse esse estado?
+| Variável | Quantidade | Subtotal |
+| --- | ---: | ---: |
+| `itemPrincipal` | 5 | 750.0 |
+| `itemObservado` | 5 | 750.0 |
+| `itemIndependente` | 7 | 1050.0 |
 
-### Incremento B — Proteger `quantidade`
+Em seguida, localize em `Main.java` todos os acessos diretos a `quantidade` e classifique cada um:
 
-Em `ItemPedido`, altere:
+- **escrita:** atribui ou altera o campo;
+- **leitura:** consulta o campo para exibir ou usar o valor.
 
-```java
-int quantidade;
-```
+Ainda não altere o código. Esse mapa permitirá observar o impacto da próxima decisão.
 
-para:
+### Incremento B — Criar a fronteira e compilar
+
+Em `ItemPedido.java`, altere somente a declaração de `quantidade`:
 
 ```java
 private int quantidade;
 ```
 
-Antes de corrigir `Main`, siga esta sequência:
+Agora compile o projeto **antes de corrigir qualquer acesso em `Main`**.
 
-1. compile o projeto;
-2. leia as mensagens de erro;
-3. identifique os trechos de `Main` que tentam acessar diretamente `quantidade`;
-4. explique por que esses acessos deixaram de ser permitidos.
+Registre para sua análise:
 
-### Incremento C — Alterar por comportamento
+1. quais linhas deixaram de compilar;
+2. quais eram leituras e quais eram escritas;
+3. o que as mensagens informam sobre o acesso a `quantidade`;
+4. quais dependências de `Main` em relação ao campo exposto ficaram visíveis.
 
-Adicione a `ItemPedido` um método com esta assinatura:
+Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na interface da classe.
 
-```java
-public void aumentarQuantidade(int unidades)
-```
+### Incremento C — Planejar a reparação
 
-O método deve:
+Antes de editar os trechos que quebraram, associe cada necessidade a uma operação preparada na aula:
 
-- receber um valor `int`;
-- acrescentar esse valor à quantidade atual quando `unidades > 0`;
+| Necessidade de `Main` | Operação de `ItemPedido` |
+| --- | --- |
+| solicitar um aumento válido | `aumentarQuantidade(int unidades)` |
+| consultar o valor atual | `getQuantidade()` |
+| calcular o subtotal | `calcularSubtotal()` |
+
+Uma escrita direta não será apenas substituída por outra forma de escolher qualquer valor. A mudança precisa passar por um comportamento com intenção.
+
+### Incremento D — Controlar a alteração
+
+Evolua o método `aumentarQuantidade(int unidades)` que já existe em `ItemPedido`. Ele deve:
+
+- acrescentar `unidades` à quantidade atual quando `unidades > 0`;
 - manter a quantidade inalterada quando `unidades <= 0`.
 
-Adapte `Main` para usar esse comportamento no lugar das atribuições diretas de quantidade. Não use exceções nem retorne códigos de erro.
+Adapte as escritas identificadas no Incremento A para solicitar a mudança por esse comportamento.
 
-Como vimos na aula, `quantidade` começa com `0` quando nenhum valor foi atribuído explicitamente ao campo.
+Como um campo `int` começa em `0` quando não é inicializado explicitamente, a quantidade inicial pode ser construída com chamadas como:
 
-### Incremento D — Consultar a quantidade
+```java
+itemPrincipal.aumentarQuantidade(5);
+```
 
-Adicione um método com esta assinatura:
+Não crie `setQuantidade(...)`. O requisito não é permitir que `Main` escolha qualquer estado, mas permitir que solicite uma operação controlada.
+
+### Incremento E — Disponibilizar a consulta
+
+Adicione a `ItemPedido` uma operação pública com esta assinatura:
 
 ```java
 public int getQuantidade()
 ```
 
-O método deve apenas retornar a quantidade atual. Adapte `Main` para apresentá-la assim:
+Ela deve apenas retornar a quantidade atual. Substitua as leituras diretas encontradas no Incremento A por chamadas a essa operação.
+
+Compile novamente. Se ainda houver erro de acesso a `quantidade` em `Main`, volte ao mapa e verifique qual leitura ou escrita ainda depende do campo exposto.
+
+### Incremento F — Testar a regra no objeto compartilhado
+
+Reorganize o experimento para que `itemPrincipal` comece com um novo objeto, preço unitário `150.0` e quantidade inicial ainda `0`. Prepare a quantidade por meio do comportamento e só então atribua a referência a `itemObservado`:
 
 ```java
-System.out.println(item.getQuantidade());
+itemPrincipal.aumentarQuantidade(5);
+ItemPedido itemObservado = itemPrincipal;
 ```
 
-Observe a diferença:
+Ajuste as chamadas herdadas da Versão 3 para que esse aumento não seja aplicado duas vezes.
 
-- `item.getQuantidade()` é permitido;
-- `item.quantidade = 20` continua não sendo permitido.
+Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute e explique o resultado.
 
-**Não crie `setQuantidade` nesta atividade.** O objetivo é representar a mudança como um comportamento com intenção e regra, em vez de apenas substituir a atribuição direta por um setter genérico.
+1. Use `itemObservado.aumentarQuantidade(-10)`.
+2. Consulte a quantidade e o subtotal por `itemPrincipal` e `itemObservado`.
+3. Use `itemObservado.aumentarQuantidade(2)`.
+4. Consulte novamente pelos dois nomes.
+5. Verifique `itemPrincipal == itemObservado`.
 
-### Incremento E — Verificar a regra
+O resultado esperado é:
 
-Crie um item e defina seu preço unitário antes de verificar as alterações da quantidade:
+| Momento | Quantidade pelas duas referências | Subtotal pelas duas referências |
+| --- | ---: | ---: |
+| início | 5 | 750.0 |
+| após tentar aumentar em `-10` | 5 | 750.0 |
+| após aumentar em `2` | 7 | 1050.0 |
 
-```java
-ItemPedido item = new ItemPedido();
-item.precoUnitario = 150.0;
-```
+Explique por que a alteração válida continua visível pelas duas referências e por que a tentativa inválida não muda o objeto.
 
-Em seguida, execute esta sequência:
+### Incremento G — Confirmar o contraste com outro objeto
 
-1. consulte a quantidade inicial;
-2. aumente a quantidade em `2` e consulte novamente;
-3. tente aumentá-la em `-5` e consulte novamente;
-4. aumente-a em `3` e consulte novamente;
-5. calcule o subtotal usando o estado atual.
+Use `itemIndependente`, que foi criado com outra execução de `new ItemPedido()`, e confirme que ele continua independente:
 
-Compare os resultados observados com os esperados:
+1. aumente sua quantidade em um valor positivo;
+2. consulte seu estado e o de `itemPrincipal`;
+3. verifique novamente `itemPrincipal == itemIndependente`;
+4. explique por que a regra é preservada separadamente em cada objeto.
 
-| Operação | Quantidade esperada |
-| --- | ---: |
-| início | `0` |
-| aumentar em `2` | `2` |
-| aumentar em `-5` | `2` |
-| aumentar em `3` | `5` |
+Agora há duas conclusões que precisam conviver:
 
-Ao final, calcule o subtotal e exiba-o no console. Com preço unitário `150.0` e quantidade `5`, o resultado esperado é `750.0`.
-
-Neste laboratório, não torne `descricao` e `precoUnitario` privados e não crie getters ou setters para esses campos. O foco é compreender a proteção de `quantidade`.
+- compartilhar uma referência significa acessar o mesmo objeto;
+- acessar o mesmo objeto não concede acesso direto aos seus campos privados.
 
 !!! success "Critérios de conclusão"
 
     Verifique se sua solução:
 
-    - mantém `quantidade` como `private`;
-    - não acessa diretamente `quantidade` a partir de `Main`;
-    - possui `aumentarQuantidade(int unidades)`;
-    - aumenta a quantidade somente quando `unidades > 0`;
-    - mantém a quantidade inalterada quando `unidades <= 0`;
-    - possui `getQuantidade()`;
-    - consulta a quantidade por meio desse método;
-    - continua calculando o subtotal com o estado interno;
-    - produz os resultados esperados na sequência de verificação.
+    - parte da Versão 3 e preserva o cenário com referências compartilhadas e objeto independente;
+    - mantém `quantidade` como `private` e não a acessa diretamente em `Main`;
+    - controla aumentos com `aumentarQuantidade(int unidades)` e a regra `unidades > 0`;
+    - consulta a quantidade com `getQuantidade()` e calcula o subtotal com o estado interno;
+    - preserva quantidade `5` após a solicitação inválida e chega a `7` após a solicitação válida;
+    - confirma e explica a diferença entre referências compartilhadas e objetos distintos;
+    - compila e executa sem erros ao final.
+
+Ao concluir corretamente, verifique os critérios, envie a atividade e aguarde a liberação do professor.
 
 ## Desafio opcional — Reduzindo quantidade com segurança
 
 !!! tip "Quer aprofundar?"
 
-    Explore como outro comportamento pode preservar uma regra sobre o estado do objeto.
+    Explore uma segunda alteração controlada somente depois de concluir e verificar o núcleo obrigatório.
 
-Adicione a `ItemPedido` um método com esta assinatura:
+Adicione a `ItemPedido`:
 
 ```java
 public void reduzirQuantidade(int unidades)
 ```
 
-O método deve respeitar estas regras:
+O comportamento deve manter a quantidade inalterada quando:
 
-- `unidades` deve ser positivo;
-- a quantidade não pode ficar negativa;
-- se alguma regra for violada, a quantidade permanece inalterada.
+- `unidades` não for positivo;
+- a redução tornaria a quantidade negativa.
 
-Use o objeto que terminou o Incremento E com quantidade `5` ou prepare outro objeto chamando `aumentarQuantidade(5)`. Depois, verifique:
+Parta de quantidade `5` e verifique:
 
-- reduzir `2` resulta em `3`;
-- reduzir `10` mantém a quantidade em `3`;
-- reduzir `-1` mantém a quantidade em `3`.
+| Operação | Quantidade esperada |
+| --- | ---: |
+| reduzir `2` | 3 |
+| reduzir `10` | 3 |
+| reduzir `-1` | 3 |
 
-Não use exceções nem adicione retorno booleano. O objetivo é aprofundar a ideia de que o próprio comportamento preserva uma regra do estado.
+Não use exceções nem retorno booleano. O desafio apenas amplia a aplicação da ideia de alteração controlada.
 
-### Para consolidar
+## Para consolidar
 
-1. Por que tornar um campo `private` não é, sozinho, suficiente para garantir um bom encapsulamento?
-2. Qual é a diferença entre permitir consultar a quantidade e permitir alterá-la diretamente?
-3. Por que `aumentarQuantidade(3)` comunica uma intenção diferente de `setQuantidade(3)`?
+1. O que a quebra de compilação revelou sobre a dependência de `Main` em relação ao estado exposto?
+2. Por que duas referências para o mesmo objeto continuam observando o mesmo estado depois do encapsulamento?
+3. O que ainda falta para impedir que um `ItemPedido` seja criado sem descrição e preço adequados?
 
 Não é necessário entregar respostas escritas.
 
