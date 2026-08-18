@@ -1,49 +1,145 @@
-.md-typeset .admonition.conceito-chave,
-.md-typeset details.conceito-chave {
-  background-color: #fff3e0;
-  border-color: #f29900;
+/* Identidade das seis pausas didáticas no site. Os SVGs são da família Lucide
+   já distribuída pelo Zensical e foram mantidos como assets locais estáveis. */
+.md-typeset :is(.admonition, details).conceito-chave {
+  --pause-color: #f29900;
+  --pause-title-color: #8a4b00;
+  --pause-background: #fff3e0;
+  --md-admonition-icon: url("../assets/icons/book-open.svg");
 }
 
-.md-typeset .conceito-chave > .admonition-title,
-.md-typeset .conceito-chave > summary {
-  background-color: #fff3e0;
-  color: #8a4b00;
+.md-typeset :is(.admonition, details).java-focus {
+  --pause-color: #4285f4;
+  --pause-title-color: #174ea6;
+  --pause-background: #e8f0fe;
+  --md-admonition-icon: url("../assets/icons/code-2.svg");
 }
 
-.md-typeset .conceito-chave > .admonition-title::before,
-.md-typeset .conceito-chave > summary::before {
-  background-color: #f29900;
+.md-typeset :is(.admonition, details).activity {
+  --pause-color: #34a853;
+  --pause-title-color: #137333;
+  --pause-background: #e6f4ea;
+  --md-admonition-icon: url("../assets/icons/pencil.svg");
 }
 
-.md-typeset .admonition.java-focus,
-.md-typeset details.java-focus { background-color: #e8f0fe; border-color: #4285f4; }
-.md-typeset .java-focus > .admonition-title,
-.md-typeset .java-focus > summary { background-color: #e8f0fe; color: #174ea6; }
-.md-typeset .java-focus > .admonition-title::before,
-.md-typeset .java-focus > summary::before { background-color: #4285f4; }
+.md-typeset :is(.admonition, details).tip {
+  --pause-color: #fbbc05;
+  --pause-title-color: #7a5b00;
+  --pause-background: #fff8e1;
+  --md-admonition-icon: url("../assets/icons/lightbulb.svg");
+}
 
-.md-typeset .admonition.activity,
-.md-typeset details.activity { background-color: #e6f4ea; border-color: #34a853; }
-.md-typeset .activity > .admonition-title,
-.md-typeset .activity > summary { background-color: #e6f4ea; color: #137333; }
-.md-typeset .activity > .admonition-title::before,
-.md-typeset .activity > summary::before { background-color: #34a853; }
+.md-typeset :is(.admonition, details).trap {
+  --pause-color: #ea4335;
+  --pause-title-color: #b3261e;
+  --pause-background: #fce8e6;
+  --md-admonition-icon: url("../assets/icons/triangle-alert.svg");
+}
 
-.md-typeset .admonition.tip,
-.md-typeset details.tip { background-color: #fff8e1; border-color: #fbbc05; }
-.md-typeset .tip > .admonition-title,
-.md-typeset .tip > summary { background-color: #fff8e1; color: #7a5b00; }
+.md-typeset :is(.admonition, details).synthesis {
+  --pause-color: #7e57c2;
+  --pause-title-color: #5e35b1;
+  --pause-background: #f3e5f5;
+  --md-admonition-icon: url("../assets/icons/list-checks.svg");
+}
 
-.md-typeset .admonition.trap,
-.md-typeset details.trap { background-color: #fce8e6; border-color: #ea4335; }
-.md-typeset .trap > .admonition-title,
-.md-typeset .trap > summary { background-color: #fce8e6; color: #b3261e; }
-.md-typeset .trap > .admonition-title::before,
-.md-typeset .trap > summary::before { background-color: #ea4335; }
+.md-typeset :is(.admonition, details):is(
+  .conceito-chave,
+  .java-focus,
+  .activity,
+  .tip,
+  .trap,
+  .synthesis
+) {
+  background-color: var(--pause-background);
+  border-color: var(--pause-color);
+}
 
-.md-typeset .admonition.synthesis,
-.md-typeset details.synthesis { background-color: #f3e5f5; border-color: #7e57c2; }
-.md-typeset .synthesis > .admonition-title,
-.md-typeset .synthesis > summary { background-color: #f3e5f5; color: #5e35b1; }
-.md-typeset .synthesis > .admonition-title::before,
-.md-typeset .synthesis > summary::before { background-color: #7e57c2; }
+.md-typeset :is(.conceito-chave, .java-focus, .activity, .tip, .trap, .synthesis)
+  > :is(.admonition-title, summary) {
+  background-color: var(--pause-background);
+  color: var(--pause-title-color);
+}
+
+.md-typeset :is(.conceito-chave, .java-focus, .activity, .tip, .trap, .synthesis)
+  > :is(.admonition-title, summary)::before {
+  background-color: var(--pause-color);
+  -webkit-mask-image: var(--md-admonition-icon);
+  mask-image: var(--md-admonition-icon);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* O esquema slate é confirmado pelo HTML gerado pelo Zensical. */
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).conceito-chave {
+  --pause-color: #f6ad3c;
+  --pause-title-color: #ffc66d;
+  --pause-background: #2d2417;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).java-focus {
+  --pause-color: #669df6;
+  --pause-title-color: #8ab4f8;
+  --pause-background: #17263b;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).activity {
+  --pause-color: #57bb71;
+  --pause-title-color: #81c995;
+  --pause-background: #162b20;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).tip {
+  --pause-color: #fdd663;
+  --pause-title-color: #fdd663;
+  --pause-background: #302a16;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).trap {
+  --pause-color: #f28b82;
+  --pause-title-color: #f28b82;
+  --pause-background: #351d1b;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details).synthesis {
+  --pause-color: #b39ddb;
+  --pause-title-color: #d7c5ff;
+  --pause-background: #281f3d;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(.admonition, details):is(
+  .conceito-chave,
+  .java-focus,
+  .activity,
+  .tip,
+  .trap,
+  .synthesis
+) {
+  color: #e3e8ef;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(
+  .conceito-chave,
+  .java-focus,
+  .activity,
+  .tip,
+  .trap,
+  .synthesis
+) a {
+  color: #8ab4f8;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :is(
+  .conceito-chave,
+  .java-focus,
+  .activity,
+  .tip,
+  .trap,
+  .synthesis
+) code {
+  background-color: rgb(255 255 255 / 10%);
+  color: #f1f5f9;
+}

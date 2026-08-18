@@ -8,9 +8,9 @@ No laboratório anterior, resolvemos em Java um problema que já sabíamos resol
 
 **Slides:** [Apresentação HTML](../slides/rendered/aula-02-do-procedural-aos-objetos.html) · [PDF](../slides/rendered/aula-02-do-procedural-aos-objetos.pdf)
 
-!!! question "Pergunta central"
+**Pergunta central**
 
-    Se descrição, preço e quantidade pertencem ao mesmo item, onde está o `Item` no nosso programa?
+> Se descrição, preço e quantidade pertencem ao mesmo item, onde está o `Item` no nosso programa?
 
 ??? "Ver comentário"
 
@@ -250,9 +250,9 @@ Discuta as alternativas:
 
     O próprio `ItemPedido` já conhece `precoUnitario` e `quantidade`. As três formas podem produzir o mesmo número, mas `item.calcularSubtotal()` comunica que calcular o subtotal é uma responsabilidade do item e permite que o comportamento use diretamente seu estado.
 
-!!! synthesis "Síntese — responsabilidade"
+!!! conceito-chave "Conceito-chave — responsabilidade"
 
-    Objetos não servem apenas para agrupar dados. Também precisamos decidir quais responsabilidades pertencem a cada objeto.
+    Responsabilidade indica qual objeto deve cuidar de determinado estado ou comportamento na solução.
 
 ## Atividade de compreensão
 

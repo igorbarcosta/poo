@@ -274,13 +274,13 @@ Você pode usar o repertório anterior que considerar adequado. Não há uma org
     - calcula e exibe no console um total correspondente à soma dos cinco subtotais;
     - evita repetir manualmente cinco vezes o mesmo bloco de código.
 
-!!! question "Para a próxima aula"
+### Para a próxima aula
 
-    Formule uma resposta para cada questão. Não é necessário entregá-las por escrito nem discuti-las coletivamente ao final do laboratório. Vamos retomá-las na Aula 02 — Do procedural aos objetos, incluindo as estratégias usadas no desafio opcional.
+Formule uma resposta para cada questão. Não é necessário entregá-las por escrito nem discuti-las coletivamente ao final do laboratório. Vamos retomá-las na Aula 02 — Do procedural aos objetos, incluindo as estratégias usadas no desafio opcional.
 
-    1. Quais variáveis parecem representar partes de uma mesma coisa?
-    2. O que acontece com a organização do código quando aumentamos o número de itens?
-    3. Existe alguma maneira de manter os dados de um item e os comportamentos relacionados a ele mais próximos?
+1. Quais variáveis parecem representar partes de uma mesma coisa?
+2. O que acontece com a organização do código quando aumentamos o número de itens?
+3. Existe alguma maneira de manter os dados de um item e os comportamentos relacionados a ele mais próximos?
 
 ## Entrega
 

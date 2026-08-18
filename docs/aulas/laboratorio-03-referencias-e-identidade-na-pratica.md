@@ -159,13 +159,13 @@ Antes de executar, preveja:
 
 Depois, execute as comparações e a alteração, verifique suas previsões e explique os resultados.
 
-!!! question "Para a próxima aula"
+### Para a próxima aula
 
-    Vamos retomar estas questões na Aula 04 — Protegendo o estado dos objetos. Não é necessário respondê-las por escrito.
+Vamos retomar estas questões na Aula 04 — Protegendo o estado dos objetos. Não é necessário respondê-las por escrito.
 
-    1. Se duas partes do programa possuem referências para o mesmo objeto, ambas podem modificar seu estado atual?
-    2. Todo valor deveria poder ser atribuído diretamente aos campos de um objeto?
-    3. Quem deveria ser responsável por decidir se uma alteração de estado é válida?
+1. Se duas partes do programa possuem referências para o mesmo objeto, ambas podem modificar seu estado atual?
+2. Todo valor deveria poder ser atribuído diretamente aos campos de um objeto?
+3. Quem deveria ser responsável por decidir se uma alteração de estado é válida?
 
 ## Entrega
 

@@ -132,15 +132,13 @@ Esperar a turma perceber que o índice precisa manter os três arrays alinhados.
 <div class="concept-card"><strong>posição 1</strong><div class="state">"Mouse"<br>80.0<br>3</div></div>
 </div>
 
-<div class="key-point">Os arrays reduzem repetição. Milagre eles ainda não fazem: o mesmo índice precisa representar o mesmo item.</div>
+<div class="key-point">Os arrays reduzem a repetição, mas a relação entre os dados ainda depende do mesmo índice nas três estruturas.</div>
 
 <!--
 O benefício é real. A limitação é depender da posição em estruturas separadas.
 -->
 
 ---
-
-<!-- _class: section -->
 
 <div class="chapter">Primeiros objetos</div>
 
@@ -276,7 +274,7 @@ Esperar uma resposta breve. Não transformar em catálogo de heurísticas de mod
 
 <div class="statement"><code>ItemPedido</code> importa porque possui estado, comportamento e um papel coerente na solução.</div>
 
-<div class="key-point">Se todo substantivo virasse classe, modelagem seria análise sintática. O nome é uma pista, não uma decisão.</div>
+<div class="key-point">O nome ajuda a perceber um conceito, mas não decide sozinho quais classes devem existir.</div>
 
 <!--
 Consolidar sem aprofundar design. Voltar imediatamente ao exemplo central.
@@ -321,6 +319,26 @@ Ler conceitualmente. Como a classe é public, lembrar brevemente que o arquivo s
 
 ---
 
+<!-- _class: tip -->
+
+<div class="chapter">Da ideia ao Java</div>
+
+## Mantenha os arquivos no mesmo projeto
+
+```text
+lab-02/
+├── Main.java
+└── ItemPedido.java
+```
+
+<div class="statement">Abra a pasta do projeto na IDE, não apenas os arquivos separadamente.</div>
+
+<!--
+No VS Code, mencionar cd lab-02 e code . se isso ajudar. Não abrir package, classpath ou ferramentas de build.
+-->
+
+---
+
 
 <div class="chapter">Da ideia ao Java</div>
 
@@ -356,7 +374,7 @@ item1.quantidade = 2;
 <div class="statement"><code>new ItemPedido()</code> cria um novo objeto do tipo <code>ItemPedido</code>. Os parênteses pertencem ao mecanismo de construtores; esse assunto fica adiado por enquanto.</div>
 
 <!--
-Tratar como criação e preenchimento de um objeto. “new” parece importante demais para uma linha pequena; por enquanto, basta a leitura exibida. Não explicar variável, referência ou identidade.
+Tratar como criação e preenchimento de um objeto. Por enquanto, basta a leitura exibida para continuar a narrativa. Não explicar variável, referência ou identidade.
 -->
 
 ---
@@ -584,15 +602,15 @@ double calcularSubtotal() {
 
 ```java
 void aumentarQuantidade(int unidades) {
-    quantidade = quantidade + unidades;
+    // ação sobre o estado
 }
 ```
 
-<span>altera o estado e não devolve um valor</span>
+<span>recebe um valor, pode alterar o estado e não devolve um resultado</span>
 </div>
 </div>
 
-<div class="statement"><code>void</code> indica que o método não devolve um valor. Isso não significa ausência de ação: aqui, a quantidade muda.</div>
+<div class="statement"><code>void</code> indica que o método executa uma ação sem devolver um valor. A lógica da alteração ainda precisa ser construída.</div>
 
 <!--
 Contrastar consulta do estado e alteração do estado sem introduzir categorias formais. Não aprofundar outros mecanismos.
@@ -600,13 +618,13 @@ Contrastar consulta do estado e alteração do estado sem introduzir categorias 
 
 ---
 
-<!-- _class: synthesis -->
+<!-- _class: concept-key -->
 
 <div class="chapter">Responsabilidade</div>
 
 ## Responsabilidade
 
-<div class="statement">Objetos não servem apenas para agrupar dados.<br>Também decidimos quais responsabilidades pertencem a cada objeto.</div>
+<div class="statement">Responsabilidade indica qual objeto deve cuidar de determinado estado ou comportamento na solução.</div>
 
 <!--
 Clímax conceitual. Retomar as três alternativas e pedir por que a terceira comunica melhor a intenção.

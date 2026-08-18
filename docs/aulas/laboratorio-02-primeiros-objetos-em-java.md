@@ -6,9 +6,9 @@ icon: material/flask-outline
 
 No Laboratório 01, você criou uma solução procedural para registrar itens de uma compra. Na Aula 02, discutimos classe, objeto, estado, comportamento e responsabilidade. Agora vamos evoluir aquela solução para representar cada item como um objeto.
 
-!!! question "Pergunta central"
+**Pergunta central**
 
-    Como representar cada item da compra como uma unidade que reúne seu estado e seu comportamento?
+> Como representar cada item da compra como uma unidade que reúne seu estado e seu comportamento?
 
 !!! info "Uso de IA — Nível 1: Tutor"
 
@@ -198,13 +198,13 @@ Ao terminar, explique:
     - concentra o cálculo com desconto em um comportamento coerente, sem duplicá-lo para cada objeto;
     - permite explicar a decisão e a verificação realizadas.
 
-!!! question "Para a próxima aula"
+### Para a próxima aula
 
-    Vamos retomar estas questões na Aula 03 — Objetos, referências e identidade. Não é necessário respondê-las por escrito.
+Vamos retomar estas questões na Aula 03 — Objetos, referências e identidade. Não é necessário respondê-las por escrito.
 
-    1. Quantos objetos são criados quando usamos `new ItemPedido()` duas vezes?
-    2. O que exatamente uma variável como `item1` representa?
-    3. Seria possível duas variáveis diferentes se referirem ao mesmo objeto?
+1. Quantos objetos são criados quando usamos `new ItemPedido()` duas vezes?
+2. O que exatamente uma variável como `item1` representa?
+3. Seria possível duas variáveis diferentes se referirem ao mesmo objeto?
 
 ## Entrega
 

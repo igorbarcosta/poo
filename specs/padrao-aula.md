@@ -47,16 +47,18 @@ A narrativa é o estado normal da aula. Perguntas, exemplos, comparações, cód
 
 Uma **pausa didática** interrompe deliberadamente esse fluxo para concentrar a atenção em uma única função. A gramática oficial possui seis pausas:
 
-| Pausa | Função | Quando usar | Quando não usar | Admonition | Cor |
-| --- | --- | --- | --- | --- | --- |
-| Conceito-chave | formalizar uma ideia importante à qual a narrativa chegou | depois de problema, exploração ou discussão | para abrir uma explicação ou destacar toda definição | `conceito-chave` | laranja `#F29900`, fundo `#FFF3E0` |
-| Java em foco | explicar o mecanismo mínimo de Java necessário agora | quando a leitura ou a próxima prática depende da construção | como catálogo de sintaxe ou antecipação de linguagem | `java-focus` | azul `#4285F4`, fundo `#E8F0FE` |
-| Atividade | suspender a próxima resposta e solicitar produção do estudante | quando haverá tempo real para prever, discutir, explicar ou construir | para toda pergunta narrativa ou seção de exercícios | `activity` | verde `#34A853`, fundo `#E6F4EA` |
-| Dica | reduzir atrito prático sem ocupar o centro conceitual | para IDE, organização, execução e procedimentos úteis | para conteúdo conceitual indispensável | `tip` | amarelo `#FBBC05`, fundo `#FFF8E1` |
-| Armadilha | explicitar um caminho plausível, seu problema e o princípio a preservar | diante de erro conceitual ou técnico recorrente | para alertas genéricos ou dificuldades improváveis | `trap` | vermelho `#EA4335`, fundo `#FCE8E6` |
-| Síntese | fechar deliberadamente uma etapa importante | ao fim de macrobloco, discussão longa ou aula | como repetição integral do conteúdo | `synthesis` | roxo `#7E57C2`, fundo `#F3E5F5` |
+| Pausa | Função | Quando usar | Quando não usar | Admonition | Cor | Ícone Lucide |
+| --- | --- | --- | --- | --- | --- | --- |
+| Conceito-chave | formalizar uma ideia importante à qual a narrativa chegou | depois de problema, exploração ou discussão | para abrir uma explicação ou destacar toda definição | `conceito-chave` | laranja `#F29900`, fundo `#FFF3E0` | `book-open` |
+| Java em foco | explicar o mecanismo mínimo de Java necessário agora | quando a leitura ou a próxima prática depende da construção | como catálogo de sintaxe ou antecipação de linguagem | `java-focus` | azul `#4285F4`, fundo `#E8F0FE` | `code-2` |
+| Atividade | suspender a próxima resposta e solicitar produção do estudante | quando haverá tempo real para prever, discutir, explicar ou construir | para toda pergunta narrativa ou seção de exercícios | `activity` | verde `#34A853`, fundo `#E6F4EA` | `pencil` |
+| Dica | reduzir atrito prático sem ocupar o centro conceitual | para IDE, organização, execução e procedimentos úteis | para conteúdo conceitual indispensável | `tip` | amarelo `#FBBC05`, fundo `#FFF8E1` | `lightbulb` |
+| Armadilha | explicitar um caminho plausível, seu problema e o princípio a preservar | diante de erro conceitual ou técnico recorrente | para alertas genéricos ou dificuldades improváveis | `trap` | vermelho `#EA4335`, fundo `#FCE8E6` | `triangle-alert` |
+| Síntese | fechar deliberadamente uma etapa importante | ao fim de macrobloco, discussão longa ou aula | como repetição integral do conteúdo | `synthesis` | roxo `#7E57C2`, fundo `#F3E5F5` | `list-checks` |
 
 No roteiro e no laboratório, cada admonition preserva uma única função. Elas devem permanecer raras o suficiente para terem peso; o texto sequencial continua sendo a estrutura principal.
+
+No site, cada pausa possui a combinação fixa de nome, função, cor e ícone registrada acima. A identidade deve permanecer reconhecível nos temas claro e escuro, com contraste adequado de título, conteúdo, ícone, links e código.
 
 ### Java em foco
 

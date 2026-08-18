@@ -33,6 +33,16 @@ npm run slides:aula02:pdf
 
 O comando agregado gera HTML e PDF em `slides/rendered/`. PPTX não faz parte do fluxo oficial.
 
+Para gerar as distribuições oficiais da Aula 03:
+
+```bash
+npm run slides:aula03
+npm run slides:aula03:html
+npm run slides:aula03:pdf
+```
+
+As páginas das aulas podem apontar para os HTML e PDF oficiais. `.slides-build/` permanece reservado a artefatos temporários; arquivos em `slides/rendered/` são sempre derivados dos fontes e nunca devem ser editados manualmente.
+
 ## Ambiente no WSL
 
 O pipeline deve usar Node e npm instalados no Linux. Dentro do WSL, `which node` e `which npm` não devem apontar para caminhos iniciados por `/mnt/c/`. A versão de referência está registrada em `.nvmrc` e pode ser ativada com `nvm use`.

@@ -25,8 +25,7 @@ jobs:
       - name: Add rendered slides to the site
         run: |
           mkdir -p site/slides/rendered
-          cp slides/rendered/aula-02-do-procedural-aos-objetos.html site/slides/rendered/
-          cp slides/rendered/aula-02-do-procedural-aos-objetos.pdf site/slides/rendered/
+          cp slides/rendered/* site/slides/rendered/
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

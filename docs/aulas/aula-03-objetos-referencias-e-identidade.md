@@ -6,9 +6,11 @@ icon: material/school-outline
 
 Na Aula 02, usamos `new` para criar objetos com estados diferentes. Agora vamos tornar explícito o papel das variáveis que usamos para acessar esses objetos.
 
-!!! question "Pergunta central"
+**Slides:** [Apresentação HTML](../slides/rendered/aula-03-objetos-referencias-e-identidade.html) · [PDF](../slides/rendered/aula-03-objetos-referencias-e-identidade.pdf)
 
-    Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?
+**Pergunta central**
+
+> Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?
 
 ## Objetivos
 

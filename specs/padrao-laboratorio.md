@@ -68,6 +68,8 @@ O laboratório é organizado principalmente por incrementos. Não marcar cada in
 
 Quando uma interrupção tiver valor real, usar a mesma gramática das aulas: `conceito-chave` (laranja), `java-focus` (azul), `activity` (verde), `tip` (amarelo), `trap` (vermelho) e `synthesis` (roxo). Cada admonition cumpre uma única função. Em laboratórios, `tip`, `java-focus` e `trap` tendem a ser especialmente úteis, mas nenhuma pausa é obrigatória.
 
+As cores, os ícones Lucide e os requisitos de contraste nos temas claro e escuro seguem o mapeamento registrado em `padrao-aula.md`.
+
 Informações administrativas, política de IA, acompanhamento e critérios de conclusão podem continuar usando admonitions nativas adequadas; elas não são pausas da narrativa conceitual.
 
 ## Princípios de uso

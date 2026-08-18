@@ -12,7 +12,7 @@ Ao partir de um roteiro, reconstruir a experiência da aula — problema, pergun
 
 ## Fonte e distribuição
 
-Os arquivos `slides/*.md` são a fonte da verdade. HTML e PDF em `slides/rendered/` são distribuições oficiais derivadas e versionadas; não devem ser editados manualmente.
+Os arquivos `slides/*.md` são a fonte da verdade. HTML e PDF em `slides/rendered/` são distribuições oficiais derivadas e versionadas; não devem ser editados manualmente. As páginas das aulas podem apontar para esses artefatos oficiais. `.slides-build/` permanece reservado a renderizações temporárias.
 
 ## Narrativa: o estado normal
 
