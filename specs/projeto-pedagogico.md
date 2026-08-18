@@ -147,6 +147,8 @@ A sequência conceitual preferencial é: colaboração → dependências → var
 
 Deve haver pouco conteúdo técnico novo. O foco é integrar e usar o repertório anterior.
 
+Nas etapas de consolidação e nos checkpoints cumulativos, problemas mistos podem intercalar conceitos já estudados e exigir que o estudante decida qual ideia se aplica — composição, interface, herança ou mesmo nenhuma abstração adicional. O objetivo é praticar seleção e discriminação, não criar uma nova taxonomia de atividades.
+
 ## Práticas e projetos
 
 Cada unidade possui um projeto. Práticas de laboratório e projeto não são trilhas independentes: cada prática é um incremento do projeto da unidade.
@@ -204,7 +206,7 @@ As provas são cumulativas no âmbito apropriado de cada unidade. POO é mais im
 
 Os checkpoints são individuais, presenciais, em papel, duram aproximadamente 30 a 40 minutos e ocorrem dois por unidade. Eles exercitam raciocínio semelhante ao das provas, são cumulativos na medida apropriada e fornecem feedback antes da avaliação da unidade.
 
-As aulas seguintes a checkpoints e provas podem discutir soluções, erros frequentes, alternativas e raciocínio esperado.
+As aulas seguintes a checkpoints e provas podem discutir soluções, erros frequentes, alternativas e raciocínio esperado. O feedback deve priorizar o modelo mental ou o raciocínio que levou ao erro, e não apenas apresentar a resposta correta — por exemplo, reconhecer quando variável e objeto foram tratados como a mesma coisa.
 
 ### Avaliação Substitutiva Cumulativa
 

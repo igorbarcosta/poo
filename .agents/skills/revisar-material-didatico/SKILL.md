@@ -1,6 +1,6 @@
 ---
 name: revisar-material-didatico
-description: Revisa materiais didáticos existentes deste repositório — Aula, Laboratório, deck isolado, Aula + deck ou Aula + Laboratório + deck — avaliando clareza, legibilidade, coerência pedagógica e prontidão para uso. Use quando o usuário pedir revisão, diagnóstico ou verificação de material já criado; por padrão, apenas analisar e relatar, editando somente quando houver pedido explícito para corrigir, aplicar, atualizar ou implementar ajustes.
+description: Revisa materiais didáticos existentes deste repositório — Aula, Laboratório, Aula + Laboratório, deck isolado, Aula + deck ou Aula + Laboratório + deck — avaliando clareza, legibilidade, coerência pedagógica e prontidão para uso. Use quando o usuário pedir revisão, diagnóstico ou verificação de material já criado; por padrão, apenas analisar e relatar, editando somente quando houver pedido explícito para corrigir, aplicar, atualizar ou implementar ajustes.
 ---
 
 # Revisar material didático
@@ -24,6 +24,7 @@ Identificar problemas reais e melhorias úteis sem promover reescrita infinita o
    - página anterior relacionada;
    - página seguinte relacionada, quando existir;
    - `docs/materiais/java-essencial.md`, quando houver Java envolvido.
+3. Procurar em `retrospectivas/` observações relacionadas ao escopo e ler somente as entradas relevantes. Usá-las como evidência contextual, sem convertê-las automaticamente em regra ou alteração permanente.
 
 Tratar o pedido específico como definição do escopo da revisão. Não converter decisões revisáveis observadas nos materiais em regras permanentes.
 
@@ -69,6 +70,7 @@ Quando houver experimento, verificar se a previsão é possível e determinada, 
 - Verificar legibilidade a distância, densidade, tamanho e recorte do código projetado, alinhamento, contraste e composição.
 - Conferir se as pausas didáticas têm função real, ocupam frames próprios e seguem `specs/padrao-slides.md`.
 - Comparar o deck com o roteiro para identificar lacunas, antecipações, redundâncias ou mudanças de ênfase.
+- Procurar especificamente redundância expositiva, distinguindo repetição que muda a operação cognitiva de mera reformulação da mesma explicação.
 - Inspecionar os renderizados ou miniaturas disponíveis em busca de overflow, elementos cortados e geometria instável.
 
 Não prolongar a revisão em busca de uma versão ideal. Encerrar quando não houver achados necessários ou recomendados que prejudiquem o uso real.

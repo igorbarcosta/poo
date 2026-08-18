@@ -65,6 +65,8 @@ Os aliases legados `question`, `concept`, `example`, `takeaway`, `definition`, `
 - Não estabelecer meta fixa de quantidade. Dezenas de slides simples podem servir a uma aula de 90 minutos.
 - Manter muitos slides neutros entre as pausas; as miniaturas não devem parecer um festival de cores.
 
+Repetição é útil quando muda a operação cognitiva do estudante, por exemplo: explicação → previsão → comparação → aplicação → síntese. Torna-se redundância expositiva quando apenas reformula a mesma explicação em frames sucessivos. Na revisão do deck, preservar retomadas com nova função e reduzir sequências de reformulação, takeaway e síntese quase idênticos.
+
 ## Código, diagramas e legibilidade
 
 - Projetar somente o trecho necessário, em tamanho legível a distância.

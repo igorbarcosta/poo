@@ -32,6 +32,10 @@ Aula não é uma sequência de tópicos independentes. O storytelling didático 
 
 O encontro deve ser dimensionado internamente para 90 minutos, considerando explicação, leitura, previsão, espera, discussão, atividade, formalização e síntese. Esse dimensionamento orienta o projeto do material, mas não aparece como cronograma de minutos na página destinada aos estudantes.
 
+Planejar o encontro com um **núcleo necessário** e possíveis **aprofundamentos elásticos**. O núcleo reúne o que precisa acontecer; os aprofundamentos entram conforme o ritmo da turma e devem ampliar recuperação, previsão, comparação, diagnóstico, explicação ou transferência, sem antecipar conteúdo futuro nem repetir exposição apenas para ocupar tempo.
+
+Algumas aulas podem começar com uma recuperação curta, sem consulta e sem nota, combinando duas ou três questões sobre o encontro anterior e conteúdos mais antigos. Também pode ser útil empregar Peer Instruction quando houver modelos mentais concorrentes: resposta individual → discussão com colega → nova resposta → explicação coletiva, sem depender de clickers ou outra tecnologia. Nenhuma dessas estratégias é seção fixa ou ritual obrigatório.
+
 ## Legibilidade
 
 Legibilidade é um requisito pedagógico. A página deve permitir que o estudante compreenda a explicação, localize informações rapidamente, diferencie conceitos, exemplos, dicas e atividades e retome o conteúdo sem reler grandes blocos.

@@ -16,8 +16,9 @@ Transformar decisões pedagógicas já fornecidas em um par coerente de páginas
    - `specs/padrao-laboratorio.md`;
    - `specs/estrutura-site.md`.
 3. Consultar o par anterior, quando existir, para preservar continuidade e recuperar questões deixadas em aberto.
-4. Consultar `docs/materiais/java-essencial.md`, `docs/aulas/index.md` e a navegação atual em `zensical.toml`.
-5. Identificar no pedido:
+4. Procurar em `retrospectivas/` observações relacionadas ao material, à oferta ou aos conceitos em questão e ler somente as entradas relevantes. Tratá-las como evidência contextual para calibração, não como regra normativa.
+5. Consultar `docs/materiais/java-essencial.md`, `docs/aulas/index.md` e a navegação atual em `zensical.toml`.
+6. Identificar no pedido:
    - número e títulos do par;
    - pergunta ou problema central;
    - conceitos incluídos e conteúdos que ainda não entram;
@@ -33,9 +34,12 @@ Se faltar uma decisão pedagógica relevante que não esteja no pedido nem nas f
 3. Garantir que a Aula forneça o embasamento usado no Laboratório e que o Laboratório seja predominantemente prático.
 4. Usar, quando servirem ao objetivo, comparação, previsão, execução, explicação, experimentação, transferência e incrementos do projeto.
 5. Aprofundar os conceitos planejados antes de antecipar conteúdos futuros apenas para aumentar a densidade.
-6. Tratar Java de forma incremental e transversal. Usar “Java em foco” apenas diante de uma necessidade real de linguagem, sintaxe ou convenção.
-7. Atualizar `docs/materiais/java-essencial.md` somente com recursos Java efetivamente introduzidos no par, sem transformá-lo em apostila.
-8. Atualizar `docs/aulas/index.md`. Alterar `zensical.toml` somente se a navegação explícita atual exigir a inclusão das novas páginas.
+6. Dimensionar a aula com núcleo necessário e aprofundamentos elásticos que mudem a operação cognitiva, sem usar repetição ou conteúdo futuro como preenchimento.
+7. Tratar Java de forma incremental e transversal. Usar “Java em foco” apenas diante de uma necessidade real de linguagem, sintaxe ou convenção.
+8. Atualizar `docs/materiais/java-essencial.md` somente com recursos Java efetivamente introduzidos no par, sem transformá-lo em apostila.
+9. Atualizar `docs/aulas/index.md`. Alterar `zensical.toml` somente se a navegação explícita atual exigir a inclusão das novas páginas.
+
+Não transformar uma impressão isolada da retrospectiva em mudança curricular, exclusão de conteúdo ou regra permanente.
 
 Manter no roteiro público apenas informações úteis para compreender, executar, verificar, aprofundar e entregar. Deixar detalhes internos de planejamento nas specs.
 

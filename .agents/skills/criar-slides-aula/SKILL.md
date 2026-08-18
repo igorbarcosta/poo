@@ -13,18 +13,21 @@ Produzir um instrumento de condução da aula, não uma conversão mecânica da 
 2. Ler `specs/padrao-slides.md` integralmente.
 3. Localizar e ler a página correspondente em `docs/aulas/`.
 4. Confirmar que a aula está pedagogicamente definida e validada. Se faltar uma decisão importante, interromper e pedir ao professor; não completar o currículo por conta própria.
-5. Consultar o deck anterior quando ele ajudar a preservar continuidade visual, vocabulário ou uma retomada narrativa. Não usá-lo como molde obrigatório.
-6. Consultar o tema existente em `slides/theme/` e reutilizá-lo sem criar outro sistema visual.
+5. Consultar a aula anterior e o deck anterior somente quando ajudarem a preservar continuidade visual, conceitual ou narrativa. Não usá-los como moldes obrigatórios.
+6. Procurar em `retrospectivas/` observações relacionadas à aula ou a decks semelhantes e ler somente as entradas relevantes. Usá-las para calibrar densidade e dificuldades reais, não como autoridade normativa.
+7. Consultar o tema existente em `slides/theme/` e reutilizá-lo sem criar outro sistema visual.
 
 ## Derivar o deck
 
 1. Identificar a trajetória da aula: problema, perguntas, previsões, descobertas, formalizações, aplicações e sínteses.
 2. Planejar frames com uma ideia principal cada, preservando a causalidade e as pausas didáticas definidas no roteiro.
-3. Selecionar apenas texto, código, perguntas, atividades e diagramas que precisem permanecer projetados. Usar notas do apresentador para orientações de condução que não devam ocupar o frame.
-4. Criar ou atualizar `slides/aula-XX-<slug>.md` com o tema compartilhado.
-5. Preservar o conteúdo e a intenção da aula original. Não alterar a página salvo correção técnica ou inconsistência pequena indispensável; diante de mudança pedagógica, parar e pedir orientação.
+3. Preservar o núcleo necessário e representar aprofundamentos elásticos planejados quando tiverem função pedagógica real.
+4. Procurar redundância expositiva: manter retomadas que mudem a operação cognitiva e reduzir reformulações que apenas repitam a explicação.
+5. Selecionar apenas texto, código, perguntas, atividades e diagramas que precisem permanecer projetados. Usar notas do apresentador para orientações de condução que não devam ocupar o frame.
+6. Criar ou atualizar `slides/aula-XX-<slug>.md` com o tema compartilhado.
+7. Preservar o conteúdo e a intenção da aula original. Não alterar a página salvo correção técnica ou inconsistência pequena indispensável; diante de mudança pedagógica, parar e pedir orientação.
 
-Não inventar conteúdo importante, decidir currículo, alterar o projeto pedagógico nem antecipar assuntos apenas para completar o deck.
+Não inventar conteúdo importante, decidir currículo, alterar o projeto pedagógico, transformar observação isolada em regra nem antecipar assuntos apenas para completar o deck.
 
 ## Renderizar e inspecionar
 

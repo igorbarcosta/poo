@@ -6,9 +6,9 @@ icon: material/school-outline
 
 Na Aula 03, vimos que diferentes variáveis podem permitir acesso ao mesmo objeto. Na estrutura atual do Projeto 1, qualquer trecho que tenha acesso a um `ItemPedido` também pode alterar diretamente seus campos. Agora vamos investigar as consequências dessa liberdade.
 
-!!! question "Pergunta central"
+**Pergunta central**
 
-    Se um objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder modificá-lo diretamente?
+> Se um objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder modificá-lo diretamente?
 
 ## Objetivos
 
@@ -46,7 +46,7 @@ Discuta:
 - esse valor faz sentido para um item de pedido?
 - quem deveria decidir se essa alteração é aceitável?
 
-!!! info "Linguagem e domínio"
+!!! conceito-chave "Conceito-chave — validade no domínio"
 
     Um valor ser aceito pela linguagem não significa que seja válido para o problema que estamos modelando.
 
@@ -105,10 +105,16 @@ item.quantidade = -200;
 
 O erro de compilação é uma informação útil: ele mostra que a classe passou a estabelecer uma fronteira para o acesso direto ao campo.
 
-!!! tip "Java em foco — `private` e `public`"
+!!! java-focus "Java em foco — `private` e `public`"
 
     - `private`: o membro pode ser acessado somente dentro da própria classe;
     - `public`: o membro é disponibilizado para uso externo à classe.
+
+Temos ainda um detalhe necessário para acompanhar a próxima alteração. Quando nenhum valor é atribuído explicitamente, um campo `int` de um objeto começa com `0`.
+
+!!! java-focus "Java em foco — valor inicial do campo"
+
+    Neste exemplo, `quantidade` começa com `0`. Esse valor inicial permitirá aumentar a quantidade por meio de um comportamento, sem depender de uma atribuição direta em `Main`.
 
 ### Alterando o estado por meio de um comportamento
 
@@ -164,9 +170,9 @@ O código externo passa a consultar assim:
 System.out.println(item.getQuantidade());
 ```
 
-!!! info "Consulta e alteração"
+**Consulta e alteração**
 
-    Permitir consultar um valor não significa permitir modificá-lo diretamente.
+> Permitir consultar um valor não significa permitir modificá-lo diretamente.
 
 ### Encapsulamento não é getter mais setter
 
@@ -208,6 +214,18 @@ Discuta com um colega:
 
 Operações como `depositar(...)` e `sacar(...)` podem surgir na discussão. Não é necessário implementar a classe nem definir regras bancárias completas.
 
+### Aprofundamento se o ritmo permitir
+
+!!! activity "Atividade — diagnosticar uma solução aparentemente protegida"
+
+    Compare uma classe que expõe `setQuantidade(int valor)` sem verificar o valor recebido com outra que oferece `aumentarQuantidade(int unidades)` e preserva a regra `unidades > 0`.
+
+    1. Responda individualmente: as duas soluções protegem o estado da mesma forma?
+    2. Discuta a resposta com um colega.
+    3. Revise sua resposta e justifique qual operação comunica melhor a intenção do domínio.
+
+    O objetivo não é adicionar outro mecanismo de Java, mas usar encapsulamento e responsabilidade para diagnosticar duas decisões possíveis.
+
 ## Síntese
 
 - objetos possuem estado;
@@ -233,5 +251,5 @@ Esse problema será retomado posteriormente. Por enquanto, vamos consolidar como
 
 ## Material da aula
 
-- [Laboratório 03 — Referências e identidade na prática](laboratorio-03-referencias-e-identidade-na-pratica.md)
+- [Laboratório 04 — Controlando alterações de estado](laboratorio-04-controlando-alteracoes-de-estado.md)
 - [Java essencial para quem já sabe programar](../materiais/java-essencial.md)

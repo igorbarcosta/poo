@@ -15,7 +15,9 @@ Este repositório contém o site da disciplina de Programação Orientada a Obje
 
 - `docs/`: conteúdo do site.
 - `slides/*.md`: fontes Marp dos slides oficiais.
+- `slides/theme/`: tema compartilhado dos decks.
 - `slides/rendered/`: distribuições oficiais HTML/PDF derivadas das fontes.
+- `retrospectivas/`: observações contextuais da execução da disciplina, não regras permanentes.
 - `specs/`: decisões de estrutura e padrões pedagógicos; consulte-as antes de criar ou reorganizar conteúdo.
 - Consulte `specs/padrao-aula.md` e `specs/padrao-laboratorio.md` antes de criar aulas ou laboratórios.
 - Consulte `specs/padrao-slides.md` antes de criar ou alterar slides.

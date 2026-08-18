@@ -96,9 +96,7 @@ O método deve:
 
 Adapte `Main` para usar esse comportamento no lugar das atribuições diretas de quantidade. Não use exceções nem retorne códigos de erro.
 
-!!! tip "Java em foco — valor inicial do campo"
-
-    Neste exemplo, um campo `int` de um objeto começa com `0` quando nenhum valor foi atribuído explicitamente.
+Como vimos na aula, `quantidade` começa com `0` quando nenhum valor foi atribuído explicitamente ao campo.
 
 ### Incremento D — Consultar a quantidade
 
@@ -191,13 +189,13 @@ Use o objeto que terminou o Incremento E com quantidade `5` ou prepare outro obj
 
 Não use exceções nem adicione retorno booleano. O objetivo é aprofundar a ideia de que o próprio comportamento preserva uma regra do estado.
 
-!!! question "Para consolidar"
+### Para consolidar
 
-    1. Por que tornar um campo `private` não é, sozinho, suficiente para garantir um bom encapsulamento?
-    2. Qual é a diferença entre permitir consultar a quantidade e permitir alterá-la diretamente?
-    3. Por que `aumentarQuantidade(3)` comunica uma intenção diferente de `setQuantidade(3)`?
+1. Por que tornar um campo `private` não é, sozinho, suficiente para garantir um bom encapsulamento?
+2. Qual é a diferença entre permitir consultar a quantidade e permitir alterá-la diretamente?
+3. Por que `aumentarQuantidade(3)` comunica uma intenção diferente de `setQuantidade(3)`?
 
-    Não é necessário entregar respostas escritas.
+Não é necessário entregar respostas escritas.
 
 ## Entrega
 
