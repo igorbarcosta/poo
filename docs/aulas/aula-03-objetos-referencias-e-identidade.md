@@ -4,137 +4,60 @@ icon: material/school-outline
 
 # Aula 03 — Objetos, referências e identidade
 
-Na Aula 02, usamos `new` para criar objetos com estados diferentes. Agora vamos tornar explícito o papel das variáveis que usamos para acessar esses objetos.
+No Laboratório 02, criamos objetos, alteramos seu estado e chamamos seus comportamentos. Para fazer tudo isso, usamos variáveis como `item1` e `item2`. Agora uma atribuição aparentemente simples vai nos obrigar a entender melhor o papel dessas variáveis.
 
 **Slides:** [Apresentação HTML](../slides/rendered/aula-03-objetos-referencias-e-identidade.html) · [PDF](../slides/rendered/aula-03-objetos-referencias-e-identidade.pdf)
 
 **Pergunta central**
 
-> Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?
+> O que exatamente é copiado quando uma variável de objeto é atribuída a outra?
 
 ## Objetivos
 
 Ao final deste encontro, você deverá ser capaz de:
 
-- distinguir objeto de variável de referência;
-- compreender o papel de `new` na criação de novos objetos;
-- explicar que uma variável de tipo de classe mantém uma referência para um objeto;
-- prever o efeito de atribuir uma referência a outra variável;
-- reconhecer quando duas variáveis se referem ao mesmo objeto;
-- distinguir identidade de estado;
-- utilizar `==`, neste contexto, para verificar se duas referências apontam para o mesmo objeto;
-- explicar pequenos trechos de código envolvendo referências e alteração de estado.
+- distinguir variável, referência, objeto e estado em exemplos simples;
+- prever o efeito de atribuir uma variável de objeto a outra;
+- explicar por que duas variáveis podem permitir acesso ao mesmo objeto;
+- usar a presença de `new` para raciocinar sobre quantos objetos foram criados;
+- distinguir estado de identidade;
+- interpretar `==` entre referências como uma verificação de identidade;
+- representar e explicar relações entre variáveis e objetos por meio de diagramas simples.
 
 ## Conteúdo
 
-### Retomando o Laboratório 02
+### Uma linha conhecida, seguida de outra
 
-Considere novamente:
-
-```java
-ItemPedido item1 = new ItemPedido();
-ItemPedido item2 = new ItemPedido();
-```
-
-Discuta:
-
-- quantos objetos foram criados e onde ocorre essa criação?
-- `item1` é o objeto ou cumpre outro papel?
-- o que `new ItemPedido()` faz em cada instrução?
-
-As duas expressões `new ItemPedido()` criam dois objetos. `item1` e `item2` são variáveis usadas para acessar esses objetos.
-
-### Variável, referência e objeto
-
-Observe as três partes desta instrução:
-
-```java
-ItemPedido item1 = new ItemPedido();
-```
-
-- `ItemPedido` é o tipo da variável;
-- `item1` é uma variável que mantém uma referência;
-- `new ItemPedido()` cria um novo objeto.
-
-Também poderíamos separar a declaração da atribuição:
-
-```java
-ItemPedido item1;
-item1 = new ItemPedido();
-```
-
-!!! conceito-chave "Conceito-chave — referência"
-
-    A variável não é o objeto. Ela mantém uma referência que permite acessar o objeto.
-
-Esse é um modelo conceitual para compreender o código. Não precisamos recorrer a detalhes internos da plataforma Java para usá-lo.
-
-### Valores simples e referências
-
-Comece com valores inteiros:
-
-```java
-int a = 2;
-int b = a;
-
-b = 5;
-```
-
-Qual é o valor de `a` ao final? A atribuição `int b = a` copia o número `2`, então alterar `b` não altera `a`.
-
-Agora compare:
+Começamos com uma instrução semelhante às usadas no Laboratório 02:
 
 ```java
 ItemPedido item1 = new ItemPedido();
 item1.quantidade = 2;
-
-ItemPedido item2 = item1;
-item2.quantidade = 5;
 ```
 
-Uma atribuição copia o valor da variável. Neste caso, o valor copiado é uma referência. Por isso, `item1` e `item2` passam a permitir acesso ao mesmo objeto. A atribuição `item2 = item1` não cria outro `ItemPedido`.
+Até aqui, sabemos que `new ItemPedido()` cria um objeto e que `item1.quantidade` permite acessar parte de seu estado.
 
-```text
-item1 ──┐
-        ├──► objeto ItemPedido
-item2 ──┘
-```
-
-### Dois objetos ou duas referências?
-
-Compare as situações.
-
-**Situação A — dois usos de `new`**
+Agora acrescentamos uma segunda variável:
 
 ```java
-ItemPedido item1 = new ItemPedido();
-ItemPedido item2 = new ItemPedido();
-```
-
-```text
-item1 ─────► objeto ItemPedido
-
-item2 ─────► outro objeto ItemPedido
-```
-
-**Situação B — cópia da referência**
-
-```java
-ItemPedido item1 = new ItemPedido();
 ItemPedido item2 = item1;
 ```
 
-```text
-item1 ──┐
-        ├──► objeto ItemPedido
-item2 ──┘
-```
+Essa linha merece ser observada com cuidado. Não há uma nova expressão `new ItemPedido()`. Ainda assim, agora aparecem duas variáveis do tipo `ItemPedido`.
 
-Nas duas situações existem duas variáveis. Na situação A, dois usos de `new` criam dois objetos. Na situação B, há um único objeto acessível por duas variáveis.
+!!! activity "Atividade — antes de executar"
 
-### Prevendo o comportamento
+    Sem executar o código, formule uma previsão:
 
-Antes de continuar, preveja o que será apresentado:
+    1. Quantos objetos existem depois de `ItemPedido item2 = item1;`?
+    2. Os dados do objeto foram copiados para um novo objeto?
+    3. Se alterarmos `item2.quantidade`, o valor observado por `item1` continuará igual?
+
+    Registre uma justificativa, mesmo que ainda não tenha certeza. A previsão será retomada depois da observação.
+
+### Uma alteração aparece por outro nome
+
+Complete o experimento:
 
 ```java
 ItemPedido item1 = new ItemPedido();
@@ -146,68 +69,160 @@ item2.quantidade = 7;
 System.out.println(item1.quantidade);
 ```
 
-Considere:
+O valor exibido é:
 
-- qual valor será apresentado?
-- quantos objetos existem?
-- por que uma alteração feita usando `item2` pode ser observada usando `item1`?
+```text
+7
+```
 
-O programa exibe `7` no console. Existe um único objeto, e as duas variáveis mantêm referências para ele. A alteração feita por `item2` modifica o estado desse objeto; `item1` permite observar o mesmo estado.
+Esse resultado pode causar estranhamento. A alteração foi escrita usando `item2`, mas foi observada usando `item1`. Se imaginamos que a atribuição criou uma cópia independente do objeto, o resultado não faz sentido.
 
-### Identidade e estado
+Precisamos então voltar à pergunta central: o que foi copiado para `item2`?
 
-Agora temos dois usos de `new`:
+### Separando variável e objeto
+
+Na instrução inicial, existem papéis diferentes:
 
 ```java
 ItemPedido item1 = new ItemPedido();
-item1.descricao = "Teclado";
-item1.quantidade = 2;
-
-ItemPedido item2 = new ItemPedido();
-item2.descricao = "Teclado";
-item2.quantidade = 2;
 ```
 
-- **estado:** os valores que um objeto possui naquele momento;
-- **identidade:** indica se estamos falando do mesmo objeto ou de objetos diferentes.
+- `ItemPedido` informa o tipo da variável;
+- `item1` é a variável usada para acessar o objeto;
+- `new ItemPedido()` cria o objeto.
 
-!!! conceito-chave "Conceito-chave — identidade"
+A variável e o objeto não são a mesma coisa. Para expressar a relação entre eles, usamos a ideia de **referência**.
 
-    Dois objetos podem possuir o mesmo estado e ainda assim serem objetos distintos.
+!!! conceito-chave "Conceito-chave — referência"
 
-### Verificando identidade com `==`
+    Uma referência é um valor que permite localizar e acessar um objeto. Uma variável de tipo de classe pode manter esse valor.
 
-Com dois objetos diferentes:
+Não precisamos transformar esse modelo em uma explicação sobre endereços físicos, heap ou detalhes internos da JVM. Neste momento, ele precisa apenas explicar corretamente o código que conseguimos observar.
+
+Podemos representar a primeira instrução assim:
+
+```text
+item1 ─────► objeto ItemPedido
+```
+
+Quando executamos:
 
 ```java
-ItemPedido item1 = new ItemPedido();
-ItemPedido item2 = new ItemPedido();
-
-System.out.println(item1 == item2);
+ItemPedido item2 = item1;
 ```
 
-O resultado é `false`. Com duas referências para o mesmo objeto:
+o valor mantido em `item1` é atribuído a `item2`. Como esse valor é uma referência, as duas variáveis passam a permitir acesso ao mesmo objeto:
+
+```text
+item1 ──┐
+        ├──► objeto ItemPedido
+item2 ──┘     quantidade = 7
+```
+
+Agora podemos voltar ao resultado anterior. `item2.quantidade = 7` alterou o estado do único objeto existente. `item1.quantidade` observa esse mesmo estado.
+
+!!! trap "Armadilha — outra variável, outro objeto"
+
+    É tentador interpretar `ItemPedido item2 = item1;` como uma cópia independente do objeto. A instrução não executa `new`; ela copia a referência. Há duas variáveis, mas apenas um objeto.
+
+### Contar variáveis não é contar objetos
+
+Compare os dois cenários.
+
+**Cenário A — uma criação**
 
 ```java
 ItemPedido item1 = new ItemPedido();
 ItemPedido item2 = item1;
-
-System.out.println(item1 == item2);
 ```
 
-O resultado é `true`.
+```text
+item1 ──┐
+        ├──► objeto 1
+item2 ──┘
+```
 
-!!! java-focus "Java em foco — `==` e referências"
+**Cenário B — duas criações**
 
-    Quando trabalhamos com referências a objetos, `==` verifica se duas referências apontam para o mesmo objeto. Neste contexto, ele verifica identidade; comparação de conteúdo será discutida posteriormente, quando houver necessidade.
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = new ItemPedido();
+```
 
-## Atividade de compreensão
+```text
+item1 ─────► objeto 1
+item2 ─────► objeto 2
+```
 
-!!! activity "Atividade — prever, executar e explicar"
+Nos dois cenários existem duas variáveis. O que muda é a quantidade de objetos criados: cada execução de `new ItemPedido()` cria um novo objeto.
 
-    Primeiro façam as quatro previsões sem executar o código. Depois comparem com a execução e expliquem cada resultado usando referência, identidade e estado.
+Essa observação resolve uma parte do problema. Ainda precisamos distinguir situações em que os objetos possuem dados iguais.
 
-Antes de conferir os resultados, leia o código e formule suas previsões:
+### Estados iguais não respondem tudo
+
+Considere duas criações:
+
+```java
+ItemPedido item1 = new ItemPedido();
+item1.descricao = "Teclado";
+item1.precoUnitario = 150.0;
+item1.quantidade = 2;
+
+ItemPedido item2 = new ItemPedido();
+item2.descricao = "Teclado";
+item2.precoUnitario = 150.0;
+item2.quantidade = 2;
+```
+
+Os dois objetos possuem, neste momento, os mesmos valores de descrição, preço e quantidade. Isso nos permite dizer que seus estados são equivalentes para os campos observados.
+
+Mas duas perguntas continuam diferentes:
+
+1. os objetos possuem os mesmos valores?
+2. as variáveis permitem acesso ao mesmo objeto?
+
+A primeira pergunta trata de estado. A segunda exige outra ideia.
+
+!!! conceito-chave "Conceito-chave — identidade"
+
+    Identidade distingue um objeto dos demais. Objetos criados separadamente continuam distintos, mesmo quando possuem o mesmo estado.
+
+No exemplo, há duas execuções de `new ItemPedido()`. Portanto, existem dois objetos com identidades diferentes. Alterar um deles não altera automaticamente o outro.
+
+### Como responder se é o mesmo objeto?
+
+Agora temos uma pergunta concreta para a linguagem Java:
+
+> Como verificar se duas referências correspondem ao mesmo objeto?
+
+Compare:
+
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = item1;
+```
+
+e:
+
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = new ItemPedido();
+```
+
+!!! java-focus "Java em foco — `==` entre referências"
+
+    Neste contexto, `item1 == item2` verifica se as duas referências correspondem ao mesmo objeto.
+
+    - duas referências para o mesmo objeto → `true`;
+    - referências para objetos distintos → `false`.
+
+    `==` não responde aqui se dois objetos possuem campos com valores iguais. Comparação de conteúdo será estudada quando essa necessidade aparecer.
+
+No primeiro cenário, `item1 == item2` produz `true`, pois a referência foi copiada. No segundo, produz `false`, pois ocorreram duas criações.
+
+### Aplicando o modelo completo
+
+Agora reúna as ideias em um único trecho:
 
 ```java
 ItemPedido a = new ItemPedido();
@@ -221,50 +236,59 @@ c.quantidade = 2;
 b.quantidade = 4;
 ```
 
-Discuta com um colega:
+!!! activity "Atividade — desenhar, prever e justificar"
 
-1. Quantos objetos foram criados?
-2. Quais serão os valores de `a.quantidade`, `b.quantidade` e `c.quantidade`?
-3. Qual será o resultado de `a == b`?
-4. Qual será o resultado de `a == c`?
+    Em dupla, antes de qualquer execução:
 
-Depois, explique os resultados usando as ideias de referência, identidade e estado. Esta atividade não é uma entrega formal.
+    1. desenhem as variáveis e os objetos, usando setas para representar referências;
+    2. indiquem quantos objetos foram criados;
+    3. prevejam `a.quantidade`, `b.quantidade` e `c.quantidade`;
+    4. prevejam `a == b` e `a == c`;
+    5. justifiquem cada resposta usando `new`, referência, estado e identidade.
 
-## Transferência para outro domínio
+??? "Ver discussão"
 
-Considere, sem implementar a classe `Conta`:
+    Há dois objetos porque aparecem duas execuções de `new`. `a` e `b` permitem acesso ao primeiro objeto, cuja quantidade termina em `4`; `c` permite acesso ao segundo, cuja quantidade permanece `2`. Assim, `a == b` é `true` e `a == c` é `false`.
+
+### Transferindo para outro domínio
+
+O modelo não depende de `ItemPedido`. Considere, sem implementar `Conta`:
 
 ```java
-Conta conta1 = new Conta();
-Conta conta2 = conta1;
+Conta contaPrincipal = new Conta();
+Conta contaParaConsulta = contaPrincipal;
 ```
 
-Se uma operação realizada usando `conta2` modificar esse objeto, o que será observado quando acessarmos o mesmo objeto por `conta1`? Explique usando o modelo de referências desenvolvido nesta aula.
+Se uma operação feita por `contaParaConsulta` alterar o objeto, a mudança também será observada por `contaPrincipal`, pois existe um único objeto acessível por duas referências.
+
+Essa consequência será importante quando começarmos a decidir quem pode alterar o estado de um objeto.
 
 ## Síntese
 
-!!! synthesis "Síntese — referências e identidade"
+!!! synthesis "Síntese — da atribuição à identidade"
 
-    `new` cria um objeto; atribuir uma variável de tipo de classe copia a referência. Por isso, duas variáveis podem acessar o mesmo objeto, enquanto dois objetos diferentes podem ter o mesmo estado sem compartilhar identidade.
+    `new` cria um objeto; uma variável de tipo de classe mantém uma referência para acessá-lo. Atribuir essa variável a outra copia a referência, não o objeto. Por isso, duas variáveis podem observar o mesmo estado. Identidade distingue esse caso de dois objetos criados separadamente, e `==` responde se duas referências correspondem ao mesmo objeto.
 
-- `new` cria um novo objeto;
-- uma variável de tipo de classe mantém uma referência;
-- atribuir uma referência a outra variável não cria um novo objeto;
-- duas variáveis podem permitir acesso ao mesmo objeto;
-- objetos diferentes podem possuir o mesmo estado;
-- `==` verifica identidade quando comparamos referências.
+Podemos recuperar a trajetória da aula:
 
-## Preparação para a próxima aula
+**atribuição entre variáveis → alteração observada por ambas → referência → dois `new` → objetos distintos → identidade → `==`**
 
-Na estrutura atual, diferentes partes do programa que têm acesso ao objeto também podem alterar diretamente seus campos. O código abaixo, por exemplo, é aceito:
+## Preparação para o laboratório
+
+No Laboratório 03, você investigará esses dois cenários no Projeto 1. Para cada mudança, será necessário prever antes de executar, observar o resultado e explicá-lo com o modelo construído nesta aula.
+
+## Questão em aberto
+
+Se duas partes do programa possuem referências para o mesmo objeto, ambas conseguem alterar diretamente seus campos na estrutura atual:
 
 ```java
 item.quantidade = -200;
 ```
 
-Que problemas isso pode causar? Na Aula 04 — Protegendo o estado dos objetos, partiremos dessa necessidade. Ainda não vamos resolvê-la aqui.
+Essa possibilidade cria a pergunta da Aula 04: se um objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder modificá-lo diretamente?
 
 ## Material da aula
 
 - [Laboratório 02 — Primeiros objetos em Java](laboratorio-02-primeiros-objetos-em-java.md)
+- [Laboratório 03 — Referências e identidade na prática](laboratorio-03-referencias-e-identidade-na-pratica.md)
 - [Java essencial para quem já sabe programar](../materiais/java-essencial.md)

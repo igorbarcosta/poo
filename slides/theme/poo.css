@@ -57,7 +57,7 @@ h1 {
 
 h2 {
   border-bottom: 3px solid var(--google-blue);
-  font-size: 1.35em;
+  font-size: 1.45em;
   margin-bottom: 0.7em;
   padding-bottom: 0.18em;
 }
@@ -686,6 +686,11 @@ section.concept-key {
 
 section.concept-key::before { color: var(--orange-dark); content: "Conceito-chave"; }
 section.concept-key h2 { border-bottom-color: var(--orange); color: var(--orange-dark); }
+section.concept-key .statement {
+  font-size: 1.42em;
+  line-height: 1.32;
+  max-width: 1040px;
+}
 
 section.java-focus {
   --accent: var(--blue-dark);

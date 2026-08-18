@@ -6,6 +6,8 @@ Este documento registra o padrão dos decks usados nas aulas presenciais.
 
 O deck é o ambiente principal de condução da aula teórica. Ele deve permitir percorrer a narrativa sem depender do site ou de uma IDE externa para completar explicações previsíveis. O site permanece como material completo e permanente; quadro e IDE apoiam situações em que sua interação tem valor pedagógico.
 
+O roteiro completo e pedagogicamente validado precede o deck. Ao derivar os slides, preservar a causalidade, as perguntas centrais, o código necessário, as atividades e as pausas, transferindo explicações detalhadas para o roteiro ou para notas do apresentador quando não precisarem permanecer projetadas.
+
 Quando um mecanismo de Java for necessário para compreender o código projetado ou realizar o laboratório seguinte, o deck deve oferecer o apoio mínimo de leitura e uso. “Java em foco” permanece subordinado ao problema de POO e não se transforma em catálogo de sintaxe.
 
 Ao partir de um roteiro, reconstruir a experiência da aula — problema, pergunta, previsão, comparação, descoberta, explicação, aplicação e síntese. Não converter mecanicamente seções da página em slides.
@@ -71,6 +73,7 @@ Os aliases legados `question`, `concept`, `example`, `takeaway`, `definition`, `
 - Simular arquivo, trecho, console ou mensagem de compilação sem copiar a interface de uma IDE.
 - Preferir diagramas simples quando relações espaciais comunicarem melhor que prosa, especialmente entre variável, referência e objeto.
 - Verificar contraste, espaço em branco, geometria estável e ausência de overflow em todas as miniaturas.
+- Quando ocorrer overflow, revisar primeiro a densidade: dividir frames, remover redundância ou deixar detalhes no roteiro. Reduzir fonte é uma alternativa posterior, não a resposta automática.
 
 ## Tom
 

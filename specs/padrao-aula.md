@@ -24,6 +24,14 @@ Quando forem pertinentes, podem ser incluídas as seguintes seções opcionais:
 - **Para revisar**
 - **Referências**
 
+## Construção pedagógica
+
+O roteiro é a fonte pedagógica da aula. Antes de produzir o deck, devem estar completos e validados os objetivos, as dependências, a trajetória narrativa, as pausas didáticas, a relação com o laboratório seguinte e o dimensionamento do encontro. Os slides são derivados dessa base; o deck anterior não deve substituir o trabalho de construir o roteiro.
+
+Aula não é uma sequência de tópicos independentes. O storytelling didático estabelece causalidade: um problema produz uma observação, a observação cria uma pergunta, a pergunta exige investigação e a investigação permite formalizar uma ideia ou tomar uma decisão. Conceitos aparecem depois de existir uma necessidade compreensível para eles.
+
+O encontro deve ser dimensionado internamente para 90 minutos, considerando explicação, leitura, previsão, espera, discussão, atividade, formalização e síntese. Esse dimensionamento orienta o projeto do material, mas não aparece como cronograma de minutos na página destinada aos estudantes.
+
 ## Legibilidade
 
 Legibilidade é um requisito pedagógico. A página deve permitir que o estudante compreenda a explicação, localize informações rapidamente, diferencie conceitos, exemplos, dicas e atividades e retome o conteúdo sem reler grandes blocos.
@@ -93,6 +101,7 @@ Evitar humor forçado, sarcasmo, ironia como objetivo editorial, regionalismos, 
 ## Princípios de uso
 
 - A aula oferece o embasamento conceitual que será aplicado no laboratório relacionado.
+- Tudo que for obrigatório no laboratório imediatamente seguinte deve ter sido preparado em uma aula anterior, inclusive mecanismos pequenos de leitura, escrita, execução e organização necessários à prática.
 - Uma aula de 1h30 não precisa maximizar a quantidade de conceitos novos. Observar, comparar, prever, explicar, discutir, aplicar e transferir também conferem densidade ao encontro.
 - Preferir aprofundar conceitos importantes antes de antecipar conteúdos futuros.
 - A página deve ser útil tanto antes quanto depois da aula.

@@ -4,146 +4,214 @@ icon: material/flask-outline
 
 # Laboratório 03 — Referências e identidade na prática
 
-Na Aula 03, distinguimos objeto, variável, referência, identidade e estado. Agora vamos observar essas ideias no Projeto 1 por meio de pequenos experimentos.
+No Laboratório 02, cada variável foi usada para trabalhar com um objeto diferente. Nesta evolução do Projeto 1, vamos mudar uma única relação: duas variáveis passarão a permitir acesso ao mesmo `ItemPedido`. A partir daí, cada resultado observado criará a pergunta do experimento seguinte.
+
+**Pergunta prática**
+
+> Como distinguir, no código e nos resultados, duas referências para o mesmo objeto de referências para objetos distintos?
 
 !!! info "Uso de IA — Nível 1: Tutor"
 
-    A IA pode esclarecer sintaxe, explicar mensagens de erro, ajudar a interpretar um comportamento observado e fazer perguntas que apoiem sua compreensão. Não deve gerar a solução completa nem fornecer respostas prontas às previsões.
+    A IA pode esclarecer sintaxe, ajudar a interpretar mensagens de erro e fazer perguntas que apoiem sua explicação. Não deve gerar a solução completa nem responder às previsões antes da execução.
 
 !!! warning "Laboratório acompanhado — presença requerida"
 
-    Este laboratório é acompanhado porque trabalha um modelo mental fundamental sobre referências e identidade.
+    Este laboratório é acompanhado porque investiga um modelo mental que será necessário nas próximas evoluções do projeto.
 
 ## Objetivos
 
 Ao final deste laboratório, você deverá ser capaz de:
 
-- distinguir a criação de um objeto da cópia de uma referência;
-- prever efeitos de alterações feitas por diferentes referências;
-- utilizar `==` para verificar identidade;
-- explicar resultados observados em experimentos com objetos e referências.
+- formular previsões antes de executar um experimento com referências;
+- distinguir criação de objeto de atribuição entre variáveis de objeto;
+- explicar uma alteração observada por duas referências para o mesmo objeto;
+- representar variáveis, referências e objetos em um diagrama simples;
+- contrastar objetos com estados equivalentes e identidades diferentes;
+- usar `==` para verificar se duas referências correspondem ao mesmo objeto;
+- justificar resultados usando `new`, referência, estado e identidade.
 
-## Projeto 1 — Versão 3: referências e identidade
+## Projeto 1 — Versão 3: investigando referências
 
-Use a versão anterior do Projeto 1 como base. Esta evolução não acrescenta uma grande funcionalidade: ela consolida o modelo mental necessário para que o projeto continue evoluindo corretamente.
+Use a **Versão 2** do Projeto 1 como ponto de partida. Preserve `ItemPedido.java`, inclusive os comportamentos `calcularSubtotal()` e `aumentarQuantidade(int unidades)` construídos no laboratório anterior.
+
+Crie uma pasta para esta versão e mantenha os arquivos juntos:
+
+```text
+lab-03/
+├── Main.java
+└── ItemPedido.java
+```
 
 !!! tip "Dica — continue abrindo a pasta do projeto"
 
-    Mantenha `Main.java` e `ItemPedido.java` na mesma pasta do laboratório e abra essa pasta na IDE. Este laboratório altera o experimento, não a organização do projeto.
+    Abra `lab-03/` na IDE, não os arquivos separadamente. Este hábito já foi estabelecido nos laboratórios anteriores; aqui apenas continuamos usando a mesma organização.
 
-!!! info "Como trabalhar"
+## Como conduzir a investigação
 
-    Em cada experimento, siga o ciclo **prever → executar → explicar**. Registre ou formule sua previsão antes de executar. Depois, compare o resultado observado e explique o comportamento usando referência, identidade e estado.
+Em cada incremento, respeite esta ordem:
+
+**prever → executar → observar → explicar**
+
+Registre as previsões antes da execução. Você pode usar uma folha, um arquivo de texto ou comentários temporários no código. Não altere a previsão depois de conhecer o resultado: a diferença entre ambos também faz parte da aprendizagem.
 
 ## Atividade
 
-### Incremento A — Dois objetos independentes
+### Incremento A — Preparar o cenário-base
 
-Crie `item1` e `item2` usando duas expressões `new ItemPedido()`. Atribua inicialmente os mesmos valores aos dois:
+Em `Main.java`, prepare um experimento com um único `ItemPedido`, chamado `itemPrincipal`, com o seguinte estado:
 
-- descrição: `Teclado`;
-- preço unitário: `150.0`;
-- quantidade: `2`.
+| Campo | Valor |
+| --- | --- |
+| descrição | `Teclado` |
+| preço unitário | `150.0` |
+| quantidade | `2` |
 
-Antes de executar, preveja:
+Exiba no console a quantidade e o subtotal desse objeto. Antes de avançar, confirme:
 
-- quantos objetos existem;
-- se eles possuem a mesma identidade;
-- qual será o resultado de `item1 == item2`.
+- quantidade: `2`;
+- subtotal: `300.0`.
 
-Depois:
+Esse estado conhecido será nosso ponto de comparação. Ainda não há resultado surpreendente: existe uma variável e um objeto criado com `new`.
 
-1. altere apenas a quantidade de `item2`;
-2. exiba no console as quantidades dos dois objetos;
-3. exiba no console o resultado de `item1 == item2`;
-4. compare os resultados com suas previsões;
-5. explique por que apenas um objeto foi alterado.
+### Incremento B — Introduzir uma segunda variável
 
-!!! conceito-chave "Conceito-chave — estado e identidade"
-
-    Mesmo estado não significa mesma identidade.
-
-### Incremento B — Duas referências para o mesmo objeto
-
-Use `item1` com quantidade inicial `2` e crie outra variável:
+Agora declare outra variável chamada `itemObservado` e atribua a ela o valor de `itemPrincipal`:
 
 ```java
-ItemPedido outroItem = item1;
+ItemPedido itemObservado = itemPrincipal;
 ```
 
-Antes de alterar o estado, preveja:
+Não altere o estado ainda. Primeiro registre suas previsões:
 
-- quantos objetos existem;
-- qual será o resultado de `item1 == outroItem`;
-- quais serão os valores observados em `item1.quantidade` e `outroItem.quantidade` depois de executar `outroItem.quantidade = 7`.
+| Pergunta | Previsão |
+| --- | --- |
+| Quantas variáveis do tipo `ItemPedido` existem? |  |
+| Quantos objetos `ItemPedido` existem? |  |
+| Houve alguma nova execução de `new ItemPedido()`? |  |
+| `itemPrincipal == itemObservado` produzirá `true` ou `false`? |  |
 
-Use esta tabela para registrar a previsão e o resultado:
+Depois, desenhe sua hipótese usando nomes de variáveis, setas e objetos. O desenho deve tornar visível se você imagina um ou dois objetos.
+
+Essa hipótese prepara a próxima pergunta: se as variáveis permitem acesso ao mesmo objeto, uma alteração feita por uma delas deverá aparecer quando observarmos pela outra.
+
+### Incremento C — Alterar por uma referência e observar pela outra
+
+Use `itemObservado` para chamar:
+
+```java
+itemObservado.aumentarQuantidade(3);
+```
+
+Antes de executar, preveja a quantidade e o subtotal que serão observados por cada variável:
 
 | Observação | Previsão | Resultado observado |
 | --- | --- | --- |
-| `item1.quantidade` |  |  |
-| `outroItem.quantidade` |  |  |
-| `item1 == outroItem` |  |  |
+| `itemPrincipal.quantidade` |  |  |
+| `itemObservado.quantidade` |  |  |
+| `itemPrincipal.calcularSubtotal()` |  |  |
+| `itemObservado.calcularSubtotal()` |  |  |
 
-Siga esta sequência:
+Em seguida:
 
-1. registre na tabela suas previsões antes da alteração;
-2. atribua `7` a `outroItem.quantidade`;
-3. exiba `item1.quantidade` no console;
-4. exiba `outroItem.quantidade` no console;
-5. exiba no console o resultado de `item1 == outroItem`;
-6. compare as previsões com os resultados;
-7. explique por que os valores observados fazem sentido.
+1. execute a alteração somente por `itemObservado`;
+2. exiba as quatro observações da tabela;
+3. registre os resultados;
+4. compare previsão e observação;
+5. explique por que as duas variáveis permitem observar quantidade `5` e subtotal `750.0`.
 
-### Incremento C — Comparar as duas situações
+Não aceite apenas “porque uma recebeu a outra” como explicação. Sua resposta deve distinguir as duas variáveis do único objeto cujo estado foi alterado.
 
-Experimente separadamente os casos abaixo.
+### Incremento D — Testar a hipótese de identidade
 
-**Caso 1**
-
-```java
-ItemPedido a = new ItemPedido();
-a.quantidade = 2;
-
-ItemPedido b = new ItemPedido();
-b.quantidade = 2;
-```
-
-**Caso 2**
+O resultado anterior sugere que as duas variáveis permitem acesso ao mesmo objeto. Agora use `==` para testar diretamente essa hipótese:
 
 ```java
-ItemPedido a = new ItemPedido();
-a.quantidade = 2;
-
-ItemPedido b = a;
+itemPrincipal == itemObservado
 ```
 
-Para cada caso, atribua `7` a `b.quantidade`. Antes de executar, preveja; depois, execute e explique:
+Antes de executar, registre o resultado esperado e justifique-o. Depois:
 
-- quantos objetos foram criados;
-- o resultado de `a == b`;
-- o valor observado em `a.quantidade` depois da atribuição.
+1. exiba a comparação no console;
+2. confronte o resultado com sua previsão;
+3. corrija, se necessário, o diagrama do Incremento B;
+4. escreva uma explicação que use as palavras **referência**, **objeto**, **estado** e **identidade**.
 
-Ao final, você deve conseguir explicar claramente a diferença entre criar um novo objeto e criar uma nova referência para um objeto existente.
+O diagrama final desta situação deve representar duas variáveis apontando para o mesmo objeto.
+
+### Incremento E — Criar um objeto com estado equivalente
+
+Até aqui, duas variáveis permitiram observar o mesmo estado porque havia um único objeto. Agora precisamos verificar se valores iguais são suficientes para estabelecer a mesma identidade.
+
+Crie `itemIndependente` com uma nova expressão `new ItemPedido()` e atribua a ele o mesmo estado atual observado pelos outros nomes:
+
+| Campo | Valor |
+| --- | --- |
+| descrição | `Teclado` |
+| preço unitário | `150.0` |
+| quantidade | `5` |
+
+Antes de executar as comparações, preveja:
+
+| Observação | Previsão | Resultado observado |
+| --- | --- | --- |
+| subtotal de `itemPrincipal` |  |  |
+| subtotal de `itemIndependente` |  |  |
+| `itemPrincipal == itemObservado` |  |  |
+| `itemPrincipal == itemIndependente` |  |  |
+
+Execute e registre os resultados. Os subtotais devem ser iguais a `750.0`, mas as duas comparações de identidade não devem produzir o mesmo resultado.
+
+Explique por que estado equivalente não torna `itemIndependente` o mesmo objeto que `itemPrincipal`.
+
+### Incremento F — Fazer o contraste aparecer no estado
+
+Agora use `itemIndependente` para chamar `aumentarQuantidade(2)`.
+
+Antes de executar, preveja as quantidades que serão observadas por:
+
+- `itemPrincipal`;
+- `itemObservado`;
+- `itemIndependente`.
+
+Depois, exiba as três quantidades e os três subtotais. O resultado esperado é:
+
+| Variável | Quantidade | Subtotal |
+| --- | ---: | ---: |
+| `itemPrincipal` | 5 | 750.0 |
+| `itemObservado` | 5 | 750.0 |
+| `itemIndependente` | 7 | 1050.0 |
+
+Atualize seu diagrama para representar:
+
+- `itemPrincipal` e `itemObservado` permitindo acesso ao mesmo objeto;
+- `itemIndependente` permitindo acesso a outro objeto;
+- o estado final de cada objeto.
+
+Por fim, explique por que a alteração apareceu por duas variáveis, mas não pela terceira. Essa conclusão deve usar a relação entre referência e identidade, e não apenas repetir os valores exibidos.
 
 !!! success "Critérios de conclusão"
 
-    Verifique se sua experimentação:
+    Verifique se sua investigação:
 
-    - demonstra um caso com dois objetos distintos;
-    - demonstra um caso com duas referências para o mesmo objeto;
-    - altera o estado por uma referência e observa corretamente o efeito pela outra;
-    - utiliza `==` para verificar identidade;
-    - registra as previsões solicitadas antes das execuções e as compara com os resultados observados;
-    - explica por que os resultados dos dois casos são diferentes.
+    - parte da Versão 2 e preserva `ItemPedido.java` com os comportamentos já construídos;
+    - mantém `Main.java` e `ItemPedido.java` na mesma pasta de projeto;
+    - cria `itemPrincipal` com os dados solicitados e confirma o estado-base;
+    - atribui a referência de `itemPrincipal` a `itemObservado` sem executar outro `new`;
+    - registra previsões antes das execuções solicitadas;
+    - altera o objeto por `itemObservado` e observa quantidade `5` e subtotal `750.0` pelas duas variáveis;
+    - usa `==` para verificar a identidade nos dois cenários;
+    - cria `itemIndependente` com `new` e estado inicialmente equivalente;
+    - demonstra que estados equivalentes não implicam a mesma identidade;
+    - produz o estado final `5`, `5` e `7`, com subtotais `750.0`, `750.0` e `1050.0`;
+    - apresenta um diagrama final coerente com dois objetos e três variáveis;
+    - explica os resultados usando `new`, variável, referência, objeto, estado e identidade;
+    - compila, executa, verifica os resultados e realiza o envio conforme o Google Classroom.
 
-## Desafio opcional — Quantos nomes, quantos objetos?
+Depois de concluir, verificar os critérios e realizar o envio, você poderá ser liberado. O desafio a seguir permanece opcional.
 
-!!! tip "Dica — desafio opcional"
+## Desafio opcional — Três referências, um objeto
 
-    Use este desafio para praticar o modelo de referências com três variáveis.
-
-Considere:
+Parta de um novo cenário:
 
 ```java
 ItemPedido a = new ItemPedido();
@@ -154,26 +222,27 @@ ItemPedido c = b;
 Antes de executar, preveja:
 
 - quantos objetos existem;
-- quais comparações entre `a`, `b` e `c` com `==` resultarão em `true`;
+- quais comparações entre `a`, `b` e `c` resultarão em `true`;
 - o que será observado por `a` e `b` se a quantidade for alterada usando `c`.
 
-Depois, execute as comparações e a alteração, verifique suas previsões e explique os resultados.
+Depois, realize o experimento, desenhe o diagrama e explique os resultados. O desafio amplia a quantidade de referências, mas não introduz um conceito novo nem altera os critérios obrigatórios.
 
 ### Para a próxima aula
 
 Vamos retomar estas questões na Aula 04 — Protegendo o estado dos objetos. Não é necessário respondê-las por escrito.
 
-1. Se duas partes do programa possuem referências para o mesmo objeto, ambas podem modificar seu estado atual?
-2. Todo valor deveria poder ser atribuído diretamente aos campos de um objeto?
-3. Quem deveria ser responsável por decidir se uma alteração de estado é válida?
+1. Se duas partes do programa possuem referências para o mesmo objeto, ambas conseguem modificar seu estado atual?
+2. Todo valor aceito em uma atribuição direta faz sentido para o problema?
+3. Quem deveria decidir se uma alteração de estado é válida?
 
 ## Entrega
 
-> **Projeto 1 — Versão 3: referências e identidade**
+> **Projeto 1 — Versão 3: investigação de referências e identidade**
 
 Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
 
 ## Materiais relacionados
 
 - [Aula 03 — Objetos, referências e identidade](aula-03-objetos-referencias-e-identidade.md)
+- [Laboratório 02 — Primeiros objetos em Java](laboratorio-02-primeiros-objetos-em-java.md)
 - [Java essencial para quem já sabe programar](../materiais/java-essencial.md)

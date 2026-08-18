@@ -43,6 +43,7 @@ Detalhes internos de planejamento docente, como estimativas de duração de bloc
 ## Duração e dimensionamento
 
 - Cada laboratório dura até 1h30.
+- O núcleo obrigatório deve ser dimensionado internamente para aproximadamente 90 minutos de trabalho de um estudante típico. Essa estimativa é uma restrição de planejamento e não deve aparecer como cronograma de minutos no roteiro público.
 - O núcleo obrigatório deve ser dimensionado para que um estudante típico consiga concluí-lo nesse período.
 - Não aumentar artificialmente a atividade apenas para ocupar os 90 minutos.
 - Desafios adicionais são oportunidades de aprofundamento para estudantes que terminarem antes. Devem ampliar ou explorar o problema sem antecipar conteúdo ainda não fundamentado.
@@ -66,6 +67,8 @@ Quando a atividade exigir um projeto configurado, o roteiro deve fornecer a prep
 
 O laboratório é organizado principalmente por incrementos. Não marcar cada incremento como `activity`: o próprio encontro já é uma atividade prática. No texto sequencial, perguntas, exemplos e explicações permanecem na narrativa normal.
 
+Os incrementos devem formar uma investigação ou evolução contínua, e não uma lista independente de requisitos. Cada etapa nasce de uma consequência compreensível da anterior: preparação, previsão, execução, observação, explicação, nova hipótese, contraste ou conclusão. Storytelling no laboratório significa essa causalidade, não uma história decorativa.
+
 Quando uma interrupção tiver valor real, usar a mesma gramática das aulas: `conceito-chave` (laranja), `java-focus` (azul), `activity` (verde), `tip` (amarelo), `trap` (vermelho) e `synthesis` (roxo). Cada admonition cumpre uma única função. Em laboratórios, `tip`, `java-focus` e `trap` tendem a ser especialmente úteis, mas nenhuma pausa é obrigatória.
 
 As cores, os ícones Lucide e os requisitos de contraste nos temas claro e escuro seguem o mapeamento registrado em `padrao-aula.md`.
@@ -76,6 +79,7 @@ Informações administrativas, política de IA, acompanhamento e critérios de c
 
 - O laboratório deve priorizar a prática e a evolução do projeto da unidade.
 - Cada laboratório aplica e consolida o que foi preparado na aula teórica imediatamente anterior. Se o laboratório pedir que o estudante escreva uma construção Java, a aula anterior deve tê-la ensinado ao menos para reconhecer, ler, compreender sua função e usar no nível exigido.
+- Antes de finalizar o roteiro, mapear cada exigência obrigatória — inclusive operações pequenas, organização de arquivos e procedimentos — para a aula anterior em que foi preparada. Conhecimento novo indispensável não deve ser introduzido pela primeira vez no laboratório.
 - Instruções conceituais devem se limitar ao necessário para realizar a atividade.
 - Critérios de conclusão devem permitir verificação objetiva sem prescrever arquitetura.
 - Quando o objetivo envolver comportamento de código, o laboratório pode usar o ciclo **prever → executar → explicar**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios.

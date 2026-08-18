@@ -10,432 +10,560 @@ lang: pt-BR
 
 # Aula 03 — Objetos, referências e identidade
 
-<div class="statement">Quando usamos uma variável para trabalhar com um objeto, o que essa variável realmente representa?</div>
+<div class="statement">O que exatamente é copiado quando uma variável de objeto é atribuída a outra?</div>
 
 <!--
-Retomar brevemente o Laboratório 02. A pergunta central deve conduzir toda a aula.
+Começar pela experiência concreta do Laboratório 02. Não definir referência nem identidade na abertura.
+-->
+
+---
+
+<div class="chapter">Ponto de partida</div>
+
+## No Laboratório 02...
+
+- criamos objetos com `new`;
+- atribuímos estado;
+- chamamos comportamentos com `.`;
+- usamos variáveis como `item1` e `item2`.
+
+<!--
+Retomada breve. Pedir um exemplo de cada ação antes de avançar.
 -->
 
 ---
 
 <!-- _class: code-focus -->
 
-## Retomando o Laboratório 02
+<div class="chapter">Ponto de partida</div>
+
+## Uma linha conhecida
 
 ```java
-ItemPedido item = new ItemPedido();
+ItemPedido item1 = new ItemPedido();
+item1.quantidade = 2;
 ```
 
-**Onde está o objeto?**
-
-O que `item` representa?
+<div class="key-point"><code>new ItemPedido()</code> cria um objeto.</div>
 
 <!--
-Esperar hipóteses antes de avançar. Evitar dizer que a variável é o objeto.
--->
-
----
-
-## Três partes, três papéis
-
-```java
-ItemPedido item = new ItemPedido();
-```
-
-<div class="cards">
-<div class="concept-card"><strong>ItemPedido</strong>tipo da variável</div>
-<div class="concept-card"><strong>item</strong>variável que mantém uma referência</div>
-</div>
-
-<div class="key-point"><code>new ItemPedido()</code> cria um novo objeto.</div>
-
-<!--
-Enfatizar: a variável permite acessar o objeto; ela não é o objeto. Não mencionar heap ou endereço de memória.
+Confirmar apenas o conhecimento do Par 02. Ainda não desenhar setas.
 -->
 
 ---
 
 <!-- _class: code-focus -->
 
-## Valores simples
+<div class="chapter">Uma atribuição</div>
+
+## Agora aparece outra variável
 
 ```java
-int a = 10;
-int b = a;
+ItemPedido item2 = item1;
 ```
 
-**O que foi copiado para `b`?**
+**O que essa instrução fez?**
 
 <!--
-Ouvir a resposta. O valor numérico 10 foi copiado.
+Recolher hipóteses: novo objeto, cópia dos dados, outro nome, mesma coisa. Não corrigir ainda.
 -->
 
 ---
 
-## A cópia é independente
+<!-- _class: activity -->
 
-<div class="simulator">
-  <div class="file-label">Main.java</div>
-  <pre><code>int a = 10;
-int b = a;
-
-b = 5;
-System.out.println(a);</code></pre>
-  <div class="console-label">Console</div>
-  <div class="console">10</div>
-</div>
-
-Alterar `b` não altera o valor armazenado em `a`.
-
-<!--
-Perguntar por que o console mostra 10. Esta execução é simples e fiel; não há necessidade de abrir a IDE.
--->
-
----
-
-<!-- _class: code-focus -->
-
-## Agora, um tipo de classe
-
-```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = a;
-```
-
-**O que foi copiado para `b`?**
-
-<!--
-Não revelar ainda. Recolher hipóteses como “objeto”, “variável” e “referência”.
--->
-
----
-
-## Atribuição copia o valor
-
-<div class="columns">
-<div>
-
-### Tipo simples
-
-```java
-int b = a;
-```
-
-O valor é um número.
-
-</div>
-<div>
-
-### Tipo de classe
-
-```java
-ItemPedido b = a;
-```
-
-O valor é uma referência.
-
-</div>
-</div>
-
-<div class="key-point">O objeto não foi copiado.</div>
-
-<!--
-Evitar “b virou a” e “passagem por referência”. Atribuir uma referência copia o valor da variável.
--->
-
----
-
-<!-- _class: concept-key -->
-
-## Modelo central
-
-<div class="statement">A variável não é o objeto.<br>Ela mantém uma referência que permite acessar o objeto.</div>
-
-<!--
-Pausa de consolidação. Se houver confusão, redesenhar a relação no quadro, sem falar de memória física.
--->
-
----
-
-<!-- _class: code-focus -->
-
-## Dois usos de `new`
-
-```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = new ItemPedido();
-```
-
-- Quantas variáveis?
-- Quantos objetos?
-
-<!--
-Esperar respostas antes de mostrar o diagrama. Perguntar onde ocorre cada criação.
--->
-
----
-
-## Dois usos de `new`
-
-<div class="refs">
-  <div class="var">a</div><div class="arrow">→</div><div class="object">objeto 1<br>ItemPedido</div>
-  <div class="var">b</div><div class="arrow">→</div><div class="object">objeto 2<br>ItemPedido</div>
-</div>
-
-<!--
-Existem duas variáveis e dois objetos. O diagrama é conceitual, não um mapa da memória.
--->
-
----
-
-## Dois `new` → dois objetos
-
-Cada expressão `new ItemPedido()` cria um novo objeto.
-
-<div class="statement">Os objetos são distintos, mesmo sendo da mesma classe.</div>
-
-<!--
-Concluir sem avançar ainda para estado ou identidade formal.
--->
-
----
-
-<!-- _class: code-focus -->
-
-## Copiando uma referência
-
-```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = a;
-```
-
-- Quantas variáveis?
-- Quantos objetos?
-
-<!--
-Esperar respostas. A segunda instrução não contém new.
--->
-
----
-
-## Duas referências, um objeto
-
-<div class="refs shared">
-  <div class="var">a</div><div class="arrow">↘</div><div class="object">objeto<br>ItemPedido</div>
-  <div class="var second">b</div><div class="arrow second-arrow">↗</div>
-</div>
-
-<!--
-Se necessário, construir novamente no quadro a pedido da turma. Evitar dizer que a e b são o mesmo objeto.
--->
-
----
-
-<!-- _class: concept-key -->
-
-## Uma referência também é um valor
-
-<div class="statement">Duas variáveis podem manter referências que permitem acesso ao mesmo objeto.</div>
-
-<!--
-Destacar que copiar a referência não cria nem copia o objeto.
--->
-
----
-
-<!-- _class: activity code-focus -->
+<div class="chapter">Uma atribuição</div>
 
 ## Preveja antes de executar
 
-```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = a;
-
-a.quantidade = 2;
-b.quantidade = 7;
-
-System.out.println(a.quantidade);
-```
-
-**O que será apresentado? Por quê?**
+1. Quantos objetos existem?
+2. Os dados foram copiados para um novo objeto?
+3. Alterar `item2.quantidade` afeta o valor observado por `item1`?
 
 <!--
-Esperar respostas. Não revelar o resultado ainda. Perguntar quantos objetos existem.
+Dar tempo para registro individual e comparação rápida em dupla. A incerteza faz parte da investigação.
 -->
 
 ---
 
-## Execução simulada
+<!-- _class: code-focus compact-code -->
+
+<div class="chapter">O experimento</div>
+
+## Vamos observar
+
+```java
+ItemPedido item1 = new ItemPedido();
+item1.quantidade = 2;
+
+ItemPedido item2 = item1;
+item2.quantidade = 7;
+
+System.out.println(item1.quantidade);
+```
+
+<!--
+Ler cada instrução sem antecipar o resultado. Pedir uma última confirmação das previsões.
+-->
+
+---
+
+<div class="chapter">O experimento</div>
+
+## O resultado
 
 <div class="simulator">
-  <div class="file-label">Main.java</div>
-  <pre><code>ItemPedido a = new ItemPedido();
-ItemPedido b = a;
-
-a.quantidade = 2;
-b.quantidade = 7;
-
-System.out.println(a.quantidade);</code></pre>
-  <div class="console-label">Console</div>
+  <div class="file-label">Console</div>
   <div class="console">7</div>
 </div>
 
+<div class="statement">A alteração foi feita usando <code>item2</code> e observada usando <code>item1</code>.</div>
+
 <!--
-Confirmar a previsão sem abrir a IDE. Perguntar novamente por que a consulta por a observa 7.
+Deixar o estranhamento aparecer. Perguntar quem previa 2 e por quê.
 -->
 
 ---
 
-## O estado pertence ao objeto
+<div class="chapter">O experimento</div>
 
-<div class="refs shared">
-  <div class="var">a</div><div class="arrow">↘</div><div class="object">ItemPedido<div class="state-line">quantidade = 7</div></div>
-  <div class="var second">b</div><div class="arrow second-arrow">↗</div>
-</div>
+## Se houve uma cópia independente...
 
-<div class="key-point">A alteração ocorreu no único objeto acessado por <code>a</code> e <code>b</code>.</div>
+Por que `item1.quantidade` também passou a mostrar `7`?
 
 <!--
-As duas referências permitem observar o mesmo estado. Pedir uma explicação completa, não apenas “porque b recebeu a”.
+Esta pergunta cria a necessidade do modelo. Não responder com “porque são referências” sem investigação.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Investigando a linha</div>
+
+## Três partes, papéis diferentes
+
+```java
+ItemPedido item1 = new ItemPedido();
+```
+
+<div class="cards">
+<div class="concept-card"><strong><code>ItemPedido</code></strong>tipo da variável</div>
+<div class="concept-card"><strong><code>item1</code></strong>variável</div>
+</div>
+
+<!--
+Destacar oralmente que new cria o objeto. A variável e o objeto ainda precisam ser relacionados.
+-->
+
+---
+
+<div class="chapter">Investigando a linha</div>
+
+## A variável é o objeto?
+
+<div class="statement">A variável e o objeto têm papéis diferentes no programa.</div>
+
+- o objeto possui estado e comportamento;
+- a variável permite chegar até ele.
+
+<!--
+Ouvir formulações da turma. Precisamos agora nomear o valor que faz essa ligação.
+-->
+
+---
+
+<div class="chapter">Investigando a linha</div>
+
+## Precisamos nomear essa relação
+
+```text
+item1 ─────► objeto ItemPedido
+```
+
+O que a variável mantém para permitir o acesso ao objeto?
+
+<!--
+Construir a seta como modelo conceitual. Não falar em endereço físico, stack ou heap.
+-->
+
+---
+
+<!-- _class: concept-key -->
+
+<div class="chapter">O resultado observado</div>
+
+## Referência
+
+<div class="statement">Um valor que permite localizar e acessar um objeto. Uma variável de tipo de classe pode manter esse valor.</div>
+
+<!--
+Formalização curta, depois da necessidade. Reforçar que é um modelo suficiente para explicar o código.
+-->
+
+---
+
+<div class="chapter">Referência</div>
+
+## Uma variável, um acesso
+
+<div class="refs">
+  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = 2</div></div>
+</div>
+
+<!--
+Ler o diagrama da esquerda para a direita: a variável mantém uma referência para o objeto.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Referência</div>
+
+## O que a atribuição copia?
+
+```java
+ItemPedido item2 = item1;
+```
+
+<div class="key-point">O valor de <code>item1</code> é uma referência. É esse valor que a atribuição copia.</div>
+
+<!--
+Não dizer que “Java copia o objeto”. Separar com precisão a atribuição da criação.
+-->
+
+---
+
+<div class="chapter">Referência</div>
+
+## Duas variáveis, um objeto
+
+<div class="refs shared">
+  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = 7</div></div>
+  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
+</div>
+
+<!--
+Pedir que contem variáveis e objetos separadamente.
+-->
+
+---
+
+<div class="chapter">Referência</div>
+
+## Agora o resultado faz sentido
+
+```java
+item2.quantidade = 7;
+System.out.println(item1.quantidade); // 7
+```
+
+<div class="statement">A alteração ocorreu no único objeto acessado pelas duas variáveis.</div>
+
+<!--
+Voltar explicitamente ao estranhamento. Pedir uma explicação completa com variável, referência e objeto.
+-->
+
+---
+
+<!-- _class: trap -->
+
+<div class="chapter">Interpretação tentadora</div>
+
+## Outra variável não significa outro objeto
+
+<div class="statement"><code>ItemPedido item2 = item1;</code> não executa <code>new</code>.</div>
+
+<div class="key-point">A instrução copia a referência; não cria uma cópia independente do objeto.</div>
+
+<!--
+Explicitar o caminho tentador e o princípio correto. Não alongar com clonagem ou cópia profunda.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Quantos objetos?</div>
+
+## Cenário A — uma criação
+
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = item1;
+```
+
+Quantas variáveis? Quantos objetos?
+
+<!--
+Resposta esperada: duas variáveis, um objeto. A segunda linha não contém new.
+-->
+
+---
+
+<div class="chapter">Quantos objetos?</div>
+
+## Cenário A — duas referências
+
+<div class="refs shared">
+  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto 1</div>
+  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
+</div>
+
+<div class="key-point">Duas variáveis. Um objeto.</div>
+
+<!--
+Consolidar antes de mudar uma única linha no cenário seguinte.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Quantos objetos?</div>
+
+## Cenário B — duas criações
+
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = new ItemPedido();
+```
+
+Quantas variáveis? Quantos objetos?
+
+<!--
+Resposta esperada: duas variáveis, dois objetos. Pedir que apontem as duas criações.
+-->
+
+---
+
+<div class="chapter">Quantos objetos?</div>
+
+## Cenário B — objetos distintos
+
+<div class="refs">
+  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1</div>
+  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2</div>
+</div>
+
+<div class="key-point">Duas variáveis. Dois objetos.</div>
+
+<!--
+Não introduzir identidade ainda; apenas estabilizar a contagem.
+-->
+
+---
+
+<div class="chapter">Quantos objetos?</div>
+
+## A pista está na criação
+
+<div class="statement">Cada execução de <code>new ItemPedido()</code> cria um novo objeto.</div>
+
+Contar variáveis e contar objetos são tarefas diferentes.
+
+<!--
+Essa heurística será aplicada na atividade e no laboratório.
 -->
 
 ---
 
 <!-- _class: compact-code -->
 
-## Dois objetos com os mesmos valores
+<div class="chapter">Objetos distintos</div>
+
+## E se os valores forem iguais?
 
 ```java
-ItemPedido a = new ItemPedido();
-a.descricao = "Teclado";
-a.quantidade = 2;
+ItemPedido item1 = new ItemPedido();
+item1.descricao = "Teclado";
+item1.quantidade = 2;
 
-ItemPedido b = new ItemPedido();
-b.descricao = "Teclado";
-b.quantidade = 2;
+ItemPedido item2 = new ItemPedido();
+item2.descricao = "Teclado";
+item2.quantidade = 2;
 ```
 
 <!--
-Antes do próximo slide, perguntar o que é igual e o que pode ser diferente.
+Perguntar o que podemos dizer sobre os estados e sobre a quantidade de objetos.
 -->
 
 ---
 
+<div class="chapter">Objetos distintos</div>
 
-## Estado × identidade
+## Estados equivalentes
 
 <div class="columns">
-<div class="identity-card"><strong>objeto 1</strong><div class="state">descrição = "Teclado"<br>quantidade = 2</div></div>
-<div class="identity-card"><strong>objeto 2</strong><div class="state">descrição = "Teclado"<br>quantidade = 2</div></div>
+<div class="identity-card"><strong>objeto 1</strong><div class="state">descricao = "Teclado"<br>quantidade = 2</div></div>
+<div class="identity-card"><strong>objeto 2</strong><div class="state">descricao = "Teclado"<br>quantidade = 2</div></div>
 </div>
 
-- Possuem o mesmo estado?
-- São o mesmo objeto?
+<div class="key-point">Os valores observados são iguais.</div>
 
 <!--
-Esperar as duas respostas. O primeiro “sim” não implica o segundo.
+Confirmar estado sem concluir que se trata do mesmo objeto.
 -->
 
 ---
+
+<div class="chapter">Objetos distintos</div>
+
+## Duas perguntas diferentes
+
+1. Os objetos possuem os mesmos valores?
+2. As variáveis permitem acesso ao mesmo objeto?
+
+<div class="statement">Estado responde à primeira pergunta. Ainda precisamos nomear a segunda.</div>
+
+<!--
+Criar a necessidade de identidade. Esperar a turma distinguir “igual” de “o mesmo”.
+-->
+
+---
+
+<!-- _class: concept-key -->
+
+<div class="chapter">Dois objetos</div>
+
+## Identidade
+
+<div class="statement">Distingue um objeto dos demais. Objetos criados separadamente continuam distintos, mesmo quando possuem o mesmo estado.</div>
+
+<!--
+Formalização como ponto de chegada. Relacionar aos dois usos de new.
+-->
+
+---
+
+<div class="chapter">Identidade</div>
 
 ## Mesmo estado, identidades diferentes
 
-<div class="cards">
-<div class="concept-card"><strong>Estado</strong>valores que o objeto possui naquele momento</div>
-<div class="concept-card"><strong>Identidade</strong>se estamos falando do mesmo objeto ou de objetos diferentes</div>
+<div class="refs">
+  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1<div class="state-line">"Teclado", 2</div></div>
+  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2<div class="state-line">"Teclado", 2</div></div>
 </div>
 
-<div class="key-point">Dois objetos podem ter o mesmo estado e continuar distintos.</div>
+<!--
+Pedir que expliquem por que igualdade de estado não elimina as duas criações.
+-->
+
+---
+
+<div class="chapter">Identidade</div>
+
+## Como verificar se é o mesmo objeto?
+
+Até aqui, usamos o diagrama e contamos execuções de `new`.
+
+Qual mecanismo Java responde diretamente a essa pergunta?
 
 <!--
-Consolidar a distinção conceitual. Não introduzir cópia ou clonagem.
+Agora existe uma necessidade concreta para ==. Não fazer revisão geral de operadores.
 -->
 
 ---
 
 <!-- _class: code-focus -->
+
+<div class="chapter">Identidade</div>
 
 ## Primeiro cenário
 
 ```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = new ItemPedido();
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = item1;
 
-a == b
+System.out.println(item1 == item2);
 ```
 
-**`true` ou `false`? Por quê?**
+**Qual resultado esperamos?**
 
 <!--
-Não revelar ainda. Perguntar quantos objetos foram criados.
+Esperar true e exigir justificativa pela referência copiada.
 -->
 
 ---
 
-## Dois objetos distintos
-
-<div class="result">false</div>
-
-<div class="refs">
-  <div class="var">a</div><div class="arrow">→</div><div class="object">objeto 1</div>
-  <div class="var">b</div><div class="arrow">→</div><div class="object">objeto 2</div>
-</div>
-
-<!--
-O resultado é false porque as referências correspondem a objetos distintos.
--->
-
----
-
-<!-- _class: code-focus -->
-
-## Segundo cenário
-
-```java
-ItemPedido a = new ItemPedido();
-ItemPedido b = a;
-
-a == b
-```
-
-**`true` ou `false`? Por quê?**
-
-<!--
-Não revelar imediatamente. Perguntar por quê, não apenas true ou false.
--->
-
----
+<div class="chapter">Identidade</div>
 
 ## O mesmo objeto
 
 <div class="result">true</div>
 
 <div class="refs shared">
-  <div class="var">a</div><div class="arrow">↘</div><div class="object">objeto<br>ItemPedido</div>
-  <div class="var second">b</div><div class="arrow second-arrow">↗</div>
+  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto 1</div>
+  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
 </div>
 
 <!--
-O resultado é true porque as duas referências correspondem ao mesmo objeto.
+O resultado não depende dos campos; depende de as referências corresponderem ao mesmo objeto.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Identidade</div>
+
+## Segundo cenário
+
+```java
+ItemPedido item1 = new ItemPedido();
+ItemPedido item2 = new ItemPedido();
+
+System.out.println(item1 == item2);
+```
+
+**Qual resultado esperamos?**
+
+<!--
+Esperar false e pedir que localizem as duas criações.
+-->
+
+---
+
+<div class="chapter">Identidade</div>
+
+## Objetos distintos
+
+<div class="result">false</div>
+
+<div class="refs">
+  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1</div>
+  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2</div>
+</div>
+
+<!--
+Mesmo que o estado seja preenchido com valores iguais, as identidades continuam diferentes.
 -->
 
 ---
 
 <!-- _class: java-focus -->
 
-## `==` e referências
+<div class="chapter">Comparação</div>
 
-<div class="statement">Neste contexto, <code>==</code> verifica se duas referências correspondem ao mesmo objeto.</div>
+## `==` entre referências
+
+<div class="statement"><code>item1 == item2</code> verifica se as duas referências correspondem ao mesmo objeto.</div>
+
+- mesmo objeto → `true`;
+- objetos distintos → `false`.
 
 <!--
-Limitar a discussão à identidade. Não introduzir equals.
+Limitar ao mecanismo necessário. Dizer explicitamente que comparação de conteúdo será retomada no futuro; não introduzir equals.
 -->
 
 ---
 
 <!-- _class: compact-code -->
 
-## Atividade principal
+<div class="chapter">Aplicação</div>
+
+## Reúna as pistas
 
 ```java
 ItemPedido a = new ItemPedido();
@@ -450,147 +578,115 @@ b.quantidade = 4;
 ```
 
 <!--
-Dar tempo para leitura silenciosa antes de mostrar as perguntas.
+Leitura silenciosa. Não avançar para as perguntas até todos localizarem as duas expressões new.
 -->
 
 ---
 
 <!-- _class: activity -->
 
-## Façam a previsão
+<div class="chapter">Aplicação</div>
 
-1. Quantos objetos foram criados?
-2. Quais variáveis compartilham o mesmo objeto?
+## Desenhe, preveja e justifique
+
+1. Quantos objetos existem?
+2. Quais variáveis acessam o mesmo objeto?
 3. Quais quantidades serão observadas por `a`, `b` e `c`?
+4. Quanto produzem `a == b` e `a == c`?
 
 <!--
-Discussão em dupla. Esperar respostas antes de avançar; desenhar hipóteses no quadro se houver divergência.
+Atividade em dupla. Pedir um diagrama com setas e justificativa usando new, referência, estado e identidade.
 -->
 
 ---
 
-## Primeiro: quantos objetos?
+<div class="chapter">Aplicação</div>
+
+## O diagrama explica o código
 
 <div class="refs shared">
   <div class="var">a</div><div class="arrow">↘</div><div class="object">objeto 1<div class="state-line">quantidade = 4</div></div>
   <div class="var second">b</div><div class="arrow second-arrow">↗</div>
 </div>
 
-<div class="refs" style="margin-top: 0.65em;">
+<div class="refs" style="margin-top: 0.55em;">
   <div class="var">c</div><div class="arrow">→</div><div class="object">objeto 2<div class="state-line">quantidade = 2</div></div>
 </div>
 
 <!--
-Foram criados dois objetos, pois há dois usos de new. a e b compartilham o objeto 1; c referencia o objeto 2.
+Foram criados dois objetos. a e b acessam o primeiro; c acessa o segundo.
 -->
 
 ---
 
-## Depois: quais valores?
+<div class="chapter">Aplicação</div>
 
-<div class="simulator">
-  <div class="file-label">Main.java — consultas</div>
-  <pre><code>System.out.println(a.quantidade);
-System.out.println(b.quantidade);
-System.out.println(c.quantidade);</code></pre>
-  <div class="console-label">Console</div>
-  <div class="console">4<br>4<br>2</div>
+## As previsões se conectam
+
+<div class="cards">
+<div class="concept-card"><strong>Estado observado</strong><code>a.quantidade</code> → 4<br><code>b.quantidade</code> → 4<br><code>c.quantidade</code> → 2</div>
+<div class="concept-card"><strong>Identidade</strong><code>a == b</code> → true<br><code>a == c</code> → false</div>
 </div>
 
-<div class="key-point"><code>b.quantidade = 4</code> alterou o estado do objeto acessado por <code>a</code> e <code>b</code>.</div>
-
 <!--
-Comparar com as previsões. Pedir que expliquem 4, 4 e 2 usando referências, identidade e estado.
+Pedir que uma dupla explique primeiro os estados e outra explique as comparações.
 -->
 
 ---
 
 <!-- _class: code-focus -->
 
-## Transferindo o modelo
-
-```java
-Conta conta1 = new Conta();
-Conta conta2 = conta1;
-```
-
-Se uma operação usando `conta2` modificar o objeto, o que será observado ao acessá-lo por `conta1`?
-
-<!--
-Não implementar Conta. Verificar se os estudantes transferem o modelo sem depender de ItemPedido.
--->
-
----
+<div class="chapter">Transferência</div>
 
 ## O domínio mudou. O modelo não.
 
-<div class="refs shared">
-  <div class="var">conta1</div><div class="arrow">↘</div><div class="object">objeto<br>Conta<div class="state-line">estado alterado</div></div>
-  <div class="var second">conta2</div><div class="arrow second-arrow">↗</div>
-</div>
+```java
+Conta contaPrincipal = new Conta();
+Conta contaParaConsulta = contaPrincipal;
+```
 
-<div class="key-point">A alteração é observável por ambas as referências porque existe um único objeto.</div>
-
-<!--
-Pedir que o estudante formule a explicação completa. Não introduzir regras bancárias nem novo comportamento.
--->
-
----
-
-## Síntese — criação e acesso
-
-<div class="sequence">
-  <span><code>new</code> cria um objeto</span>
-  <strong>→</strong>
-  <span>a variável mantém uma referência</span>
-  <strong>→</strong>
-  <span>a referência permite acessar o objeto</span>
-</div>
-
-<div class="key-point">Atribuir uma referência a outra variável não copia o objeto.</div>
+Se uma operação feita por `contaParaConsulta` alterar o objeto, o que será observado por `contaPrincipal`?
 
 <!--
-Retomar o modelo central em sequência visual.
+Não implementar Conta. Verificar se a turma transfere o modelo sem depender dos nomes do exemplo central.
 -->
 
 ---
 
 <!-- _class: synthesis -->
 
-## Síntese — estado e identidade
+<div class="chapter">Fechamento</div>
 
-<div class="cards">
-<div class="concept-card"><strong>Estado</strong>pode ser observado e alterado por diferentes referências ao mesmo objeto</div>
-<div class="concept-card"><strong>Identidade</strong>objetos diferentes continuam distintos mesmo com valores iguais</div>
+## Da atribuição à identidade
+
+<div class="sequence">
+  <span><code>new</code> cria</span>
+  <strong>→</strong>
+  <span>variável mantém referência</span>
+  <strong>→</strong>
+  <span>atribuição copia referência</span>
+  <strong>→</strong>
+  <span>identidade distingue</span>
+  <strong>→</strong>
+  <span><code>==</code> verifica</span>
 </div>
 
-<div class="key-point"><code>==</code> foi usado aqui para verificar identidade.</div>
-
 <!--
-Não ampliar a semântica de == nem introduzir comparação de conteúdo.
+Recuperar a história, inclusive o primeiro resultado 7. Não apenas recitar definições.
 -->
 
 ---
 
-<!-- _class: code-focus -->
+<div class="chapter">Próximo passo</div>
 
-## Um problema fica em aberto
+## Se duas partes acessam o mesmo objeto...
 
 ```java
 item.quantidade = -200;
 ```
 
-Na estrutura atual, quem possui uma referência pode alterar diretamente o estado.
+Qualquer uma deveria poder alterar diretamente seu estado?
 
 <!--
-Não resolver. Não mencionar private. Preparar a pergunta final.
--->
-
----
-
-
-## Se o objeto é responsável pelo próprio estado, qualquer parte do programa deveria poder alterá-lo diretamente?
-
-<!--
-Deixar a pergunta em aberto. Ela será retomada na Aula 04. Não responder com encapsulamento ou private.
+Deixar a pergunta aberta para a Aula 04. Não mencionar private, getters ou encapsulamento como resposta.
 -->
