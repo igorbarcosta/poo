@@ -110,11 +110,7 @@ O erro de compilação é uma informação útil: ele mostra que a classe passou
     - `private`: o membro pode ser acessado somente dentro da própria classe;
     - `public`: o membro é disponibilizado para uso externo à classe.
 
-Temos ainda um detalhe necessário para acompanhar a próxima alteração. Quando nenhum valor é atribuído explicitamente, um campo `int` de um objeto começa com `0`.
-
-!!! java-focus "Java em foco — valor inicial do campo"
-
-    Neste exemplo, `quantidade` começa com `0`. Esse valor inicial permitirá aumentar a quantidade por meio de um comportamento, sem depender de uma atribuição direta em `Main`.
+Quando nenhum valor é atribuído explicitamente, um campo `int` de um objeto começa com `0`. Assim, `quantidade` pode ser aumentada por um comportamento sem depender de uma atribuição direta em `Main`.
 
 ### Alterando o estado por meio de um comportamento
 
@@ -214,7 +210,7 @@ Discuta com um colega:
 
 Operações como `depositar(...)` e `sacar(...)` podem surgir na discussão. Não é necessário implementar a classe nem definir regras bancárias completas.
 
-### Aprofundamento se o ritmo permitir
+### Para aprofundar — diagnosticando duas soluções
 
 !!! activity "Atividade — diagnosticar uma solução aparentemente protegida"
 
