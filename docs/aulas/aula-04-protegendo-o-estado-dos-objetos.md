@@ -6,6 +6,8 @@ icon: material/school-outline
 
 Na Aula 03, vimos que duas variáveis podem permitir acesso ao mesmo objeto. Agora precisamos investigar uma consequência dessa descoberta: se diferentes partes do programa chegam ao mesmo objeto, elas também podem tentar alterar diretamente o estado que compartilham.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-04-protegendo-o-estado-dos-objetos.html) · [PDF](../slides/rendered/aula-04-protegendo-o-estado-dos-objetos.pdf)
+
 !!! lesson-question "Pergunta central"
 
     Se diferentes partes do programa acessam o mesmo objeto, quem deve controlar como seu estado pode mudar?
