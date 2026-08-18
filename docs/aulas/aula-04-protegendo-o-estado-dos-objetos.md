@@ -173,12 +173,12 @@ Agora podemos nomear a ideia construída ao longo da aula.
 
     Encapsular é estabelecer uma fronteira para que o objeto controle como seu estado pode ser consultado e alterado.
 
-    - operações públicas formam a interface disponível ao código externo;
+    - operações públicas formam o conjunto de operações disponíveis ao código externo;
     - campos privados ajudam a impedir alterações diretas;
     - comportamentos preservam intenções e regras do objeto;
     - encapsular não significa gerar getters e setters automaticamente.
 
-`private` é um mecanismo importante dessa fronteira, mas não decide sozinho se a interface da classe é adequada. Uma classe cheia de setters genéricos pode continuar entregando suas decisões ao código externo.
+`private` é um mecanismo importante dessa fronteira, mas não decide sozinho se o conjunto de operações oferecido pela classe é adequado. Uma classe cheia de setters genéricos pode continuar entregando suas decisões ao código externo.
 
 ## Para aprofundar — transferindo a decisão
 

@@ -80,7 +80,7 @@ Registre para sua análise:
 3. o que as mensagens informam sobre o acesso a `quantidade`;
 4. quais dependências de `Main` em relação ao campo exposto ficaram visíveis.
 
-Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na interface da classe.
+Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na forma de acesso oferecida pela classe.
 
 ### Incremento C — Planejar a reparação
 
@@ -125,14 +125,18 @@ Compile novamente. Se ainda houver erro de acesso a `quantidade` em `Main`, volt
 
 ### Incremento F — Testar a regra no objeto compartilhado
 
-Reorganize o experimento para que `itemPrincipal` comece com um novo objeto, preço unitário `150.0` e quantidade inicial ainda `0`. Prepare a quantidade por meio do comportamento e só então atribua a referência a `itemObservado`:
+Reorganize `Main` para iniciar este experimento com um novo objeto. Use o comportamento de aumento para chegar à quantidade `5` e só então atribua a referência de `itemPrincipal` a `itemObservado`. Remova ou ajuste as alterações herdadas da Versão 3 que mudariam novamente esse estado.
 
-```java
-itemPrincipal.aumentarQuantidade(5);
-ItemPedido itemObservado = itemPrincipal;
-```
+Antes da sequência de testes, compile, execute e confirme este estado-base:
 
-Ajuste as chamadas herdadas da Versão 3 para que esse aumento não seja aplicado duas vezes.
+| Verificação | Resultado esperado |
+| --- | --- |
+| `itemPrincipal == itemObservado` | `true` |
+| quantidade consultada pelos dois nomes | `5` |
+| preço unitário do objeto compartilhado | `150.0` |
+| subtotal calculado pelos dois nomes | `750.0` |
+
+Só avance quando as quatro verificações forem atendidas.
 
 Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute e explique o resultado.
 
@@ -171,6 +175,7 @@ Agora há duas conclusões que precisam conviver:
     Verifique se sua solução:
 
     - parte da Versão 3 e preserva o cenário com referências compartilhadas e objeto independente;
+    - compilou o projeto imediatamente após tornar `quantidade` privada e identificou por que os acessos existentes deixaram de funcionar;
     - mantém `quantidade` como `private` e não a acessa diretamente em `Main`;
     - controla aumentos com `aumentarQuantidade(int unidades)` e a regra `unidades > 0`;
     - consulta a quantidade com `getQuantidade()` e calcula o subtotal com o estado interno;
