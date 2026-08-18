@@ -1,6 +1,6 @@
 ---
 name: revisar-material-didatico
-description: Revisa materiais didáticos existentes deste repositório, como uma Aula, um Laboratório ou um par, avaliando clareza, legibilidade, coerência pedagógica e prontidão para uso. Use quando o usuário pedir revisão, diagnóstico ou verificação de material já criado; por padrão, apenas analisar e relatar, editando somente quando houver pedido explícito para corrigir, aplicar, atualizar ou implementar ajustes.
+description: Revisa materiais didáticos existentes deste repositório — Aula, Laboratório, deck isolado, Aula + deck ou Aula + Laboratório + deck — avaliando clareza, legibilidade, coerência pedagógica e prontidão para uso. Use quando o usuário pedir revisão, diagnóstico ou verificação de material já criado; por padrão, apenas analisar e relatar, editando somente quando houver pedido explícito para corrigir, aplicar, atualizar ou implementar ajustes.
 ---
 
 # Revisar material didático
@@ -19,6 +19,7 @@ Identificar problemas reais e melhorias úteis sem promover reescrita infinita o
    - `specs/projeto-pedagogico.md`;
    - `specs/padrao-aula.md`;
    - `specs/padrao-laboratorio.md`;
+   - `specs/padrao-slides.md`, sempre que houver slides no escopo;
    - `specs/estrutura-site.md`;
    - página anterior relacionada;
    - página seguinte relacionada, quando existir;
@@ -62,6 +63,16 @@ Quando houver experimento, verificar se a previsão é possível e determinada, 
 - Identificar detalhes de planejamento interno sem utilidade para compreender, executar, verificar, aprofundar ou entregar.
 - Conferir front matter, Markdown, admonitions, listas, código, links relativos e ausência de customizações desnecessárias.
 
+### Slides no escopo
+
+- Confirmar que o deck preserva a narrativa e a causalidade do roteiro, sem converter mecanicamente suas seções em frames.
+- Verificar legibilidade a distância, densidade, tamanho e recorte do código projetado, alinhamento, contraste e composição.
+- Conferir se as pausas didáticas têm função real, ocupam frames próprios e seguem `specs/padrao-slides.md`.
+- Comparar o deck com o roteiro para identificar lacunas, antecipações, redundâncias ou mudanças de ênfase.
+- Inspecionar os renderizados ou miniaturas disponíveis em busca de overflow, elementos cortados e geometria instável.
+
+Não prolongar a revisão em busca de uma versão ideal. Encerrar quando não houver achados necessários ou recomendados que prejudiquem o uso real.
+
 ## Classificar os achados
 
 Classificar cada achado relevante:
@@ -91,7 +102,8 @@ Ao revisar Aula e Laboratório juntos, incluir coerência entre ambos, continuid
 1. Modificar somente os pontos solicitados ou aprovados.
 2. Evitar reestruturações não pedidas e preservar alterações preexistentes do usuário.
 3. Executar `.venv/bin/zensical build` e corrigir erros.
-4. Verificar `git diff` e `git status`.
-5. Relatar arquivos alterados e resultado do build.
+4. Quando houver slides alterados, renderizar o deck pelo fluxo oficial e inspecionar o resultado.
+5. Verificar `git diff` e `git status`.
+6. Relatar arquivos alterados e resultado das validações.
 
 Não fazer commit ou push sem solicitação explícita.

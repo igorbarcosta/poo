@@ -13,35 +13,21 @@ Os arquivos HTML e PDF em `slides/rendered/` são gerados automaticamente a part
 
 ## Comandos
 
+Para visualizar os decks durante a edição:
+
 ```bash
 npm run slides:preview
-npm run slides:html
-npm run slides:pdf
-npm run slides:pptx
 ```
 
-Os scripts básicos de exportação operam sobre o deck piloto da Aula 03.
-As exportações para PDF e PPTX exigem um navegador compatível com o Marp, como Chrome, Edge ou Firefox, disponível no ambiente local.
-
-Para gerar as distribuições oficiais da Aula 02:
+Para gerar HTML e PDF oficiais de uma aula, informe o nome do arquivo sem `slides/` e sem a extensão `.md`:
 
 ```bash
-npm run slides:aula02
-npm run slides:aula02:html
-npm run slides:aula02:pdf
+npm run slides:render -- aula-04-protegendo-o-estado-dos-objetos
 ```
 
-O comando agregado gera HTML e PDF em `slides/rendered/`. PPTX não faz parte do fluxo oficial.
+O comando localiza `slides/<slug>.md` e gera `slides/rendered/<slug>.html` e `slides/rendered/<slug>.pdf`. A exportação para PDF exige um navegador compatível com o Marp, como Chrome, Edge ou Firefox, disponível no ambiente local.
 
-Para gerar as distribuições oficiais da Aula 03:
-
-```bash
-npm run slides:aula03
-npm run slides:aula03:html
-npm run slides:aula03:pdf
-```
-
-As páginas das aulas podem apontar para os HTML e PDF oficiais. `.slides-build/` permanece reservado a artefatos temporários; arquivos em `slides/rendered/` são sempre derivados dos fontes e nunca devem ser editados manualmente.
+As páginas das aulas podem apontar para os HTML e PDF oficiais. `.slides-build/` permanece reservado a experimentos temporários; arquivos em `slides/rendered/` são sempre derivados dos fontes e nunca devem ser editados manualmente.
 
 ## Ambiente no WSL
 

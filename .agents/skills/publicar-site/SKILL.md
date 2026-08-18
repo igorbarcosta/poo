@@ -65,9 +65,9 @@ Identificar por comandos de leitura:
 
 - branch atual;
 - remotes configurados;
-- upstream da branch ativa.
+- estado relativo entre `draft`, `main` e seus remotes.
 
-Publicar apenas na branch ativa e no upstream já configurado. Não trocar ou criar branch, alterar remote, inventar upstream, fazer merge ou rebase. Se o destino estiver ausente ou ambíguo, interromper e informar.
+A publicação parte de `draft` e termina em `main`. Exigir que a branch ativa seja `draft`, que `main` exista e que o remote `origin` esteja configurado. Não criar branches adicionais, alterar remote, fazer rebase nem criar merge commit. Se o destino estiver ausente, divergente ou ambíguo, interromper e informar.
 
 ## Preparar e criar o commit
 
@@ -79,9 +79,17 @@ Prosseguir somente com autorização explícita, auditorias limpas, build válid
 4. Usar a mensagem fornecida pelo usuário ou uma mensagem objetiva que descreva o conjunto, nunca mensagens vagas como `updates`, `fix` ou `changes`.
 5. Não alterar commits anteriores nem o histórico.
 
-## Enviar ao upstream
+## Enviar e promover para `main`
 
-Após o commit, executar push normal para o upstream atual. Nunca usar `--force` ou `--force-with-lease`.
+Após o commit em `draft`:
+
+1. enviar `draft` ao `origin`, configurando seu upstream apenas se ainda não existir;
+2. trocar para `main`;
+3. atualizar `main` exclusivamente por fast-forward de `draft`;
+4. enviar `main` ao `origin` com push normal;
+5. voltar para `draft` ao terminar a verificação.
+
+Nunca usar `--force`, `--force-with-lease`, rebase ou merge commit. A promoção para `main` deve falhar se não puder ser feita por fast-forward.
 
 Se o push for rejeitado por divergência remota, não executar pull, merge ou rebase automaticamente. Interromper e relatar a situação.
 
@@ -104,7 +112,7 @@ Executar `git status`. O ideal é terminar com working tree limpa. Se restarem a
 Relatar de forma breve:
 
 - resultado do build;
-- branch e remote/upstream;
+- branches e remotes envolvidos;
 - arquivos incluídos;
 - hash curto e mensagem do commit;
 - resultado do push;

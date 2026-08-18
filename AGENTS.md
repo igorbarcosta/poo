@@ -14,12 +14,23 @@ Este repositório contém o site da disciplina de Programação Orientada a Obje
 ## Estrutura
 
 - `docs/`: conteúdo do site.
+- `slides/*.md`: fontes Marp dos slides oficiais.
+- `slides/rendered/`: distribuições oficiais HTML/PDF derivadas das fontes.
 - `specs/`: decisões de estrutura e padrões pedagógicos; consulte-as antes de criar ou reorganizar conteúdo.
 - Consulte `specs/padrao-aula.md` e `specs/padrao-laboratorio.md` antes de criar aulas ou laboratórios.
+- Consulte `specs/padrao-slides.md` antes de criar ou alterar slides.
 - Consulte `specs/projeto-pedagogico.md` antes de planejar aulas, atividades ou avaliações; o planejamento detalhado deve permanecer evolutivo.
 - `zensical.toml`: configuração e navegação.
 - `.github/workflows/`: publicação automática no GitHub Pages.
 - `site/`: saída gerada pelo Zensical; não deve ser editada manualmente.
+
+Os arquivos em `slides/rendered/` não devem ser editados manualmente. Quando uma fonte de slides for alterada, valide sua renderização.
+
+## Branches
+
+- `draft` é a branch normal de trabalho e revisão.
+- `main` representa o conteúdo aprovado e publicado.
+- Não enviar alterações para `main` sem solicitação explícita de publicação.
 
 ## Princípios
 
