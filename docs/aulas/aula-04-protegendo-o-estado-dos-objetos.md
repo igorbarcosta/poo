@@ -42,7 +42,7 @@ itemObservado.quantidade = -3;
 
 !!! activity "Atividade — prever antes de executar"
 
-    Sem executar o código, registre sua previsão:
+    Sem executar o código, formule sua previsão:
 
     1. Qual quantidade será observada por `itemPrincipal`?
     2. Qual subtotal será calculado por `itemPrincipal.calcularSubtotal()`?
@@ -165,7 +165,11 @@ Ela esconde o campo, mas ainda permite que qualquer código externo escolha qual
     3. Responda novamente e indique qual operação comunica melhor a intenção do domínio.
     4. Participe do fechamento coletivo, relacionando a escolha à responsabilidade de `ItemPedido`.
 
-O nome do método não resolve tudo sozinho. O ponto decisivo é quais mudanças a classe permite e quais regras ela assume a responsabilidade de preservar.
+!!! trap "Armadilha — campo privado não garante encapsulamento"
+
+    Criar getters e setters para todos os campos pode apenas trocar a sintaxe do acesso. Se `setQuantidade(...)` aceita qualquer valor, o código externo continua decidindo livremente o estado final.
+
+    Isso não significa que setters sejam sempre inadequados. O contexto e a responsabilidade do objeto determinam quais operações fazem sentido e quais regras elas devem preservar.
 
 ## Encapsulamento
 

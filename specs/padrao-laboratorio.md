@@ -65,6 +65,15 @@ Sempre que houver liberdade pedagógica de solução, essa liberdade deve ser pr
 
 Quando a atividade exigir um projeto configurado, o roteiro deve fornecer a preparação mínima necessária antes da implementação. Em ambientes heterogêneos, evitar dependência desnecessária de uma versão exata do Java, de uma única IDE ou da execução obrigatória pelo terminal, desde que o estudante consiga compilar e executar o projeto com uma versão compatível.
 
+## Investigação e entrega
+
+Investigar não implica entregar. Toda atividade deve distinguir com clareza o que o estudante precisa fazer para aprender do que efetivamente precisa enviar; esses conjuntos podem ser diferentes.
+
+- Previsões, diagramas, hipóteses, discussões, explicações e anotações podem ser necessários durante a investigação sem compor o artefato de entrega.
+- Quando a entrega for somente código, isso deve ser declarado explicitamente, inclusive informando que os registros da investigação não precisam ser enviados.
+- Critérios de aprendizagem e critérios do artefato entregue não devem ser confundidos. Os critérios de conclusão devem priorizar evidências observáveis no artefato, enquanto a compreensão pode ser verificada separadamente.
+- Quando necessário, o estudante pode demonstrar compreensão oralmente durante o acompanhamento, sem produzir um relatório escrito.
+
 ## Narrativa e pausas didáticas
 
 O laboratório é organizado principalmente por incrementos. Não marcar cada incremento como `activity`: o próprio encontro já é uma atividade prática. No texto sequencial, perguntas, exemplos e explicações permanecem na narrativa normal.
@@ -84,5 +93,5 @@ Informações administrativas, política de IA, acompanhamento e critérios de c
 - Antes de finalizar o roteiro, mapear cada exigência obrigatória — inclusive operações pequenas, organização de arquivos e procedimentos — para a aula anterior em que foi preparada. Conhecimento novo indispensável não deve ser introduzido pela primeira vez no laboratório.
 - Instruções conceituais devem se limitar ao necessário para realizar a atividade.
 - Critérios de conclusão devem permitir verificação objetiva sem prescrever arquitetura.
-- Quando o objetivo envolver comportamento de código, o laboratório pode usar o ciclo **prever → executar → explicar**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios.
+- Quando o objetivo envolver comportamento de código, o laboratório pode usar o ciclo **prever → executar → observar → explicar**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios nem implica exigir um registro formal de cada etapa.
 - A página deve ser útil durante a realização e para consulta posterior.

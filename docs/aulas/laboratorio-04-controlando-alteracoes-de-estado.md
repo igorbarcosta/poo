@@ -44,6 +44,12 @@ O novo requisito é:
 
     Crie uma cópia da Versão 3 para iniciar a Versão 4 e abra a pasta completa na IDE. Mantenha `Main.java` e `ItemPedido.java` juntos; não abra apenas os arquivos separadamente.
 
+## Como conduzir a investigação
+
+Em cada experimento, preserve o ciclo **prever → executar → observar → explicar**. As previsões podem ser breves e feitas em papel, rascunho, comentário temporário no código ou durante a conversa com sua dupla e com o professor. Não mude uma previsão depois de conhecer o resultado: compare as duas coisas.
+
+Previsões, mensagens de erro, classificações, anotações e explicações fazem parte da investigação, mas não da entrega. Ao final, você enviará somente o código-fonte solicitado.
+
 ## Investigação
 
 ### Incremento A — Mapear os acessos atuais
@@ -56,12 +62,12 @@ Execute a Versão 3 antes de modificá-la e confirme o resultado final conhecido
 | `itemObservado` | 5 | 750.0 |
 | `itemIndependente` | 7 | 1050.0 |
 
-Em seguida, localize em `Main.java` todos os acessos diretos a `quantidade` e classifique cada um:
+Em seguida, localize em `Main.java` todos os acessos diretos a `quantidade` e identifique o papel de cada um:
 
 - **escrita:** atribui ou altera o campo;
 - **leitura:** consulta o campo para exibir ou usar o valor.
 
-Ainda não altere o código. Esse mapa permitirá observar o impacto da próxima decisão.
+Ainda não altere o código. Essa leitura permitirá observar o impacto da próxima decisão. Não é necessário produzir uma tabela ou um registro formal.
 
 ### Incremento B — Criar a fronteira e compilar
 
@@ -73,14 +79,14 @@ private int quantidade;
 
 Agora compile o projeto **antes de corrigir qualquer acesso em `Main`**.
 
-Registre para sua análise:
+Antes de corrigir, observe:
 
 1. quais linhas deixaram de compilar;
 2. quais eram leituras e quais eram escritas;
 3. o que as mensagens informam sobre o acesso a `quantidade`;
 4. quais dependências de `Main` em relação ao campo exposto ficaram visíveis.
 
-Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na forma de acesso oferecida pela classe.
+Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na forma de acesso oferecida pela classe. Consiga explicar essa relação à sua dupla ou ao professor; não é necessário enviar as mensagens nem uma análise por escrito.
 
 ### Incremento C — Planejar a reparação
 
@@ -138,7 +144,7 @@ Antes da sequência de testes, compile, execute e confirme este estado-base:
 
 Só avance quando as quatro verificações forem atendidas.
 
-Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute e explique o resultado.
+Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute, observe e explique o resultado à sua dupla ou ao professor.
 
 1. Use `itemObservado.aumentarQuantidade(-10)`.
 2. Consulte a quantidade e o subtotal por `itemPrincipal` e `itemObservado`.
@@ -154,7 +160,7 @@ O resultado esperado é:
 | após tentar aumentar em `-10` | 5 | 750.0 |
 | após aumentar em `2` | 7 | 1050.0 |
 
-Explique por que a alteração válida continua visível pelas duas referências e por que a tentativa inválida não muda o objeto.
+Antes de avançar, confirme que você consegue explicar por que a alteração válida continua visível pelas duas referências e por que a tentativa inválida não muda o objeto.
 
 ### Incremento G — Confirmar o contraste com outro objeto
 
@@ -163,7 +169,7 @@ Use `itemIndependente`, que foi criado com outra execução de `new ItemPedido()
 1. aumente sua quantidade em um valor positivo;
 2. consulte seu estado e o de `itemPrincipal`;
 3. verifique novamente `itemPrincipal == itemIndependente`;
-4. explique por que a regra é preservada separadamente em cada objeto.
+4. explique à sua dupla ou ao professor por que a regra é preservada separadamente em cada objeto.
 
 Agora há duas conclusões que precisam conviver:
 
@@ -172,16 +178,27 @@ Agora há duas conclusões que precisam conviver:
 
 !!! success "Critérios de conclusão"
 
-    Verifique se sua solução:
+    Verifique se o código do projeto:
 
     - parte da Versão 3 e preserva o cenário com referências compartilhadas e objeto independente;
-    - compilou o projeto imediatamente após tornar `quantidade` privada e identificou por que os acessos existentes deixaram de funcionar;
+    - compila e executa sem erros ao final;
     - mantém `quantidade` como `private` e não a acessa diretamente em `Main`;
-    - controla aumentos com `aumentarQuantidade(int unidades)` e a regra `unidades > 0`;
-    - consulta a quantidade com `getQuantidade()` e calcula o subtotal com o estado interno;
+    - mantém público `aumentarQuantidade(int unidades)` e só altera o estado quando `unidades > 0`;
+    - oferece `getQuantidade()` como operação pública de consulta;
+    - mantém `calcularSubtotal()` usando o estado interno;
     - preserva quantidade `5` após a solicitação inválida e chega a `7` após a solicitação válida;
-    - confirma e explica a diferença entre referências compartilhadas e objetos distintos;
-    - compila e executa sem erros ao final.
+    - mantém referências compartilhadas observando o mesmo estado e o objeto criado com outro `new` independente;
+    - exibe no console resultados suficientes para verificar a regra, o compartilhamento e a independência dos objetos.
+
+### Antes de entregar, você deve conseguir explicar
+
+- por que os acessos diretos deixaram de compilar após `quantidade` se tornar privada;
+- por que duas referências ainda observam o mesmo estado;
+- por que `private` não muda a identidade do objeto;
+- por que um `setQuantidade(...)` irrestrito não resolve sozinho o problema;
+- o que encapsulamento significa neste exemplo.
+
+Essas explicações podem ser demonstradas oralmente durante o acompanhamento e não precisam ser enviadas.
 
 Ao concluir corretamente, verifique os critérios, envie a atividade e aguarde a liberação do professor.
 
@@ -224,7 +241,9 @@ Não é necessário entregar respostas escritas.
 
 > **Projeto 1 — Versão 4: estado protegido**
 
-Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
+Entregue somente os arquivos de código-fonte do **Projeto 1 — Versão 4**, conforme as orientações disponíveis no Google Classroom.
+
+Não é necessário enviar previsões, respostas, tabelas, diagramas, mensagens de erro, anotações ou explicações por escrito.
 
 ## Materiais relacionados
 

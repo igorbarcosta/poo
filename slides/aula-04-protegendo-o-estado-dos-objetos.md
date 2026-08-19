@@ -472,16 +472,18 @@ Realizar a primeira votação antes da conversa e a segunda depois. Não revelar
 
 ---
 
+<!-- _class: trap -->
+
 <div class="chapter">Diagnóstico</div>
 
-## Onde fica a decisão?
+## Campo privado não garante encapsulamento
 
 <div class="cards">
 <div class="concept-card"><strong><code>setQuantidade(...)</code></strong>sem regra, o código externo continua escolhendo qualquer valor final</div>
 <div class="concept-card"><strong><code>aumentarQuantidade(...)</code></strong>expressa uma intenção e o objeto verifica a mudança solicitada</div>
 </div>
 
-<div class="key-point">O contexto decide quais operações são apropriadas; o nome sozinho não garante proteção.</div>
+<div class="key-point">O contexto decide quais operações são apropriadas; setters não são sempre inadequados, mas o nome sozinho não garante proteção.</div>
 
 <!--
 Fechamento coletivo. Não demonizar setters em qualquer contexto; analisar esta decisão específica e sua regra.
