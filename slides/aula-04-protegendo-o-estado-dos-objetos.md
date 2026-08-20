@@ -442,40 +442,6 @@ Pedir exemplos de código externo que precise apenas consultar. Consolidar a dif
 
 ---
 
-<div class="chapter">Capacidades do objeto</div>
-
-## Se existe aumentar, precisa existir diminuir?
-
-Não criamos operações porque elas parecem simétricas.
-
-<div class="statement">Uma operação pública representa uma capacidade necessária para o problema.</div>
-
-<!--
-Não responder imediatamente. Recolher hipóteses sobre quando reduzir faria ou não parte do problema.
--->
-
----
-
-<!-- _class: activity -->
-
-<div class="chapter">Capacidades do objeto</div>
-
-## Uma nova operação, novas decisões
-
-Quantidade atual: **5**
-
-- reduzir `2` → ?
-- reduzir `10` → ?
-- reduzir `-2` → ?
-
-O problema realmente precisa oferecer essa operação?
-
-<!--
-Discutir sem implementar. A operação só faz sentido se representar uma capacidade necessária e traz regras próprias. Conectar ao desafio opcional do Lab 04 sem revelar implementação nem torná-lo obrigatório.
--->
-
----
-
 <!-- _class: code-focus -->
 
 <div class="chapter">Voltando às referências</div>
@@ -642,6 +608,133 @@ Reconhecer a dúvida sem apresentar exceptions, boolean, Result, Optional, códi
 
 ---
 
+<div class="chapter">Testando a ideia em outro domínio</div>
+
+## E se agora o objeto for uma conta?
+
+```java
+class Conta {
+    double saldo;
+}
+```
+
+Até aqui, `ItemPedido` construiu a ideia. Ela continua fazendo sentido para `Conta`?
+
+<!--
+Apresentar somente o ponto de partida. A transferência acontece depois da formalização de encapsulamento; não antecipar uma solução para Conta.
+-->
+
+---
+
+<!-- _class: code-focus -->
+
+<div class="chapter">Testando a ideia em outro domínio</div>
+
+## Qualquer trecho escolhe o saldo
+
+```java
+conta.saldo = 1000000;
+conta.saldo = -5000;
+```
+
+Se `saldo` pertence à conta, faz sentido qualquer parte do programa escolher diretamente seu valor?
+
+<!--
+Dar tempo para reconhecer o mesmo problema em outro domínio. Não discutir ainda private nem oferecer operações prontas.
+-->
+
+---
+
+<!-- _class: activity -->
+
+<div class="chapter">Transferência em dupla</div>
+
+## Que capacidades uma conta deve oferecer?
+
+1. que alterações diretas deveriam ser impedidas?
+2. que operações públicas fariam sentido?
+3. que regras depósito e saque poderiam exigir?
+4. uma transferência envolve quais elementos?
+5. `setSaldo(...)` seria suficiente?
+
+Não implemente a classe.
+
+<!--
+Dar tempo real de discussão em dupla e depois coletar propostas no quadro. Aceitar nomes alternativos coerentes. Esperar consulta, depósito, saque e transferência, sem exigir a lista exata. A qualidade da resposta depende de expressar intenções e regras, não de adivinhar assinaturas.
+-->
+
+---
+
+<div class="chapter">Organizando as propostas</div>
+
+## Capacidades expressam intenções
+
+<div class="cards">
+<div class="concept-card"><strong>consultar saldo</strong>observar o estado atual</div>
+<div class="concept-card"><strong>depositar</strong>registrar uma entrada</div>
+<div class="concept-card"><strong>sacar</strong>solicitar uma retirada</div>
+<div class="concept-card"><strong>transferir</strong>movimentar entre contas</div>
+</div>
+
+<!--
+Organizar as respostas da turma sem exigir estes nomes literais. A novidade é passar de acesso ao campo para capacidades reconhecíveis no domínio.
+-->
+
+---
+
+<div class="chapter">Cada intenção traz suas decisões</div>
+
+## Operações diferentes, perguntas diferentes
+
+<div class="cards">
+<div class="concept-card"><strong>Depósito</strong><code>depositar(-100)</code><br>faz sentido?</div>
+<div class="concept-card"><strong>Saque</strong>sacar <code>1000</code><br>é sempre permitido?</div>
+<div class="concept-card"><strong>Transferência</strong>depende apenas<br>do valor?</div>
+</div>
+
+<!--
+Coletar critérios conceitualmente defensáveis, sem fixar regras bancárias nem implementar validações. Intenções diferentes podem exigir regras diferentes.
+-->
+
+---
+
+<div class="chapter">Recuperando uma decisão</div>
+
+## `setSaldo(...)` × `depositar(...)`
+
+<div class="cards">
+<div class="concept-card"><strong><code>setSaldo(1000)</code></strong>escolhe diretamente<br>o estado final</div>
+<div class="concept-card"><strong><code>depositar(1000)</code></strong>expressa uma intenção<br>sobre a evolução</div>
+</div>
+
+Os dois métodos expressam a mesma decisão?
+
+<!--
+Usar o contraste como aplicação da crítica anterior, não como repetição da explicação. Não afirmar que setters são sempre errados; o contexto determina a capacidade adequada.
+-->
+
+---
+
+<div class="chapter">Uma pergunta que se abre</div>
+
+## Transferir envolve mais de um objeto
+
+<div class="sequence">
+  <div class="step">conta de origem</div>
+  <div class="arrow">→</div>
+  <div class="step">valor</div>
+  <div class="arrow">→</div>
+  <div class="step">conta de destino</div>
+</div>
+
+<div class="statement">Como objetos diferentes participam de uma mesma operação?</div>
+
+<!--
+Deixar como abertura futura para colaboração entre objetos. Não propor assinatura, serviço, arquitetura bancária nem solução.
+-->
+
+---
+
 <!-- _class: synthesis -->
 
 <div class="chapter">Fechamento</div>
@@ -652,7 +745,7 @@ Reconhecer a dúvida sem apresentar exceptions, boolean, Result, Optional, códi
 - código externo solicita operações em vez de escolher livremente o estado;
 - comportamentos podem preservar regras de mudança;
 - consulta e alteração são capacidades diferentes;
-- encapsulamento organiza esse controle de forma intencional.
+- encapsular é definir capacidades significativas e preservar as regras de evolução do estado.
 
 <!--
 Responder à pergunta central. Não recapitular todos os exemplos nem repetir a definição palavra por palavra.

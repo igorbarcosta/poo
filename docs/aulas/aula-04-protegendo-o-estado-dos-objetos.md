@@ -185,25 +185,6 @@ System.out.println(itemPrincipal.getQuantidade());
 
 `getQuantidade()` informa o estado atual. `aumentarQuantidade(...)` solicita uma mudança. As duas operações expõem capacidades diferentes do objeto.
 
-## Quais capacidades o objeto precisa oferecer?
-
-Tem uma pergunta natural aqui: se existe `aumentarQuantidade(...)`, por que não criamos também `diminuirQuantidade(...)`?
-
-Não precisamos criar operações apenas porque elas parecem formar um par. Uma operação pública representa uma capacidade que o problema exige. Se reduzir a quantidade fizer parte do problema, essa capacidade pode ser adequada — mas traz suas próprias decisões.
-
-!!! activity "Atividade — uma operação simétrica?"
-
-    Parta de uma quantidade atual igual a `5` e discuta:
-
-    1. reduzir `2` poderia produzir qual estado?
-    2. reduzir `10` deveria levar a quantidade a `-5`?
-    3. o que significaria pedir uma redução de `-2`?
-    4. o problema realmente precisa oferecer essa operação?
-
-    Não implemente a solução agora. O desafio opcional do Laboratório 04 permitirá explorar essa capacidade sem torná-la obrigatória.
-
-Cada nova capacidade cria novas decisões e regras que o objeto deverá preservar. A aparente simetria do nome não decide por nós.
-
 ## Uma classe pode esconder o campo e continuar sem controle
 
 Considere outra operação possível:
@@ -276,6 +257,60 @@ Em nossa implementação, `aumentarQuantidade(-10)` mantém o estado inalterado.
 
 Hoje nosso foco é preservar o estado do objeto. Como comunicar a rejeição ao código externo é outra decisão de projeto, que discutiremos quando essa necessidade aparecer.
 
+## Transferindo para outro domínio
+
+Até aqui, construímos a ideia de encapsulamento usando `ItemPedido`. Ela continua fazendo sentido quando mudamos de domínio?
+
+Considere apenas este ponto de partida:
+
+```java
+class Conta {
+    double saldo;
+}
+```
+
+Com o campo exposto, qualquer trecho pode escolher diretamente um novo saldo:
+
+```java
+conta.saldo = 1000000;
+conta.saldo = -5000;
+```
+
+Se `saldo` pertence à conta, faz sentido qualquer parte do programa escolher diretamente seu valor?
+
+!!! activity "Atividade — projetando as capacidades de uma conta"
+
+    Em dupla, discutam sem implementar a classe:
+
+    1. que alterações diretas de saldo deveriam ser impedidas?
+    2. que operações públicas fariam sentido para uma conta?
+    3. que regra um depósito deveria respeitar?
+    4. que regra um saque poderia precisar respeitar?
+    5. uma transferência envolve quais elementos?
+    6. `setSaldo(double saldo)` seria suficiente para representar essas ações?
+
+Na discussão coletiva, podemos organizar as propostas pela intenção que expressam:
+
+- consultar saldo → observar o estado atual;
+- depositar → registrar uma entrada de valor;
+- sacar → solicitar uma retirada de valor;
+- transferir → movimentar um valor entre uma conta de origem e uma conta de destino.
+
+Não é necessário exigir exatamente esses nomes. O importante é que as operações expressem ações significativas do domínio, em vez de apenas substituir a sintaxe do acesso ao campo.
+
+As operações também produzem perguntas diferentes: `depositar(-100)` faz sentido? Um saque de `1000` é sempre permitido? Uma transferência depende apenas de o valor ser positivo? Não vamos implementar essas regras agora; basta reconhecer que intenções diferentes exigem decisões diferentes.
+
+Compare ainda:
+
+```java
+conta.setSaldo(1000);
+conta.depositar(1000);
+```
+
+Os dois métodos expressam a mesma decisão? `setSaldo(...)` permite escolher diretamente o estado final. `depositar(...)` expressa uma intenção sobre como o estado deve evoluir e abre espaço para a conta preservar as regras dessa ação. Isso não torna todo setter inadequado; mostra por que o contexto determina quais capacidades fazem sentido.
+
+Uma transferência envolve pelo menos uma conta de origem, uma conta de destino e um valor. Como objetos diferentes participam de uma mesma operação é uma pergunta que retomaremos quando a colaboração entre objetos se tornar necessária.
+
 ## Fechando a trajetória
 
 !!! synthesis "Síntese"
@@ -284,7 +319,7 @@ Hoje nosso foco é preservar o estado do objeto. Como comunicar a rejeição ao 
     - código externo solicita operações, em vez de escolher livremente o estado;
     - comportamentos podem preservar as regras das mudanças;
     - consultas podem ser oferecidas sem devolver o controle da alteração;
-    - encapsulamento é controle intencional da evolução do estado, não geração mecânica de getters e setters.
+    - encapsular é definir capacidades significativas e preservar as regras de evolução do estado, não apenas esconder dados ou gerar getters e setters.
 
 ## Uma pergunta que ainda permanece
 
