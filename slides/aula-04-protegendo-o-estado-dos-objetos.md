@@ -255,6 +255,26 @@ Explicar somente controle de acesso no nível necessário ao laboratório. Não 
 
 ---
 
+<!-- _class: java-focus compact-code -->
+
+<div class="chapter">Mecanismo necessário</div>
+
+## E se não houver modificador?
+
+```java
+private int quantidade;  // própria classe
+        int quantidade;  // mesmo pacote
+public  int quantidade;  // acesso externo
+```
+
+Sem modificador ocorre acesso de pacote (`package-private`).
+
+<!--
+Relacionar ao código anterior: Main e ItemPedido estão, no exemplo simples, em um contexto que permite o acesso de pacote. Isso não torna public opcional nem a ausência de modificador equivalente a private. Mencionar apenas que protected existe e ficará para quando houver necessidade; não abrir packages.
+-->
+
+---
+
 <div class="chapter">Escopo da mudança</div>
 
 ## Uma fronteira por vez
@@ -342,6 +362,31 @@ Pedir previsões linha a linha. A informação sobre zero é operacional, não u
 
 ---
 
+<!-- _class: tip compact-code -->
+
+<div class="chapter">Um contraste importante</div>
+
+## Campo não é variável local
+
+```java
+class ItemPedido {
+    int quantidade;  // campo: começa em 0
+}
+```
+
+```java
+void exemplo() {
+    int quantidade;
+    System.out.println(quantidade); // não compila
+}
+```
+
+<!--
+Evitar a generalização “todo int começa em zero”. Não aprofundar as regras completas de inicialização de Java.
+-->
+
+---
+
 <div class="chapter">Outra necessidade</div>
 
 ## Como observar o resultado?
@@ -393,6 +438,40 @@ Ler rapidamente: retorno int, nenhum parâmetro, devolve o estado atual. Esses m
 
 <!--
 Pedir exemplos de código externo que precise apenas consultar. Consolidar a diferença sem alongar o getter.
+-->
+
+---
+
+<div class="chapter">Capacidades do objeto</div>
+
+## Se existe aumentar, precisa existir diminuir?
+
+Não criamos operações porque elas parecem simétricas.
+
+<div class="statement">Uma operação pública representa uma capacidade necessária para o problema.</div>
+
+<!--
+Não responder imediatamente. Recolher hipóteses sobre quando reduzir faria ou não parte do problema.
+-->
+
+---
+
+<!-- _class: activity -->
+
+<div class="chapter">Capacidades do objeto</div>
+
+## Uma nova operação, novas decisões
+
+Quantidade atual: **5**
+
+- reduzir `2` → ?
+- reduzir `10` → ?
+- reduzir `-2` → ?
+
+O problema realmente precisa oferecer essa operação?
+
+<!--
+Discutir sem implementar. A operação só faz sentido se representar uma capacidade necessária e traz regras próprias. Conectar ao desafio opcional do Lab 04 sem revelar implementação nem torná-lo obrigatório.
 -->
 
 ---
@@ -491,6 +570,41 @@ Fechamento coletivo. Não demonizar setters em qualquer contexto; analisar esta 
 
 ---
 
+<div class="chapter">Transferindo o raciocínio</div>
+
+## Protegemos a quantidade. E o resto?
+
+```java
+item.precoUnitario = -200.0;
+item.descricao = "";
+```
+
+O problema terminou quando protegemos `quantidade`?
+
+<!--
+Suspender a resposta. O contraste permanece no mesmo objeto e prepara a atividade seguinte.
+-->
+
+---
+
+<!-- _class: activity -->
+
+<div class="chapter">Transferindo o raciocínio</div>
+
+## Que outros estados ainda exigem decisões?
+
+1. preço negativo representa um estado válido?
+2. descrição vazia representa um estado válido?
+3. quem deveria decidir isso?
+
+Não implemente a refatoração completa.
+
+<!--
+Transferir a responsabilidade para outros campos sem pedir private, getters, setters, validações ou construtores. O objetivo é ampliar o modelo, não resolver a classe inteira.
+-->
+
+---
+
 <!-- _class: concept-key -->
 
 <div class="chapter">Ponto de chegada</div>
@@ -510,60 +624,20 @@ Formalizar somente agora. Relacionar cada linha a uma evidência já observada n
 
 ---
 
-<div class="chapter">Aprofundamento elástico</div>
+<div class="chapter">Uma questão futura</div>
 
-## O domínio mudou
-
-```java
-class Conta {
-    double saldo;
-}
-```
+## A alteração foi rejeitada. Quem chamou sabe disso?
 
 ```java
-conta.saldo = -5000;
+item.aumentarQuantidade(-10);
 ```
 
-O que muda no exemplo? O que permanece no raciocínio?
+Hoje garantimos que o estado permanece válido.
+
+<div class="statement">Como comunicar a rejeição é outra decisão de projeto.</div>
 
 <!--
-Se houver tempo, usar este cenário para iniciar a transferência. Não definir regras bancárias completas.
--->
-
----
-
-<!-- _class: activity -->
-
-<div class="chapter">Aprofundamento elástico</div>
-
-## Transfira o raciocínio
-
-Em dupla:
-
-1. diagnostiquem o problema da alteração direta;
-2. proponham operações que expressem mudanças legítimas;
-3. indiquem quais decisões pertencem a `Conta`;
-4. comparem a proposta com `ItemPedido`.
-
-<!--
-Dar tempo de produção real. A atividade pode ser omitida sem romper o núcleo, mas não deve virar exposição apressada.
--->
-
----
-
-<div class="chapter">Aprofundamento elástico</div>
-
-## A responsabilidade atravessa domínios
-
-<div class="cards">
-<div class="concept-card"><strong><code>ItemPedido</code></strong>controla mudanças em sua quantidade</div>
-<div class="concept-card"><strong><code>Conta</code></strong>deve controlar operações que mudam seu saldo</div>
-</div>
-
-<div class="key-point">A operação adequada depende do domínio; a decisão não precisa ficar espalhada pelo código externo.</div>
-
-<!--
-Pedir propostas como depositar e sacar, sem fechar regras ou implementar a classe. Se a atividade for omitida, omitir também este frame.
+Reconhecer a dúvida sem apresentar exceptions, boolean, Result, Optional, códigos ou classes de erro. O foco desta aula é impedir a alteração inválida.
 -->
 
 ---

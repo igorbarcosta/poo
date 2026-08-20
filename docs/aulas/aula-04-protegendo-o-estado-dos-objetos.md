@@ -94,6 +94,26 @@ O erro é consequência da fronteira que acabamos de criar. `Main` ainda conhece
     - métodos de `ItemPedido` continuam acessando seus campos privados;
     - código externo só pode usar os membros que a classe disponibiliza.
 
+Tem uma pergunta natural aqui: nos exemplos anteriores, `descricao`, `precoUnitario` e `quantidade` apareciam sem `public` nem `private`, e `Main` conseguia acessá-los. O que acontece quando nenhum modificador é escrito?
+
+!!! java-focus "Java em foco — e se não houver modificador?"
+
+    Compare estas declarações:
+
+    ```java
+    private int quantidade;
+    int quantidade;
+    public int quantidade;
+    ```
+
+    - `private` restringe o acesso à própria classe;
+    - sem modificador, ocorre acesso de pacote (`package-private`): o membro pode ser acessado no mesmo pacote;
+    - `public` disponibiliza o membro externamente.
+
+    Em nosso exemplo simples, `Main` e `ItemPedido` estão em um contexto no qual o acesso de pacote permite a interação. Portanto, funcionar sem `public` não significa que `public` seja opcional nem que a ausência de modificador torne o campo privado.
+
+    Existe ainda `protected`, que será discutido quando houver necessidade.
+
 Nesta etapa, protegeremos apenas `quantidade`. `descricao` e `precoUnitario` permanecerão temporariamente expostos para concentrarmos a atenção em uma mudança por vez.
 
 ## Pedindo ao objeto para mudar
@@ -120,6 +140,27 @@ O próprio `ItemPedido` decide se a solicitação preserva sua regra. Se `unidad
 
 Há um detalhe operacional importante aqui: quando um campo `int` não recebe uma inicialização explícita, cada objeto começa com esse campo em `0`. Assim, podemos construir a quantidade inicial por meio do comportamento, sem reabrir o acesso direto.
 
+!!! tip "Dica — campo não é variável local"
+
+    Um campo `int` recebe o valor padrão `0`:
+
+    ```java
+    class ItemPedido {
+        int quantidade;
+    }
+    ```
+
+    Uma variável local precisa receber um valor antes de ser utilizada:
+
+    ```java
+    void exemplo() {
+        int quantidade;
+        System.out.println(quantidade); // não compila
+    }
+    ```
+
+    Portanto, não podemos generalizar que “todo `int` começa em zero”.
+
 ## Consultando sem entregar o controle
 
 Depois de tornar `quantidade` privada, este código também deixa de compilar:
@@ -143,6 +184,25 @@ System.out.println(itemPrincipal.getQuantidade());
 ```
 
 `getQuantidade()` informa o estado atual. `aumentarQuantidade(...)` solicita uma mudança. As duas operações expõem capacidades diferentes do objeto.
+
+## Quais capacidades o objeto precisa oferecer?
+
+Tem uma pergunta natural aqui: se existe `aumentarQuantidade(...)`, por que não criamos também `diminuirQuantidade(...)`?
+
+Não precisamos criar operações apenas porque elas parecem formar um par. Uma operação pública representa uma capacidade que o problema exige. Se reduzir a quantidade fizer parte do problema, essa capacidade pode ser adequada — mas traz suas próprias decisões.
+
+!!! activity "Atividade — uma operação simétrica?"
+
+    Parta de uma quantidade atual igual a `5` e discuta:
+
+    1. reduzir `2` poderia produzir qual estado?
+    2. reduzir `10` deveria levar a quantidade a `-5`?
+    3. o que significaria pedir uma redução de `-2`?
+    4. o problema realmente precisa oferecer essa operação?
+
+    Não implemente a solução agora. O desafio opcional do Laboratório 04 permitirá explorar essa capacidade sem torná-la obrigatória.
+
+Cada nova capacidade cria novas decisões e regras que o objeto deverá preservar. A aparente simetria do nome não decide por nós.
 
 ## Uma classe pode esconder o campo e continuar sem controle
 
@@ -171,6 +231,26 @@ Ela esconde o campo, mas ainda permite que qualquer código externo escolha qual
 
     Isso não significa que setters sejam sempre inadequados. O contexto e a responsabilidade do objeto determinam quais operações fazem sentido e quais regras elas devem preservar.
 
+## Protegemos a quantidade. E o resto?
+
+Até aqui, protegemos apenas `quantidade`. Mas isso resolve o problema do objeto inteiro?
+
+```java
+item.precoUnitario = -200.0;
+item.descricao = "";
+```
+
+!!! activity "Atividade — transferir dentro do mesmo objeto"
+
+    Discuta sem implementar uma refatoração completa:
+
+    1. preço negativo representa um estado válido para este item?
+    2. descrição vazia representa um estado válido?
+    3. quem deveria decidir se esses estados fazem sentido?
+    4. proteger apenas `quantidade` preserva todas as regras de `ItemPedido`?
+
+O objetivo não é tornar todos os campos privados nem criar getters, setters, validações e construtores agora. O contraste mostra que a responsabilidade do objeto não termina em um campo específico.
+
 ## Encapsulamento
 
 Agora podemos nomear a ideia construída ao longo da aula.
@@ -186,26 +266,15 @@ Agora podemos nomear a ideia construída ao longo da aula.
 
 `private` é um mecanismo importante dessa fronteira, mas não decide sozinho se o conjunto de operações oferecido pela classe é adequado. Uma classe cheia de setters genéricos pode continuar entregando suas decisões ao código externo.
 
-## Para aprofundar — transferindo a decisão
+Encapsulamento, portanto, não serve apenas para proteger um campo escolhido. Ele ajuda o objeto a preservar estados e mudanças coerentes com o problema que representa.
 
-!!! activity "Atividade — proteger outro estado"
+## Quando uma solicitação é rejeitada
 
-    Considere a classe:
+Em nossa implementação, `aumentarQuantidade(-10)` mantém o estado inalterado. Isso garante que o objeto não aceite a alteração inválida, mas deixa outra pergunta:
 
-    ```java
-    class Conta {
-        double saldo;
-    }
-    ```
+> Quem chamou não deveria saber que a solicitação foi rejeitada?
 
-    Em dupla:
-
-    1. identifique o problema de permitir `conta.saldo = -5000`;
-    2. proponha operações que expressem mudanças legítimas;
-    3. explique quais decisões deveriam permanecer dentro de `Conta`;
-    4. compare a proposta com a solução construída para `ItemPedido`.
-
-    Não é necessário implementar a classe nem definir regras bancárias completas. O objetivo é transferir o raciocínio de encapsulamento para outro domínio.
+Hoje nosso foco é preservar o estado do objeto. Como comunicar a rejeição ao código externo é outra decisão de projeto, que discutiremos quando essa necessidade aparecer.
 
 ## Fechando a trajetória
 
