@@ -210,7 +210,7 @@ Vamos retomar estas questões na Aula 03 — Objetos, referências e identidade.
 
 > **Projeto 1 — Versão 2: primeiros objetos**
 
-Entregue sua própria versão do projeto conforme as orientações disponíveis no Google Classroom.
+Entregue sua própria versão do projeto conforme as orientações disponíveis no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
 
 ## Materiais relacionados
 

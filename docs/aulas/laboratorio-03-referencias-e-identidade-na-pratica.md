@@ -225,7 +225,7 @@ Vamos retomar estas questões na Aula 04 — Protegendo o estado dos objetos. N�
 
 > **Projeto 1 — Versão 3: investigação de referências e identidade**
 
-Entregue somente os arquivos de código-fonte do **Projeto 1 — Versão 3**, conforme as orientações disponíveis no Google Classroom.
+Entregue somente os arquivos de código-fonte do **Projeto 1 — Versão 3**, conforme as orientações disponíveis no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
 
 Não é necessário enviar previsões, tabelas preenchidas, diagramas, anotações ou explicações por escrito.
 

@@ -136,4 +136,4 @@ Para os estudantes que não forem aprovados por média, a Avaliação Final segu
 
 A estrutura, os objetivos e a organização geral das unidades orientam todo o semestre. O cronograma detalhado poderá ser ajustado conforme o ritmo e as necessidades de aprendizagem da turma. Poderão ser ajustados o tempo dedicado aos conteúdos, a sequência fina, os requisitos dos projetos e atividades específicas.
 
-As datas do planejamento e a macroestrutura atualizada estarão disponíveis no [Cronograma](cronograma.md). Avisos, orientações operacionais, submissões, atividades, avaliações e notas serão comunicados pelo Google Classroom.
+As datas do planejamento e a macroestrutura atualizada estarão disponíveis no [Cronograma](cronograma.md). Avisos, orientações operacionais, submissões, atividades, avaliações e notas serão comunicados pelo [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).

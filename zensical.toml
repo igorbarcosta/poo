@@ -12,31 +12,33 @@ site_name = "Programação Orientada a Objetos"
 
 nav = [
   { "Início" = "index.md" },
-  { "Cronograma" = "cronograma.md" },
+  { "Disciplina" = [
+    { "Cronograma" = "cronograma.md" },
+    { "Monitoria" = "monitoria.md" },
+    { "Plano de Ensino" = "plano-de-ensino.md" },
+  ] },
   { "Aulas" = [
     { "Aulas" = "aulas/index.md" },
-    { "Aula 01 — Apresentação da disciplina" = "aulas/aula-01-apresentacao-da-disciplina.md" },
-    { "Aula 02 — Do procedural aos objetos" = "aulas/aula-02-do-procedural-aos-objetos.md" },
-    { "Aula 03 — Objetos, referências e identidade" = "aulas/aula-03-objetos-referencias-e-identidade.md" },
-    { "Aula 04 — Protegendo o estado dos objetos" = "aulas/aula-04-protegendo-o-estado-dos-objetos.md" },
-    { "Aula 05 — Construtores e estado inicial válido" = "aulas/aula-05-construtores-e-estado-inicial-valido.md" },
+    { "01 — Apresentação da disciplina" = "aulas/aula-01-apresentacao-da-disciplina.md" },
+    { "02 — Do procedural aos objetos" = "aulas/aula-02-do-procedural-aos-objetos.md" },
+    { "03 — Objetos, referências e identidade" = "aulas/aula-03-objetos-referencias-e-identidade.md" },
+    { "04 — Protegendo o estado dos objetos" = "aulas/aula-04-protegendo-o-estado-dos-objetos.md" },
+    { "05 — Construtores e estado inicial válido" = "aulas/aula-05-construtores-e-estado-inicial-valido.md" },
   ] },
   { "Laboratórios" = [
-    { "Laboratórios" = "laboratorios.md" },
-    { "Laboratório 01 — Java mínimo e problema inicial" = "aulas/laboratorio-01-java-minimo-e-problema-inicial.md" },
-    { "Laboratório 02 — Primeiros objetos em Java" = "aulas/laboratorio-02-primeiros-objetos-em-java.md" },
-    { "Laboratório 03 — Referências e identidade na prática" = "aulas/laboratorio-03-referencias-e-identidade-na-pratica.md" },
-    { "Laboratório 04 — Controlando alterações de estado" = "aulas/laboratorio-04-controlando-alteracoes-de-estado.md" },
-    { "Laboratório 05 — Construindo objetos em estado válido" = "aulas/laboratorio-05-construindo-objetos-em-estado-valido.md" },
+    { "Laboratórios" = "laboratorios/index.md" },
+    { "01 — Java mínimo e problema inicial" = "aulas/laboratorio-01-java-minimo-e-problema-inicial.md" },
+    { "02 — Primeiros objetos em Java" = "aulas/laboratorio-02-primeiros-objetos-em-java.md" },
+    { "03 — Referências e identidade na prática" = "aulas/laboratorio-03-referencias-e-identidade-na-pratica.md" },
+    { "04 — Controlando alterações de estado" = "aulas/laboratorio-04-controlando-alteracoes-de-estado.md" },
+    { "05 — Construindo objetos em estado válido" = "aulas/laboratorio-05-construindo-objetos-em-estado-valido.md" },
   ] },
-  { "Monitoria" = "monitoria.md" },
   { "Materiais" = [
     { "Materiais" = "materiais/index.md" },
     { "Ambiente de Desenvolvimento" = "materiais/ambiente-de-desenvolvimento.md" },
     { "Java essencial para quem já sabe programar" = "materiais/java-essencial.md" },
     { "Referências e recursos" = "materiais/referencias.md" },
   ] },
-  { "Plano de Ensino" = "plano-de-ensino.md" },
 ]
 
 extra_css = ["stylesheets/extra.css"]
@@ -66,7 +68,7 @@ features = [
   # "navigation.instant.progress",
   "navigation.path",
   # "navigation.prune",
-  "navigation.sections",
+  # "navigation.sections",
   # "navigation.tabs",
   # "navigation.tabs.sticky",
   "navigation.top",

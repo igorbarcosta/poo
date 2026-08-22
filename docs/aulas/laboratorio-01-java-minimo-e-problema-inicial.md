@@ -238,7 +238,7 @@ Não há uma única forma obrigatória de organizar esses incrementos. É aceit�
     - calculou corretamente o subtotal de cada item;
     - exibiu no console os dados dos dois itens;
     - calculou e exibiu no console um total correspondente à soma dos subtotais;
-    - realizou o envio conforme as orientações do Google Classroom;
+    - realizou o envio conforme as orientações do [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5);
     - formulou respostas para as questões propostas ao final do roteiro.
 
 Depois de atender aos critérios e realizar o envio, você poderá ser liberado. O desafio a seguir permanece opcional.
@@ -286,7 +286,7 @@ Formule uma resposta para cada questão. Não é necessário entregá-las por es
 
 > **Projeto 1 — Versão 1: solução inicial**
 
-O código produzido neste laboratório corresponde à primeira versão do Projeto 1. As práticas de laboratório farão esse projeto evoluir durante a Unidade 1. As orientações de submissão estarão no Google Classroom.
+O código produzido neste laboratório corresponde à primeira versão do Projeto 1. As práticas de laboratório farão esse projeto evoluir durante a Unidade 1. As orientações de submissão estarão no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
 
 ## Materiais relacionados
 

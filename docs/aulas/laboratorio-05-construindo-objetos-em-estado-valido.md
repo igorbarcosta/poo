@@ -229,7 +229,7 @@ Não implemente `Pedido` ainda e não entregue respostas escritas. Essas pergunt
 
 > **Projeto 1 — Versão 5: criação coerente**
 
-Entregue somente os arquivos de código-fonte da **Versão 5**, conforme as orientações disponíveis no Google Classroom.
+Entregue somente os arquivos de código-fonte da **Versão 5**, conforme as orientações disponíveis no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
 
 Não envie previsões, respostas, tabelas, prints, diagramas, mensagens de erro ou reflexões por escrito.
 

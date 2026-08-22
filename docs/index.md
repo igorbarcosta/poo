@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Programação Orientada a Objetos
 
 Este é o espaço de estudo da disciplina. Aqui você encontra os roteiros das aulas, laboratórios, cronograma, materiais de apoio e informações de monitoria.
@@ -14,7 +19,7 @@ Este é o espaço de estudo da disciplina. Aqui você encontra os roteiros das a
 
     Retome conceitos, exemplos e atividades trabalhadas em sala.
 
--   **[Laboratórios](laboratorios.md)**
+-   **[Laboratórios](laboratorios/index.md)**
 
     Acesse as práticas e acompanhe a evolução do projeto.
 
@@ -31,11 +36,11 @@ As aulas desenvolvem o embasamento conceitual. Os laboratórios seguintes aplica
 | Preciso... | Onde procurar |
 | --- | --- |
 | estudar ou revisar conteúdo | [Aulas](aulas/index.md) |
-| realizar uma prática | [Laboratórios](laboratorios.md) |
+| realizar uma prática | [Laboratórios](laboratorios/index.md) |
 | saber datas e sequência | [Cronograma](cronograma.md) |
 | tirar dúvidas | [Monitoria](monitoria.md) |
 | consultar ambiente e referências | [Materiais](materiais/index.md) |
 | consultar regras da disciplina | [Plano de Ensino](plano-de-ensino.md) |
-| ver avisos, entregas e notas | Google Classroom |
+| ver avisos, entregas e notas | [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5) |
 
-O site concentra o conteúdo didático permanente. Avisos, entregas, atividades administrativas, avaliações quando aplicável e notas são disponibilizados no Google Classroom.
+O site concentra o conteúdo didático permanente. Avisos, entregas, atividades administrativas, avaliações quando aplicável e notas são disponibilizados no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).

@@ -241,7 +241,7 @@ Não é necessário entregar respostas escritas.
 
 > **Projeto 1 — Versão 4: estado protegido**
 
-Entregue somente os arquivos de código-fonte do **Projeto 1 — Versão 4**, conforme as orientações disponíveis no Google Classroom.
+Entregue somente os arquivos de código-fonte do **Projeto 1 — Versão 4**, conforme as orientações disponíveis no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
 
 Não é necessário enviar previsões, respostas, tabelas, diagramas, mensagens de erro, anotações ou explicações por escrito.
 
