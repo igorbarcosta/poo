@@ -45,6 +45,14 @@ Planejar o encontro com um **núcleo necessário** e possíveis **aprofundamento
 
 Algumas aulas podem começar com uma recuperação curta, sem consulta e sem nota, combinando duas ou três questões sobre o encontro anterior e conteúdos mais antigos. Também pode ser útil empregar Peer Instruction quando houver modelos mentais concorrentes: resposta individual → discussão com colega → nova resposta → explicação coletiva, sem depender de clickers ou outra tecnologia. Nenhuma dessas estratégias é seção fixa ou ritual obrigatório.
 
+### Dinâmica das atividades em aulas teóricas
+
+Por padrão, as atividades de uma aula teórica são conduzidas com a turma toda: o professor apresenta a pergunta, oferece tempo real para elaboração individual, coleta hipóteses, contrasta justificativas e formaliza ou fecha a ideia. O roteiro deve preservar a pausa antes da resposta e evitar perguntas cuja solução apareça imediatamente no parágrafo seguinte.
+
+Não escrever automaticamente “discuta com um colega”, “compare com um colega” ou “em dupla”. Trabalho em pares e Peer Instruction continuam disponíveis quando houver uma razão pedagógica deliberada — por exemplo, modelos mentais concorrentes que se beneficiem de resposta individual, contraste e nova resposta —, mas não constituem a dinâmica padrão de toda atividade teórica.
+
+Essa orientação não se aplica como restrição aos laboratórios. Neles, investigação conjunta, previsão compartilhada, ajuda entre pares e comparação entre implementações podem ocorrer naturalmente quando servirem ao objetivo prático.
+
 ## Piloto da oferta 2026.2 — granularidade por blocos didáticos
 
 Esta seção registra uma hipótese experimental para as Aulas 05, 06 e 07 da oferta atual. Ela não altera retroativamente as Aulas 01–04 nem estabelece uma regra permanente da disciplina. Depois da Aula 07, uma retrospectiva específica deve avaliar a experiência antes de decidir se o padrão será mantido, ajustado ou abandonado.

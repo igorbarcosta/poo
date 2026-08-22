@@ -39,6 +39,8 @@ Se faltar uma decisão pedagógica relevante que não esteja no pedido nem nas f
 8. Atualizar `docs/materiais/java-essencial.md` somente com recursos Java efetivamente introduzidos no par, sem transformá-lo em apostila.
 9. Atualizar `docs/aulas/index.md`. Alterar `zensical.toml` somente se a navegação explícita atual exigir a inclusão das novas páginas.
 
+Nas aulas teóricas, usar como dinâmica padrão perguntas dirigidas à turma toda: dar tempo real para formulação individual, coletar hipóteses, explorar justificativas e somente então formalizar a ideia. Não inserir automaticamente “discuta com um colega”, “compare com um colega” ou “em dupla”. Trabalho em pares e Peer Instruction exigem uma razão pedagógica explícita e deliberada. Essa restrição não se aplica aos laboratórios, nos quais investigação e colaboração em dupla podem ser naturais.
+
 Não transformar uma impressão isolada da retrospectiva em mudança curricular, exclusão de conteúdo ou regra permanente.
 
 Manter no roteiro público apenas informações úteis para compreender, executar, verificar, aprofundar e entregar. Deixar detalhes internos de planejamento nas specs.

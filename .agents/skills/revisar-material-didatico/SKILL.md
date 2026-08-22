@@ -43,6 +43,16 @@ Tratar o pedido específico como definição do escopo da revisão. Não convert
 - Verificar parágrafos, listas, títulos, perguntas, código e admonitions conforme as specs.
 - Sinalizar paredes de texto, redundâncias e destaques sem função semântica.
 
+Em aulas teóricas, verificar também:
+
+- se atividades dependem desnecessariamente de discussão em dupla ou poderiam ser conduzidas coletivamente pelo professor;
+- se existe tempo real de elaboração e coleta de hipóteses antes da resposta ou formalização;
+- se as perguntas exigem raciocínio, em vez de apenas reproduzir o código recém-apresentado;
+- se conceitos, mecanismos, dúvidas prováveis, apoios operacionais e sínteses recebem pausas didáticas somente quando sua função justifica a interrupção;
+- se Peer Instruction ou trabalho em pares, quando presentes, possuem razão pedagógica explícita.
+
+Não aplicar a restrição de dinâmica coletiva aos laboratórios: investigação conjunta, previsão compartilhada e comparação entre implementações podem ocorrer em dupla quando fizer sentido.
+
 ### Piloto de blocos didáticos nas Aulas 05–07
 
 Ao revisar as Aulas 05, 06 ou 07 da oferta 2026.2, considerar também o piloto registrado em `specs/padrao-aula.md`:

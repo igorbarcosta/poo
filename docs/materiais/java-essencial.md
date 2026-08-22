@@ -100,6 +100,22 @@ System.out.println(descricao);
 
 Observe que `String` começa com letra maiúscula.
 
+### `null` e valores padrão de campos
+
+Campos numéricos recebem valores padrão quando um objeto é criado: `0` para `int` e `0.0` para `double`. Campos que guardam referências começam com `null`.
+
+Como `String` é um tipo de referência, um campo ainda não inicializado pode começar assim:
+
+```java
+class ItemPedido {
+    String descricao;       // null
+    double precoUnitario;   // 0.0
+    int quantidade;         // 0
+}
+```
+
+`null` significa que a referência não aponta para nenhum objeto naquele momento. Outros efeitos e usos serão apresentados somente quando forem necessários.
+
 ## Métodos simples
 
 Um método pode receber valores, realizar uma operação e devolver um resultado:

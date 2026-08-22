@@ -37,11 +37,20 @@ Leia a sequência linha por linha. Depois da primeira instrução, o objeto já 
 
 | Campo | Valor nesse momento |
 | --- | --- |
-| `descricao` | nenhuma descrição informada |
+| `descricao` | `null` |
 | `precoUnitario` | `0.0` |
 | `quantidade` | `0` |
 
-O objeto só chega aos dados pretendidos depois de três instruções adicionais. Até lá, ele existe para o Java, mas ainda não representa o item que o restante do programa espera utilizar.
+!!! java-focus "Java em foco — `null` e valores padrão"
+
+    - campos numéricos recebem valores padrão, como `0` para `int` e `0.0` para `double`;
+    - campos que guardam referências começam com `null`;
+    - `String` é um tipo de referência;
+    - `null` significa que a referência não aponta para nenhum objeto naquele momento.
+
+    Por enquanto, basta reconhecer esses valores no estado inicial. Outros efeitos e usos de `null` serão discutidos quando houver necessidade.
+
+O objeto só chega aos dados pretendidos depois de três instruções adicionais. Logo depois de `new ItemPedido()`, ele existe para Java, mas possui `descricao == null`, preço `0.0` e quantidade `0`. Esse estado representa realmente o item que queremos usar?
 
 ### Criar agora, completar depois
 
@@ -68,18 +77,18 @@ itemB.descricao = "Mouse";
 itemB.aumentarQuantidade(3);
 ```
 
-O segundo trecho compila. O preço não foi informado, então `calcularSubtotal()` usa `0.0`. A linguagem não sabe que a preparação ficou incompleta; essa expectativa pertence ao nosso domínio.
-
 !!! activity "Atividade — quando o objeto fica pronto?"
 
-    Sem executar, compare as duas sequências.
+    Sem executar, compare as duas sequências. Pare aqui, formule suas respostas e espere a discussão antes de continuar.
 
     1. Depois de qual linha `itemA` possui todos os dados pretendidos?
     2. `itemB` chega ao mesmo ponto? Qual etapa ficou ausente?
     3. Qual dos dois poderia ser usado com mais segurança para calcular um subtotal?
     4. Se um método recebesse o objeto logo após o `new`, o que observaria?
 
-    Discuta com um colega e formule uma regra curta sobre o risco de preparar objetos em etapas separadas. A resposta não é um entregável.
+    O professor coleta hipóteses da turma, explora as justificativas e então organiza uma regra curta sobre o risco de preparar objetos em etapas separadas. A resposta não é um entregável.
+
+O segundo trecho compila. O preço não foi informado, então `calcularSubtotal()` usa `0.0`. A linguagem não sabe que a preparação ficou incompleta; essa expectativa pertence ao nosso domínio.
 
 Na Aula 04, nossa pergunta era quem controla as alterações posteriores. Agora o problema aparece antes: um objeto pode nascer e circular pelo programa sem as informações que lhe dão sentido.
 
@@ -103,8 +112,8 @@ Agora a expressão de criação comunica três informações de uma vez: descri�
 
 ```java
 public class ItemPedido {
-    private String descricao;
-    private double precoUnitario;
+    String descricao;
+    double precoUnitario;
     private int quantidade;
 
     public ItemPedido(String descricaoRecebida,
@@ -121,7 +130,9 @@ public class ItemPedido {
 
 O trecho com o mesmo nome da classe é o **construtor**. Ele é executado durante a criação de cada novo objeto e prepara seu estado inicial.
 
-Depois que a classe declara essa forma de construção, `new ItemPedido()` sem argumentos deixa de corresponder ao construtor disponível e não compila. Isso é parte da mudança: a classe passou a exigir os dados que considera necessários.
+!!! conceito-chave "Conceito-chave — construtor"
+
+    Um construtor define como o estado inicial de um objeto é preparado no momento de sua criação. A classe passa a explicitar aquilo de que o objeto precisa ao nascer, sem depender de uma sequência externa dispersa.
 
 !!! java-focus "Java em foco — construtor"
 
@@ -133,6 +144,12 @@ Depois que a classe declara essa forma de construção, `new ItemPedido()` sem a
     - é executado quando a expressão `new` cria o objeto.
 
     Nesta aula, precisamos apenas dessa forma básica. Sobrecarga, encadeamento e outros recursos de construção ficam para quando houver um problema que os exija.
+
+!!! trap "Armadilha — mas `new ItemPedido()` funcionava antes"
+
+    Quando uma classe não declara nenhum construtor, Java fornece implicitamente um construtor sem argumentos. Depois que declaramos nosso construtor com três parâmetros, esse construtor implícito deixa de ser fornecido automaticamente.
+
+    Por isso, `new ItemPedido()` deixa de corresponder ao construtor disponível e não compila. Agora a criação precisa fornecer os três argumentos exigidos pela classe.
 
 ### Valores fornecidos e valores recebidos
 
@@ -148,11 +165,23 @@ public ItemPedido(String descricaoRecebida,
                   int quantidadeRecebida)
 ```
 
-Na criação, `"Teclado"`, `150.0` e `2` são os **argumentos** fornecidos. No construtor, `descricaoRecebida`, `precoRecebido` e `quantidadeRecebida` são os **parâmetros** que recebem esses valores.
+Vamos acompanhar apenas `150.0` nessa execução:
 
-Não precisamos transformar essa diferença em uma lista para decorar. Ela apenas nos permite descrever o caminho dos dados:
+- `150.0` é o **argumento** fornecido na chamada;
+- `precoRecebido` é o **parâmetro** que recebe esse valor;
+- `precoUnitario` é o **campo** em que o valor passa a fazer parte do estado do objeto.
 
-**argumento da criação → parâmetro do construtor → campo do objeto**
+```text
+150.0 → precoRecebido → precoUnitario
+```
+
+De modo geral:
+
+- **argumento:** valor ou expressão fornecida na chamada;
+- **parâmetro:** variável declarada pelo construtor para receber o valor;
+- **campo:** parte do estado do objeto em que esse valor pode ser armazenado.
+
+**argumento → parâmetro → campo**
 
 Cada execução pode fornecer argumentos diferentes:
 
@@ -184,25 +213,27 @@ Agora existem duas coisas chamadas `descricao`: o campo do objeto e o parâmetro
 
 O mesmo vale para preço e quantidade. `this` aparece porque surgiu uma ambiguidade concreta de nomes; não precisamos explorar outros usos agora.
 
-!!! activity "Atividade — complete o caminho dos dados"
+!!! tip "Dica — siga o valor"
 
-    Considere o construtor incompleto:
+    Para entender uma construção, escolha um valor da chamada, localize o parâmetro que o recebe e veja em qual campo ele é armazenado:
 
-    ```java
-    public ItemPedido(String descricao,
-                      double precoUnitario,
-                      int quantidade) {
-        this.descricao = ____________;
-        this.precoUnitario = ____________;
-        this.quantidade = ____________;
-    }
+    ```text
+    150.0 → precoUnitario → this.precoUnitario
     ```
 
-    1. Complete as três lacunas.
-    2. Para `new ItemPedido("Mouse", 80.0, 3)`, indique o valor final de cada campo.
-    3. Compare com um colega: o que mudaria se escrevêssemos apenas `descricao = descricao;`?
+!!! activity "Atividade — acompanhe a criação"
 
-    O objetivo é acompanhar o valor da criação até o estado do objeto, não memorizar uma fórmula.
+    Considere:
+
+    ```java
+    new ItemPedido("Mouse", 80.0, 3)
+    ```
+
+    1. Qual será o estado do objeto ao final da execução do construtor?
+    2. O que aconteceria se escrevêssemos `descricao = descricao;` em vez de `this.descricao = descricao;`?
+    3. Em `descricao = descricao;`, a qual `descricao` cada lado se refere?
+
+    Formule uma hipótese antes do fechamento. O professor espera respostas, contrasta as justificativas da turma e só então retoma o papel de `this`.
 
 O construtor resolveu o risco de esquecer uma etapa externa: a criação agora exige os três argumentos. Mas exigir dados e receber dados corretos não são a mesma coisa.
 
@@ -255,31 +286,38 @@ Essa estratégia não comunica ao código externo que um argumento foi rejeitado
 
 !!! activity "Atividade — onde a regra deve ficar?"
 
-    Compare duas propostas:
+    Nosso foco ainda não é decidir como comunicar um erro, rejeitar a criação ou exibir uma mensagem. Compare somente **quem conhece e deve preservar as regras de `ItemPedido`**.
 
-    **Proposta A**
+    **Proposta A — cada cliente tenta preservar a regra**
 
     ```java
+    double precoInicial = 0.0;
     if (preco >= 0) {
-        if (quantidade >= 0) {
-            ItemPedido item = new ItemPedido(descricao, preco, quantidade);
-        }
+        precoInicial = preco;
     }
+
+    int quantidadeInicial = 0;
+    if (quantidade >= 0) {
+        quantidadeInicial = quantidade;
+    }
+
+    ItemPedido item =
+        new ItemPedido(descricao, precoInicial, quantidadeInicial);
     ```
 
-    **Proposta B**
+    **Proposta B — a classe preserva a regra em todo ponto de criação**
 
     ```java
     ItemPedido item = new ItemPedido(descricao, preco, quantidade);
     ```
 
-    Na proposta B, o próprio construtor preserva as regras numéricas.
+    Na proposta B, considere o construtor já mostrado, que só incorpora preço e quantidade quando os valores são não negativos.
 
     1. O que acontece se outro trecho esquecer a verificação da proposta A?
     2. Qual proposta concentra a regra em todos os pontos de criação?
     3. Quem conhece melhor os estados aceitáveis de `ItemPedido`?
 
-    Escolha uma proposta e justifique sua decisão a um colega. Não é necessário entregar a resposta.
+    Escolha uma proposta e prepare uma justificativa. O professor coleta respostas da sala e formaliza a discussão em torno da responsabilidade, sem comparar ainda políticas de falha. Não é necessário entregar a resposta.
 
 !!! conceito-chave "Conceito-chave — invariante"
 
@@ -293,13 +331,15 @@ O construtor organiza a criação; a validação impede que os argumentos sejam 
 
 Usamos `ItemPedido` porque ele dá continuidade ao projeto. Para verificar se compreendemos a ideia, vamos transferi-la sem implementar outra classe completa.
 
+<!-- aprofundamento-elastico: encurtar a transferência conforme o ritmo da turma -->
+
 Considere uma `Reserva` que precisa nascer com um número de pessoas e um valor de diária:
 
 ```java
 Reserva reserva = new Reserva(4, 180.0);
 ```
 
-Em dupla, discutam:
+Antes da síntese, formule respostas para estas perguntas:
 
 1. quais informações a reserva precisa receber na criação?
 2. uma reserva para `-2` pessoas deveria ser possível?
@@ -308,6 +348,8 @@ Em dupla, discutam:
 5. que resultado rápido mostraria que a proteção funcionou?
 
 Não desenvolva a implementação completa. A transferência serve para testar se a responsabilidade pelo estado inicial continua fazendo sentido fora de `ItemPedido`.
+
+O professor espera respostas da turma, explora justificativas diferentes e fecha a transferência coletivamente.
 
 ## Fechando a trajetória
 
