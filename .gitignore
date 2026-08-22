@@ -3,3 +3,4 @@ site/
 __pycache__/
 node_modules/
 .slides-build/
+/.codex/config.toml
