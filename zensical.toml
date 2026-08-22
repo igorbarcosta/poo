@@ -14,6 +14,7 @@ nav = [
   { "Início" = "index.md" },
   { "Plano de Ensino" = "plano-de-ensino.md" },
   { "Cronograma" = "cronograma.md" },
+  { "Monitoria" = "monitoria.md" },
   { "Aulas" = [
     { "Aulas" = "aulas/index.md" },
     { "Aula 01 — Apresentação da disciplina" = "aulas/aula-01-apresentacao-da-disciplina.md" },

@@ -1,0 +1,46 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{avaliacao-poo}
+\configurarAvaliacao{Checkpoint [número]}{Programação Orientada a Objetos}
+\validarCheckpointDuasPaginas
+\begin{document}
+\cabecalhoAvaliacao
+\begin{quadroRespostas}
+\linhaRespostas{Questão 1}{a,b,c}
+\linhaRespostas{Questão 2}{a,b,c}
+\end{quadroRespostas}
+\cabecalhoCenario{[Nome do cenário]}
+[Contexto curto com \codigoInline{codigo.inline()}.]
+\noindent\begin{minipage}[t]{.39\textwidth}
+\begin{painelreferencia}{Classe.java}
+\begin{lstlisting}[style=cenariocodigo]
+public class Classe {
+    int estado;
+    void agir() { estado = estado + 1; }
+}
+\end{lstlisting}
+\end{painelreferencia}
+\end{minipage}\hfill
+\begin{minipage}[t]{.59\textwidth}
+\begin{painelreferencia}{Main.java}
+\begin{lstlisting}[style=cenariocodigo]
+public class Main {
+    public static void main(String[] args) {
+        Classe objeto = new Classe();
+        objeto.agir();
+        System.out.println(objeto.estado);
+    }
+}
+\end{lstlisting}
+\end{painelreferencia}
+\end{minipage}
+\inicioQuestoes
+\questaoDireta{1}{[Enunciado objetivo e determinado.]}{[pontos]}
+\newpage
+\questaoDireta{2}{[Enunciado objetivo e determinado.]}{[pontos]}
+\begin{painelEvolucao}{Trecho alterado}
+\begin{lstlisting}[style=evolucaocodigo]
+private int estado;
+public int getEstado() { return estado; }
+\end{lstlisting}
+\end{painelEvolucao}
+\end{document}

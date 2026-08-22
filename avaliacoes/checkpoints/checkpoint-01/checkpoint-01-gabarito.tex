@@ -1,0 +1,39 @@
+\documentclass[11pt,a4paper]{article}
+\makeatletter\def\input@path{{../../templates/}}\makeatother
+\usepackage{avaliacao-poo}
+\configurarAvaliacao{Gabarito \textemdash{} Checkpoint 1}{Programação Orientada a Objetos}
+\begin{document}
+\cabecalhoGabarito
+\identificacaoInterna{Variante A}
+
+\textbf{Q1 (3,0):}\quad a = \codigoInline{true}; b = \codigoInline{false}; c = \codigoInline{2}; d = \codigoInline{true}; e = \codigoInline{1}; f = \codigoInline{false}.
+
+\medskip
+\textbf{Q2 (3,0):}\quad a = F; b = V; c = V; d = F; e = V; f = F.
+
+\medskip
+\begin{tabularx}{\textwidth}{@{}*{4}{>{\bfseries}l X}@{}}
+Q3 & C & Q4 & E & Q5 & B & Q6 & D \\
+Q7 & A & Q8 & C & Q9 & E & Q10 & B
+\end{tabularx}
+
+\medskip
+\textbf{Traço de execução.} \codigoInline{principal} e \codigoInline{painel} acessam o mesmo objeto: andar 2 e porta aberta. \codigoInline{servico} é distinto: andar 1 e porta fechada.
+
+\vspace{18pt}
+\identificacaoInterna{Variante B}
+
+\textbf{Q1 (3,0):}\quad a = \codigoInline{true}; b = \codigoInline{false}; c = \codigoInline{1}; d = \codigoInline{true}; e = \codigoInline{2}; f = \codigoInline{false}.
+
+\medskip
+\textbf{Q2 (3,0):}\quad a = F; b = V; c = V; d = V; e = F; f = V.
+
+\medskip
+\begin{tabularx}{\textwidth}{@{}*{4}{>{\bfseries}l X}@{}}
+Q3 & D & Q4 & A & Q5 & E & Q6 & C \\
+Q7 & B & Q8 & D & Q9 & A & Q10 & C
+\end{tabularx}
+
+\medskip
+\textbf{Traço de execução.} \codigoInline{cabine} e \codigoInline{painel} acessam o mesmo objeto: andar 1 e porta aberta. \codigoInline{carga} é distinto: andar 2 e porta fechada.
+\end{document}

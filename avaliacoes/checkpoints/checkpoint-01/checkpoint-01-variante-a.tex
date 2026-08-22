@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{article}
+\makeatletter\def\input@path{{../../templates/}}\makeatother
+\usepackage{avaliacao-poo}
+\configurarAvaliacao{Checkpoint 1}{Programação Orientada a Objetos}
+\validarCheckpointDuasPaginas
+\begin{document}
+\cabecalhoAvaliacao
+\blocoQuadroRespostas
+\cabecalhoCenario{Elevador}
+Ao criar um \codigoInline{Elevador}, \codigoInline{andarAtual} começa em \codigoInline{0} e
+\codigoInline{portaAberta} em \codigoInline{false}. Considere exatamente os arquivos abaixo.
+
+\noindent\begin{minipage}[t]{.37\textwidth}
+\begin{painelreferencia}{Elevador.java}
+\begin{lstlisting}[style=cenariocodigo]
+public class Elevador {
+    int andarAtual;
+    boolean portaAberta;
+
+    void subir() {
+        andarAtual = andarAtual + 1;
+    }
+    void abrirPorta() {
+        portaAberta = true;
+    }
+    void fecharPorta() {
+        portaAberta = false;
+    }
+    int getAndarAtual() {
+        return andarAtual;
+    }
+    boolean getPortaAberta() {
+        return portaAberta;
+    }
+}
+\end{lstlisting}
+\end{painelreferencia}
+\end{minipage}\hfill
+\begin{minipage}[t]{.61\textwidth}
+\begin{painelreferencia}{Main.java}
+\begin{lstlisting}[style=cenariocodigo]
+public class Main {
+    public static void main(String[] args) {
+        Elevador principal = new Elevador();
+        Elevador painel = principal;
+        Elevador servico = new Elevador();
+
+        principal.subir();
+        painel.subir();
+        painel.abrirPorta();
+        servico.subir();
+        servico.fecharPorta();
+
+        System.out.println(principal == painel);
+        System.out.println(principal == servico);
+        System.out.println(principal.getAndarAtual());
+        System.out.println(painel.getPortaAberta());
+        System.out.println(servico.getAndarAtual());
+        System.out.println(servico.getPortaAberta());
+    }
+}
+\end{lstlisting}
+\end{painelreferencia}
+\end{minipage}
+\inicioQuestoes
+
+\questaoDireta{1}{Faça o teste de mesa e indique o que será impresso em cada linha.}{3,0 pontos}
+\itensDuasColunas{
+  \itemSimples{a}{Linha 13}
+  \itemSimples{b}{Linha 14}
+  \itemSimples{c}{Linha 15}
+}{
+  \itemSimples{d}{Linha 16}
+  \itemSimples{e}{Linha 17}
+  \itemSimples{f}{Linha 18}
+}
+
+\questaoDireta{2}{Considere a evolução da classe e marque cada afirmação como V ou F.}{3,0 pontos}
+Os métodos \codigoInline{abrirPorta()} e \codigoInline{fecharPorta()} permanecem públicos e inalterados.
+\begin{painelEvolucao}{Trechos alterados em Elevador.java}
+\begin{lstlisting}[style=evolucaocodigo]
+private int andarAtual;
+private boolean portaAberta;
+public int getAndarAtual() { return andarAtual; }
+public boolean getPortaAberta() { return portaAberta; }
+public void subir() {
+    if (portaAberta == false) {
+        if (andarAtual < 3) {
+            andarAtual = andarAtual + 1;
+        }
+    }
+}
+\end{lstlisting}
+\end{painelEvolucao}
+
+\itemVF{a}{Em \codigoInline{Main}, a instrução \codigoInline{elevador.andarAtual = 2;} compila.}
+\itemVF{b}{\codigoInline{Main} pode consultar o andar usando \codigoInline{getAndarAtual()}.}
+\itemVF{c}{Do térreo, após \codigoInline{abrirPorta()} e \codigoInline{subir()}, o andar continua em \codigoInline{0}.}
+\itemVF{d}{Com a porta fechada e o andar em \codigoInline{3}, chamar \codigoInline{subir()} leva ao andar \codigoInline{4}.}
+\itemVF{e}{O método \codigoInline{subir()} pode alterar \codigoInline{andarAtual}, embora o campo seja privado.}
+\itemVF{f}{\codigoInline{Elevador painel = elevador;} cria outro objeto porque os campos são privados.}
+
+\noindent\begin{minipage}[t]{.485\textwidth}
+\questaoDireta{3}{Qual classificação está correta?}{0,5 ponto}
+\begin{alternativas}
+\item \codigoInline{andarAtual} é comportamento; \codigoInline{subir()} é estado.
+\item Ambos são estado.
+\item \codigoInline{andarAtual} é estado; \codigoInline{subir()} é comportamento.
+\item Um é objeto; o outro é classe.
+\item Ambos são comportamento.
+\end{alternativas}
+\questaoDireta{4}{O que \codigoInline{void} informa em \codigoInline{void abrirPorta()}?}{0,5 ponto}
+\begin{alternativas}
+\item Somente a classe pode chamar o método.
+\item O método não pode alterar campos.
+\item O método não possui parâmetros.
+\item O método sempre devolve \codigoInline{false}.
+\item O método não devolve valor ao chamador.
+\end{alternativas}
+\questaoDireta{5}{O que significa um campo sem \codigoInline{public} ou \codigoInline{private}?}{0,5 ponto}
+\begin{alternativas}
+\item Possui acesso privado. \item Possui acesso de pacote. \item Possui acesso público.
+\item Recebe o acesso da classe. \item Sua declaração é inválida.
+\end{alternativas}
+\questaoDireta{6}{Qual afirmação sobre uma variável \codigoInline{int} está correta?}{0,5 ponto}
+\begin{alternativas}
+\item Campo e variável local começam em \codigoInline{0}.
+\item Nenhum deles pode usar \codigoInline{0}.
+\item Variável local começa em \codigoInline{0}; campo exige atribuição.
+\item Campo começa em \codigoInline{0}; variável local exige atribuição antes do uso.
+\item Campo \codigoInline{int} começa em \codigoInline{false}.
+\end{alternativas}
+\end{minipage}\hfill
+\begin{minipage}[t]{.485\textwidth}
+\questaoDireta{7}{Qual opção mantém no elevador a responsabilidade pela subida?}{0,5 ponto}
+\begin{alternativas}
+\item \codigoInline{elevador.subir();}; o objeto aplica sua regra.
+\item \codigoInline{Main} calcula e altera o campo.
+\item \codigoInline{Main} consulta e espera uma mudança.
+\item Um método de \codigoInline{Main} altera o campo.
+\item \codigoInline{Main} copia a referência para mudar o andar.
+\end{alternativas}
+\questaoDireta{8}{Qual afirmação distingue corretamente classe e objeto?}{0,5 ponto}
+\begin{alternativas}
+\item Cada variável declarada cria um objeto.
+\item Atribuir uma referência cria outro objeto.
+\item A classe define elementos comuns; cada objeto mantém seu estado.
+\item Objetos da mesma classe têm sempre o mesmo estado.
+\item \codigoInline{new Elevador()} cria uma nova classe.
+\end{alternativas}
+\questaoDireta{9}{O que ocorre ao executar \codigoInline{new Elevador()}?}{0,5 ponto}
+\begin{alternativas}
+\item Uma variável existente muda de nome. \item Todos os elevadores passam a compartilhar estado.
+\item Um método passa a ser público. \item A classe é declarada novamente.
+\item Um novo objeto \codigoInline{Elevador} é criado.
+\end{alternativas}
+\questaoDireta{10}{Por que \codigoInline{getAndarAtual()} acessa \codigoInline{andarAtual} sem recebê-lo como parâmetro?}{0,5 ponto}
+\begin{alternativas}
+\item Todo método recebe os campos automaticamente como parâmetros.
+\item O método usa o estado do próprio objeto.
+\item \codigoInline{int} não pode ser parâmetro.
+\item Um getter cria outro objeto para guardar o valor.
+\item \codigoInline{public} transforma o campo em variável local.
+\end{alternativas}
+\end{minipage}
+
+\end{document}

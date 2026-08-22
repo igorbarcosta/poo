@@ -1,0 +1,152 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{avaliacao-poo}[2026/08/20 Sistema editorial de avaliacoes de POO]
+\RequirePackage[a4paper,top=.95cm,bottom=.95cm,left=.95cm,right=.95cm]{geometry}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[brazil]{babel}
+\RequirePackage{tgheros}
+\RequirePackage{inconsolata}
+\RequirePackage{microtype}
+\RequirePackage{array,tabularx,enumitem,xcolor,listings,fancyhdr,lastpage,tcolorbox}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{ink}{HTML}{17212B}
+\definecolor{muted}{HTML}{66717C}
+\definecolor{accent}{HTML}{24577A}
+\definecolor{panel}{HTML}{F5F7F8}
+\definecolor{panelhead}{HTML}{E9EDF0}
+\definecolor{rulegray}{HTML}{C9D0D5}
+\definecolor{codeblue}{HTML}{2C5F91}
+\definecolor{codeteal}{HTML}{2C7073}
+\definecolor{codegreen}{HTML}{4F7357}
+\definecolor{codeamber}{HTML}{9A5F27}
+\color{ink}
+\setlength{\parindent}{0pt}
+% Escala editorial: relações próximas, conteúdo de bloco, transições locais,
+% separação de blocos e mudança de macroseção.
+\newlength{\espacoXS}\setlength{\espacoXS}{2.5pt}
+\newlength{\espacoS}\setlength{\espacoS}{5pt}
+\newlength{\espacoM}\setlength{\espacoM}{8pt}
+\newlength{\espacoL}\setlength{\espacoL}{12pt}
+\newlength{\espacoXL}\setlength{\espacoXL}{17pt}
+\setlength{\parskip}{\espacoXS}
+\setlength{\emergencystretch}{2em}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=2000
+\raggedbottom
+\AtBeginDocument{\raggedright}
+\setlist{nosep,leftmargin=*}
+
+\lstdefinestyle{codigoavaliacao}{
+  language=Java,
+  basicstyle=\ttfamily\fontsize{9.25}{10.35}\selectfont,
+  keywordstyle=\bfseries\color{codeblue},
+  commentstyle=\color{muted},
+  stringstyle=\color{codegreen},
+  emph={Elevador,Main,String,System},emphstyle=\bfseries\color{codeteal},
+  showstringspaces=false,keepspaces=true,columns=fullflexible,
+  breaklines=true,frame=none,backgroundcolor={},
+  xleftmargin=.75em,xrightmargin=.55em,aboveskip=0pt,belowskip=0pt,
+  lineskip=-.25pt,
+  literate={true}{{{\color{codeamber}true}}}4 {false}{{{\color{codeamber}false}}}5
+}
+\lstdefinestyle{cenariocodigo}{
+  style=codigoavaliacao,numbers=left,numberstyle=\fontsize{6.8}{8}\selectfont\color{muted},
+  numbersep=5.5pt,stepnumber=1,firstnumber=1,xleftmargin=2.05em
+}
+\lstdefinestyle{evolucaocodigo}{style=codigoavaliacao,basicstyle=\ttfamily\fontsize{9.15}{10.25}\selectfont}
+\lstset{style=codigoavaliacao}
+
+\newcommand{\instituicao}{IFPB - Campus Campina Grande}
+\newcommand{\instrumento}{Instrumento avaliativo}
+\newcommand{\disciplina}{Programação Orientada a Objetos}
+\newcommand{\configurarAvaliacao}[2]{\renewcommand{\instrumento}{#1}\renewcommand{\disciplina}{#2}}
+
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\fontsize{8}{9}\selectfont\color{muted}\thepage\ / \pageref{LastPage}}
+\setlength{\footskip}{.38cm}
+
+\newcommand{\cabecalhoAvaliacao}{%
+  {\fontsize{8}{9.2}\selectfont\bfseries\color{muted}\MakeUppercase{\instituicao}}\par\vspace{1.5pt}
+  {\fontsize{13.2}{15.2}\selectfont\bfseries\MakeUppercase{\disciplina\space-\space\instrumento}}\par\vspace{\espacoS}
+  {\fontsize{9.4}{10.8}\selectfont\textbf{Nome:}\;\rule{12.7cm}{.35pt}\hfill
+   \textbf{Nota:}\;\rule{1.75cm}{.35pt}}\par\vspace{\espacoL}
+}
+\newcommand{\cabecalhoGabarito}{%
+  {\color{muted}\bfseries\small\MakeUppercase{\instituicao}}\par
+  {\fontsize{22}{24}\selectfont\bfseries\instrumento}\par
+  {\fontsize{12.5}{15}\selectfont\color{muted}\disciplina}\par\vspace{\espacoM}
+}
+\newcommand{\identificacaoInterna}[1]{\colorbox{panelhead}{\strut\small\bfseries #1}\par\vspace{\espacoS}}
+
+\newcommand{\cabecalhoCenario}[1]{%
+  \macrossecaoComNome{Cenário}{#1}}
+\newcommand{\rotuloMacrosecao}[1]{%
+  \par{\fontsize{10.8}{12.4}\selectfont\bfseries\color{accent}\MakeUppercase{#1}}\par\vspace{\espacoS}}
+\newcommand{\macrossecao}[1]{\rotuloMacrosecao{#1}}
+\newcommand{\macrossecaoComNome}[2]{%
+  \par{\fontsize{10.8}{12.4}\selectfont\bfseries\color{accent}%
+  \MakeUppercase{#1: #2}}\par\vspace{\espacoS}}
+\newtcolorbox{painelreferencia}[1]{%
+  colback=panel,colframe=rulegray,colbacktitle=panelhead,coltitle=ink,
+  boxrule=.35pt,arc=0pt,outer arc=0pt,boxsep=0pt,
+  left=0pt,right=0pt,top=0pt,bottom=0pt,
+  title={\fontsize{8.3}{9.3}\selectfont\bfseries\texttt{#1}},
+  fonttitle=\normalfont,toptitle=2.2pt,bottomtitle=2.2pt,lefttitle=5pt,
+  before skip=\espacoS,after skip=\espacoM
+}
+\newenvironment{painelEvolucao}[1]{\begin{painelreferencia}{#1}}{\end{painelreferencia}}
+\newcommand{\tituloEvolucao}[1]{\rotuloMacrosecao{#1}}
+
+\newcommand{\codigoInline}[1]{\begingroup\setlength{\fboxsep}{1.35pt}\colorbox{panel}{\fontsize{.94em}{1em}\selectfont\texttt{#1}}\endgroup}
+\newcommand{\separadorCenario}{\par\vspace{\espacoM}{\color{rulegray}\hrule height .45pt}\vspace{\espacoM}}
+\newcommand{\inicioQuestoes}{\separadorCenario\macrossecao{Questões}}
+\newcommand{\questaoDireta}[3]{%
+  \par\vspace{\espacoL}\noindent\raggedright\fontsize{10.2}{11.8}\selectfont
+  \textbf{Questão #1 (#3):} #2\par\vspace{\espacoXS}}
+\newcommand{\itemSimples}[2]{\noindent\textbf{#1)}\;#2\par\vspace{\espacoS}}
+\newcommand{\itemVF}[2]{\itemSimples{#1}{#2}}
+\newcommand{\itensDuasColunas}[2]{\noindent\begin{minipage}[t]{.48\linewidth}#1\end{minipage}\hfill\begin{minipage}[t]{.48\linewidth}#2\end{minipage}\par}
+\newenvironment{alternativas}{%
+  \raggedright\fontsize{9}{10}\selectfont
+  \begin{enumerate}[label=\textbf{\Alph*.},leftmargin=1.45em,itemsep=.45pt,topsep=\espacoXS,parsep=0pt]
+}{\end{enumerate}\vspace{\espacoM}}
+
+\newcommand{\campoResposta}{%
+  {\setlength{\fboxsep}{2pt}\color{rulegray}\fbox{\color{ink}\rule{0pt}{.36cm}\rule{1.12cm}{0pt}}}}
+\newcommand{\campoGabarito}{\campoResposta}
+\newcommand{\respostaRotulada}[1]{\textbf{#1}\;\campoResposta}
+\newcommand{\tituloQuadroRespostas}{%
+  \macrossecao{Respostas}}
+\newcommand{\quadroRespostasCheckpointUm}{%
+  \begin{tcolorbox}[
+    colback=panel,colframe=rulegray,boxrule=.3pt,arc=1mm,outer arc=1mm,
+    boxsep=0pt,left=7pt,right=7pt,top=6pt,bottom=6pt,
+    before skip=0pt,after skip=0pt]
+  {\fontsize{8}{9}\selectfont
+    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÃO 1}%
+    \respostaRotulada{a}\hfill\respostaRotulada{b}\hfill\respostaRotulada{c}\hfill
+    \respostaRotulada{d}\hfill\respostaRotulada{e}\hfill\respostaRotulada{f}\par\vspace{\espacoS}
+    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÃO 2}%
+    \respostaRotulada{a}\hfill\respostaRotulada{b}\hfill\respostaRotulada{c}\hfill
+    \respostaRotulada{d}\hfill\respostaRotulada{e}\hfill\respostaRotulada{f}\par\vspace{\espacoS}
+    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÕES 3--10}%
+    \respostaRotulada{3}\hfill\respostaRotulada{4}\hfill\respostaRotulada{5}\hfill\respostaRotulada{6}\hfill
+    \respostaRotulada{7}\hfill\respostaRotulada{8}\hfill\respostaRotulada{9}\hfill\respostaRotulada{10}\par
+  }
+  \end{tcolorbox}}
+\newcommand{\blocoQuadroRespostas}{%
+  \tituloQuadroRespostas
+  \quadroRespostasCheckpointUm
+  \par\vspace{\espacoXL}}
+\newenvironment{quadroRespostas}{%
+  \tituloQuadroRespostas
+}{\par\vspace{\espacoL}}
+
+% Componentes genéricos para outros instrumentos; quantidade e pesos permanecem livres.
+\newcommand{\linhaRespostas}[2]{\textbf{#1}\quad #2\par\vspace{\espacoXS}}
+\newcommand{\questao}[2]{\questaoDireta{#1}{}{#2}}
+\newcommand{\secaoprova}[1]{\par\vspace{\espacoM}{\small\bfseries\color{muted}\MakeUppercase{#1}}\par\vspace{\espacoXS}}
+\newcommand{\titulocenario}[1]{\tituloPainelCodigo{#1}}
+\newcommand{\validarCheckpointDuasPaginas}{\AtEndDocument{\ifnum\value{page}=3\relax\else\PackageError{avaliacao-poo}{Checkpoint deve ter exatamente duas paginas}{Revise a composicao.}\fi}}

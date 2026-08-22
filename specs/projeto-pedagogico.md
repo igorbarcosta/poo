@@ -204,7 +204,7 @@ As provas são cumulativas no âmbito apropriado de cada unidade. POO é mais im
 - Seis checkpoints individuais de 10 pontos; contam os quatro melhores: **40 pontos**.
 - Total: **100 pontos**.
 
-Os checkpoints são individuais, presenciais, em papel, duram aproximadamente 30 a 40 minutos e ocorrem dois por unidade. Eles exercitam raciocínio semelhante ao das provas, são cumulativos na medida apropriada e fornecem feedback antes da avaliação da unidade.
+Os checkpoints são individuais, presenciais, em papel, têm duração padrão de 50 minutos, salvo indicação explícita em contrário, e ocorrem dois por unidade. Eles exercitam raciocínio semelhante ao das provas, são cumulativos na medida apropriada e fornecem feedback antes da avaliação da unidade.
 
 As aulas seguintes a checkpoints e provas podem discutir soluções, erros frequentes, alternativas e raciocínio esperado. O feedback deve priorizar o modelo mental ou o raciocínio que levou ao erro, e não apenas apresentar a resposta correta — por exemplo, reconhecer quando variável e objeto foram tratados como a mesma coisa.
 

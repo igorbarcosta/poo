@@ -1,0 +1,29 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{avaliacao-poo}
+\configurarAvaliacao{Checkpoint de exemplo}{Programação Orientada a Objetos}
+\validarCheckpointDuasPaginas
+\begin{document}
+\cabecalhoAvaliacao
+\begin{quadroRespostas}
+\linhaRespostas{Questão 1}{a,b,c}
+\linhaRespostas{Questão 2}{a}
+\end{quadroRespostas}
+\cabecalhoCenario{Biblioteca fictícia}
+Documento sem conteúdo avaliativo real, usado somente para validar a composição.
+\begin{painelreferencia}{Livro.java}
+\begin{lstlisting}[style=cenariocodigo]
+public class Livro {
+    int paginas;
+    void ler() { paginas = paginas + 1; }
+}
+\end{lstlisting}
+\end{painelreferencia}
+\inicioQuestoes
+\questaoDireta{1}{Registre o resultado determinado pelo cenário fictício.}{5,0 pts}
+\newpage
+\questaoDireta{2}{Selecione uma alternativa no exemplo de composição.}{5,0 pts}
+\begin{alternativas}
+\item Alternativa A. \item Alternativa B. \item Alternativa C.
+\item Alternativa D. \item Alternativa E.
+\end{alternativas}
+\end{document}
