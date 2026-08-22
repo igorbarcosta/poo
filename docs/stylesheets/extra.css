@@ -198,3 +198,156 @@
   background-color: rgb(255 255 255 / 10%);
   color: #f1f5f9;
 }
+
+/* Refinamento de navegação: amplia a área de toque no drawer sem alterar a
+   densidade do menu permanente e torna o foco perceptível sem dominar a tela. */
+.md-nav--primary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__link
+  > svg,
+.md-nav--primary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__container
+  > .md-nav__link
+  > svg {
+  flex: 0 0 auto;
+  height: 0.9rem;
+  width: 0.9rem;
+}
+
+/* Disciplina não possui página-index que possa fornecer metadados de ícone;
+   este é o único grupo que precisa complementar o mecanismo nativo do tema. */
+.md-nav--primary #__nav_2_label::before {
+  align-self: center;
+  background-color: currentcolor;
+  content: "";
+  flex: 0 0 auto;
+  height: 0.9rem;
+  opacity: 0.6;
+  -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtZ3JhZHVhdGlvbi1jYXAiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxLjQyIDEwLjkyMmExIDEgMCAwIDAtLjAxOS0xLjgzOEwxMi44MyA1LjE4YTIgMiAwIDAgMC0xLjY2IDBMMi42IDkuMDhhMSAxIDAgMCAwIDAgMS44MzJsOC41NyAzLjkwOGEyIDIgMCAwIDAgMS42NiAwek0yMiAxMHY2Ii8+PHBhdGggZD0iTTYgMTIuNVYxNmE2IDMgMCAwIDAgMTIgMHYtMy41Ii8+PC9zdmc+") center / contain no-repeat;
+  mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtZ3JhZHVhdGlvbi1jYXAiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxLjQyIDEwLjkyMmExIDEgMCAwIDAtLjAxOS0xLjgzOEwxMi44MyA1LjE4YTIgMiAwIDAgMC0xLjY2IDBMMi42IDkuMDhhMSAxIDAgMCAwIDAgMS44MzJsOC41NyAzLjkwOGEyIDIgMCAwIDAgMS42NiAwek0yMiAxMHY2Ii8+PHBhdGggZD0iTTYgMTIuNVYxNmE2IDMgMCAwIDAgMTIgMHYtMy41Ii8+PC9zdmc+") center / contain no-repeat;
+  width: 0.9rem;
+}
+
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary .md-nav__link {
+    align-items: center;
+    min-height: 2rem;
+  }
+}
+
+:is(
+  .md-nav__link,
+  .md-header__button,
+  .md-search__input,
+  .md-button,
+  .md-typeset a
+):focus-visible {
+  border-radius: 0.2rem;
+  outline: 0.1rem solid var(--md-accent-fg-color);
+  outline-offset: 0.1rem;
+}
+
+/* No tema escuro, os títulos dos grupos permanecem secundários ao item ativo,
+   mas não desaparecem visualmente entre os demais níveis da navegação. */
+[data-md-color-scheme="slate"]
+  .md-sidebar--primary
+  .md-nav__item--nested
+  > :is(.md-nav__link, .md-nav__container) {
+  color: rgb(226 228 233 / 72%);
+}
+
+[data-md-color-scheme="slate"]
+  .md-sidebar--primary
+  .md-nav__item--nested
+  > .md-nav__container
+  > .md-nav__link {
+  color: rgb(226 228 233 / 72%);
+}
+
+[data-md-color-scheme="slate"]
+  .md-sidebar--primary
+  .md-nav__item--active
+  > :is(.md-nav__link, .md-nav__container) {
+  color: rgb(226 228 233 / 86%);
+}
+
+[data-md-color-scheme="slate"]
+  .md-sidebar--primary
+  .md-nav__item--active
+  > .md-nav__container
+  > .md-nav__link {
+  color: rgb(226 228 233 / 86%);
+}
+
+/* Ritmo vertical: aproxima o título da abertura e dá respiro previsível aos
+   componentes densos, preservando tamanhos, entrelinha e largura de leitura. */
+.md-typeset h1 {
+  margin-bottom: 0.9em;
+}
+
+.md-typeset :is(.highlight, .admonition, details) {
+  margin-bottom: 1.25em;
+  margin-top: 1.25em;
+}
+
+.md-typeset :is(.admonition, details) + :is(.admonition, details) {
+  margin-top: 1.55em;
+}
+
+.md-typeset :is(.highlight, .admonition, details) + :is(h2, h3) {
+  margin-top: 1.8em;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .md-typeset h1 {
+    margin-bottom: 0.75em;
+  }
+}
+
+/* Blocos de código: uma borda fina define a superfície sem criar moldura de
+   IDE; o fundo e o comportamento de rolagem continuam sendo os do tema. */
+.md-typeset .highlight {
+  border: 0.05rem solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight {
+  border-color: rgb(240 241 244 / 14%);
+}
+
+/* Cards da home: o contêiner reage ao link sem fingir que áreas não clicáveis
+   são links. O mesmo sinal visual é oferecido para mouse e teclado. */
+.md-typeset .grid.cards > ul > li {
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--md-accent-fg-color) 5%,
+    transparent
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--md-accent-fg-color) 55%,
+    transparent
+  );
+}
+
+.md-typeset .grid.cards > ul > li:has(a:focus-visible) {
+  background-color: var(--md-accent-fg-color--transparent);
+  border-color: var(--md-accent-fg-color);
+  outline: 0.1rem solid var(--md-accent-fg-color);
+  outline-offset: 0.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .grid.cards > ul > li {
+    transition: none;
+  }
+}

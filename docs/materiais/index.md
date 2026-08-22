@@ -1,3 +1,7 @@
+---
+icon: lucide/book-copy
+---
+
 # Materiais
 
 Os materiais de apoio da disciplina serão organizados nesta seção.

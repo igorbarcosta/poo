@@ -1,7 +1,3 @@
----
-icon: material/school-outline
----
-
 # Aula 05 — Construtores e estado inicial válido
 
 Na Aula 04, protegemos alterações feitas depois que um objeto já existe. `ItemPedido` passou a controlar mudanças em sua quantidade, mas sua criação ainda depende de várias etapas externas. Agora vamos investigar o que pode acontecer antes mesmo da primeira alteração.

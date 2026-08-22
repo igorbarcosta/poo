@@ -1,7 +1,3 @@
----
-icon: material/flask-outline
----
-
 # Laboratório 01 — Java mínimo e problema inicial
 
 Você já sabe programar: nosso objetivo não é reaprender programação, mas conhecer o mínimo necessário para começar a trabalhar com Java e implementar uma pequena solução usando o repertório que já possui.

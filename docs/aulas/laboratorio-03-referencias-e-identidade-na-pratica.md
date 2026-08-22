@@ -1,7 +1,3 @@
----
-icon: material/flask-outline
----
-
 # Laboratório 03 — Referências e identidade na prática
 
 No Laboratório 02, cada variável foi usada para trabalhar com um objeto diferente. Nesta evolução do Projeto 1, vamos mudar uma única relação: duas variáveis passarão a permitir acesso ao mesmo `ItemPedido`. A partir daí, cada resultado observado criará a pergunta do experimento seguinte.

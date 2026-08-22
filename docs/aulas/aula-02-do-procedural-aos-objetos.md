@@ -1,7 +1,3 @@
----
-icon: material/school-outline
----
-
 # Aula 02 — Do procedural aos objetos
 
 No laboratório anterior, resolvemos em Java um problema que já sabíamos resolver com nosso repertório procedural. Agora vamos observar como os dados e as operações desse problema podem ser organizados de outra maneira.

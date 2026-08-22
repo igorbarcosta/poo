@@ -1,7 +1,3 @@
----
-icon: material/flask-outline
----
-
 # Laboratório 05 — Construindo objetos em estado válido
 
 Na Versão 4 do Projeto 1, `ItemPedido` passou a controlar alterações em sua quantidade. Nesta evolução, a própria classe também deverá organizar aquilo que cada objeto recebe quando é criado e impedir valores numéricos negativos no estado inicial.

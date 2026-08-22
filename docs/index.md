@@ -1,4 +1,5 @@
 ---
+icon: lucide/house
 hide:
   - toc
 ---
@@ -11,36 +12,32 @@ Este é o espaço de estudo da disciplina. Aqui você encontra os roteiros das a
 
 <div class="grid cards" markdown>
 
--   **[Cronograma](cronograma.md)**
-
-    Veja o que já aconteceu e os próximos encontros confirmados.
-
 -   **[Aulas](aulas/index.md)**
 
-    Retome conceitos, exemplos e atividades trabalhadas em sala.
+    Conceitos, exemplos e atividades trabalhadas em sala.
 
 -   **[Laboratórios](laboratorios/index.md)**
 
-    Acesse as práticas e acompanhe a evolução do projeto.
+    Práticas e evolução incremental do projeto.
+
+-   **[Cronograma](cronograma.md)**
+
+    Datas, encontros realizados e próximos passos.
 
 -   **[Monitoria](monitoria.md)**
 
-    Consulte horários, locais e o acesso ao grupo da monitoria.
+    Horários, locais e acesso ao grupo da monitoria.
+
+-   **[Materiais](materiais/index.md)**
+
+    Ambiente, Java essencial e referências de consulta.
+
+-   **[Plano de Ensino](plano-de-ensino.md)**
+
+    Organização, avaliações e regras da disciplina.
 
 </div>
 
 As aulas desenvolvem o embasamento conceitual. Os laboratórios seguintes aplicam e consolidam essas ideias na prática.
 
-## Onde encontro cada coisa?
-
-| Preciso... | Onde procurar |
-| --- | --- |
-| estudar ou revisar conteúdo | [Aulas](aulas/index.md) |
-| realizar uma prática | [Laboratórios](laboratorios/index.md) |
-| saber datas e sequência | [Cronograma](cronograma.md) |
-| tirar dúvidas | [Monitoria](monitoria.md) |
-| consultar ambiente e referências | [Materiais](materiais/index.md) |
-| consultar regras da disciplina | [Plano de Ensino](plano-de-ensino.md) |
-| ver avisos, entregas e notas | [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5) |
-
-O site concentra o conteúdo didático permanente. Avisos, entregas, atividades administrativas, avaliações quando aplicável e notas são disponibilizados no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).
+Avisos, entregas e notas ficam no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).

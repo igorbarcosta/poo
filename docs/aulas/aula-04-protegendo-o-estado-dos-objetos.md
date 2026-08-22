@@ -1,7 +1,3 @@
----
-icon: material/school-outline
----
-
 # Aula 04 — Protegendo o estado dos objetos
 
 Na Aula 03, vimos que duas variáveis podem permitir acesso ao mesmo objeto. Agora precisamos investigar uma consequência dessa descoberta: se diferentes partes do programa chegam ao mesmo objeto, elas também podem tentar alterar diretamente o estado que compartilham.

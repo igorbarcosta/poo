@@ -1,3 +1,7 @@
+---
+icon: lucide/flask-conical
+---
+
 # Laboratórios
 
 Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incrementalmente os projetos da disciplina. Os detalhes operacionais de entrega ficam no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5) quando aplicável.

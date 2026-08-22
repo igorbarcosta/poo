@@ -1,3 +1,7 @@
+---
+icon: lucide/book-open
+---
+
 # Aulas
 
 As aulas apresentam a fundamentação conceitual da disciplina por meio de problemas, exemplos, código e atividades realizadas em sala. Novos roteiros serão publicados progressivamente, conforme o planejamento da turma.

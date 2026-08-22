@@ -1,7 +1,3 @@
----
-icon: material/school-outline
----
-
 # Aula 03 — Objetos, referências e identidade
 
 No Laboratório 02, criamos objetos, alteramos seu estado e chamamos seus comportamentos. Para fazer tudo isso, usamos variáveis como `item1` e `item2`. Agora uma atribuição aparentemente simples vai nos obrigar a entender melhor o papel dessas variáveis.

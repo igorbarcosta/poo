@@ -1,7 +1,3 @@
----
-icon: material/school-outline
----
-
 # Aula 01 — Apresentação da disciplina
 
 Neste primeiro encontro, vamos conhecer a proposta da disciplina e compreender como as aulas de POO e os laboratórios se conectam. Também vamos localizar as fontes oficiais que você poderá consultar ao longo do semestre.

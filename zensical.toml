@@ -13,9 +13,9 @@ site_name = "Programação Orientada a Objetos"
 nav = [
   { "Início" = "index.md" },
   { "Disciplina" = [
+    { "Plano de Ensino" = "plano-de-ensino.md" },
     { "Cronograma" = "cronograma.md" },
     { "Monitoria" = "monitoria.md" },
-    { "Plano de Ensino" = "plano-de-ensino.md" },
   ] },
   { "Aulas" = [
     { "Aulas" = "aulas/index.md" },
@@ -80,8 +80,8 @@ features = [
 
 # logo = "assets/logo.png"
 
-# [project.theme.icon]
-# logo = "lucide/smile"
+[project.theme.icon]
+logo = "lucide/boxes"
 
 # [project.theme.font]
 # text = "Inter"

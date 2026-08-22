@@ -1,7 +1,3 @@
----
-icon: material/flask-outline
----
-
 # Laboratório 04 — Controlando alterações de estado
 
 Na Versão 3 do Projeto 1, `itemPrincipal` e `itemObservado` passaram a acessar o mesmo objeto. Nesta evolução, esse objeto deverá controlar como sua quantidade pode mudar.

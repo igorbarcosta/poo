@@ -1,7 +1,3 @@
----
-icon: material/flask-outline
----
-
 # Laboratório 02 — Primeiros objetos em Java
 
 No Laboratório 01, você criou uma solução procedural para registrar itens de uma compra. Na Aula 02, discutimos classe, objeto, estado, comportamento e responsabilidade. Agora vamos evoluir aquela solução para representar cada item como um objeto.
