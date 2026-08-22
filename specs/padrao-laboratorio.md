@@ -74,6 +74,24 @@ Investigar não implica entregar. Toda atividade deve distinguir com clareza o q
 - Critérios de aprendizagem e critérios do artefato entregue não devem ser confundidos. Os critérios de conclusão devem priorizar evidências observáveis no artefato, enquanto a compreensão pode ser verificada separadamente.
 - Quando necessário, o estudante pode demonstrar compreensão oralmente durante o acompanhamento, sem produzir um relatório escrito.
 
+O laboratório deve exigir raciocínio, não relatório. Previsões, tabelas de observação, respostas conceituais e diagramas de raciocínio não se tornam entregáveis apenas porque participam da investigação. Quando a entrega definida for somente código, ela deve continuar sendo somente código.
+
+## Incremento como evolução do programa
+
+Todo incremento obrigatório deve produzir uma mudança concreta e pedagogicamente significativa no código. Para o estudante, o termo deve ter significado estável: **novo incremento = o programa vai evoluir**. Ao concluir a etapa, o código deve estar diferente do estado inicial daquele incremento e representar um novo estado da solução.
+
+Previsão, teste de mesa, observação, investigação, comparação, perguntas conceituais e reflexão continuam sendo parte essencial do laboratório. Em regra, porém, não devem constituir incrementos obrigatórios autônomos quando não houver alteração de código. Devem acompanhar o mesmo bloco que evolui o programa.
+
+Como gramática de referência para incrementos investigativos, preferir:
+
+**prever → modificar → executar → observar → compreender**
+
+Nem todo incremento precisa explicitar literalmente as cinco etapas. O princípio é que a investigação acompanhe uma mudança concreta de código e ajude o estudante a compreender seus efeitos.
+
+Não inventar código descartável nem uma alteração sem valor pedagógico apenas para cumprir essa estrutura. Quando uma investigação não possuir mudança significativa, incorporá-la a um incremento anterior ou seguinte que realmente evolua a solução, ou movê-la para outro momento pedagógico sem tratá-la como incremento independente. Exceções exigem razão pedagógica explícita.
+
+Quando fizer sentido, encerrar o incremento com critérios observáveis, como mudança presente no código, comportamento executável, saída esperada, estado alterado corretamente ou regra satisfeita. Perguntas do tipo “Antes de avançar, você deve conseguir explicar...” podem verificar compreensão, mas não constituem entregável.
+
 ## Narrativa e pausas didáticas
 
 O laboratório é organizado principalmente por incrementos. Não marcar cada incremento como `activity`: o próprio encontro já é uma atividade prática. No texto sequencial, perguntas, exemplos e explicações permanecem na narrativa normal.
@@ -93,5 +111,5 @@ Informações administrativas, política de IA, acompanhamento e critérios de c
 - Antes de finalizar o roteiro, mapear cada exigência obrigatória — inclusive operações pequenas, organização de arquivos e procedimentos — para a aula anterior em que foi preparada. Conhecimento novo indispensável não deve ser introduzido pela primeira vez no laboratório.
 - Instruções conceituais devem se limitar ao necessário para realizar a atividade.
 - Critérios de conclusão devem permitir verificação objetiva sem prescrever arquitetura.
-- Quando o objetivo envolver comportamento de código, o laboratório pode usar o ciclo **prever → executar → observar → explicar**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios nem implica exigir um registro formal de cada etapa.
+- Quando o objetivo envolver comportamento de código, o laboratório pode usar a gramática **prever → modificar → executar → observar → compreender**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios nem implica exigir um registro formal de cada etapa.
 - A página deve ser útil durante a realização e para consulta posterior.

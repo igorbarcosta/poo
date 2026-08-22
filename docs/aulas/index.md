@@ -14,6 +14,8 @@ Da transição do pensamento procedural à modelagem de pequenos problemas com o
 - [Laboratório 03 — Referências e identidade na prática](laboratorio-03-referencias-e-identidade-na-pratica.md)
 - [Aula 04 — Protegendo o estado dos objetos](aula-04-protegendo-o-estado-dos-objetos.md)
 - [Laboratório 04 — Controlando alterações de estado](laboratorio-04-controlando-alteracoes-de-estado.md)
+- [Aula 05 — Construtores e estado inicial válido](aula-05-construtores-e-estado-inicial-valido.md)
+- [Laboratório 05 — Construindo objetos em estado válido](laboratorio-05-construindo-objetos-em-estado-valido.md)
 
 ## Unidade 2 — Colaboração, Contratos e Polimorfismo
 

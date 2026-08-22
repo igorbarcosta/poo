@@ -147,7 +147,7 @@ item.quantidade = 2;
 double subtotal = item.calcularSubtotal();
 ```
 
-Cada execução de `new ItemPedido()` cria uma nova instância. Construtores serão detalhados posteriormente.
+Cada execução de `new ItemPedido()` cria uma nova instância. A criação com dados iniciais é detalhada na [Aula 05 — Construtores e estado inicial válido](../aulas/aula-05-construtores-e-estado-inicial-valido.md).
 
 ## Referências e identidade
 
@@ -201,6 +201,51 @@ class ItemPedido {
 `getQuantidade()` consulta o valor atual. `aumentarQuantidade(...)` representa uma alteração e pode controlar quando ela deve acontecer. As duas operações possuem funções diferentes.
 
 Neste exemplo, o campo `int quantidade` começa com `0` quando nenhum valor foi atribuído explicitamente.
+
+## Construtores e estado inicial
+
+Uma classe pode declarar quais dados devem ser fornecidos quando um objeto é criado:
+
+```java
+class ItemPedido {
+    private String descricao;
+    private double precoUnitario;
+    private int quantidade;
+
+    public ItemPedido(String descricao,
+                      double precoUnitario,
+                      int quantidade) {
+        this.descricao = descricao;
+
+        if (precoUnitario >= 0) {
+            this.precoUnitario = precoUnitario;
+        }
+
+        if (quantidade >= 0) {
+            this.quantidade = quantidade;
+        }
+    }
+}
+```
+
+O construtor possui o mesmo nome da classe, não declara tipo de retorno e é executado durante a criação:
+
+```java
+ItemPedido item = new ItemPedido("Teclado", 150.0, 2);
+```
+
+Na criação, `"Teclado"`, `150.0` e `2` são argumentos. No construtor, `descricao`, `precoUnitario` e `quantidade` são parâmetros que recebem esses valores.
+
+Quando campo e parâmetro possuem o mesmo nome, `this` distingue o campo do objeto atual:
+
+```java
+this.descricao = descricao;
+```
+
+- `this.descricao`: campo do objeto atual;
+- `descricao`: parâmetro recebido.
+
+Neste exemplo, os campos numéricos só recebem valores não negativos. Caso contrário, permanecem com os valores padrão `0.0` e `0`. Essa regra simples protege o estado inicial sem introduzir ainda mecanismos de comunicação de erro.
 
 ## Estilo e convenções essenciais
 

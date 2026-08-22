@@ -31,6 +31,12 @@ Quando forem pertinentes, podem ser incluídas as seguintes seções opcionais:
 
 O roteiro é a fonte pedagógica da aula. Antes de produzir o deck, devem estar completos e validados os objetivos, as dependências, a trajetória narrativa, as pausas didáticas, a relação com o laboratório seguinte e o dimensionamento do encontro. Os slides são derivados dessa base; o deck anterior não deve substituir o trabalho de construir o roteiro.
 
+O fluxo permanente de produção é:
+
+**roteiro → revisão pedagógica → validação e aprovação do professor → slides → revisão visual dos slides**
+
+Construir e revisar primeiro uma boa aula, sem comprimir o roteiro para fazê-lo caber em frames. Nunca gerar automaticamente os slides junto com a primeira construção do roteiro. A etapa de slides começa somente depois da aprovação pedagógica explícita e traduz visualmente uma narrativa já definida.
+
 Aula não é uma sequência de tópicos independentes. O storytelling didático estabelece causalidade: um problema produz uma observação, a observação cria uma pergunta, a pergunta exige investigação e a investigação permite formalizar uma ideia ou tomar uma decisão. Conceitos aparecem depois de existir uma necessidade compreensível para eles.
 
 O encontro deve ser dimensionado internamente para 90 minutos, considerando explicação, leitura, previsão, espera, discussão, atividade, formalização e síntese. Esse dimensionamento orienta o projeto do material, mas não aparece como cronograma de minutos na página destinada aos estudantes.
@@ -38,6 +44,69 @@ O encontro deve ser dimensionado internamente para 90 minutos, considerando expl
 Planejar o encontro com um **núcleo necessário** e possíveis **aprofundamentos elásticos**. O núcleo reúne o que precisa acontecer; os aprofundamentos entram conforme o ritmo da turma e devem ampliar recuperação, previsão, comparação, diagnóstico, explicação ou transferência, sem antecipar conteúdo futuro nem repetir exposição apenas para ocupar tempo.
 
 Algumas aulas podem começar com uma recuperação curta, sem consulta e sem nota, combinando duas ou três questões sobre o encontro anterior e conteúdos mais antigos. Também pode ser útil empregar Peer Instruction quando houver modelos mentais concorrentes: resposta individual → discussão com colega → nova resposta → explicação coletiva, sem depender de clickers ou outra tecnologia. Nenhuma dessas estratégias é seção fixa ou ritual obrigatório.
+
+## Piloto da oferta 2026.2 — granularidade por blocos didáticos
+
+Esta seção registra uma hipótese experimental para as Aulas 05, 06 e 07 da oferta atual. Ela não altera retroativamente as Aulas 01–04 nem estabelece uma regra permanente da disciplina. Depois da Aula 07, uma retrospectiva específica deve avaliar a experiência antes de decidir se o padrão será mantido, ajustado ou abandonado.
+
+Um **bloco didático** é uma unidade conceitualmente coerente da aula, organizada em torno de uma pergunta, tensão, problema ou avanço específico no modelo mental do estudante. O bloco é definido pela coerência do arco conceitual, não pelo relógio.
+
+Como referência de planejamento para encontros de 90 minutos:
+
+- considerar aproximadamente três blocos principais;
+- usar 20 a 30 minutos como faixa típica por bloco;
+- admitir dois blocos mais longos, quatro blocos quando algum for curto e durações fora da faixa sempre que o arco pedagógico justificar;
+- evitar uma única exposição longa sem divisões conceituais claras.
+
+Esses números são heurísticas, não obrigações nem limites cognitivos universais. O piloto se fundamenta em segmentação de conteúdo complexo, gerenciamento da carga cognitiva, alternância entre exposição e processamento, aprendizagem ativa, recuperação e aplicação frequentes e melhor granularidade de autoria, manutenção e retrospectiva. Não o justificar por uma suposta duração fixa da atenção dos estudantes.
+
+### Engenharia interna dos blocos
+
+Ao planejar cada bloco, conseguir responder internamente:
+
+1. Qual pergunta ou tensão move o bloco?
+2. O que o estudante entende ao final que ainda não entendia no início?
+3. Qual mudança ocorre em seu modelo mental?
+4. Que evidência rápida permite perceber se essa mudança ocorreu?
+5. Como o resultado prepara o bloco seguinte?
+
+Evitar blocos definidos apenas por categorias de sintaxe, como “Construtores”, “Métodos” ou “`this`”. Preservar a causalidade **problema → necessidade → mecanismo**: o recurso de Java aparece como resposta ao problema conceitual.
+
+Como gramática de referência, um bloco pode articular **problema ou tensão → investigação ou previsão → construção do conceito → aplicação → síntese ou transição**. A sequência não é obrigatória. O bloco pode começar por código, comparação, previsão ou situação problemática, desde que produza um avanço identificável.
+
+Sempre que apropriado, incluir dentro ou ao final do bloco uma atividade curta de processamento: prever saída, escolher entre alternativas, identificar uma responsabilidade, modificar código, fazer teste de mesa, comparar soluções, explicar uma decisão, detectar um problema ou transferir a ideia. Essas ações não precisam virar atividades formais nem entregáveis. Blocos não devem se tornar mini-exposições consecutivas.
+
+A aula continua sendo uma narrativa única. Cada bloco deve deixar uma consequência, tensão ou necessidade que cause o próximo; evitar transições meramente catalográficas. A página e o deck podem refletir a segmentação internamente, mas não precisam mostrar “Bloco 1”, “Bloco 2” ou slides separadores. Manter um arquivo Markdown por aula e headings narrativos naturais.
+
+### Identificação e retrospectiva
+
+Identificar os blocos internamente pelo número da aula e uma sequência curta: `5.1`, `5.2`, `5.3`; `6.1`, `6.2`, `6.3`; e assim por diante. No fonte Markdown, usar quando útil um comentário leve antes da seção correspondente, por exemplo:
+
+```markdown
+<!-- bloco-didatico: 5.1 -->
+```
+
+O identificador pode aparecer em comentários, notas internas e retrospectivas, sem precisar ficar visível ao estudante. Nos slides, preservar a mesma fronteira apenas na organização interna ou em transições narrativas naturais, sem criar lâminas cuja única função seja anunciar um novo bloco.
+
+A partir da Aula 05, as retrospectivas podem registrar evidências por identificador de bloco. Cada achado pode ter um dos destinos já praticados:
+
+1. **ajuste pontual:** melhorar o material da aula já dada sem mudar o conteúdo apresentado;
+2. **propagação:** aplicar a aprendizagem às próximas aulas da mesma oferta;
+3. **futura oferta:** registrar uma mudança estrutural para a próxima versão do curso.
+
+Depois da Aula 07, criar na retrospectiva da oferta uma síntese intitulada **Granularidade por blocos didáticos**. Avaliar se o piloto melhorou preparação, ritmo, alternância entre exposição e processamento, utilidade das retrospectivas e identificação de redundâncias; verificar também se gerou fragmentação ou burocracia excessiva e se a faixa de 20–30 minutos e a referência de três blocos foram úteis.
+
+### Hipótese inicial para a Aula 05
+
+A arquitetura abaixo orienta o planejamento posterior; não constitui ainda a página completa da aula.
+
+| ID | Pergunta que move o bloco | Avanço esperado e processamento | Continuidade |
+| --- | --- | --- | --- |
+| **5.1 — O problema do objeto nascer incompleto** | Se um objeto precisa de certas informações para fazer sentido, por que permitimos criá-lo sem elas? | Partir dos objetos vazios e configurados depois da criação; identificar estados incompletos possíveis e prever suas consequências. | A insuficiência da configuração posterior cria a necessidade de melhorar a criação. |
+| **5.2 — Como garantir um estado inicial adequado?** | Como fazer o objeto receber aquilo de que precisa no momento em que nasce? | Construir o construtor como resposta; introduzir parâmetros e `this` somente conforme a necessidade do código; comparar criação vazia e criação inicializada. | Inicializar os campos não garante, por si só, que os valores recebidos façam sentido. |
+| **5.3 — Quem garante que o objeto nasce válido?** | Receber os dados no construtor já garante que o objeto é válido? | Trabalhar validação inicial e responsabilidade pelo próprio estado com invariantes simples; realizar uma transferência curta para `Reserva`, domínio ainda não usado nas aulas anteriores. | Preparar a consolidação prática no Laboratório 05 sem transformar os blocos teóricos em incrementos. |
+
+O Laboratório 05 deve consolidar esses avanços e continuar obedecendo a `padrao-laboratorio.md`: cada incremento obrigatório modifica concretamente o código. A segmentação da aula teórica não deve ser copiada mecanicamente como estrutura do laboratório.
 
 ## Legibilidade
 

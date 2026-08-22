@@ -43,6 +43,21 @@ Tratar o pedido específico como definição do escopo da revisão. Não convert
 - Verificar parágrafos, listas, títulos, perguntas, código e admonitions conforme as specs.
 - Sinalizar paredes de texto, redundâncias e destaques sem função semântica.
 
+### Piloto de blocos didáticos nas Aulas 05–07
+
+Ao revisar as Aulas 05, 06 ou 07 da oferta 2026.2, considerar também o piloto registrado em `specs/padrao-aula.md`:
+
+- clareza e coerência interna dos blocos;
+- duração estimada e compatibilidade do conjunto com 90 minutos;
+- avanço identificável no modelo mental em cada bloco;
+- continuidade causal entre os blocos e preservação do arco geral;
+- presença de atividades curtas de processamento, recuperação ou aplicação;
+- excesso de exposição, redundância entre blocos ou bloco sem avanço claro;
+- fragmentação excessiva da página, do deck ou da narrativa;
+- utilidade dos identificadores internos para manutenção e retrospectiva.
+
+Tratar 20–30 minutos e aproximadamente três blocos como heurísticas, não critérios eliminatórios. Não reprovar automaticamente uma duração menor ou maior quando o arco conceitual for coerente. Não aplicar essa auditoria retroativamente às Aulas 01–04 nem converter o piloto em regra permanente antes da avaliação posterior à Aula 07.
+
 ### Requisitos e experimentos
 
 Em laboratórios, conferir especialmente:
@@ -54,6 +69,16 @@ Em laboratórios, conferir especialmente:
 - valores de previsão determinados;
 - critérios de conclusão alinhados à atividade;
 - roteiro autossuficiente sem prescrição desnecessária da implementação.
+
+Verificar também a estrutura dos incrementos obrigatórios:
+
+- cada incremento representa evolução concreta e pedagogicamente significativa do programa;
+- previsão, observação e análise estão integradas ao bloco prático que modifica o código;
+- não há alteração artificial ou código descartável criado apenas para cumprir o formato;
+- o fluxo causal entre incrementos permanece claro;
+- cada incremento possui resultado observável quando isso fizer sentido.
+
+Classificar como problema um incremento isolado que não modifica o código, não evolui a solução e apenas pede leitura, observação ou resposta quando poderia ser incorporado naturalmente a um incremento vizinho. Admitir exceção somente quando houver razão pedagógica explícita; não recomendar uma modificação artificial como correção.
 
 Quando houver experimento, verificar se a previsão é possível e determinada, a operação está especificada e o resultado permite comparação e evidencia o conceito pretendido. Não aceitar como observável um valor que apenas é retornado, mas nunca armazenado ou apresentado.
 
