@@ -2,10 +2,11 @@
   "name": "poo-disciplina",
   "private": true,
   "scripts": {
-    "slides:render": "node slides/render.mjs",
+    "slides:render": "bash slides/render.sh",
     "slides:preview": "marp --server slides --theme-set slides/theme/poo.css"
   },
   "devDependencies": {
-    "@marp-team/marp-cli": "4.5.0"
+    "@marp-team/marp-cli": "4.5.0",
+    "pdf-lib": "^1.17.1"
   }
 }

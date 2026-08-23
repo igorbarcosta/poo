@@ -31,24 +31,29 @@ Não inventar conteúdo importante, decidir currículo, alterar o projeto pedag�
 
 ## Renderizar e inspecionar
 
-1. Gerar as distribuições oficiais com:
+1. Antes de renderizar, executar o preflight pelo entrypoint oficial; não instalar dependências nem reconfigurar o ambiente automaticamente:
 
    ```bash
-   npm run slides:render -- aula-XX-<slug>
+   bash slides/render.sh aula-XX-<slug>
    ```
 
-2. Confirmar a criação de:
+   O comando resolve o runtime já disponível, usa o Marp do projeto, gera HTML/PDF e verifica a consistência dos artefatos. Diante de falha, interromper e diagnosticar; não improvisar outro pipeline.
+
+2. Ao diagnosticar ambiente, distinguir observação de inferência. Não concluir versão, configuração ou causa ambiental a partir de um sintoma. Quando essa informação for necessária para decidir ou relatar, verificá-la explicitamente; caso contrário, relatar somente o comportamento observado.
+3. Confirmar a criação de:
    - `slides/rendered/aula-XX-<slug>.html`;
    - `slides/rendered/aula-XX-<slug>.pdf`.
-3. Inspecionar todas as miniaturas ou páginas renderizadas. Verificar narrativa, legibilidade a distância, densidade, tamanho de código, alinhamento, contraste, geometria, pausas didáticas e possíveis overflows.
-4. Diante de overflow, revisar primeiro a densidade e a divisão dos frames; não reduzir fonte automaticamente.
-5. Corrigir problemas encontrados no fonte e renderizar novamente. Nunca editar HTML ou PDF manualmente.
+4. Inspecionar visualmente o deck completo em visão global. Verificar narrativa, legibilidade a distância, densidade, tamanho de código, alinhamento, contraste, geometria, pausas didáticas e possíveis overflows.
+5. A partir dessa visão, inspecionar de forma ampliada somente frames de maior risco, como código longo, tabelas, atividades densas, conteúdo próximo aos limites ou combinações de texto e código.
+6. Diante de overflow, revisar primeiro a densidade e a divisão dos frames; não reduzir fonte automaticamente.
+7. Corrigir problemas encontrados no fonte, renderizar novamente e reinspecionar os frames afetados. Nunca editar HTML ou PDF manualmente.
 
 ## Validar e relatar
 
 1. Executar `git diff --check`.
 2. Executar `.venv/bin/zensical build` se a página da aula ou links do site tiverem sido alterados.
 3. Verificar `git diff` e `git status`, preservando alterações preexistentes do usuário.
-4. Relatar o fonte criado ou alterado, os renderizados oficiais, a quantidade de frames, a inspeção visual e as validações executadas.
+4. Confirmar no resultado do comando a invariante obrigatória `slides no fonte = seções no HTML = páginas no PDF`. Qualquer divergência invalida os artefatos oficiais e deve interromper o workflow; não aceitá-la por decisão manual. Um formato futuro que exija outra relação deverá ser tratado explicitamente no tooling.
+5. Relatar o fonte criado ou alterado, os renderizados oficiais, a contagem validada, a inspeção visual global e ampliada e as validações executadas.
 
 Não fazer commit ou push sem solicitação explícita.
