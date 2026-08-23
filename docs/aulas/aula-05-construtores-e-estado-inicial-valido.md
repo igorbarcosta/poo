@@ -2,6 +2,8 @@
 
 Na Aula 04, protegemos alterações feitas depois que um objeto já existe. `ItemPedido` passou a controlar mudanças em sua quantidade, mas sua criação ainda depende de várias etapas externas. Agora vamos investigar o que pode acontecer antes mesmo da primeira alteração.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-05-construtores-e-estado-inicial-valido.html) · [PDF](../slides/rendered/aula-05-construtores-e-estado-inicial-valido.pdf)
+
 !!! lesson-question "Pergunta central"
 
     Se um objeto precisa de certas informações para fazer sentido, por que permitimos que ele seja criado incompleto?
