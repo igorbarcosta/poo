@@ -1,0 +1,4 @@
+interface:
+  display_name: "Planejar Avaliação"
+  short_description: "Cria o blueprint antes das questões"
+  default_prompt: "Use $planejar-avaliacao para preparar o blueprint deste instrumento e parar no gate humano."

@@ -2,6 +2,8 @@
   "name": "poo-disciplina",
   "private": true,
   "scripts": {
+    "avaliacoes:test": ".venv/bin/python -m unittest discover -s avaliacoes/tests -v",
+    "avaliacoes:workflow": ".venv/bin/python avaliacoes/scripts/workflow.py",
     "slides:render": "bash slides/render.sh",
     "slides:preview": "marp --server slides --theme-set slides/theme/poo.css"
   },

@@ -1,0 +1,41 @@
+schema_version: 1
+instrumento:
+  tipo: checkpoint
+  identificador: checkpoint-XX
+estado: blueprint_em_elaboracao
+gates:
+  blueprint_aprovado:
+    status: pendente
+    artefatos:
+      - blueprint.md
+    hash: null
+    decisao: null
+    estado_resultante: blueprint_aprovado
+    aprovado_em: null
+  base_aprovada:
+    status: pendente
+    artefatos:
+      - base.md
+      - auditoria-base.md
+    hash: null
+    decisao: null
+    estado_resultante: base_aprovada
+    aprovado_em: null
+  variantes_aprovadas:
+    status: pendente
+    artefatos:
+      - variantes
+      - gabarito.md
+      - auditoria-equivalencia.md
+    hash: null
+    decisao: null
+    estado_resultante: variantes_aprovadas
+    aprovado_em: null
+  liberada_para_impressao:
+    status: pendente
+    artefatos:
+      - rendered
+    hash: null
+    decisao: null
+    estado_resultante: liberada_para_impressao
+    aprovado_em: null

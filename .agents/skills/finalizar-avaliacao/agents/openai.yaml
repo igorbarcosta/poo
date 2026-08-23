@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finalizar Avaliação"
+  short_description: "Gera variantes após aprovação da base"
+  default_prompt: "Use $finalizar-avaliacao para derivar variantes e auditar a equivalência desta base aprovada."

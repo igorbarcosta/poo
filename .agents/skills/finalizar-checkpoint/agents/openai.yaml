@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finalizar Checkpoint"
+  short_description: "Encaminha checkpoints ao fluxo comum"
+  default_prompt: "Use $finalizar-checkpoint para finalizar este checkpoint pelo workflow comum de avaliações."

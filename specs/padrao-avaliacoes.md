@@ -1,6 +1,8 @@
 # Padrão de avaliações
 
-Este documento registra o padrão comum dos instrumentos individuais escritos da disciplina. Ele complementa `projeto-pedagogico.md`: o projeto define a arquitetura da disciplina; esta spec orienta a construção, a revisão e a diagramação de checkpoints e avaliações.
+Este documento registra os critérios duráveis de qualidade dos instrumentos individuais escritos da disciplina. Ele complementa `projeto-pedagogico.md`: o projeto define a arquitetura da disciplina; esta spec define o que caracteriza um bom checkpoint ou uma boa prova.
+
+A estrutura dos artefatos e os gates estão em `contrato-artefatos-avaliacoes.md`. As skills definem o processo repetível e o tooling executa validações mecânicas. Este documento não substitui julgamento nem aprovação humana.
 
 As avaliações são materiais internos. Suas fontes, distribuições e gabaritos ficam em `avaliacoes/`, fora de `docs/`, e não integram o site público.
 
@@ -11,7 +13,7 @@ As avaliações são materiais internos. Suas fontes, distribuições e gabarito
 Checkpoint é uma avaliação curta e focal, destinada a verificar a compreensão dos conceitos e mecanismos trabalhados nas aulas mais recentes antes de a disciplina avançar.
 
 - duração padrão: 50 minutos;
-- valor padrão: 10,0 pontos;
+- escala bruta de correção: 0–100 pontos;
 - formato físico: A4;
 - material do estudante com exatamente duas páginas, planejadas para impressão frente e verso;
 - margens curtas e bom aproveitamento da área útil, sem desperdício visual;
@@ -34,7 +36,11 @@ Avaliação é acumulativa e integrativa. Seu objetivo é medir se o estudante c
 - buscar poucas evidências fortes de compreensão;
 - exigir transferência para situações não treinadas literalmente;
 - usar Java como meio para expressar conceitos de POO, não como checklist sintático;
-- definir duração, quantidade de páginas e valor em cada avaliação.
+- definir duração e quantidade de páginas em cada avaliação; a escala bruta de correção permanece 0–100.
+
+## Escala de correção
+
+Todo checkpoint e toda avaliação usa escala bruta de **0–100 pontos**. Essa é a escala interna de correção do instrumento e não altera os pesos acadêmicos definidos em `projeto-pedagogico.md`. Os itens e subitens devem totalizar exatamente 100 pontos; criação, gabarito e revisão devem conferir explicitamente essa soma.
 
 ## Natureza das questões
 
@@ -53,6 +59,8 @@ As questões devem ser predominantemente objetivas e determináveis. Podem assum
 
 Evitar por padrão comandos abertos como “explique”, “justifique”, “discuta”, “descreva com suas palavras” e “o que você acha”. Quando a evidência exigir produção, formular requisitos observáveis e critérios determinados.
 
+Quando houver evidência melhor disponível, preferir microproblemas que peçam interpretação, consequência, diagnóstico ou decisão em um código ou situação concreta a perguntas puramente definicionais. Variar as operações cognitivas ao longo do instrumento: dois formatos diferentes não justificam medir essencialmente a mesma compreensão.
+
 Uma questão de programação pode admitir múltiplas implementações corretas. A correção considera a semântica e o atendimento aos requisitos, não a correspondência literal com o código do gabarito. O gabarito deve registrar implementações equivalentes aceitáveis ou critérios de correção quando necessário.
 
 ### Múltipla escolha
@@ -60,12 +68,23 @@ Uma questão de programação pode admitir múltiplas implementações corretas.
 Toda questão de múltipla escolha possui exatamente cinco alternativas, identificadas como **A**, **B**, **C**, **D** e **E**. Por padrão, existe exatamente uma alternativa correta.
 
 - construir quatro distratores conceitualmente plausíveis, associados a erros reais de compreensão;
+- fazer os distratores representarem interpretações, consequências ou decisões plausíveis, e não apenas código obviamente inválido ou afirmações absurdas;
 - evitar alternativas absurdas, “todas as anteriores”, “nenhuma das anteriores” e pegadinhas linguísticas;
 - manter estrutura gramatical, extensão e detalhamento comparáveis entre as alternativas;
 - impedir que tamanho, precisão ou estilo revelem a resposta correta;
 - distribuir as respostas corretas entre A–E sem padrão previsível ao longo do instrumento.
 
 A dificuldade deve estar no conceito avaliado, não em interpretação maliciosa do enunciado.
+
+## Legibilidade dos enunciados e do código
+
+- usar bloco de código quando sua estrutura for relevante para compreender a questão, em vez de reconstruí-la em prosa;
+- preferir enunciados concretos e operacionais, nomeando diretamente objetos, campos, métodos e ações quando isso evitar abstração ou decodificação desnecessária;
+- redigir em tom direto e didático: depois de uma leitura, o estudante deve reconhecer a situação apresentada, a ação ou condição relevante e exatamente o que precisa marcar, calcular ou identificar;
+- evitar comandos genéricos como “qual é a melhor solução?” ou “qual diagnóstico está correto?” quando o critério de decisão ou o resultado observável puder ser declarado diretamente;
+- não comprimir nem igualar artificialmente blocos de código de tamanhos diferentes;
+- preservar linhas em branco e espaçamentos que tornem visíveis os agrupamentos lógicos;
+- garantir separação visual suficiente entre alternativas e entre os limites das questões, permitindo que sejam reconhecidos antes da leitura integral.
 
 ## Repertório já ensinado
 
@@ -77,22 +96,26 @@ A avaliação não pode introduzir nova sintaxe, API, mecanismo de linguagem, co
 
 Toda questão deve possuir resposta determinada pelos dados e pelas regras fornecidas. Regras de domínio necessárias à solução devem ser explicitadas suficientemente; a resposta não pode depender de uma decisão de domínio omitida pelo enunciado.
 
+Cada item deve isolar o conhecimento pretendido. Um erro incidental de identificador, membro, sintaxe, premissa ou redação não pode tornar uma alternativa correta ou uma afirmação falsa por uma razão diferente daquela que o item pretende diagnosticar.
+
 Uma questão pode admitir diferentes implementações, desde que os requisitos e os critérios para reconhecer uma solução correta estejam claros e determinados.
 
 ## Matriz de evidências
 
 Antes da versão final, produzir internamente uma matriz **questão → evidência de aprendizagem**. Para cada questão, responder: **que conhecimento novo esta questão permite verificar?** A matriz é artefato de planejamento do professor e não integra necessariamente a versão do estudante.
 
+Cada questão deve ter uma evidência diagnóstica principal distinta. Conceitos podem se relacionar e um item pode mobilizar conhecimentos auxiliares, mas seu acerto ou erro deve acrescentar uma inferência própria sobre a aprendizagem.
+
 Auditar obrigatoriamente:
 
 - **redundância:** se acertar uma questão praticamente responde outra, redesenhar ou remover uma delas; não medir o mesmo conhecimento repetidamente apenas com formatos diferentes;
-- **cobertura:** confirmar evidência suficiente para os aprendizados prioritários do escopo;
+- **cobertura:** confirmar evidência suficiente para os aprendizados prioritários do escopo; cobertura não exige avaliar todo fato ensinado, mas priorizar conceitos estruturantes e variar as operações cognitivas;
 - **independência:** evitar que um erro torne várias questões subsequentes impossíveis;
 - **entrega de respostas:** verificar se cenário, enunciado, alternativa ou outra questão revela inadvertidamente uma resposta.
 
 ## Variantes
 
-Todo checkpoint e toda avaliação possuem, por padrão, Variante A e Variante B. As variantes devem preservar:
+Todo checkpoint concluído para aplicação e toda avaliação possuem, por padrão, Variante A e Variante B. Essa distribuição só é produzida depois da aprovação humana de uma versão-base única. As variantes devem preservar:
 
 - as mesmas competências e a mesma distribuição de pontos;
 - dificuldade aproximada equivalente;
@@ -104,35 +127,11 @@ Não produzir variantes apenas por substituição superficial de nomes ou númer
 
 As variantes são identificação interna. O material entregue ao estudante não pode exibir “Variante A”, “Variante B”, código equivalente ou qualquer outra pista no cabeçalho, rodapé ou nome visível do instrumento. Os nomes internos dos arquivos podem preservar a variante, e o gabarito do professor deve identificá-la claramente.
 
-## Processo obrigatório de construção
+## Fonte semântica e aprovação
 
-Não começar pela diagramação.
+O conteúdo de instrumentos novos é estabilizado em Markdown antes da diagramação. O blueprint precede as questões; a base aprovada é o contrato semântico das variantes; e cada transição que congela conteúdo exige decisão humana explícita. Pedidos de correção, continuidade ou melhoria não constituem aprovação.
 
-1. Identificar o escopo.
-2. Ler as aulas relacionadas.
-3. Ler os laboratórios relacionados.
-4. Consultar as retrospectivas relevantes.
-5. Identificar exatamente o que foi ensinado.
-6. Identificar os conhecimentos prioritários.
-7. Escolher as evidências necessárias.
-8. Construir um cenário adequado.
-9. Elaborar as questões.
-10. Montar a matriz questão → evidência.
-11. Auditar redundância.
-12. Auditar entrega de respostas.
-13. Auditar dependências entre questões.
-14. Resolver integralmente a prova.
-15. Produzir o gabarito.
-16. Verificar que todas as respostas são determinadas.
-17. Verificar que nenhuma sintaxe ou conceito não ensinado foi introduzido.
-18. Construir Variante A e Variante B.
-19. Verificar a equivalência entre variantes.
-20. Estimar a duração.
-21. Somente então diagramar.
-22. Compilar.
-23. Renderizar cada página do PDF como imagem e inspecioná-la visualmente; compilação, contagem de páginas e texto extraído não substituem essa etapa.
-24. Corrigir problemas de paginação ou legibilidade.
-25. Fazer revisão final pedagógica e técnica.
+Alterações em artefatos aprovados invalidam os gates posteriores conforme `contrato-artefatos-avaliacoes.md`. Artefatos históricos anteriores ao contrato não recebem aprovação retroativa por inferência.
 
 ## Composição do checkpoint
 
@@ -154,7 +153,7 @@ As questões não exigem subtítulo temático. Preferir a forma direta **Questã
 
 ## Padrão de diagramação
 
-Usar LaTeX como formato principal e o template em `avaliacoes/templates/`.
+Usar os componentes de `avaliacoes/templates/` na geração dos derivados de impressão. LaTeX pode ser usado como formato intermediário de renderização, mas não é a fonte semântica principal dos instrumentos novos.
 
 - papel A4;
 - margens curtas, calibradas para impressão comum e bom uso da área A4;
@@ -192,7 +191,7 @@ Gerar um gabarito separado com:
 - critérios para respostas em código;
 - implementações equivalentes aceitáveis, quando relevante;
 - quadro de respostas preenchido;
-- total de 10,0 pontos nos checkpoints.
+- total de 100 pontos.
 
 O gabarito pode ultrapassar duas páginas. A restrição de duas páginas aplica-se apenas a cada variante entregue ao estudante.
 
@@ -202,4 +201,4 @@ O gabarito pode ultrapassar duas páginas. A restrição de duas páginas aplica
 - `avaliacoes/checkpoints/`: fontes, PDFs e gabaritos dos checkpoints reais;
 - `avaliacoes/provas/`: fontes, PDFs e gabaritos das avaliações reais.
 
-Cada instrumento real deve ter diretório próprio. Manter fontes, variantes, matrizes internas, gabaritos e PDFs juntos nesse diretório, com nomes inequívocos. Não adicionar esses arquivos a `docs/`, à navegação do Zensical ou ao fluxo de cópia de artefatos do site.
+Cada instrumento real deve ter diretório próprio e seguir `contrato-artefatos-avaliacoes.md`. Não adicionar esses arquivos a `docs/`, à navegação do Zensical ou ao fluxo de cópia de artefatos do site.

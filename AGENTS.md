@@ -54,7 +54,14 @@ Os arquivos em `slides/rendered/` não devem ser editados manualmente. Quando um
 
 ## Ambiente Python
 
-Não presuma que a `.venv` esteja ativada na sessão do agente. Quando o repositório possuir `.venv/`, use diretamente seus executáveis para não depender do estado do shell que iniciou o Codex:
+O ambiente Python é definido por `.python-version` e `requirements.txt`. Em um clone novo, crie e prepare a `.venv` com:
+
+```bash
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+Não presuma que a `.venv` esteja ativada na sessão do agente. Use diretamente seus executáveis para não depender do estado do shell que iniciou o Codex:
 
 ```bash
 .venv/bin/python
