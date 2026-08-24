@@ -2,6 +2,7 @@
   "name": "poo-disciplina",
   "private": true,
   "scripts": {
+    "avaliacoes:preview": "node avaliacoes/scripts/preview.mjs",
     "avaliacoes:test": ".venv/bin/python -m unittest discover -s avaliacoes/tests -v",
     "avaliacoes:workflow": ".venv/bin/python avaliacoes/scripts/workflow.py",
     "slides:render": "bash slides/render.sh",
@@ -9,6 +10,8 @@
   },
   "devDependencies": {
     "@marp-team/marp-cli": "4.5.0",
+    "highlight.js": "11.11.1",
+    "markdown-it": "14.3.0",
     "pdf-lib": "^1.17.1"
   }
 }

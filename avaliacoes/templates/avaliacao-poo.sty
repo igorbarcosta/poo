@@ -55,7 +55,13 @@
   style=codigoavaliacao,numbers=left,numberstyle=\fontsize{6.8}{8}\selectfont\color{muted},
   numbersep=5.5pt,stepnumber=1,firstnumber=1,xleftmargin=2.05em
 }
-\lstdefinestyle{evolucaocodigo}{style=codigoavaliacao,basicstyle=\ttfamily\fontsize{9.15}{10.25}\selectfont}
+% Trechos apresentados dentro das questões precisam ter presença equivalente à prosa.
+\lstdefinestyle{questaocodigo}{
+  style=cenariocodigo,
+  basicstyle=\ttfamily\fontsize{9.35}{10.4}\selectfont,
+  numberstyle=\fontsize{7}{8.2}\selectfont\color{muted}
+}
+\lstdefinestyle{evolucaocodigo}{style=codigoavaliacao,basicstyle=\ttfamily\fontsize{9.35}{10.4}\selectfont}
 \lstset{style=codigoavaliacao}
 
 \newcommand{\instituicao}{IFPB - Campus Campina Grande}
@@ -103,15 +109,17 @@
 \newcommand{\separadorCenario}{\par\vspace{\espacoM}{\color{rulegray}\hrule height .45pt}\vspace{\espacoM}}
 \newcommand{\inicioQuestoes}{\separadorCenario\macrossecao{Questões}}
 \newcommand{\questaoDireta}[3]{%
-  \par\vspace{\espacoL}\noindent\raggedright\fontsize{10.2}{11.8}\selectfont
-  \textbf{Questão #1 (#3):} #2\par\vspace{\espacoXS}}
+  \par\vspace{2.65pt}\noindent\raggedright\fontsize{8.9}{10.1}\selectfont
+  \textbf{Questão #1 (#3)}\par\vspace{.6pt}
+  {\color{rulegray}\hrule height .25pt}\vspace{.5pt}
+  #2\par\vspace{\espacoXS}}
 \newcommand{\itemSimples}[2]{\noindent\textbf{#1)}\;#2\par\vspace{\espacoS}}
 \newcommand{\itemVF}[2]{\itemSimples{#1}{#2}}
 \newcommand{\itensDuasColunas}[2]{\noindent\begin{minipage}[t]{.48\linewidth}#1\end{minipage}\hfill\begin{minipage}[t]{.48\linewidth}#2\end{minipage}\par}
 \newenvironment{alternativas}{%
-  \raggedright\fontsize{9}{10}\selectfont
-  \begin{enumerate}[label=\textbf{\Alph*.},leftmargin=1.45em,itemsep=.45pt,topsep=\espacoXS,parsep=0pt]
-}{\end{enumerate}\vspace{\espacoM}}
+  \raggedright\fontsize{8.9}{10.1}\selectfont
+  \begin{enumerate}[label=\textbf{\Alph*.},leftmargin=1.45em,itemsep=.5pt,topsep=\espacoXS,parsep=0pt]
+}{\end{enumerate}}
 
 \newcommand{\campoResposta}{%
   {\setlength{\fboxsep}{2pt}\color{rulegray}\fbox{\color{ink}\rule{0pt}{.36cm}\rule{1.12cm}{0pt}}}}
@@ -127,13 +135,16 @@
   {\fontsize{8}{9}\selectfont
     \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÃO 1}%
     \respostaRotulada{a}\hfill\respostaRotulada{b}\hfill\respostaRotulada{c}\hfill
-    \respostaRotulada{d}\hfill\respostaRotulada{e}\hfill\respostaRotulada{f}\par\vspace{\espacoS}
+    \respostaRotulada{d}\hfill\respostaRotulada{e}\par\vspace{\espacoS}
     \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÃO 2}%
     \respostaRotulada{a}\hfill\respostaRotulada{b}\hfill\respostaRotulada{c}\hfill
-    \respostaRotulada{d}\hfill\respostaRotulada{e}\hfill\respostaRotulada{f}\par\vspace{\espacoS}
-    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÕES 3--10}%
-    \respostaRotulada{3}\hfill\respostaRotulada{4}\hfill\respostaRotulada{5}\hfill\respostaRotulada{6}\hfill
-    \respostaRotulada{7}\hfill\respostaRotulada{8}\hfill\respostaRotulada{9}\hfill\respostaRotulada{10}\par
+    \respostaRotulada{d}\hfill\respostaRotulada{e}\par\vspace{\espacoS}
+    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÕES 3--7}%
+    \respostaRotulada{3}\hfill\respostaRotulada{4}\hfill\respostaRotulada{5}\hfill
+    \respostaRotulada{6}\hfill\respostaRotulada{7}\par\vspace{\espacoS}
+    \makebox[2.45cm][l]{\bfseries\color{muted}QUESTÕES 8--12}%
+    \respostaRotulada{8}\hfill\respostaRotulada{9}\hfill\respostaRotulada{10}\hfill
+    \respostaRotulada{11}\hfill\respostaRotulada{12}\par
   }
   \end{tcolorbox}}
 \newcommand{\blocoQuadroRespostas}{%

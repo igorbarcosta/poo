@@ -18,7 +18,7 @@ Produzir somente o blueprint de um novo instrumento.
 
 Criar o diretório do instrumento, copiar somente `workflow.yaml` e `blueprint.md` de `avaliacoes/templates/instrumento/` e ajustá-los. Nesta etapa, não copiar os demais esqueletos, redigir questões completas, criar `base.md`, produzir variantes, gabarito ou derivados.
 
-O blueprint deve tornar auditáveis o recorte, as exclusões, as evidências prioritárias, a distribuição dos 100 pontos, as operações cognitivas, os formatos possíveis, as restrições do cenário e as decisões abertas. Verificar a soma planejada sem transformar a distribuição em uma meta rígida de questões.
+O blueprint deve tornar auditáveis o recorte, as exclusões, as evidências prioritárias, a distribuição dos 100 pontos, as operações cognitivas, os formatos possíveis, as restrições do cenário e as decisões abertas. Planejar quantidades cognitivas como evidências avaliativas, não como “itens corrigíveis”: uma evidência pode exigir vários subitens na base. Verificar a soma planejada sem transformar a distribuição em uma meta rígida de questões ou subitens.
 
 Executar:
 

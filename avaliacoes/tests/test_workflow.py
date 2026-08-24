@@ -13,6 +13,7 @@ import yaml
 
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
+PREVIEW_SCRIPT = SCRIPTS_DIR / "preview.mjs"
 sys.path.insert(0, str(SCRIPTS_DIR))
 import workflow  # noqa: E402
 
@@ -32,6 +33,27 @@ def assessment(questions: list[tuple[str, int]] | None = None) -> str:
         "---\n\n"
         f"{sections}"
     )
+
+
+def assessment_with_subitems(subitems: tuple[tuple[str, int], ...] = (("a", 40), ("b", 60))) -> str:
+    body = "\n".join(
+        f"### {label}) [{points} pontos]\n\nPedido {label}.\n" for label, points in subitems
+    )
+    return (
+        "---\n"
+        "tipo: checkpoint\n"
+        "identificador: checkpoint-teste\n"
+        "titulo: Checkpoint de teste\n"
+        "pontos_totais: 100\n"
+        "---\n\n"
+        "## Q01 [100 pontos]\n\nComando comum.\n\n"
+        f"{body}"
+    )
+
+
+def answer_key_with_subitems(labels: tuple[str, ...] = ("a", "b")) -> str:
+    answers = "\n".join(f"#### {label})\n\nResposta.\n" for label in labels)
+    return f"# Gabarito\n\n## Variante A\n\n### Q01\n\n{answers}\n## Variante B\n\n### Q01\n\n{answers}\n"
 
 
 def answer_key(
@@ -63,6 +85,7 @@ class Instrument:
         (self.root / "blueprint.md").write_text("# Blueprint de teste\n", encoding="utf-8")
         (self.root / "base.md").write_text(assessment(), encoding="utf-8")
         (self.root / "auditoria-base.md").write_text("# Auditoria\n", encoding="utf-8")
+        self.refresh_preview()
         variants = self.root / "variantes"
         variants.mkdir()
         (variants / "variante-a.md").write_text(assessment(), encoding="utf-8")
@@ -79,6 +102,14 @@ class Instrument:
 
     def data(self) -> dict:
         return workflow.load_workflow(self.workflow_path)
+
+    def refresh_preview(self) -> None:
+        subprocess.run(
+            ["node", str(PREVIEW_SCRIPT), "generate", str(self.root)],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
 
     def approve(self, gate: str) -> None:
         workflow.approve(self.root, self.workflow_path, self.data(), gate, f"Aprovação explícita de {gate} para teste.")
@@ -162,6 +193,7 @@ class WorkflowTestCase(unittest.TestCase):
     def test_candidate_validation_failure_preserves_manifest(self) -> None:
         self.instrument.approve("blueprint_aprovado")
         (self.instrument.root / "base.md").write_text(assessment([("Q01", 90)]), encoding="utf-8")
+        self.instrument.refresh_preview()
         before = self.instrument.workflow_path.read_bytes()
         with self.assertRaises(workflow.WorkflowError):
             self.instrument.approve("base_aprovada")
@@ -228,12 +260,14 @@ class WorkflowTestCase(unittest.TestCase):
     def test_points_must_sum_one_hundred(self) -> None:
         self.instrument.approve("blueprint_aprovado")
         (self.instrument.root / "base.md").write_text(assessment([("Q01", 90)]), encoding="utf-8")
+        self.instrument.refresh_preview()
         with self.assertRaisesRegex(workflow.WorkflowError, "soma das questões=90"):
             self.instrument.approve("base_aprovada")
 
     def test_question_identifier_must_be_unique(self) -> None:
         self.instrument.approve("blueprint_aprovado")
         (self.instrument.root / "base.md").write_text(assessment([("Q01", 50), ("Q01", 50)]), encoding="utf-8")
+        self.instrument.refresh_preview()
         with self.assertRaisesRegex(workflow.WorkflowError, "identificador duplicado Q01"):
             self.instrument.approve("base_aprovada")
 
@@ -242,6 +276,50 @@ class WorkflowTestCase(unittest.TestCase):
         path = self.instrument.root / "variantes" / "variante-a.md"
         path.write_text(assessment([("Q01", 50), ("Q02", 50)]), encoding="utf-8")
         with self.assertRaisesRegex(workflow.WorkflowError, "divergem da base aprovada"):
+            self.instrument.approve("variantes_aprovadas")
+
+    def test_subitems_must_sum_question_points(self) -> None:
+        self.instrument.approve("blueprint_aprovado")
+        (self.instrument.root / "base.md").write_text(
+            assessment_with_subitems((("a", 30), ("b", 60))), encoding="utf-8"
+        )
+        self.instrument.refresh_preview()
+        with self.assertRaisesRegex(workflow.WorkflowError, "soma dos subitens=90"):
+            self.instrument.approve("base_aprovada")
+
+    def test_subitems_must_be_unique_and_sequential(self) -> None:
+        self.instrument.approve("blueprint_aprovado")
+        (self.instrument.root / "base.md").write_text(
+            assessment_with_subitems((("a", 50), ("c", 50))), encoding="utf-8"
+        )
+        self.instrument.refresh_preview()
+        with self.assertRaisesRegex(workflow.WorkflowError, "únicos e sequenciais"):
+            self.instrument.approve("base_aprovada")
+
+    def test_variant_must_preserve_subitem_structure(self) -> None:
+        self.instrument.approve("blueprint_aprovado")
+        source = assessment_with_subitems()
+        (self.instrument.root / "base.md").write_text(source, encoding="utf-8")
+        self.instrument.refresh_preview()
+        self.instrument.approve("base_aprovada")
+        (self.instrument.root / "variantes" / "variante-a.md").write_text(
+            assessment_with_subitems((("a", 50), ("b", 50))), encoding="utf-8"
+        )
+        with self.assertRaisesRegex(workflow.WorkflowError, "subitens divergem"):
+            self.instrument.approve("variantes_aprovadas")
+
+    def test_answer_key_must_cover_each_subitem(self) -> None:
+        self.instrument.approve("blueprint_aprovado")
+        source = assessment_with_subitems()
+        (self.instrument.root / "base.md").write_text(source, encoding="utf-8")
+        self.instrument.refresh_preview()
+        (self.instrument.root / "variantes" / "variante-a.md").write_text(source, encoding="utf-8")
+        (self.instrument.root / "variantes" / "variante-b.md").write_text(source, encoding="utf-8")
+        (self.instrument.root / "gabarito.md").write_text(
+            answer_key_with_subitems(("a",)), encoding="utf-8"
+        )
+        self.instrument.approve("base_aprovada")
+        with self.assertRaisesRegex(workflow.WorkflowError, "subitens devem aparecer exatamente uma vez"):
             self.instrument.approve("variantes_aprovadas")
 
     def test_answer_key_with_one_a_and_one_b_is_valid(self) -> None:
@@ -295,14 +373,31 @@ class WorkflowTestCase(unittest.TestCase):
 
     def test_answer_key_template_is_accepted(self) -> None:
         self.instrument.approve("blueprint_aprovado")
-        single_question = assessment([("Q01", 100)])
+        single_question = assessment_with_subitems()
         (self.instrument.root / "base.md").write_text(single_question, encoding="utf-8")
+        self.instrument.refresh_preview()
         (self.instrument.root / "variantes" / "variante-a.md").write_text(single_question, encoding="utf-8")
         (self.instrument.root / "variantes" / "variante-b.md").write_text(single_question, encoding="utf-8")
         template = Path(__file__).resolve().parents[1] / "templates" / "instrumento" / "gabarito.md"
         (self.instrument.root / "gabarito.md").write_text(template.read_text(encoding="utf-8"), encoding="utf-8")
         self.instrument.approve("base_aprovada")
         self.instrument.approve("variantes_aprovadas")
+
+    def test_base_draft_requires_preview(self) -> None:
+        (self.instrument.root / "preview" / "base.html").unlink()
+        self.assert_invalid("preview da base inválido")
+
+    def test_base_draft_rejects_stale_preview(self) -> None:
+        (self.instrument.root / "base.md").write_text(
+            assessment().replace("Enunciado", "Enunciado alterado"), encoding="utf-8"
+        )
+        self.assert_invalid("preview da base inválido")
+
+    def test_preview_is_not_part_of_base_gate_hash(self) -> None:
+        self.assertEqual(
+            ["base.md", "auditoria-base.md"],
+            workflow.EXPECTED_ARTIFACTS["base_aprovada"],
+        )
 
 
 if __name__ == "__main__":

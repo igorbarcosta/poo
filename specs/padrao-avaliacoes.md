@@ -44,6 +44,8 @@ Todo checkpoint e toda avaliação usa escala bruta de **0–100 pontos**. Essa 
 
 ## Natureza das questões
 
+Questão temática, evidência avaliativa e unidade de correção não são sinônimos. Uma questão `QXX` pode reunir evidências relacionadas, mas cada pedido que possa ser respondido ou corrigido independentemente deve aparecer como subitem `a)`, `b)`, `c)` e assim por diante. Uma questão sem subitens formula somente um pedido corrigível. A composição final pode agrupar visualmente respostas, mas não pode esconder essa estrutura semântica.
+
 As questões devem ser predominantemente objetivas e determináveis. Podem assumir estruturas diferentes conforme a evidência necessária; não há fórmula fixa de quantidade, subitens ou pesos. Formatos adequados incluem:
 
 - múltipla escolha;
@@ -61,6 +63,12 @@ Evitar por padrão comandos abertos como “explique”, “justifique”, “di
 
 Quando houver evidência melhor disponível, preferir microproblemas que peçam interpretação, consequência, diagnóstico ou decisão em um código ou situação concreta a perguntas puramente definicionais. Variar as operações cognitivas ao longo do instrumento: dois formatos diferentes não justificam medir essencialmente a mesma compreensão.
 
+Sempre que uma evidência puder ser representada naturalmente pelo próprio Java, preferir apresentar o código e perguntar por sua saída, retorno ou efeito. Essa preferência se aplica especialmente a identidade, valores retornados, estado observável, rastreamento, efeitos e comparações. Usar “saída” quando o valor é efetivamente exibido; para uma expressão não exibida, perguntar por seu valor ou retorno. Não acrescentar `println`, chamadas ou sintaxe sem função apenas para cumprir essa preferência.
+
+Quando uma alternativa representar uma decisão ou operação em Java, preferir código curto e concreto a uma descrição que o estudante precise traduzir mentalmente. Todo trecho apresentado como Java deve usar sintaxe literal válida, sem operadores tipográficos, aspas tipográficas, pseudocódigo ou caracteres apenas visualmente semelhantes aos tokens da linguagem. O código deve ser sintaticamente plausível no contexto e não pode ser falso apenas por impossibilidade técnica incidental, salvo quando compilação for deliberadamente a evidência.
+
+Toda alternativa, inclusive distrator, deve permanecer dentro do repertório curricular disponível ao estudante. Uma alternativa errada deve ser julgável pelos conceitos avaliados, não pelo desconhecimento de sintaxe ou mecanismo ainda não ensinado. A revisão deve inventariar as construções Java do cenário, dos enunciados e de todas as alternativas, sem se limitar aos recursos necessários para reconhecer a resposta correta.
+
 Uma questão de programação pode admitir múltiplas implementações corretas. A correção considera a semântica e o atendimento aos requisitos, não a correspondência literal com o código do gabarito. O gabarito deve registrar implementações equivalentes aceitáveis ou critérios de correção quando necessário.
 
 ### Múltipla escolha
@@ -68,6 +76,7 @@ Uma questão de programação pode admitir múltiplas implementações corretas.
 Toda questão de múltipla escolha possui exatamente cinco alternativas, identificadas como **A**, **B**, **C**, **D** e **E**. Por padrão, existe exatamente uma alternativa correta.
 
 - construir quatro distratores conceitualmente plausíveis, associados a erros reais de compreensão;
+- fazer cada distrator ser errado por uma concepção identificável e clara; evitar misturar premissa verdadeira com conclusão inadequada quando essa construção criar ambiguidade ou armadilha linguística;
 - fazer os distratores representarem interpretações, consequências ou decisões plausíveis, e não apenas código obviamente inválido ou afirmações absurdas;
 - evitar alternativas absurdas, “todas as anteriores”, “nenhuma das anteriores” e pegadinhas linguísticas;
 - manter estrutura gramatical, extensão e detalhamento comparáveis entre as alternativas;
@@ -78,6 +87,10 @@ A dificuldade deve estar no conceito avaliado, não em interpretação maliciosa
 
 ## Legibilidade dos enunciados e do código
 
+- aplicar a cada enunciado e alternativa o teste de clareza local: um estudante que domina o conteúdo deve compreender imediatamente o que a frase afirma ou pergunta, sem primeiro decodificar abstrações, referências indefinidas ou ações pouco concretas;
+- não considerar suficiente que uma frase seja tecnicamente determinável depois de interpretação cuidadosa; se a formulação precisa ser decifrada antes do raciocínio conceitual, ela deve ser reescrita;
+- manter baixa ou moderada a complexidade incidental de leitura, inclusive em questões de alta demanda conceitual; extensão, quantidade de condições e redação densa não constituem profundidade cognitiva;
+- aplicar economia textual: toda informação deve determinar a resposta, sustentar a evidência ou orientar inequivocamente a ação; remover repetição de contexto e explicação da intenção da questão;
 - usar bloco de código quando sua estrutura for relevante para compreender a questão, em vez de reconstruí-la em prosa;
 - preferir enunciados concretos e operacionais, nomeando diretamente objetos, campos, métodos e ações quando isso evitar abstração ou decodificação desnecessária;
 - redigir em tom direto e didático: depois de uma leitura, o estudante deve reconhecer a situação apresentada, a ação ou condição relevante e exatamente o que precisa marcar, calcular ou identificar;
@@ -85,6 +98,30 @@ A dificuldade deve estar no conceito avaliado, não em interpretação maliciosa
 - não comprimir nem igualar artificialmente blocos de código de tamanhos diferentes;
 - preservar linhas em branco e espaçamentos que tornem visíveis os agrupamentos lógicos;
 - garantir separação visual suficiente entre alternativas e entre os limites das questões, permitindo que sejam reconhecidos antes da leitura integral.
+
+## Coerência narrativa e progressão
+
+Quando questões compartilham cenário, conceitos ou uma evolução de projeto, organizar o instrumento em uma progressão compreensível e usar transições mínimas somente quando reduzirem troca de contexto. O arco deve poder ser resumido em uma frase simples e tornar perceptível o que cada questão acrescenta ao que veio antes. Em cenários baseados em código, concentrar as premissas antes do primeiro trecho e preservar a continuidade visual dos artefatos sempre que não houver necessidade semântica de interrompê-los.
+
+Storytelling pedagógico não significa acrescentar história. Sua função é produzir continuidade e leveza cognitiva. Não introduzir empresa, personagem, ator ou detalhe narrativo que não determine a evidência; isso é decoração e aumenta carga incidental.
+
+A revisão deve avaliar localmente cada questão e globalmente a prova como experiência única: cenário reutilizado com função, ausência de questões desconectadas, dificuldade intencionalmente distribuída e questões profundas ainda fáceis de compreender.
+
+Em questões de implementação de regra, preferir a sequência **regra de negócio explícita → código candidato → decisão**. Quando as alternativas forem implementações, usar blocos Java curtos, indentados, visualmente comparáveis, plausíveis e errados por razões conceituais claras.
+
+### Economia e evolução incremental
+
+Aplicar três níveis complementares de economia:
+
+- **textual:** remover palavras e frases sem função diagnóstica ou operacional;
+- **contextual:** não reapresentar cenário, estado ou código que já esteja estabelecido e continue válido;
+- **estrutural:** não repetir assinaturas, blocos ou versões completas quando somente a parte que muda é necessária para avaliar a evidência.
+
+Na criação e na revisão, perguntar: **se a estrutura repetida for removida e apenas o que mudou for apresentado, a questão continua determinada e mais fácil de compreender?** Se sim, preferir a forma mínima. A compactação não se aplica quando a repetição é necessária para que alternativas independentes sejam compreendidas sem ambiguidade.
+
+Em questões sobre evolução de código ou API, usar o **princípio do delta**: partir do estado já estabelecido e apresentar apenas a modificação proposta e as novas informações necessárias. Depender do contexto comum é permitido quando reduz repetição; depender da resposta dada a outra questão é proibido. Premissas necessárias à interpretação devem aparecer antes do primeiro código ou artefato ao qual se aplicam.
+
+O planejamento local deve escolher a representação mais legível para a evidência — prosa, expressão Java, bloco curto, corpos de método ou regra com alternativas. Questões próximas sobre implementação devem manter coerência visual quando isso facilitar comparação, sem impor o mesmo formato a objetivos diferentes.
 
 ## Repertório já ensinado
 
@@ -102,16 +139,20 @@ Uma questão pode admitir diferentes implementações, desde que os requisitos e
 
 ## Matriz de evidências
 
-Antes da versão final, produzir internamente uma matriz **questão → evidência de aprendizagem**. Para cada questão, responder: **que conhecimento novo esta questão permite verificar?** A matriz é artefato de planejamento do professor e não integra necessariamente a versão do estudante.
+Antes da versão final, produzir em `auditoria-base.md` uma matriz **unidade corrigível → evidência → eixo → demanda conceitual → complexidade incidental de leitura → pontos → relação com outras unidades → ganho diagnóstico marginal**.
 
-Cada questão deve ter uma evidência diagnóstica principal distinta. Conceitos podem se relacionar e um item pode mobilizar conhecimentos auxiliares, mas seu acerto ou erro deve acrescentar uma inferência própria sobre a aprendizagem.
+Para cada unidade, responder: **o que esta resposta permite inferir sobre a compreensão do estudante que ainda não foi observado adequadamente por outra unidade?** Conceitos podem se relacionar, mas a pontuação precisa corresponder a uma inferência própria ou a uma sobreposição pedagogicamente justificada.
+
+Aplicar também a revisão por remoção: **se esta unidade fosse retirada, qual evidência relevante deixaria de ser observada?** Se a resposta for nenhuma ou quase nenhuma, redesenhar, substituir ou remover a unidade. A necessidade de preencher quantidade ou formato previstos não justifica evidência artificial.
 
 Auditar obrigatoriamente:
 
-- **redundância:** se acertar uma questão praticamente responde outra, redesenhar ou remover uma delas; não medir o mesmo conhecimento repetidamente apenas com formatos diferentes;
+- **redundância e sobreposição:** registrar relações relevantes entre unidades; se acertar uma delas praticamente responde outra ou se o ganho marginal for baixo, redesenhar ou remover, salvo sobreposição pedagogicamente justificada e explicitada;
+- **rastreamento versus verbalização:** verificar se uma unidade conceitual apenas solicita em palavras uma inferência já necessária para produzir uma saída de código pontuada; formato diferente, por si só, não constitui ganho diagnóstico;
 - **cobertura:** confirmar evidência suficiente para os aprendizados prioritários do escopo; cobertura não exige avaliar todo fato ensinado, mas priorizar conceitos estruturantes e variar as operações cognitivas;
 - **independência:** evitar que um erro torne várias questões subsequentes impossíveis;
-- **entrega de respostas:** verificar se cenário, enunciado, alternativa ou outra questão revela inadvertidamente uma resposta.
+- **entrega de respostas:** verificar nos dois sentidos se cenário, enunciado, alternativa ou outra questão revela inadvertidamente uma resposta — tanto de questão anterior para posterior quanto de posterior para anterior, considerando que o estudante pode percorrer livremente o instrumento. Questão posterior não deve declarar uma saída, estado, relação entre referências ou conclusão que seja resposta ou passo decisivo de unidade anterior;
+- **clareza versus profundidade:** avaliar separadamente demanda conceitual e complexidade de leitura; uma unidade profunda deve exigir integração conceitual, não interpretação linguística trabalhosa.
 
 ## Variantes
 
@@ -131,9 +172,15 @@ As variantes são identificação interna. O material entregue ao estudante não
 
 O conteúdo de instrumentos novos é estabilizado em Markdown antes da diagramação. O blueprint precede as questões; a base aprovada é o contrato semântico das variantes; e cada transição que congela conteúdo exige decisão humana explícita. Pedidos de correção, continuidade ou melhoria não constituem aprovação.
 
+A base registra somente o significado do instrumento: cenário, premissas necessárias, código, questões, alternativas, critérios e pontos. Instruções de aplicação, identificação, quadro de respostas, cabeçalho, paginação e decisões de layout pertencem à renderização final e são acrescentados por configuração e templates depois da aprovação semântica.
+
+Antes do gate `base_aprovada`, gerar o preview HTML oficial para revisar a base com código legível. O preview não simula páginas A4, não é fonte canônica e não entra no hash do gate.
+
 Alterações em artefatos aprovados invalidam os gates posteriores conforme `contrato-artefatos-avaliacoes.md`. Artefatos históricos anteriores ao contrato não recebem aprovação retroativa por inferência.
 
-## Composição do checkpoint
+## Composição final do checkpoint
+
+Esta seção se aplica ao material de aplicação produzido depois da aprovação semântica. Seus elementos não devem ser copiados para `base.md`.
 
 Em instrumentos predominantemente objetivos, preferir a macroestrutura:
 
@@ -153,7 +200,7 @@ As questões não exigem subtítulo temático. Preferir a forma direta **Questã
 
 ## Padrão de diagramação
 
-Usar os componentes de `avaliacoes/templates/` na geração dos derivados de impressão. LaTeX pode ser usado como formato intermediário de renderização, mas não é a fonte semântica principal dos instrumentos novos.
+Usar os componentes de `avaliacoes/templates/` e a configuração do instrumento na geração dos derivados de impressão. LaTeX pode ser usado como formato intermediário de renderização, mas não é a fonte semântica principal dos instrumentos novos. Cabeçalho, identificação, instruções administrativas, quadro de respostas e paginação são responsabilidades dessa derivação.
 
 - papel A4;
 - margens curtas, calibradas para impressão comum e bom uso da área A4;

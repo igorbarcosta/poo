@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="assessment-source-sha256" content="f62a0ba24e42725c8d5e901fd7f8ade2bddd55fc2d87b762a428a3d66e28a11b">
+  <meta name="assessment-preview-version" content="1">
+  <title>Preview da base semântica — checkpoint-01-replay</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172033; background: #eef2f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 2rem 1rem 4rem; }
+    main { max-width: 58rem; margin: 0 auto; padding: 2.5rem 3rem; background: #fff; border: 1px solid #d8dee9; border-radius: 12px; box-shadow: 0 8px 28px rgb(31 41 55 / 8%); }
+    .preview-label { margin: 0 0 2rem; padding-bottom: 1rem; color: #526075; border-bottom: 1px solid #e2e7ef; font-size: .9rem; }
+    h1, h2, h3 { color: #102a43; line-height: 1.25; }
+    h1 { margin-top: 0; font-size: 1.75rem; }
+    h2 { margin-top: 2.4rem; padding-top: .6rem; border-top: 1px solid #e5eaf1; font-size: 1.35rem; }
+    h3 { margin-top: 1.7rem; font-size: 1.1rem; }
+    p, li { line-height: 1.62; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; }
+    th, td { padding: .65rem .75rem; border: 1px solid #d8dee9; text-align: left; vertical-align: top; }
+    th { background: #f4f7fa; }
+    code { font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace; font-size: .92em; }
+    :not(pre) > code { padding: .12rem .3rem; border-radius: 4px; background: #eef2f6; }
+    pre.hljs { overflow-x: auto; margin: 1rem 0 1.4rem; padding: 1rem 1.15rem; border: 1px solid #dbe2ea; border-radius: 8px; background: #f6f8fa; line-height: 1.5; }
+    .hljs-keyword, .hljs-type { color: #7c3aed; }
+    .hljs-title, .hljs-title.class_, .hljs-title.function_ { color: #075985; }
+    .hljs-number, .hljs-literal { color: #b45309; }
+    .hljs-string { color: #166534; }
+    .hljs-comment { color: #64748b; font-style: italic; }
+    footer { max-width: 58rem; margin: 1rem auto 0; color: #68758a; font-size: .8rem; text-align: center; }
+    @media (max-width: 700px) { main { padding: 1.5rem 1.2rem; } body { padding: .75rem .5rem 2rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="preview-label">Preview derivado de <code>base.md</code> para revisão humana. Não é artefato de aplicação.</p>
+<h1>Cenário: medição de chuva</h1>
+<p>Cada objeto <code>MedidorChuva</code> registra em <code>totalMilimetros</code> a chuva acumulada em um local. Para interpretar o programa:</p>
+<ul>
+<li>todos os arquivos apresentados pertencem ao mesmo projeto e não declaram <code>package</code>;</li>
+<li>os comentários <code>S1</code> a <code>S7</code> identificam as linhas de saída;</li>
+<li>as modificações propostas nas questões são analisadas separadamente e não alteram a execução da <code>Main</code>.</li>
+</ul>
+<p><strong>MedidorChuva.java</strong></p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MedidorChuva</span> {
+    String local;
+    <span class="hljs-type">double</span> totalMilimetros;
+
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">registrarChuva</span><span class="hljs-params">(<span class="hljs-type">double</span> milimetros)</span> {
+        totalMilimetros = totalMilimetros + milimetros;
+    }
+
+    <span class="hljs-type">double</span> <span class="hljs-title function_">consultarTotal</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> totalMilimetros;
+    }
+}
+</code></pre>
+<p><strong>Main.java</strong></p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">MedidorChuva</span> <span class="hljs-variable">principal</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MedidorChuva</span>();
+        principal.totalMilimetros = <span class="hljs-number">8.0</span>;
+        <span class="hljs-type">MedidorChuva</span> <span class="hljs-variable">apoio</span> <span class="hljs-operator">=</span> principal;
+
+        <span class="hljs-type">MedidorChuva</span> <span class="hljs-variable">outro</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MedidorChuva</span>();
+        outro.totalMilimetros = <span class="hljs-number">8.0</span>;
+
+        System.out.println(principal == apoio);              <span class="hljs-comment">// S1</span>
+        System.out.println(principal == outro);              <span class="hljs-comment">// S2</span>
+
+        apoio = outro;
+        System.out.println(apoio == outro);                  <span class="hljs-comment">// S3</span>
+
+        apoio.registrarChuva(<span class="hljs-number">2.0</span>);
+        System.out.println(outro.consultarTotal());          <span class="hljs-comment">// S4</span>
+        System.out.println(principal.consultarTotal());      <span class="hljs-comment">// S5</span>
+
+        apoio = principal;
+        apoio.registrarChuva(<span class="hljs-number">4.0</span>);
+        System.out.println(principal.consultarTotal());      <span class="hljs-comment">// S6</span>
+
+        apoio.totalMilimetros = -<span class="hljs-number">2.0</span>;
+        principal.registrarChuva(<span class="hljs-number">3.0</span>);
+        System.out.println(principal.consultarTotal());      <span class="hljs-comment">// S7</span>
+    }
+}
+</code></pre>
+<h1>Questões</h1>
+<h2>Q01 [35 pontos]</h2>
+<p>Considere a execução completa da classe <code>Main</code>. Informe as saídas S1 a S7.</p>
+<h3>a) [5 pontos]</h3>
+<p>Saída S1.</p>
+<h3>b) [5 pontos]</h3>
+<p>Saída S2.</p>
+<h3>c) [5 pontos]</h3>
+<p>Saída S3.</p>
+<h3>d) [5 pontos]</h3>
+<p>Saída S4.</p>
+<h3>e) [5 pontos]</h3>
+<p>Saída S5.</p>
+<h3>f) [5 pontos]</h3>
+<p>Saída S6.</p>
+<h3>g) [5 pontos]</h3>
+<p>Saída S7.</p>
+<h2>Q02 [25 pontos]</h2>
+<p>Marque (V) para verdadeira e (F) para falsa.</p>
+<h3>a) [5 pontos]</h3>
+<p>Na classe <code>MedidorChuva</code>, <code>local</code> e <code>totalMilimetros</code> representam estado, enquanto <code>registrarChuva</code> e <code>consultarTotal</code> representam comportamento.</p>
+<h3>b) [5 pontos]</h3>
+<p><code>milimetros</code> é um parâmetro de <code>registrarChuva</code>; ele não se torna um campo nem passa a fazer parte do estado do objeto.</p>
+<h3>c) [5 pontos]</h3>
+<p>O retorno <code>void</code> de <code>registrarChuva</code> significa que o método não devolve um valor; isso não impede que ele altere o estado do objeto.</p>
+<h3>d) [5 pontos]</h3>
+<p>Uma variável recebe o valor retornado por <code>consultarTotal()</code>. Alterar essa variável depois não altera <code>totalMilimetros</code> do objeto.</p>
+<h3>e) [5 pontos]</h3>
+<p><code>registrarChuva</code> só consegue usar <code>totalMilimetros</code> se esse valor também for recebido como parâmetro.</p>
+<h2>Q03 [10 pontos]</h2>
+<p>Um <code>MedidorChuva</code> deve informar se seu total atingiu um limite. Qual proposta atribui essa responsabilidade ao próprio objeto?</p>
+<p>A. Em <code>MedidorChuva</code>, armazenar a resposta em um campo:</p>
+<pre class="hljs"><code><span class="hljs-type">boolean</span> emAlerta;
+</code></pre>
+<p>B. Em <code>MedidorChuva</code>, calcular a resposta a partir do próprio estado:</p>
+<pre class="hljs"><code><span class="hljs-type">boolean</span> <span class="hljs-title function_">atingiuAlerta</span><span class="hljs-params">(<span class="hljs-type">double</span> limite)</span> {
+    <span class="hljs-keyword">return</span> totalMilimetros &gt;= limite;
+}
+</code></pre>
+<p>C. Em <code>Main</code>, fazer a comparação:</p>
+<pre class="hljs"><code><span class="hljs-type">boolean</span> <span class="hljs-variable">alerta</span> <span class="hljs-operator">=</span> medidor.consultarTotal() &gt;= limite;
+</code></pre>
+<p>D. Em <code>MedidorChuva</code>, criar um método que recebe o total em vez de usar o estado do objeto:</p>
+<pre class="hljs"><code><span class="hljs-type">boolean</span> <span class="hljs-title function_">atingiuAlerta</span><span class="hljs-params">(<span class="hljs-type">double</span> total, <span class="hljs-type">double</span> limite)</span> {
+    <span class="hljs-keyword">return</span> total &gt;= limite;
+}
+</code></pre>
+<p>E. Em <code>MedidorChuva</code>, expor o campo para comparação externa:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-type">double</span> totalMilimetros;
+</code></pre>
+<h2>Q04 [10 pontos]</h2>
+<p>Mesmo que <code>registrarChuva</code> rejeitasse valores negativos, por que a primeira versão não conseguiria garantir que <code>totalMilimetros</code> nunca fosse negativo?</p>
+<p>A. Porque qualquer cliente no mesmo pacote pode escrever diretamente no campo e ignorar a regra do método.</p>
+<p>B. Porque duas referências para o mesmo objeto ignoram automaticamente a regra do método.</p>
+<p>C. Porque campos não podem ter suas alterações controladas por métodos da própria classe.</p>
+<p>D. Porque a regra de <code>registrarChuva</code> só funciona quando o total anterior é zero.</p>
+<p>E. Porque <code>consultarTotal()</code> devolve o campo e permite que o cliente o altere diretamente.</p>
+<h2>Q05 [10 pontos]</h2>
+<p>Na versão encapsulada de <code>MedidorChuva</code>:</p>
+<ul>
+<li><code>totalMilimetros</code> é <code>private</code> e começa em <code>0.0</code>;</li>
+<li><code>registrarChuva</code> acumula somente valores maiores que zero;</li>
+<li><code>consultarTotal</code> devolve o total atual.</li>
+</ul>
+<p>No código cliente, <code>principal</code> e <code>apoio</code> começam apontando para o mesmo objeto:</p>
+<pre class="hljs"><code><span class="hljs-type">MedidorChuva</span> <span class="hljs-variable">principal</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MedidorChuva</span>();
+<span class="hljs-type">MedidorChuva</span> <span class="hljs-variable">apoio</span> <span class="hljs-operator">=</span> principal;
+</code></pre>
+<p>Qual continuação mantém as duas referências no mesmo objeto, rejeita o registro <code>-2.0</code> e faz <code>principal.consultarTotal()</code> e <code>apoio.consultarTotal()</code> devolverem <code>10.0</code>?</p>
+<p>A.</p>
+<pre class="hljs"><code>principal.registrarChuva(<span class="hljs-number">6.0</span>);
+apoio.registrarChuva(-<span class="hljs-number">2.0</span>);
+apoio.registrarChuva(<span class="hljs-number">4.0</span>);
+</code></pre>
+<p>B.</p>
+<pre class="hljs"><code>principal.registrarChuva(<span class="hljs-number">6.0</span>);
+apoio = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MedidorChuva</span>();
+apoio.registrarChuva(<span class="hljs-number">4.0</span>);
+</code></pre>
+<p>C.</p>
+<pre class="hljs"><code>principal.totalMilimetros = <span class="hljs-number">6.0</span>;
+apoio.totalMilimetros = -<span class="hljs-number">2.0</span>;
+apoio.totalMilimetros = <span class="hljs-number">10.0</span>;
+</code></pre>
+<p>D.</p>
+<pre class="hljs"><code>principal.registrarChuva(<span class="hljs-number">6.0</span>);
+apoio.consultarTotal();
+apoio.registrarChuva(-<span class="hljs-number">2.0</span>);
+</code></pre>
+<p>E.</p>
+<pre class="hljs"><code>principal.registrarChuva(<span class="hljs-number">6.0</span>);
+apoio.registrarChuva(<span class="hljs-number">2.0</span>);
+apoio.registrarChuva(<span class="hljs-number">4.0</span>);
+</code></pre>
+<h2>Q06 [10 pontos]</h2>
+<p>Considere a classe depois da implementação da regra de Q05:</p>
+<blockquote>
+<p>O total acumulado só pode mudar por registros maiores que zero. Nenhum cliente pode substituir diretamente o total por um valor arbitrário.</p>
+</blockquote>
+<p>Alguém propõe acrescentar este método:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">definirTotal</span><span class="hljs-params">(<span class="hljs-type">double</span> novoTotal)</span> {
+    totalMilimetros = novoTotal;
+}
+</code></pre>
+<p>Essa modificação preserva a regra de negócio da classe?</p>
+<p>A. Sim. O campo <code>private</code> impede que qualquer método público substitua seu valor.</p>
+<p>B. Não. <code>definirTotal</code> permite substituir o total sem validar um registro de chuva.</p>
+<p>C. Sim. Todo método da própria classe preserva automaticamente suas regras de negócio.</p>
+<p>D. Não. Um método público não pode alterar um campo <code>private</code>.</p>
+<p>E. Não. Receber <code>novoTotal</code> como parâmetro torna o campo público.</p>
+  </main>
+  <footer>Fonte SHA-256: <code>f62a0ba24e42725c8d5e901fd7f8ade2bddd55fc2d87b762a428a3d66e28a11b</code></footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+schema_version: 1
+instrumento:
+  tipo: checkpoint
+  identificador: checkpoint-01-replay
+estado: base_aprovada
+gates:
+  blueprint_aprovado:
+    status: aprovado
+    artefatos:
+    - blueprint.md
+    hash: 2cb36bd1046308983ff7635be59fa98269300162bee1698944faace7ffdf6096
+    decisao: 'Blueprint reaprovado após revisão da matriz de evidências: mantidas
+      a arquitetura 35/25/10/10/10/10, 16 unidades corrigíveis, cobertura 30/30/40,
+      duração-alvo de 50 minutos e progressão narrativa da avaliação.'
+    estado_resultante: blueprint_aprovado
+    aprovado_em: '2026-08-24T20:28:43+00:00'
+  base_aprovada:
+    status: aprovado
+    artefatos:
+    - base.md
+    - auditoria-base.md
+    hash: cced98b68bb0d1c7f57c2740f88847055c45a03a1ed627db9f9d2add3547c9f9
+    decisao: Base aprovada após revisão pedagógica, auditorias adversariais independentes
+      e correção dos achados identificados. A versão atual atende ao blueprint aprovado,
+      preserva a cobertura 30/30/40, as 16 unidades corrigíveis, a duração-alvo de
+      50 minutos e a progressão cognitiva definida.
+    estado_resultante: base_aprovada
+    aprovado_em: '2026-08-24T20:50:08+00:00'
+  variantes_aprovadas:
+    status: pendente
+    artefatos:
+    - variantes
+    - gabarito.md
+    - auditoria-equivalencia.md
+    hash: null
+    decisao: null
+    estado_resultante: variantes_aprovadas
+    aprovado_em: null
+  liberada_para_impressao:
+    status: pendente
+    artefatos:
+    - rendered
+    hash: null
+    decisao: null
+    estado_resultante: liberada_para_impressao
+    aprovado_em: null

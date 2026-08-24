@@ -8,6 +8,7 @@ import copy
 import hashlib
 import os
 import re
+import subprocess
 import sys
 import tempfile
 from collections import Counter
@@ -56,11 +57,14 @@ REQUIRED_GATE_BY_STATE = {
 }
 STATUS = {"pendente", "aprovado", "invalidado"}
 QUESTION_RE = re.compile(r"^##\s+(Q\d{2,})\s+\[(\d+)\s+pontos?\]\s*$", re.MULTILINE | re.IGNORECASE)
+SUBITEM_RE = re.compile(r"^###\s+([a-z])\)\s+\[(\d+)\s+pontos?\]\s*$", re.MULTILINE | re.IGNORECASE)
 VARIANT_SECTION_RE = re.compile(
     r"^##\s+Variante\s+([AB])\s*$\n(.*?)(?=^##\s+Variante\s+[AB]\s*$|\Z)",
     re.MULTILINE | re.DOTALL | re.IGNORECASE,
 )
 ANSWER_RE = re.compile(r"^###\s+(Q\d{2,})(?:\s|$)", re.MULTILINE | re.IGNORECASE)
+ANSWER_SUBITEM_RE = re.compile(r"^####\s+([a-z])\)(?:\s|$)", re.MULTILINE | re.IGNORECASE)
+PREVIEW_SCRIPT = Path(__file__).with_name("preview.mjs")
 
 
 class WorkflowError(Exception):
@@ -167,7 +171,7 @@ def artifact_hash(root: Path, artifacts: list[str]) -> str:
     return digest.hexdigest()
 
 
-def parse_assessment(path: Path) -> tuple[dict, dict[str, int]]:
+def parse_assessment(path: Path) -> tuple[dict, dict[str, tuple[int, tuple[tuple[str, int], ...]]]]:
     if not path.is_file():
         raise WorkflowError(f"fonte semântica não encontrada: {path.relative_to(path.parent.parent)}")
     text = path.read_text(encoding="utf-8")
@@ -180,16 +184,33 @@ def parse_assessment(path: Path) -> tuple[dict, dict[str, int]]:
         raise WorkflowError(f"{path.name}: frontmatter inválido") from exc
     if not isinstance(metadata, dict):
         raise WorkflowError(f"{path.name}: frontmatter deve ser um mapa")
-    questions: dict[str, int] = {}
-    for raw_id, raw_points in QUESTION_RE.findall(body):
-        question_id = raw_id.upper()
+    questions: dict[str, tuple[int, tuple[tuple[str, int], ...]]] = {}
+    question_matches = list(QUESTION_RE.finditer(body))
+    for index, match in enumerate(question_matches):
+        question_id = match.group(1).upper()
+        points = int(match.group(2))
         if question_id in questions:
             raise WorkflowError(f"{path.name}: identificador duplicado {question_id}")
-        questions[question_id] = int(raw_points)
+        section_end = question_matches[index + 1].start() if index + 1 < len(question_matches) else len(body)
+        section = body[match.end() : section_end]
+        subitems = tuple((label.lower(), int(raw_points)) for label, raw_points in SUBITEM_RE.findall(section))
+        if subitems:
+            labels = [label for label, _ in subitems]
+            expected = [chr(ord("a") + offset) for offset in range(len(labels))]
+            if labels != expected:
+                raise WorkflowError(
+                    f"{path.name}, {question_id}: subitens devem ser únicos e sequenciais a partir de a)"
+                )
+            subtotal = sum(subitem_points for _, subitem_points in subitems)
+            if subtotal != points:
+                raise WorkflowError(
+                    f"{path.name}, {question_id}: soma dos subitens={subtotal} diverge dos pontos da questão={points}"
+                )
+        questions[question_id] = (points, subitems)
     if not questions:
         raise WorkflowError(f"{path.name}: nenhuma questão no formato '## Q01 [N pontos]'")
     declared = metadata.get("pontos_totais")
-    total = sum(questions.values())
+    total = sum(points for points, _ in questions.values())
     if declared != 100 or total != 100:
         raise WorkflowError(f"{path.name}: pontos_totais={declared!r} e soma das questões={total}; ambos devem ser 100")
     if metadata.get("tipo") not in {"checkpoint", "prova"}:
@@ -199,12 +220,31 @@ def parse_assessment(path: Path) -> tuple[dict, dict[str, int]]:
     return metadata, questions
 
 
+def validate_preview(root: Path) -> list[str]:
+    try:
+        result = subprocess.run(
+            ["node", str(PREVIEW_SCRIPT), "check", str(root)],
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+    except FileNotFoundError:
+        return ["preview da base não pôde ser validado: runtime Node não encontrado"]
+    except subprocess.TimeoutExpired:
+        return ["preview da base não pôde ser validado: verificação excedeu 30 segundos"]
+    if result.returncode == 0:
+        return []
+    diagnostic = result.stderr.strip() or result.stdout.strip() or f"processo encerrou com código {result.returncode}"
+    return [f"preview da base inválido: {diagnostic}"]
+
+
 def validate_content(root: Path, data: dict, through_gate: str | None) -> list[str]:
     errors: list[str] = []
     if not (root / "blueprint.md").is_file():
         errors.append("blueprint.md é obrigatório")
     gate_index = GATES.index(through_gate) if through_gate else -1
-    base_questions: dict[str, int] | None = None
+    base_questions: dict[str, tuple[int, tuple[tuple[str, int], ...]]] | None = None
     if gate_index >= 1:
         if not (root / "auditoria-base.md").is_file():
             errors.append("auditoria-base.md é obrigatória para aprovar a base")
@@ -215,6 +255,7 @@ def validate_content(root: Path, data: dict, through_gate: str | None) -> list[s
                 errors.append("base.md não corresponde a instrumento.tipo e instrumento.identificador")
         except WorkflowError as exc:
             errors.append(str(exc))
+        errors.extend(validate_preview(root))
     if gate_index >= 2:
         required = (root / "gabarito.md", root / "auditoria-equivalencia.md")
         for path in required:
@@ -229,7 +270,7 @@ def validate_content(root: Path, data: dict, through_gate: str | None) -> list[s
                 if metadata.get("tipo") != instrument.get("tipo") or metadata.get("identificador") != instrument.get("identificador"):
                     errors.append(f"{path.name} não corresponde ao instrumento do workflow")
                 if base_questions is not None and questions != base_questions:
-                    errors.append(f"{path.name}: identificadores ou pontos divergem da base aprovada")
+                    errors.append(f"{path.name}: identificadores, pontos ou subitens divergem da base aprovada")
             except WorkflowError as exc:
                 errors.append(str(exc))
         if (root / "gabarito.md").is_file() and base_questions is not None:
@@ -241,7 +282,8 @@ def validate_content(root: Path, data: dict, through_gate: str | None) -> list[s
             else:
                 sections = {name: body for name, body in found_sections}
                 for variant_name in ("A", "B"):
-                    counts = Counter(item.upper() for item in ANSWER_RE.findall(sections[variant_name]))
+                    answer_matches = list(ANSWER_RE.finditer(sections[variant_name]))
+                    counts = Counter(match.group(1).upper() for match in answer_matches)
                     missing = {item for item in base_questions if counts[item] != 1}
                     extra = set(counts) - set(base_questions)
                     if missing:
@@ -252,6 +294,20 @@ def validate_content(root: Path, data: dict, through_gate: str | None) -> list[s
                         errors.append(
                             f"gabarito.md, Variante {variant_name}: questões inexistentes {', '.join(sorted(extra))}"
                         )
+                    if not missing and not extra:
+                        for index, match in enumerate(answer_matches):
+                            question_id = match.group(1).upper()
+                            section_end = (
+                                answer_matches[index + 1].start() if index + 1 < len(answer_matches) else len(sections[variant_name])
+                            )
+                            answer_body = sections[variant_name][match.end() : section_end]
+                            found = Counter(label.lower() for label in ANSWER_SUBITEM_RE.findall(answer_body))
+                            expected = Counter(label for label, _ in base_questions[question_id][1])
+                            if found != expected:
+                                expected_text = ", ".join(f"{label})" for label in expected) or "nenhum"
+                                errors.append(
+                                    f"gabarito.md, Variante {variant_name}, {question_id}: subitens devem aparecer exatamente uma vez; esperado {expected_text}"
+                                )
     if gate_index >= 3:
         rendered = root / "rendered"
         required_pdfs = ("variante-a.pdf", "variante-b.pdf", "gabarito.pdf")
@@ -291,6 +347,10 @@ def validate(root: Path, data: dict) -> list[str]:
         errors.append(f"estado {data['estado']} exige gate válido {required}")
     through = valid_approved[-1] if valid_approved else None
     errors.extend(validate_content(root, data, through))
+    if through != "base_aprovada" and through not in GATES[2:]:
+        base_draft_exists = (root / "base.md").exists() or (root / "auditoria-base.md").exists()
+        if base_draft_exists:
+            errors.extend(validate_content(root, data, "base_aprovada"))
     state = data["estado"]
     if state == "base_em_elaboracao":
         for name in ("base.md", "auditoria-base.md"):

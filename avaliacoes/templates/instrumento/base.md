@@ -5,10 +5,18 @@ titulo: Checkpoint XX
 pontos_totais: 100
 ---
 
-# Instruções
+# Cenário
 
-[Instruções do instrumento.]
+[Cenário e premissas semanticamente necessárias.]
 
 ## Q01 [100 pontos]
 
-[Enunciado determinado.]
+[Comando comum a dois pedidos corrigíveis.]
+
+### a) [50 pontos]
+
+[Primeiro pedido determinado.]
+
+### b) [50 pontos]
+
+[Segundo pedido determinado.]
