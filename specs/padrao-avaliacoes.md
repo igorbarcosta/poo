@@ -80,6 +80,7 @@ Toda questão de múltipla escolha possui exatamente cinco alternativas, identif
 - fazer os distratores representarem interpretações, consequências ou decisões plausíveis, e não apenas código obviamente inválido ou afirmações absurdas;
 - evitar alternativas absurdas, “todas as anteriores”, “nenhuma das anteriores” e pegadinhas linguísticas;
 - manter estrutura gramatical, extensão e detalhamento comparáveis entre as alternativas;
+- verificar se os distratores são comparáveis também pelo tipo de decisão exigida. Quando cada alternativa falhar por uma dimensão diferente — compilação, identidade, regra de domínio e cálculo, por exemplo — justificar por que essa integração é a evidência pretendida; caso contrário, reduzir a heterogeneidade para evitar eliminação por atalhos incidentais;
 - impedir que tamanho, precisão ou estilo revelem a resposta correta;
 - distribuir as respostas corretas entre A–E sem padrão previsível ao longo do instrumento.
 
@@ -87,9 +88,17 @@ A dificuldade deve estar no conceito avaliado, não em interpretação maliciosa
 
 ## Legibilidade dos enunciados e do código
 
+- escrever todo enunciado para o estudante que realizará a avaliação, e não para o autor, auditor ou projetista do instrumento;
+- usar o vocabulário efetivamente trabalhado e descrever regras, mudanças de estado e efeitos de forma concreta;
+- evitar metalinguagem do planejamento, como “adaptar o cliente”, “versão encapsulada” ou “preservar a propriedade”, quando a consequência observável puder ser expressa diretamente;
+- perguntar, diante de expressão abstrata ou tecnicamente conveniente, se o estudante precisaria traduzi-la antes de resolver; quando isso ocorrer, preferir a consequência concreta sem entregar a resposta;
 - aplicar a cada enunciado e alternativa o teste de clareza local: um estudante que domina o conteúdo deve compreender imediatamente o que a frase afirma ou pergunta, sem primeiro decodificar abstrações, referências indefinidas ou ações pouco concretas;
 - não considerar suficiente que uma frase seja tecnicamente determinável depois de interpretação cuidadosa; se a formulação precisa ser decifrada antes do raciocínio conceitual, ela deve ser reescrita;
 - manter baixa ou moderada a complexidade incidental de leitura, inclusive em questões de alta demanda conceitual; extensão, quantidade de condições e redação densa não constituem profundidade cognitiva;
+- não classificar a carga incidental apenas por impressão. Para cada questão, explicitar o que o estudante precisa manter coordenado: estados, referências, regras, mudanças, critérios simultâneos e informações recuperadas de outro trecho;
+- quando o pedido combinar vários critérios independentes, organizar visualmente situação, mudança, condições e ação esperada. Concisão não justifica comprimir um contrato composto em uma única frase;
+- aplicar o teste de início imediato: depois da primeira leitura, o estudante que conhece o conteúdo deve saber qual é o primeiro passo de resolução sem reconstruir a intenção do autor;
+- aplicar o teste de escaneamento: antes de ler todas as alternativas, deve ser possível localizar situação, mudança, pedido e critérios de decisão. Se esses papéis estiverem misturados, reorganizar o enunciado sem acrescentar narrativa ornamental;
 - aplicar economia textual: toda informação deve determinar a resposta, sustentar a evidência ou orientar inequivocamente a ação; remover repetição de contexto e explicação da intenção da questão;
 - usar bloco de código quando sua estrutura for relevante para compreender a questão, em vez de reconstruí-la em prosa;
 - preferir enunciados concretos e operacionais, nomeando diretamente objetos, campos, métodos e ações quando isso evitar abstração ou decodificação desnecessária;
@@ -103,7 +112,7 @@ A dificuldade deve estar no conceito avaliado, não em interpretação maliciosa
 
 Quando questões compartilham cenário, conceitos ou uma evolução de projeto, organizar o instrumento em uma progressão compreensível e usar transições mínimas somente quando reduzirem troca de contexto. O arco deve poder ser resumido em uma frase simples e tornar perceptível o que cada questão acrescenta ao que veio antes. Em cenários baseados em código, concentrar as premissas antes do primeiro trecho e preservar a continuidade visual dos artefatos sempre que não houver necessidade semântica de interrompê-los.
 
-Storytelling pedagógico não significa acrescentar história. Sua função é produzir continuidade e leveza cognitiva. Não introduzir empresa, personagem, ator ou detalhe narrativo que não determine a evidência; isso é decoração e aumenta carga incidental.
+Storytelling pedagógico não significa acrescentar história. Sua função é preservar continuidade cognitiva entre cenário, código e questões. Cada etapa deve permitir ao estudante reconhecer onde está no problema, o que mudou e o que deve analisar agora. Quando várias questões evoluírem o mesmo código, usar transições mínimas e naturais; não introduzir empresa, personagem, ator ou detalhe narrativo que não determine a evidência.
 
 A revisão deve avaliar localmente cada questão e globalmente a prova como experiência única: cenário reutilizado com função, ausência de questões desconectadas, dificuldade intencionalmente distribuída e questões profundas ainda fáceis de compreender.
 

@@ -7,11 +7,9 @@ pontos_totais: 100
 
 # Cenário: medição de chuva
 
-Cada objeto `MedidorChuva` registra em `totalMilimetros` a chuva acumulada em um local. Para interpretar o programa:
+Considere um sistema que registra a quantidade de chuva acumulada em diferentes locais. Cada objeto da classe `MedidorChuva` representa um medidor e armazena o total de chuva registrado até o momento.
 
-- todos os arquivos apresentados pertencem ao mesmo projeto e não declaram `package`;
-- os comentários `S1` a `S7` identificam as linhas de saída;
-- as modificações propostas nas questões são analisadas separadamente e não alteram a execução da `Main`.
+Os arquivos abaixo pertencem ao mesmo projeto e ao mesmo pacote.
 
 **MedidorChuva.java**
 
@@ -68,71 +66,73 @@ public class Main {
 
 ## Q01 [35 pontos]
 
-Considere a execução completa da classe `Main`. Informe as saídas S1 a S7.
+Acompanhe, na ordem, a execução completa da classe `Main` e indique o valor exibido em cada uma das saídas identificadas de S1 a S7.
 
 ### a) [5 pontos]
 
-Saída S1.
+Qual é a saída S1?
 
 ### b) [5 pontos]
 
-Saída S2.
+Qual é a saída S2?
 
 ### c) [5 pontos]
 
-Saída S3.
+Qual é a saída S3?
 
 ### d) [5 pontos]
 
-Saída S4.
+Qual é a saída S4?
 
 ### e) [5 pontos]
 
-Saída S5.
+Qual é a saída S5?
 
 ### f) [5 pontos]
 
-Saída S6.
+Qual é a saída S6?
 
 ### g) [5 pontos]
 
-Saída S7.
+Qual é a saída S7?
 
 ## Q02 [25 pontos]
 
-Marque (V) para verdadeira e (F) para falsa.
+Analise as afirmativas abaixo e assinale **(V)** para as verdadeiras e **(F)** para as falsas.
 
 ### a) [5 pontos]
 
-Na classe `MedidorChuva`, `local` e `totalMilimetros` representam estado, enquanto `registrarChuva` e `consultarTotal` representam comportamento.
+Na classe `MedidorChuva`, os atributos `local` e `totalMilimetros` representam o estado do objeto, enquanto os métodos `registrarChuva` e `consultarTotal` representam os comportamentos que ele pode realizar.
 
 ### b) [5 pontos]
 
-`milimetros` é um parâmetro de `registrarChuva`; ele não se torna um campo nem passa a fazer parte do estado do objeto.
+O parâmetro `milimetros`, recebido pelo método `registrarChuva`, existe apenas durante a execução do método e não faz parte do estado do objeto.
 
 ### c) [5 pontos]
 
-O retorno `void` de `registrarChuva` significa que o método não devolve um valor; isso não impede que ele altere o estado do objeto.
+O método `registrarChuva` é `void`: ele não devolve um valor, mas pode alterar os dados armazenados no objeto.
 
 ### d) [5 pontos]
 
-Uma variável recebe o valor retornado por `consultarTotal()`. Alterar essa variável depois não altera `totalMilimetros` do objeto.
+Se uma variável receber o valor retornado por `consultarTotal()`, alterar essa variável depois não modifica o valor de `totalMilimetros` armazenado no objeto.
 
 ### e) [5 pontos]
 
-`registrarChuva` só consegue usar `totalMilimetros` se esse valor também for recebido como parâmetro.
+Para que um método consulte ou altere um atributo do próprio objeto, esse atributo precisa aparecer entre os parâmetros do método.
 
 ## Q03 [10 pontos]
 
-Um `MedidorChuva` deve informar se seu total atingiu um limite. Qual proposta atribui essa responsabilidade ao próprio objeto?
+Agora queremos que cada `MedidorChuva` possa informar se o total de chuva acumulada atingiu um determinado limite.
 
-A. Em `MedidorChuva`, armazenar a resposta em um campo:
+Qual das propostas abaixo permite que o próprio objeto faça essa verificação usando o valor de `totalMilimetros` que ele já armazena?
+
+A. Adicionar um atributo para guardar se o medidor está em alerta:
 
 ```java
 boolean emAlerta;
 ```
 
-B. Em `MedidorChuva`, calcular a resposta a partir do próprio estado:
+B. Adicionar um método que compara o limite recebido com o total armazenado no próprio objeto:
 
 ```java
 boolean atingiuAlerta(double limite) {
@@ -140,13 +140,13 @@ boolean atingiuAlerta(double limite) {
 }
 ```
 
-C. Em `Main`, fazer a comparação:
+C. Fazer a comparação diretamente na classe `Main`:
 
 ```java
 boolean alerta = medidor.consultarTotal() >= limite;
 ```
 
-D. Em `MedidorChuva`, criar um método que recebe o total em vez de usar o estado do objeto:
+D. Adicionar um método ao `MedidorChuva`, mas exigir que o total também seja informado:
 
 ```java
 boolean atingiuAlerta(double total, double limite) {
@@ -154,7 +154,7 @@ boolean atingiuAlerta(double total, double limite) {
 }
 ```
 
-E. Em `MedidorChuva`, expor o campo para comparação externa:
+E. Permitir que outros trechos do programa acessem diretamente o total para fazer a comparação:
 
 ```java
 public double totalMilimetros;
@@ -162,34 +162,47 @@ public double totalMilimetros;
 
 ## Q04 [10 pontos]
 
-Mesmo que `registrarChuva` rejeitasse valores negativos, por que a primeira versão não conseguiria garantir que `totalMilimetros` nunca fosse negativo?
+Na versão inicial de `MedidorChuva`, o atributo `totalMilimetros` foi declarado sem um modificador de acesso:
 
-A. Porque qualquer cliente no mesmo pacote pode escrever diretamente no campo e ignorar a regra do método.
+```java
+double totalMilimetros;
+```
 
-B. Porque duas referências para o mesmo objeto ignoram automaticamente a regra do método.
+Mesmo assim, a classe `Main` consegue executar:
 
-C. Porque campos não podem ter suas alterações controladas por métodos da própria classe.
+```java
+principal.totalMilimetros = 8.0;
+```
 
-D. Porque a regra de `registrarChuva` só funciona quando o total anterior é zero.
+Considerando que `Main` e `MedidorChuva` pertencem ao mesmo pacote, qual alternativa explica corretamente por que esse acesso é permitido?
 
-E. Porque `consultarTotal()` devolve o campo e permite que o cliente o altere diretamente.
+A. Porque um atributo declarado sem modificador de acesso pode ser acessado por outras classes do mesmo pacote.
+
+B. Porque todo atributo do tipo `double` pode ser acessado diretamente por qualquer classe do projeto.
+
+C. Porque a criação do objeto com `new MedidorChuva()` torna seus atributos públicos.
+
+D. Porque uma variável que guarda a referência de um objeto pode acessar qualquer atributo desse objeto, independentemente do modificador de acesso.
+
+E. Porque o método `main` possui permissão especial para acessar os atributos de qualquer classe.
 
 ## Q05 [10 pontos]
 
-Na versão encapsulada de `MedidorChuva`:
+Na versão inicial de `MedidorChuva`, o atributo `totalMilimetros` pode ser alterado diretamente por qualquer código que tenha acesso ao objeto. Para controlar melhor essas alterações, considere agora que:
 
-- `totalMilimetros` é `private` e começa em `0.0`;
-- `registrarChuva` acumula somente valores maiores que zero;
-- `consultarTotal` devolve o total atual.
+- `totalMilimetros` é `private`;
+- cada `MedidorChuva` começa com total `0.0`;
+- `registrarChuva` soma apenas valores maiores que zero;
+- `consultarTotal` informa o total acumulado.
 
-No código cliente, `principal` e `apoio` começam apontando para o mesmo objeto:
+Considere o seguinte início:
 
 ```java
 MedidorChuva principal = new MedidorChuva();
 MedidorChuva apoio = principal;
 ```
 
-Qual continuação mantém as duas referências no mesmo objeto, rejeita o registro `-2.0` e faz `principal.consultarTotal()` e `apoio.consultarTotal()` devolverem `10.0`?
+Qual alternativa mantém `principal` e `apoio` apontando para o mesmo objeto e, ao final, faz `consultarTotal()` devolver `10.0` pelas duas referências?
 
 A.
 
@@ -233,11 +246,9 @@ apoio.registrarChuva(4.0);
 
 ## Q06 [10 pontos]
 
-Considere a classe depois da implementação da regra de Q05:
+Agora `totalMilimetros` é `private`, e seu valor só deve ser alterado por meio de `registrarChuva`, que aceita apenas valores maiores que zero.
 
-> O total acumulado só pode mudar por registros maiores que zero. Nenhum cliente pode substituir diretamente o total por um valor arbitrário.
-
-Alguém propõe acrescentar este método:
+Considere a proposta de adicionar o seguinte método à classe:
 
 ```java
 public void definirTotal(double novoTotal) {
@@ -245,14 +256,14 @@ public void definirTotal(double novoTotal) {
 }
 ```
 
-Essa modificação preserva a regra de negócio da classe?
+Essa mudança mantém o controle sobre as alterações de `totalMilimetros`?
 
-A. Sim. O campo `private` impede que qualquer método público substitua seu valor.
+A. Sim. Como `totalMilimetros` é `private`, nenhum método público pode atribuir diretamente um novo valor ao atributo.
 
-B. Não. `definirTotal` permite substituir o total sem validar um registro de chuva.
+B. Não. O método `definirTotal` permite substituir diretamente o valor de `totalMilimetros`, sem passar pela validação feita em `registrarChuva`.
 
-C. Sim. Todo método da própria classe preserva automaticamente suas regras de negócio.
+C. Sim. Como `definirTotal` pertence à própria classe, qualquer alteração realizada por ele respeita automaticamente as regras definidas para `MedidorChuva`.
 
-D. Não. Um método público não pode alterar um campo `private`.
+D. Não. Um método `public` não pode alterar um atributo `private` da própria classe.
 
-E. Não. Receber `novoTotal` como parâmetro torna o campo público.
+E. Não. Ao receber `novoTotal` como parâmetro, `totalMilimetros` deixa de ser `private`.

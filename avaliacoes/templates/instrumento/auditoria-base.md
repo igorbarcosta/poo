@@ -10,9 +10,9 @@
 |---|---|---|---|---|
 | Q01 | [papel] | [ganho] | [contexto] | [sim/não e razão] |
 
-| Unidade corrigível | Evidência | Eixo | Demanda conceitual | Leitura incidental | Pontos | Relação/sobreposição | Ganho diagnóstico marginal |
+| Unidade corrigível | Evidência | Eixo | Demanda conceitual | Carga de coordenação observável | Pontos | Relação/sobreposição | Ganho diagnóstico marginal |
 |---|---|---|---|---|---:|---|---|
-| Q01a | [evidência] | [eixo] | [baixa/média/alta] | [baixa/moderada/alta] | 10 | [relação com outras unidades] | [inferência ainda não observada] |
+| Q01a | [evidência] | [eixo] | [baixa/média/alta] | [estados, referências, regras, critérios e recuperações] | 10 | [relação com outras unidades] | [inferência ainda não observada] |
 
 ## Revisão por remoção
 
@@ -32,9 +32,9 @@
 
 ## Passagem local pela perspectiva do estudante
 
-| Questão | Pedido em uma frase | Evidência | Ganho marginal | Demanda | Carga incidental | Relação com outras questões |
+| Questão | Primeiro passo | Informações consultadas | Decisões intermediárias | Início imediato | Escaneamento | Modos de falha dos distratores |
 |---|---|---|---|---|---|---|
-| Q01 | [pedido] | [evidência] | [ganho] | [nível] | [nível] | [relação] |
+| Q01 | [ação inicial] | [fontes necessárias] | [percurso] | [passa/falha + evidência] | [passa/falha + evidência] | [quando aplicável] |
 
 ## Passagem global
 

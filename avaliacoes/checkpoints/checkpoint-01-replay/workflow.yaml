@@ -19,13 +19,12 @@ gates:
     artefatos:
     - base.md
     - auditoria-base.md
-    hash: cced98b68bb0d1c7f57c2740f88847055c45a03a1ed627db9f9d2add3547c9f9
-    decisao: Base aprovada após revisão pedagógica, auditorias adversariais independentes
-      e correção dos achados identificados. A versão atual atende ao blueprint aprovado,
-      preserva a cobertura 30/30/40, as 16 unidades corrigíveis, a duração-alvo de
-      50 minutos e a progressão cognitiva definida.
+    hash: 6b081e6b6e1ecc8f9ca07adcd3beaec1f20f3c6f3ddb266c595c2a78d9ded30f
+    decisao: Base aprovada pelo professor após refinamento pedagógico manual dos enunciados
+      e validação objetiva da estrutura, cobertura, respostas, repertório e integridade
+      do workflow.
     estado_resultante: base_aprovada
-    aprovado_em: '2026-08-24T20:50:08+00:00'
+    aprovado_em: '2026-08-24T22:24:14+00:00'
   variantes_aprovadas:
     status: pendente
     artefatos:

@@ -33,6 +33,12 @@ Distinguir **dependência de contexto**, permitida quando reaproveita informaç�
 
 Antes do enunciado final, definir: evidência, papel narrativo, ação esperada do estudante, forma mais simples de obter a evidência, demanda conceitual, carga incidental desejada, dependências, sobreposição e justificativa do formato. Escolher explicitamente a representação mais legível — prosa, expressão Java, bloco curto, comparação de corpos de método ou regra com alternativas — e buscar coerência visual entre questões próximas quando os objetivos permitirem. Quando houver regra de negócio e decisão de implementação, preferir **regra explícita → código candidato → decisão**.
 
+Não declarar a carga incidental apenas como baixa, média ou alta. Registrar um pequeno orçamento de coordenação: estados, referências, mudanças, regras, critérios simultâneos e recuperações distantes que o estudante precisa manter ativos. Não há limite numérico universal; o inventário serve para revelar congestionamento que uma classificação intuitiva esconderia.
+
+Esboçar o percurso mínimo de resolução: primeira ação, informações consultadas, decisões intermediárias e resposta. Se o primeiro passo não for evidente após uma leitura, ou se vários critérios independentes estiverem comprimidos no comando, reorganizar o enunciado em blocos funcionais. Preservar concisão, mas não remover orientação útil.
+
+Escrever para o estudante que realizará a avaliação, não para quem projeta ou audita o instrumento. Usar o vocabulário trabalhado nas aulas e descrever mudanças de estado e efeitos de forma concreta. Evitar metalinguagem como “adaptar o cliente”, “versão encapsulada” ou “preservar a propriedade” quando a consequência observável puder ser dita diretamente. Se o estudante precisar traduzir uma expressão antes de começar o raciocínio, reescrevê-la sem entregar a resposta.
+
 ### D. Autocrítica local
 
 Antes de aceitar cada questão, responder:
@@ -49,6 +55,11 @@ Antes de aceitar cada questão, responder:
 10. A questão se conecta naturalmente à progressão?
 11. Cenário, estado ou código já estabelecidos estão sendo reapresentados sem necessidade?
 12. Se a estrutura repetida for removida e apenas a diferença for mostrada, a questão continua determinada e mais fácil de compreender?
+13. O texto soa como orientação natural de professor ou como documentação do instrumento?
+14. Quando a questão continua uma evolução, ficam claros o ponto atual, a mudança e o que deve ser analisado?
+15. Qual é o primeiro passo de resolução e ele é evidente sem reler o comando?
+16. Quantas condições ou estados precisam ser coordenados simultaneamente, e a organização visual torna isso manejável?
+17. Os distratores exigem o mesmo tipo principal de julgamento ou permitem atalhos por erros incidentais heterogêneos?
 
 ## Produzir e conferir a base
 
@@ -57,7 +68,7 @@ Antes de aceitar cada questão, responder:
 3. Reaplicar a matriz e o teste de remoção. Comparar unidades verbais com rastreamentos já pontuados e percorrer a prova fora da ordem para detectar entrega retroativa.
 4. Aplicar três níveis de economia: **textual**, removendo palavras sem função; **contextual**, não reapresentando cenário, estado ou código ainda válidos; e **estrutural**, fatorando cabeçalhos, versões e blocos idênticos quando somente a diferença é avaliativa. Separar demanda conceitual de carga incidental. Em alternativas de implementação, usar blocos Java curtos, comparáveis e plausíveis; preservar repetição somente quando ela for necessária para que cada alternativa seja entendida de forma independente.
 5. Inventariar cada construção Java do cenário, dos enunciados e de todas as alternativas. Exigir sintaxe Java literal válida e repertório já trabalhado em alternativas corretas e distratores; uma alternativa errada deve ser julgável pelo conceito avaliado, não pelo desconhecimento de mecanismo futuro.
-6. Gerar `preview/base.html` com `npm run avaliacoes:preview -- generate <diretório>` e revisar texto e código, confirmando que operadores e demais tokens permanecem visualmente fiéis. O preview é derivado e não simula páginas finais.
+6. Gerar `preview/base.html` com `npm run avaliacoes:preview -- generate <diretório>` e abri-lo para inspeção editorial. Além de confirmar operadores e tokens, verificar por questão se situação, mudança, pedido e critérios são reconhecíveis por escaneamento antes da leitura integral das alternativas. O preview é derivado e não simula páginas finais.
 7. Não produzir variantes, gabarito, LaTeX, PDF ou elementos finais de aplicação.
 8. Usar `revisar-avaliacao` no modo integrado: auditoria inicial e no máximo dois ciclos de correção objetiva. Depois de cada correção, regenerar o preview.
 9. Executar `npm run avaliacoes:preview -- check <diretório>`, `workflow.py validate` e as verificações de diff.

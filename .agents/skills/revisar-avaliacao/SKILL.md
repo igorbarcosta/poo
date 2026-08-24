@@ -42,6 +42,21 @@ Para cada questão e unidade corrigível:
 
 Uma questão pode ser determinada e ainda falhar pedagogicamente. Profundidade é demanda conceitual, não texto longo, condições espalhadas ou decodificação linguística.
 
+### Leitura como estudante
+
+Para cada questão, simular um estudante que conhece o conteúdo, mas não a intenção do autor. Verificar se ele entende de primeira o que deve fazer, qual informação mudou e quais condições anteriores continuam válidas; procurar termos que precisem ser decodificados antes do raciocínio. Confirmar que o enunciado soa como orientação natural de professor, não como especificação técnica, e que comandos curtos oferecem orientação suficiente sem virar parágrafos. Quando houver continuidade, verificar se a questão se conecta naturalmente à anterior.
+
+Aplicar o teste de concretude: substituir metalinguagem de projeto ou verbos abstratos por consequências observáveis sempre que isso reduzir tradução mental sem revelar a resposta. Dificuldade cognitiva não pode ser confundida com dificuldade de interpretar o enunciado.
+
+Registrar o percurso mínimo do estudante: primeiro passo, informações consultadas, decisões intermediárias e resposta. Inventariar a carga de coordenação — estados, referências, mudanças, regras, critérios simultâneos e recuperações distantes — antes de classificá-la. Uma classificação sem esse inventário não sustenta a conclusão de legibilidade.
+
+Aplicar dois testes adicionais:
+
+- **início imediato:** depois da primeira leitura, o estudante sabe como começar sem reconstruir a intenção do autor;
+- **escaneamento:** situação, mudança, pedido e critérios de decisão são localizáveis antes da leitura integral das alternativas.
+
+Quando uma questão combinar vários critérios, verificar se eles estão organizados como condições reconhecíveis ou comprimidos em uma frase. Concisão é meio, não objetivo: preservar orientação que reduza memória de trabalho. Em múltipla escolha, comparar os modos de falha dos distratores; se misturarem compilação, rastreamento, regra e cálculo, confirmar que essa integração é deliberadamente a evidência, e não um conjunto de atalhos incidentais.
+
 ### Passagem 2 — revisão global
 
 Depois da revisão local:
@@ -57,7 +72,7 @@ Depois da revisão local:
 - distinguir dependência permitida do contexto estabelecido de dependência proibida da resposta anterior; em evoluções, verificar se apenas a mudança e as novas premissas necessárias foram reapresentadas;
 - conferir cobertura, repertório ensinado, distribuição de pontos e tempo global.
 
-Storytelling não exige história. Quando questões compartilham cenário, conceitos ou evolução de projeto, usar apenas transições mínimas que tornem clara a continuidade.
+Storytelling não exige história. Em avaliação, ele preserva continuidade cognitiva entre cenário, código e questões. Quando questões compartilham uma evolução, usar transições mínimas que permitam ao estudante reconhecer onde está, o que mudou e o que deve analisar, sem personagens, decoração ou repetição.
 
 ### Revisão adversarial
 
@@ -111,7 +126,7 @@ Para cada página, verificar:
 ## Verificar tecnicamente
 
 1. Executar `.venv/bin/python avaliacoes/scripts/workflow.py validate <diretório-do-instrumento>`.
-2. Antes da renderização final, limitar a revisão semântica aos Markdown canônicos. Na fase da base, verificar também que `preview/base.html` corresponde à fonte, apresenta texto e código legíveis e preserva visualmente os tokens Java literais; não avaliar nele paginação A4 ou composição de aplicação.
+2. Antes da renderização final, limitar a revisão semântica aos Markdown canônicos. Na fase da base, verificar também que `preview/base.html` corresponde à fonte, apresenta texto e código legíveis, preserva visualmente os tokens Java literais e permite escanear situação, mudança, pedido e critérios de cada questão. Essa inspeção editorial não avalia paginação A4 nem substitui a revisão visual dos PDFs.
 3. Depois da renderização, confirmar A4 e o número esperado de páginas; checkpoint do estudante deve ter exatamente duas.
 4. Procurar erros do renderer, overflow e recursos ausentes quando aplicável.
 5. Executar `git diff --check` e verificar `git diff` e `git status`.
@@ -130,7 +145,7 @@ Uma base pode ser não aprovável mesmo quando respostas, soma e estrutura estej
 Produzir relatório conciso com:
 
 1. avaliação geral;
-2. passagem local por questão, incluindo pedido em uma frase, evidência, ganho, demanda e carga incidental;
+2. passagem local por questão, incluindo pedido em uma frase, evidência, ganho, demanda, inventário da carga incidental, percurso mínimo e resultados dos testes de início imediato e escaneamento;
 3. passagem global, incluindo arco, coerência narrativa, contexto, vazamentos, redundâncias, dificuldade e tempo;
 4. resultado da revisão adversarial;
 5. problemas necessários e melhorias recomendadas;

@@ -114,3 +114,57 @@ Uma alternativa incorreta usa um mecanismo ou uma sintaxe Java ainda não trabal
 Premissas e comentários narrativos aparecem entre artefatos de código que poderiam ser lidos continuamente.
 
 **Esperado:** concentrar as premissas antes do primeiro trecho de código e remover interrupções desnecessárias entre os artefatos.
+
+## P18 — linguagem de autor, não de aluno
+
+Um enunciado usa expressões como “versão encapsulada”, “adaptar o cliente” ou “preservar a propriedade”, embora a mesma ideia possa ser dita concretamente com o vocabulário da disciplina.
+
+**Esperado:** reescrever do ponto de vista do estudante, descrevendo a situação e a ação a analisar sem metalinguagem do projeto da avaliação.
+
+## P19 — efeito implícito em verbo abstrato
+
+O enunciado diz “rejeita o registro `-2.0`”, mas a regra observável é que valores menores ou iguais a zero não alteram o total.
+
+**Esperado:** descrever diretamente o efeito relevante, como “`-2.0` não deve ser somado ao total”.
+
+## P20 — questão correta, mas sem conexão narrativa
+
+Uma questão apresenta um problema e a seguinte resolve exatamente esse problema, mas começa como exercício independente.
+
+**Esperado:** acrescentar uma transição curta que torne explícita a evolução conceitual, sem criar dependência da resposta anterior.
+
+## P21 — comando excessivamente seco
+
+Uma sequência de afirmações começa apenas com “Marque V ou F”.
+
+**Esperado:** orientar naturalmente a ação, por exemplo pedindo que o estudante analise as afirmativas e assinale as verdadeiras e falsas. Não transformar comandos simples em parágrafos longos; a melhoria deve aumentar orientação, não verbosidade.
+
+## P22 — contrato composto comprimido
+
+Uma múltipla escolha pede, em uma única frase, a alternativa que mantém duas referências no mesmo objeto, respeita uma regra para valor inválido, preserva duas operações públicas e produz um total específico. Cada condição é clara isoladamente.
+
+**Esperado:** não aceitar “determinado” como sinônimo de legível. Inventariar os critérios simultâneos, simular o percurso e reorganizar situação, mudança, condições e pedido para que possam ser escaneados sem releitura.
+
+## P23 — distratores com atalhos heterogêneos
+
+Em uma questão cujo foco pretendido é alteração controlada, um distrator não compila, outro cria um objeto diferente, outro viola a regra de domínio e outro erra apenas uma soma.
+
+**Esperado:** identificar modos de eliminação heterogêneos. Preservá-los somente se a integração dessas dimensões for evidência deliberada e proporcional; caso contrário, tornar os distratores comparáveis e impedir acerto por atalhos incidentais.
+
+## P24 — falsa economia
+
+Uma versão curta remove títulos ou separações que distinguiam “o que mudou”, “o que continua válido” e “o que marcar”. O texto tem menos palavras, mas o estudante precisa relê-lo para descobrir como começar.
+
+**Esperado:** rejeitar a compactação. Economia textual não prevalece sobre início imediato, escaneamento e redução da memória de trabalho.
+
+## P25 — controle positivo: questão composta bem organizada
+
+Uma questão profunda apresenta, em ordem visível, o estado inicial, a única mudança, três critérios curtos e o comando. As alternativas são blocos comparáveis, e o estudante sabe que deve rastrear cada candidato contra os critérios.
+
+**Esperado:** preservar a questão. Vários critérios não constituem defeito quando a organização os torna manejáveis e todos pertencem à evidência integrada.
+
+## P26 — carga incidental sem evidência
+
+Uma auditoria classifica uma questão como “carga incidental baixa” e “compreensível de primeira”, mas não registra estados, regras, critérios simultâneos, percurso de resolução nem resultado de escaneamento.
+
+**Esperado:** considerar a justificativa insuficiente. Exigir inventário observável e percurso mínimo antes de concluir sobre legibilidade.
