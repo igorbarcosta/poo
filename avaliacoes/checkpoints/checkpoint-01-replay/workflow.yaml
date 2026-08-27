@@ -2,7 +2,7 @@ schema_version: 1
 instrumento:
   tipo: checkpoint
   identificador: checkpoint-01-replay
-estado: base_aprovada
+estado: renderizacao_em_andamento
 gates:
   blueprint_aprovado:
     status: aprovado
@@ -26,15 +26,17 @@ gates:
     estado_resultante: base_aprovada
     aprovado_em: '2026-08-24T22:24:14+00:00'
   variantes_aprovadas:
-    status: pendente
+    status: aprovado
     artefatos:
     - variantes
     - gabarito.md
     - auditoria-equivalencia.md
-    hash: null
-    decisao: null
+    hash: f72d7ca9134ad5b0913fabebdba2f655180c3a1b71be627ea3e8885f03feab86
+    decisao: Variantes A e B aprovadas pelo professor após revisão da equivalência,
+      da separação dos gabaritos e da preservação das evidências, da dificuldade e
+      da estrutura da base aprovada.
     estado_resultante: variantes_aprovadas
-    aprovado_em: null
+    aprovado_em: '2026-08-24T22:48:35+00:00'
   liberada_para_impressao:
     status: pendente
     artefatos:

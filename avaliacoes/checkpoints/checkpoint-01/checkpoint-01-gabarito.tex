@@ -6,34 +6,36 @@
 \cabecalhoGabarito
 \identificacaoInterna{Variante A}
 
-\textbf{Q1 (3,0):}\quad a = \codigoInline{true}; b = \codigoInline{false}; c = \codigoInline{2}; d = \codigoInline{true}; e = \codigoInline{1}; f = \codigoInline{false}.
+\textbf{Q1 (25):}\quad a = \codigoInline{1}; b = \codigoInline{true}; c = \codigoInline{2}; d = \codigoInline{false}; e = \codigoInline{1}.
 
 \medskip
-\textbf{Q2 (3,0):}\quad a = F; b = V; c = V; d = F; e = V; f = F.
+\textbf{Q2 (25):}\quad a = F; b = V; c = V; d = F; e = F.
 
 \medskip
-\begin{tabularx}{\textwidth}{@{}*{4}{>{\bfseries}l X}@{}}
-Q3 & C & Q4 & E & Q5 & B & Q6 & D \\
-Q7 & A & Q8 & C & Q9 & E & Q10 & B
+\textbf{Q3--Q12 (5 cada):}
+\begin{tabularx}{\textwidth}{@{}*{5}{>{\bfseries}l X}@{}}
+Q3 & C & Q4 & B & Q5 & A & Q6 & D & Q7 & B \\
+Q8 & E & Q9 & D & Q10 & C & Q11 & A & Q12 & D
 \end{tabularx}
 
 \medskip
-\textbf{Traço de execução.} \codigoInline{principal} e \codigoInline{painel} acessam o mesmo objeto: andar 2 e porta aberta. \codigoInline{servico} é distinto: andar 1 e porta fechada.
+\textbf{Traço de execução.} \codigoInline{principal} e \codigoInline{painel} acessam o mesmo objeto. Primeiro são observados andar 1 e porta aberta; depois, pelo outro nome, andar 2 e porta fechada. \codigoInline{servico} é distinto e termina no andar 1 com a porta aberta.
 
 \vspace{18pt}
 \identificacaoInterna{Variante B}
 
-\textbf{Q1 (3,0):}\quad a = \codigoInline{true}; b = \codigoInline{false}; c = \codigoInline{1}; d = \codigoInline{true}; e = \codigoInline{2}; f = \codigoInline{false}.
+\textbf{Q1 (25):}\quad a = \codigoInline{true}; b = \codigoInline{1}; c = \codigoInline{1}; d = \codigoInline{false}; e = \codigoInline{2}.
 
 \medskip
-\textbf{Q2 (3,0):}\quad a = F; b = V; c = V; d = V; e = F; f = V.
+\textbf{Q2 (25):}\quad a = F; b = F; c = F; d = V; e = V.
 
 \medskip
-\begin{tabularx}{\textwidth}{@{}*{4}{>{\bfseries}l X}@{}}
-Q3 & D & Q4 & A & Q5 & E & Q6 & C \\
-Q7 & B & Q8 & D & Q9 & A & Q10 & C
+\textbf{Q3--Q12 (5 cada):}
+\begin{tabularx}{\textwidth}{@{}*{5}{>{\bfseries}l X}@{}}
+Q3 & E & Q4 & C & Q5 & B & Q6 & A & Q7 & D \\
+Q8 & C & Q9 & B & Q10 & E & Q11 & C & Q12 & B
 \end{tabularx}
 
 \medskip
-\textbf{Traço de execução.} \codigoInline{cabine} e \codigoInline{painel} acessam o mesmo objeto: andar 1 e porta aberta. \codigoInline{carga} é distinto: andar 2 e porta fechada.
+\textbf{Traço de execução.} \codigoInline{cabine} e \codigoInline{painel} acessam o mesmo objeto. Primeiro são observados andar 1 e porta aberta; depois, andar 1 e porta fechada. \codigoInline{carga} é distinto e termina no andar 2 com a porta aberta.
 \end{document}

@@ -68,9 +68,11 @@ public class Main {
 \end{lstlisting}
 \end{painelreferencia}
 \end{minipage}
+\vspace{-\espacoS}
 \inicioQuestoes
 
-\questaoDireta{1}{Faça o teste de mesa e indique o que será impresso em cada linha.}{25 pontos}
+\noindent\begin{minipage}[t]{.32\textwidth}
+\questaoDireta{1}{Faça o teste de mesa. Para cada linha indicada, escreva exatamente o valor impresso.}{25 pontos}
 \itensDuasColunas{
   \itemSimples{a}{Linha 10}
   \itemSimples{b}{Linha 11}
@@ -80,52 +82,56 @@ public class Main {
   \itemSimples{e}{Linha 22}
 }
 
-\questaoDireta{2}{Considere a evolução da classe e marque cada afirmação como V ou F.}{25 pontos}
-Os getters e os métodos \codigoInline{abrirPorta()} e \codigoInline{fecharPorta()} permanecem inalterados.
+\end{minipage}\hfill
+\begin{minipage}[t]{.66\textwidth}
+\questaoDireta{2}{A classe agora protege os campos e controla a subida. Considere somente o código abaixo e marque cada afirmação como V ou F.}{25 pontos}
+Os getters, \codigoInline{abrirPorta()} e \codigoInline{fecharPorta()} continuam iguais aos do cenário.
 \begin{painelEvolucao}{Trechos alterados em Elevador.java}
 \begin{lstlisting}[style=evolucaocodigo]
 private int andarAtual;
 private boolean portaAberta;
-void subir() {
+int subir() {
     if (portaAberta == false) {
         if (andarAtual < 3) {
             andarAtual = andarAtual + 1;
         }
     }
+    return andarAtual;
 }
 \end{lstlisting}
 \end{painelEvolucao}
 
 \itemVF{a}{Em \codigoInline{Main}, a instrução \codigoInline{principal.andarAtual = 2;} compila.}
-\itemVF{b}{O método \codigoInline{subir()} pode alterar \codigoInline{andarAtual}, embora o campo seja privado.}
-\itemVF{c}{Do térreo, após \codigoInline{abrirPorta()} e \codigoInline{subir()}, o andar continua em \codigoInline{0}.}
-\itemVF{d}{Com a porta fechada e o andar em \codigoInline{3}, chamar \codigoInline{subir()} leva ao andar \codigoInline{4}.}
-\itemVF{e}{Do térreo, após \codigoInline{abrirPorta()}, \codigoInline{fecharPorta()} e \codigoInline{subir()}, o andar continua em \codigoInline{0}.}
+\itemVF{b}{Porta fechada, andar 2: \codigoInline{int resultado = principal.subir();} deixa \codigoInline{resultado} e o elevador no andar 3.}
+\itemVF{c}{Porta aberta, andar 1: \codigoInline{subir()} retorna 1 e preserva o andar 1.}
+\itemVF{d}{Porta fechada, andar 3: duas chamadas de \codigoInline{subir()} retornam 3 e preservam o andar 3.}
+\itemVF{e}{\codigoInline{Main} pode consultar o campo privado pelo método \codigoInline{getAndarAtual()}.}
+\end{minipage}
 
 \noindent\begin{minipage}[t]{.485\textwidth}
-\questaoDireta{3}{O programa precisa guardar o andar e a situação da porta e executar as ações de subir, abrir e fechar. Qual organização representa melhor um elevador?}{5 pontos}
+\questaoDireta{3}{O sistema também registra chamados de manutenção, com descrição, prioridade, situação e a ação de encerrar. Qual alternativa mantém juntos esses dados e essa ação?}{5 pontos}
 \begin{alternativas}
-\item Manter os dois dados em \codigoInline{Main} e repetir ali todas as ações.
-\item Criar uma classe apenas com o andar e a porta e programar todas as ações em \codigoInline{Main}.
-\item Criar \codigoInline{Elevador} com o andar, a porta e os métodos que realizam essas ações.
-\item Manter os dados em variáveis de \codigoInline{Main} e passar todos eles a cada método externo.
-\item Criar uma classe para o andar, outra para a porta e realizar as ações em \codigoInline{Main}.
+\item Manter descrição, prioridade e situação em variáveis separadas de \codigoInline{Main} e encerrar o chamado ali.
+\item Criar uma classe apenas para a descrição e manter prioridade, situação e encerramento em \codigoInline{Main}.
+\item Criar \codigoInline{ChamadoManutencao} com descrição, prioridade, situação e um método para encerrar o chamado.
+\item Criar uma classe para cada dado do chamado e realizar o encerramento em \codigoInline{Main}.
+\item Manter os três dados em \codigoInline{Main} e passá-los a um método externo sempre que o chamado mudar.
 \end{alternativas}
-\questaoDireta{4}{Ao executar \codigoInline{Elevador principal = new Elevador();}, o que cada parte da instrução representa?}{5 pontos}
+\questaoDireta{4}{Na instrução \codigoInline{Elevador principal = new Elevador();}, qual alternativa identifica corretamente a classe, a variável e o objeto criado?}{5 pontos}
 \begin{alternativas}
 \item \codigoInline{Elevador} é a variável; \codigoInline{principal} é a classe; \codigoInline{new} copia um objeto.
-\item \codigoInline{Elevador} é a classe; \codigoInline{principal} guarda uma referência para o novo objeto.
+\item \codigoInline{Elevador} é a classe; \codigoInline{principal} guarda uma referência; \codigoInline{new Elevador()} cria o objeto.
 \item \codigoInline{principal} é o objeto; \codigoInline{Elevador} guarda a referência usada por \codigoInline{new}.
 \item \codigoInline{new Elevador()} é a variável; \codigoInline{principal} declara outra classe.
 \item Os três nomes representam o mesmo papel e identificam diretamente o objeto.
 \end{alternativas}
-\questaoDireta{5}{Quando \codigoInline{abrirPorta()} é executado, o valor de \codigoInline{portaAberta} muda. Qual alternativa descreve corretamente esses dois membros?}{5 pontos}
+\questaoDireta{5}{Quando \codigoInline{abrirPorta()} é executado, o valor de \codigoInline{portaAberta} muda. Qual alternativa classifica corretamente o campo e o método?}{5 pontos}
 \begin{alternativas}
 \item \codigoInline{portaAberta} é estado; \codigoInline{abrirPorta()} é comportamento.
 \item \codigoInline{portaAberta} é comportamento; \codigoInline{abrirPorta()} é estado.
 \item Ambos são estados porque pertencem ao mesmo objeto.
 \item Ambos são comportamentos porque podem ser acessados com ponto.
-\item O campo é uma classe e o método é um objeto.
+\item \codigoInline{portaAberta} é variável local; \codigoInline{abrirPorta()} é método de \codigoInline{Main}.
 \end{alternativas}
 \questaoDireta{6}{Queremos um método que receba um andar de destino inteiro e não retorne valor. Qual assinatura atende ao requisito?}{5 pontos}
 \begin{alternativas}
@@ -135,9 +141,9 @@ void subir() {
 \item \codigoInline{void irPara(int destino)}
 \item \codigoInline{void irPara(float portaAberta)}
 \end{alternativas}
-\questaoDireta{7}{O código compila? Se não, qual linha impede a compilação?}{5 pontos}
+\questaoDireta{7}{Observe o código. Ele compila? Se não, qual linha impede a compilação?}{5 pontos}
 \begin{painelEvolucao}{Trecho em Elevador.java}
-\begin{lstlisting}[style=cenariocodigo]
+\begin{lstlisting}[style=questaocodigo]
 int andarAtual;
 void mostrar() {
     int anterior;
@@ -155,32 +161,42 @@ void mostrar() {
 \end{alternativas}
 \end{minipage}\hfill
 \begin{minipage}[t]{.485\textwidth}
-\questaoDireta{8}{O elevador suporta no máximo 8 pessoas. Ao embarcar um grupo, a lotação não pode ultrapassar esse limite. Qual solução mantém essa regra em um único responsável?}{5 pontos}
+\questaoDireta{8}{\codigoInline{Elevador} terá o campo \codigoInline{int quantidadePessoas}; a lotação máxima é 8. Onde deve ficar a decisão de aceitar ou rejeitar um grupo?}{5 pontos}
 \begin{alternativas}
-\item Cada trecho de \codigoInline{Main} consulta a lotação e decide se soma o grupo.
-\item Um auxiliar de \codigoInline{Main} calcula a lotação e altera o campo.
-\item \codigoInline{Main} verifica o grupo; outro método externo verifica o limite.
-\item Um setter recebe a lotação calculada pelo código externo.
-\item \codigoInline{Elevador.embarcar(quantidade)} consulta sua lotação e preserva o limite.
+\item \codigoInline{Main} consulta a lotação e decide se inclui o grupo.
+\item Um auxiliar de \codigoInline{Main} calcula e altera a lotação.
+\item \codigoInline{Main} verifica o grupo e outro método externo verifica o limite.
+\item Um setter recebe a nova lotação calculada fora do objeto.
+\item \codigoInline{Elevador.embarcar(quantidade)} verifica sua lotação e o limite.
 \end{alternativas}
-\questaoDireta{9}{Considere o método e a chamada abaixo. O que acontece?}{5 pontos}
+\questaoDireta{9}{Depois de executar a última linha abaixo, quais são os valores de \codigoInline{diferenca} e \codigoInline{andarAtual}?}{5 pontos}
 \begin{painelEvolucao}{Trecho em Elevador.java e Main.java}
-\begin{lstlisting}[style=cenariocodigo]
+\begin{lstlisting}[style=questaocodigo]
+// Em Elevador.java
 int calcularDiferenca(int destino) {
     return destino - andarAtual;
 }
-int diferenca = elevador.calcularDiferenca(3);
+// Em Main.java
+Elevador teste = new Elevador();
+teste.subir();
+int diferenca = teste.calcularDiferenca(3);
 \end{lstlisting}
 \end{painelEvolucao}
-Considere que \codigoInline{andarAtual} vale \codigoInline{1} antes da chamada.
 \begin{alternativas}
 \item \codigoInline{diferenca} recebe \codigoInline{3} e \codigoInline{andarAtual} passa a ser \codigoInline{3}.
 \item \codigoInline{diferenca} recebe \codigoInline{2} e \codigoInline{andarAtual} passa a ser \codigoInline{3}.
-\item O código não compila porque um método com retorno \codigoInline{int} não pode receber parâmetro.
+\item Não compila: um método com retorno \codigoInline{int} não pode receber parâmetro.
 \item \codigoInline{diferenca} recebe \codigoInline{2} e \codigoInline{andarAtual} continua em \codigoInline{1}.
 \item O método não retorna valor porque não foi declarado com \codigoInline{void}.
 \end{alternativas}
-\questaoDireta{10}{Dois elevadores são criados separadamente e começam no térreo com a porta fechada. Depois, apenas \codigoInline{a.subir()} é chamado. Qual afirmação está correta?}{5 pontos}
+\questaoDireta{10}{Após executar o trecho, o que é correto sobre os estados de \codigoInline{a} e \codigoInline{b} e sobre \codigoInline{a == b}?}{5 pontos}
+\begin{painelEvolucao}{Trecho em Main.java}
+\begin{lstlisting}[style=questaocodigo]
+Elevador a = new Elevador();
+Elevador b = new Elevador();
+a.subir();
+\end{lstlisting}
+\end{painelEvolucao}
 \begin{alternativas}
 \item Antes da chamada, \codigoInline{a == b} é \codigoInline{true}; depois, ambos ficam no andar 1.
 \item Antes da chamada, os estados diferem; depois, somente \codigoInline{b} fica no andar 1.
@@ -188,29 +204,28 @@ Considere que \codigoInline{andarAtual} vale \codigoInline{1} antes da chamada.
 \item Antes da chamada, \codigoInline{a == b} é \codigoInline{true}; depois, somente \codigoInline{a} fica no andar 1.
 \item Antes da chamada, os estados são iguais; por isso, alterar \codigoInline{a} também altera \codigoInline{b}.
 \end{alternativas}
-\questaoDireta{11}{\codigoInline{getAndarAtual()} não possui modificador de acesso. Como \codigoInline{Main} e \codigoInline{Elevador} estão no mesmo pacote, qual afirmação está correta?}{5 pontos}
+\questaoDireta{11}{Uma classe de outro pacote tenta chamar \codigoInline{getAndarAtual()}, que não tem modificador de acesso. O que acontece?}{5 pontos}
 \begin{alternativas}
-\item \codigoInline{Main} pode chamá-lo: o acesso de pacote permite uso no mesmo pacote.
-\item \codigoInline{Main} não pode chamá-lo porque o método não é \codigoInline{public}.
-\item Ele só pode ser chamado se \codigoInline{andarAtual} também for público.
-\item Ele se torna privado automaticamente por não declarar \codigoInline{public}.
-\item Ele altera o pacote de \codigoInline{Main} durante a execução.
+\item Compila porque a classe \codigoInline{Elevador} é pública.
+\item Não compila: o acesso de pacote permite uso apenas no mesmo pacote.
+\item Só compila se o campo \codigoInline{andarAtual} também for público.
+\item O método se torna privado automaticamente por ser chamado de outro pacote.
+\item Compila porque a ausência de modificador equivale a \codigoInline{public}.
 \end{alternativas}
-\questaoDireta{12}{O elevador só pode ficar entre os andares 0 e 3. Analise a alteração abaixo. Qual diagnóstico está correto?}{5 pontos}
-\begin{painelEvolucao}{Trecho em Elevador.java}
-\begin{lstlisting}[style=cenariocodigo]
-private int andarAtual;
+\questaoDireta{12}{Os andares válidos vão de 0 a 3. Após acrescentar o método abaixo, \codigoInline{Main} chama \codigoInline{principal.definirAndar(8)}. O que acontece?}{5 pontos}
+\begin{painelEvolucao}{Trecho acrescentado em Elevador.java}
+\begin{lstlisting}[style=questaocodigo]
 public void definirAndar(int novoAndar) {
     andarAtual = novoAndar;
 }
 \end{lstlisting}
 \end{painelEvolucao}
 \begin{alternativas}
-\item O campo \codigoInline{private} garante sozinho que todo andar seja válido.
-\item Receber um \codigoInline{int} impede automaticamente andares negativos.
-\item Nem os métodos da própria classe podem alterar o campo.
-\item O acesso direto fechou, mas o método ainda aceita qualquer andar.
-\item Um método público não pode alterar um campo privado.
+\item Não compila: a própria classe não pode alterar um campo privado.
+\item Não compila: o valor 8 está fora do intervalo permitido.
+\item Compila, e \codigoInline{andarAtual} passa automaticamente para 3.
+\item Compila, e \codigoInline{andarAtual} passa para 8 porque não há validação.
+\item Compila, mas \codigoInline{andarAtual} continua em 0 porque o método é \codigoInline{void}.
 \end{alternativas}
 \end{minipage}
 
