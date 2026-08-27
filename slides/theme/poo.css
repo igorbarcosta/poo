@@ -92,6 +92,8 @@ pre {
 
 code {
   font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 pre code {

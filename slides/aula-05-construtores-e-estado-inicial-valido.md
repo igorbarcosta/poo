@@ -702,6 +702,9 @@ Não antecipar exceções, retornos alternativos ou fábricas. Apenas reconhecer
 
 ## Proposta A — cada cliente verifica
 
+Um programa recebe os dados de um item de pedido. Aqui, **cliente** é qualquer
+trecho do sistema que tenta criar esse objeto.
+
 ```java
 double precoInicial = 0.0;
 if (preco >= 0) precoInicial = preco;
@@ -726,6 +729,8 @@ Apresentar primeiro apenas a proposta A. Dar tempo para localizar duplicação d
 <div class="chapter">Onde a regra deve ficar?</div>
 
 ## Proposta B — a classe preserva a regra
+
+O mesmo trecho do sistema apenas repassa os dados recebidos:
 
 ```java
 ItemPedido item =
@@ -782,9 +787,14 @@ Uma invariante é uma regra que deve permanecer verdadeira para o estado do obje
 
 ## A ideia continua em outro domínio?
 
+Em um sistema de hospedagem, cada `Reserva` registra a quantidade de pessoas e
+o valor de uma diária, nessa ordem:
+
 ```java
 Reserva reserva = new Reserva(4, 180.0);
 ```
+
+Neste exemplo: `4` pessoas e diária de `R$ 180,00`.
 
 1. Quais informações uma reserva precisa receber na criação?
 2. `-2` pessoas deveria fazer parte do estado?
