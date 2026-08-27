@@ -1,4 +1,4 @@
 interface:
   display_name: "Criar Base de Avaliação"
-  short_description: "Produz a base Markdown após o blueprint"
+  short_description: "Evolui blueprint e base Markdown juntos"
   default_prompt: "Use $criar-base-avaliacao para criar e auditar a base deste instrumento aprovado."

@@ -1,16 +1,15 @@
 ---
 name: criar-avaliacao
-description: Encaminha a criação de uma prova de unidade ou substitutiva para o workflow comum de blueprint e base Markdown; não use para checkpoints focais.
+description: Encaminha prova de unidade ou substitutiva de POO ao workflow de avaliações do Docemas com contexto curricular local.
 ---
 
 # Criar avaliação
 
-Esta é uma interface de compatibilidade para provas. Não cria variantes nem diagramação diretamente.
+Interface local para prova ou substitutiva:
 
-1. Ler `workflow.yaml` quando o instrumento já existir.
-2. Se ainda não houver blueprint aprovado, aplicar `planejar-avaliacao` com tipo `prova`.
-3. Se o blueprint estiver aprovado e a base ainda não, aplicar `criar-base-avaliacao`.
-4. Se a base estiver aprovada e o pedido for gerar variantes, encaminhar para `finalizar-avaliacao`.
-5. Não inferir duração, páginas, corte curricular ou gates.
+1. usar `planejar-avaliacao` até o direcionamento;
+2. usar `criar-base-avaliacao` até `base_aprovada`;
+3. consultar `specs/projeto-pedagogico.md` e `specs/padrao-avaliacoes.md` para diferenças locais;
+4. não inferir recorte, regras acadêmicas ou aprovação.
 
-As propriedades acumulativas e integrativas da prova permanecem em `specs/padrao-avaliacoes.md` e `specs/projeto-pedagogico.md`.
+Etapas posteriores permanecem fora desta skill.

@@ -1,16 +1,15 @@
 ---
 name: criar-checkpoint
-description: Encaminha a criação de um checkpoint para o workflow comum de blueprint e base Markdown; use quando o pedido mencionar especificamente um checkpoint ainda não finalizado.
+description: Encaminha checkpoint de POO ao workflow de avaliações do Docemas com contexto curricular local.
 ---
 
 # Criar checkpoint
 
-Esta é uma interface de compatibilidade para o workflow comum de avaliações. Não mantém um processo próprio.
+Interface local para checkpoint:
 
-1. Ler `workflow.yaml` quando o instrumento já existir.
-2. Se ainda não houver blueprint aprovado, aplicar `planejar-avaliacao` com tipo `checkpoint`.
-3. Se o blueprint estiver aprovado e a base ainda não, aplicar `criar-base-avaliacao`.
-4. Se a base estiver aprovada e o pedido for gerar variantes, encaminhar para `finalizar-avaliacao`.
-5. Não inferir gates nem migrar instrumentos históricos.
+1. usar `planejar-avaliacao` até o direcionamento;
+2. usar `criar-base-avaliacao` até `base_aprovada`;
+3. aplicar duração, composição e recorte registrados em `specs/padrao-avaliacoes.md`;
+4. não inferir aprovação nem migrar instrumentos históricos.
 
-Os padrões de 50 minutos e duas páginas A4 permanecem em `specs/padrao-avaliacoes.md`.
+Etapas posteriores permanecem fora desta skill.
