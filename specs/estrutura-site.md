@@ -4,12 +4,13 @@ Este documento registra as decisões de estrutura já definidas para o site da d
 
 - O site concentra o conteúdo didático permanente da disciplina.
 - O Google Classroom é o LMS oficial para avisos, entregas, atividades, avaliações e notas.
-- A navegação principal segue a ordem: **Início**, **Disciplina**, **Aulas**, **Laboratórios** e **Materiais**.
+- A navegação principal segue a ordem: **Início**, **Disciplina**, **Aulas**, **Laboratórios**, **Avaliações** e **Materiais**.
 - **Início** orienta o estudante por meio de cards para os destinos principais, sem duplicar essa função em tabelas ou repetir o conteúdo das demais páginas.
 - **Disciplina** reúne organização acadêmica e apoio: Plano de Ensino, Cronograma e Monitoria, nessa ordem.
 - **Cronograma** registra a sequência temporal e as datas já confirmadas. É atualizado progressivamente: encontros futuros ainda não consolidados não devem ser inventados, e ajustes podem ocorrer conforme o andamento da turma, dos checkpoints e dos projetos.
 - **Aulas** reúne a fundamentação conceitual.
 - **Laboratórios** reúne a aplicação prática e a evolução incremental dos projetos.
+- **Avaliações** reúne, após cada aplicação, os instrumentos que podem ser publicados e seus gabaritos didáticos comentados. Avisos, entregas, notas e informações operacionais permanecem no Google Classroom.
 - **Monitoria** concentra as informações de apoio ao estudante dentro do grupo Disciplina.
 - **Materiais** reúne ambiente, referências e conteúdos de consulta.
 - **Plano de Ensino** registra a estrutura e as regras formais da disciplina dentro do grupo Disciplina.

@@ -33,6 +33,14 @@ nav = [
     { "04 — Controlando alterações de estado" = "aulas/laboratorio-04-controlando-alteracoes-de-estado.md" },
     { "05 — Construindo objetos em estado válido" = "aulas/laboratorio-05-construindo-objetos-em-estado-valido.md" },
   ] },
+  { "Avaliações" = [
+    { "Avaliações" = "avaliacoes/index.md" },
+    { "Checkpoint 01" = [
+      { "Visão geral" = "avaliacoes/checkpoint-01/index.md" },
+      { "Gabarito — Variante A" = "avaliacoes/checkpoint-01/gabarito-variante-a.md" },
+      { "Gabarito — Variante B" = "avaliacoes/checkpoint-01/gabarito-variante-b.md" },
+    ] },
+  ] },
   { "Materiais" = [
     { "Materiais" = "materiais/index.md" },
     { "Ambiente de Desenvolvimento" = "materiais/ambiente-de-desenvolvimento.md" },
