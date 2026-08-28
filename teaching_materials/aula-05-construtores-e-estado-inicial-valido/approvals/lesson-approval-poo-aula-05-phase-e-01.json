@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-05-phase-e-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-05-construtores-estado-inicial-valido",
+    "path": "lesson-design.md",
+    "sha256": "61b0eac9023ce6a2771bf61bb91e36158c8f25bddc3bac25f2919e12afb0c247",
+    "version": "phase-e-approved-canonical-state"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-05-construtores-estado-inicial-valido",
+    "path": "lesson.md",
+    "sha256": "e93ec1b50cf3f1b6fe58140cb1b653b251e7581c54a182e9cee7f355c0180057",
+    "version": "existing-poo-aula-05-approved-canonical-state"
+  },
+  "combined_semantic_sha256": "f478ae60c8311577f651107d16b6ba5f3181385e125408d74c95bf9b95fe90cd",
+  "approved_at": "2026-08-28T07:54:20-03:00",
+  "approver": {
+    "identity": "human-phase-e-aula-05-semantic-authority",
+    "display_name": "Human authority for the POO Aula 05 Phase E parity case",
+    "source": "explicit user-supplied approval of the exact LessonDesign + Lesson hashes for Phase E parity"
+  },
+  "consumer_context_refs": [
+    "phase-e-semantic-approval-gate.md",
+    "../../slides/presentation-profile.md"
+  ]
+}

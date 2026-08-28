@@ -7,6 +7,23 @@ description: Transforma uma aula deste repositório, já definida e validada ped
 
 Produzir um instrumento de condução da aula, não uma conversão mecânica da página em tópicos projetados.
 
+## Fronteira de derivação com Docemas
+
+Este fluxo é o wrapper local de slide derivation. Usar
+`derive-lesson-slides` no Docemas por `DOCEMAS_ROOT`/`../docemas`; o wrapper
+fornece a aula selecionada e `slides/presentation-profile.md`. Antes de
+derivar, `can_derive_poo_lesson` deve retornar `CURRENT_APPROVAL` com
+classificação `VALID_CURRENT`; aprovação não é inferida de deck, site,
+renderização ou histórico Git. Eligibility e provenance são responsabilidade
+do Docemas, e o POO escolhe apenas o deck, o destino de evidência e o perfil.
+A decisão humana ocorre no registro de aprovação do workflow Docemas; este
+wrapper apenas verifica e consome seu estado atual.
+
+O perfil define Marp, o tema `poo.css`, a sintaxe local, a densidade, o código,
+as pausas e o contexto presencial. `review-slide-projection` permanece a
+revisão source-level anterior à revisão visual local. Marp, renderização,
+HTML/PDF, Zensical, publicação e retrospectivas continuam pertencendo ao POO.
+
 ## Confirmar a fonte pedagógica
 
 1. Ler `AGENTS.md`.

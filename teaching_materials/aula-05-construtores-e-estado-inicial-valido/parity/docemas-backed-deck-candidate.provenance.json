@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "deck_identity": "slide-deck-poo-aula-05-phase-e-candidate-01",
+  "source_lesson": "lesson-poo-aula-05-construtores-estado-inicial-valido",
+  "source_approval": "lesson-approval-poo-aula-05-phase-e-01",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "approved_combined_semantic_sha256": "f478ae60c8311577f651107d16b6ba5f3181385e125408d74c95bf9b95fe90cd",
+  "presentation_profile": {
+    "identity": "poo-marp-v1",
+    "reference": "slides/presentation-profile.md",
+    "format": "Marp Markdown",
+    "syntax": "Marp front matter with POO deck classes, components, and notes",
+    "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+    "theme": "slides/theme/poo.css",
+    "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+    "density": "one central idea per frame with progressive code and activity pauses",
+    "delivery_context": "90-minute presencial POO lesson"
+  },
+  "derived_at": "2026-08-28T08:05:00-03:00"
+}

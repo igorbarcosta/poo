@@ -7,6 +7,19 @@ description: Implementa um novo par Aula + Laboratório deste repositório a par
 
 Transformar decisões pedagógicas já fornecidas em um par coerente de páginas didáticas. Não decidir autonomamente o currículo.
 
+## Fronteira de consumo do Docemas
+
+Este fluxo é o wrapper local de authoring do POO. Para um pacote canônico,
+usar `author-lesson-material` no checkout sibling do Docemas, resolvido por
+`DOCEMAS_ROOT` ou por `../docemas`; essa capability é a referência para
+`lesson-design.md` + `lesson.md` e suas fronteiras genéricas.
+
+O wrapper fornece somente o contexto que continua pertencendo ao POO:
+currículo Java, progressão do projeto, relação Aula → Laboratório, duração de
+90 minutos, convenções narrativas e de pausas, decisões institucionais e o
+tratamento das páginas públicas em `docs/aulas/`. Aprovação e derivação seguem
+os gates explícitos da integração Docemas/POO.
+
 ## Preparar o trabalho
 
 1. Ler `AGENTS.md`.

@@ -7,6 +7,18 @@ description: Revisa materiais didáticos existentes deste repositório — Aula,
 
 Identificar problemas reais e melhorias úteis sem promover reescrita infinita ou alterações por preferência estilística.
 
+## Fronteira de revisão com Docemas
+
+Este fluxo é o wrapper local de review. Para o par canônico, usar
+`review-lesson-material` no Docemas por `DOCEMAS_ROOT`/`../docemas` e fornecer
+o contexto local como evidência. O POO mantém os checks que são seus: Java,
+progressão do curso e do projeto, coerência Aula → Laboratório, expectativas
+de 90 minutos, convenções pedagógicas e retrospectivas.
+
+Para slides, usar `review-slide-projection` na fonte e manter a revisão
+visual/renderizada local. Este wrapper relata; nunca
+aprova a aula nem substitui os gates da integração Docemas.
+
 ## Definir o modo
 
 - Por padrão: analisar, relatar e não alterar arquivos.
