@@ -15,5 +15,6 @@ Da transição do pensamento procedural à modelagem de pequenos problemas com o
 - [Aula 03 — Objetos, referências e identidade](aula-03-objetos-referencias-e-identidade.md)
 - [Aula 04 — Protegendo o estado dos objetos](aula-04-protegendo-o-estado-dos-objetos.md)
 - [Aula 05 — Construtores e estado inicial válido](aula-05-construtores-e-estado-inicial-valido.md)
+- [Aula 06 — Colaboração entre objetos](aula-06-colaboracao-entre-objetos.md)
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

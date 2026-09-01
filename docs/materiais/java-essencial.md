@@ -189,6 +189,37 @@ System.out.println(item1 == item2); // true
 
 Dois objetos criados por expressões `new` diferentes possuem identidades diferentes, mesmo quando mantêm o mesmo estado.
 
+## Referências entre objetos
+
+Um campo também pode usar uma classe como tipo e manter uma referência para outro objeto:
+
+```java
+class ItemPedido {
+    private Produto produto;
+    private int quantidade;
+
+    public ItemPedido(Produto produto, int quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
+
+    public double calcularSubtotal() {
+        return produto.getPreco() * quantidade;
+    }
+}
+```
+
+Na criação, o argumento `teclado` fornece uma referência ao parâmetro `produto`:
+
+```java
+Produto teclado = new Produto("Teclado", 150.0);
+ItemPedido item = new ItemPedido(teclado, 2);
+```
+
+Passar o objeto como argumento não executa `new Produto(...)` nem cria automaticamente uma cópia. O campo do item e a variável `teclado` podem permitir acesso ao mesmo objeto `Produto`.
+
+O método `calcularSubtotal()` mostra uma colaboração simples: o item solicita ao produto o preço que pertence ao estado do produto e combina essa informação com sua própria quantidade.
+
 ## Controle de acesso e alteração do estado
 
 ### `private` e `public`

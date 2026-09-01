@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "deck_identity": "slide-deck-poo-aula-06-colaboracao-entre-objetos-01",
+  "source_lesson": "lesson-poo-aula-06-colaboracao-entre-objetos",
+  "source_approval": "lesson-approval-poo-aula-06-01",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "approved_combined_semantic_sha256": "baa7fa5ab2e2bb01ea69b9ed2d9e80c89cd060770a8a85b0d3fef833a9f1ea9d",
+  "presentation_profile": {
+    "identity": "poo-marp-v1",
+    "reference": "slides/presentation-profile.md",
+    "format": "Marp Markdown",
+    "syntax": "Marp front matter with POO deck classes, components, and notes",
+    "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+    "theme": "slides/theme/poo.css",
+    "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+    "density": "one central idea per frame with progressive code and activity pauses",
+    "delivery_context": "90-minute presencial POO lesson"
+  },
+  "derived_at": "2026-08-31T21:28:49-03:00"
+}

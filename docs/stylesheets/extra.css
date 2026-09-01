@@ -259,6 +259,7 @@
   color: rgb(226 228 233 / 72%);
 }
 
+
 [data-md-color-scheme="slate"]
   .md-sidebar--primary
   .md-nav__item--nested
@@ -305,17 +306,6 @@
   .md-typeset h1 {
     margin-bottom: 0.75em;
   }
-}
-
-/* Blocos de código: uma borda fina define a superfície sem criar moldura de
-   IDE; o fundo e o comportamento de rolagem continuam sendo os do tema. */
-.md-typeset .highlight {
-  border: 0.05rem solid var(--md-default-fg-color--lightest);
-  border-radius: 0.4rem;
-}
-
-[data-md-color-scheme="slate"] .md-typeset .highlight {
-  border-color: rgb(240 241 244 / 14%);
 }
 
 /* Cards da home: o contêiner reage ao link sem fingir que áreas não clicáveis

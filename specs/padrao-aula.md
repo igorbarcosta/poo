@@ -7,7 +7,9 @@ Este documento registra o padrão das aulas de POO, destinadas principalmente à
 - O nome do arquivo deve seguir o padrão `aula-XX-assunto.md`.
 - O título da página deve seguir o padrão `Aula XX — Título`.
 - Não incluir data ou semestre no título da aula.
-- Usar `material/school-outline` no campo `icon` do front matter.
+- Não definir `icon` no front matter das aulas. Conforme `estrutura-site.md`, o
+  ícone Lucide pertence à categoria **Aulas**; os itens internos permanecem
+  textuais no menu.
 
 ## Estrutura
 
@@ -29,7 +31,7 @@ Quando forem pertinentes, podem ser incluídas as seguintes seções opcionais:
 
 ## Construção pedagógica
 
-O roteiro é a fonte pedagógica da aula. Antes de produzir o deck, devem estar completos e validados os objetivos, as dependências, a trajetória narrativa, as pausas didáticas, a relação com o laboratório seguinte e o dimensionamento do encontro. Os slides são derivados dessa base; o deck anterior não deve substituir o trabalho de construir o roteiro.
+O roteiro é a fonte pedagógica da aula e também um estudo autoguiado permanente para o estudante. Antes de produzir o deck, devem estar completos e validados os objetivos, as dependências, a trajetória narrativa, as pausas didáticas, a relação com o laboratório seguinte e o dimensionamento do encontro. Os slides são derivados dessa base; o deck anterior não deve substituir o trabalho de construir o roteiro.
 
 O fluxo permanente de produção é:
 
@@ -37,19 +39,21 @@ O fluxo permanente de produção é:
 
 Construir e revisar primeiro uma boa aula, sem comprimir o roteiro para fazê-lo caber em frames. Nunca gerar automaticamente os slides junto com a primeira construção do roteiro. A etapa de slides começa somente depois da aprovação pedagógica explícita e traduz visualmente uma narrativa já definida.
 
+A página pública deve ser compreensível fora do encontro síncrono. Não incluir nela instruções de condução ao professor, coleta de respostas da turma, espera por uma discussão, adaptação ao ritmo da sala ou indicação de que uma resposta será formalizada oralmente. Essas decisões pertencem ao deck e às notas de apresentação. Comentários internos de autoria podem registrar estimativas, blocos e aprofundamentos, desde que não apareçam ao estudante nem sejam necessários para compreender o conteúdo.
+
 Aula não é uma sequência de tópicos independentes. O storytelling didático estabelece causalidade: um problema produz uma observação, a observação cria uma pergunta, a pergunta exige investigação e a investigação permite formalizar uma ideia ou tomar uma decisão. Conceitos aparecem depois de existir uma necessidade compreensível para eles.
 
 O encontro deve ser dimensionado internamente para 90 minutos, considerando explicação, leitura, previsão, espera, discussão, atividade, formalização e síntese. Esse dimensionamento orienta o projeto do material, mas não aparece como cronograma de minutos na página destinada aos estudantes.
 
 Planejar o encontro com um **núcleo necessário** e possíveis **aprofundamentos elásticos**. O núcleo reúne o que precisa acontecer; os aprofundamentos entram conforme o ritmo da turma e devem ampliar recuperação, previsão, comparação, diagnóstico, explicação ou transferência, sem antecipar conteúdo futuro nem repetir exposição apenas para ocupar tempo.
 
-Algumas aulas podem começar com uma recuperação curta, sem consulta e sem nota, combinando duas ou três questões sobre o encontro anterior e conteúdos mais antigos. Também pode ser útil empregar Peer Instruction quando houver modelos mentais concorrentes: resposta individual → discussão com colega → nova resposta → explicação coletiva, sem depender de clickers ou outra tecnologia. Nenhuma dessas estratégias é seção fixa ou ritual obrigatório.
+Na condução síncrona registrada no deck, algumas aulas podem começar com uma recuperação curta, sem consulta e sem nota, combinando duas ou três questões sobre o encontro anterior e conteúdos mais antigos. Também pode ser útil empregar Peer Instruction quando houver modelos mentais concorrentes: resposta individual → discussão com colega → nova resposta → explicação coletiva, sem depender de clickers ou outra tecnologia. Nenhuma dessas estratégias é seção fixa ou ritual obrigatório da página autoguiada.
 
-### Dinâmica das atividades em aulas teóricas
+### Atividades no estudo autoguiado
 
-Por padrão, as atividades de uma aula teórica são conduzidas com a turma toda: o professor apresenta a pergunta, oferece tempo real para elaboração individual, coleta hipóteses, contrasta justificativas e formaliza ou fecha a ideia. O roteiro deve preservar a pausa antes da resposta e evitar perguntas cuja solução apareça imediatamente no parágrafo seguinte.
+As atividades da página falam diretamente ao estudante e devem ser respondíveis apenas com o contexto disponível no roteiro. Podem pedir previsão, comparação, explicação ou registro de uma hipótese antes da continuação. A página deve então oferecer elementos suficientes para conferir ou reformular o raciocínio, sem depender da fala do professor.
 
-Não escrever automaticamente “discuta com um colega”, “compare com um colega” ou “em dupla”. Trabalho em pares e Peer Instruction continuam disponíveis quando houver uma razão pedagógica deliberada — por exemplo, modelos mentais concorrentes que se beneficiem de resposta individual, contraste e nova resposta —, mas não constituem a dinâmica padrão de toda atividade teórica.
+Não escrever na página “espere a discussão”, “o professor coleta”, “participe do levantamento coletivo”, “discuta com um colega” ou outras instruções dependentes de uma aula presencial. Trabalho em pares, Peer Instruction, coleta coletiva e formalização oral continuam disponíveis no deck quando houver razão pedagógica deliberada, mas não fazem parte do roteiro autoguiado.
 
 Essa orientação não se aplica como restrição aos laboratórios. Neles, investigação conjunta, previsão compartilhada, ajuda entre pares e comparação entre implementações podem ocorrer naturalmente quando servirem ao objetivo prático.
 
@@ -134,6 +138,28 @@ Como orientação editorial:
 Dentro de blocos destacados, uma única ideia curta pode permanecer em uma frase. Duas ou mais informações independentes devem preferir bullets; sequências, procedimentos ou conjuntos de perguntas devem preferir enumeração. Não transformar todo conteúdo em lista, mas evitar parágrafos longos dentro de admonitions.
 
 Essas diretrizes apoiam a clareza sem impor uniformidade artificial.
+
+### Diagramas de referências e objetos
+
+Quando um diagrama representar o estado de execução de um programa orientado a
+objetos, usar uma notação pequena e consistente:
+
+- representar cada objeto como um contêiner identificado por sua classe;
+- mostrar dentro do contêiner somente os campos relevantes para o raciocínio;
+- representar variáveis e campos que guardam referências como caixas vermelhas,
+  sempre acompanhadas dos rótulos `variável`, `campo` e `referência`, para que a
+  distinção não dependa apenas da cor;
+- fazer cada seta partir da variável ou do campo que guarda a referência e apontar
+  para o objeto acessado; nesse tipo de diagrama, a seta significa somente
+  **aponta para**;
+- comunicar que um campo pertence a um objeto por contenção, nunca por uma seta;
+- mostrar valores primitivos como campos neutros dentro do objeto;
+- omitir detalhes de memória, JVM e estado que não contribuam para a pergunta em
+  discussão.
+
+Uma visão simplificada pode omitir os campos e ligar objetos diretamente apenas
+quando o grafo de objetos for o único foco. Não usá-la quando a aprendizagem
+depender de distinguir variável, campo, referência e objeto.
 
 ## Narrativa e pausas didáticas
 

@@ -8,7 +8,9 @@ Este documento registra o padrão dos laboratórios de POO. Laboratórios são d
 - O nome do arquivo deve seguir o padrão `laboratorio-XX-assunto.md`.
 - O título da página deve seguir o padrão `Laboratório XX — Título`.
 - Não incluir data ou semestre no título do laboratório.
-- Usar `material/flask-outline` no campo `icon` do front matter.
+- Não definir `icon` no front matter dos laboratórios. Conforme
+  `estrutura-site.md`, o ícone Lucide pertence à categoria **Laboratórios**;
+  os itens internos permanecem textuais no menu.
 
 ## Estrutura de referência
 

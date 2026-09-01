@@ -624,11 +624,34 @@ section.lead .central-question {
   margin-top: 1.2em;
 }
 
-.sequence span {
+.sequence :is(span, .step) {
   background: var(--accent-soft);
   border-radius: 10px;
   color: var(--accent);
   padding: 0.5em 0.65em;
+  text-align: center;
+}
+
+.sequence .arrow {
+  color: var(--accent);
+  font-size: 1.35em;
+  line-height: 1;
+}
+
+.sequence .connector {
+  color: var(--accent);
+  font-size: 0.78em;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.refs.wide-vars {
+  grid-template-columns: 210px 75px 1fr;
+  max-width: 900px;
+}
+
+.refs.wide-vars .var {
+  white-space: nowrap;
 }
 
 section.final-question {
@@ -747,7 +770,7 @@ section.synthesis .concept-card strong {
 }
 
 section.synthesis .key-point,
-section.synthesis .sequence span {
+section.synthesis .sequence :is(span, .step) {
   background: rgb(255 255 255 / 16%);
   color: white;
 }

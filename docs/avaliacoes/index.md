@@ -1,3 +1,7 @@
+---
+icon: lucide/clipboard-check
+---
+
 # Avaliações
 
 Esta seção reúne, após a aplicação, os instrumentos da disciplina e seus gabaritos comentados. As soluções não apresentam apenas a resposta correta: elas retomam o raciocínio necessário para analisar o código e ajudam a identificar modelos mentais que podem levar ao erro.

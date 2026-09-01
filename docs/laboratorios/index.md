@@ -13,5 +13,6 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 03 — Referências e identidade na prática](../aulas/laboratorio-03-referencias-e-identidade-na-pratica.md)
 - [Laboratório 04 — Controlando alterações de estado](../aulas/laboratorio-04-controlando-alteracoes-de-estado.md)
 - [Laboratório 05 — Construindo objetos em estado válido](../aulas/laboratorio-05-construindo-objetos-em-estado-valido.md)
+- [Laboratório 06 — Conectando produtos e itens](../aulas/laboratorio-06-conectando-produtos-e-itens.md)
 
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

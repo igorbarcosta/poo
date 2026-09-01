@@ -10,7 +10,7 @@ Na Aula 04, protegemos alterações feitas depois que um objeto já existe. `Ite
 
 !!! lesson-objectives "Objetivos"
 
-    Ao final deste encontro, você deverá ser capaz de:
+    Ao final deste estudo, você deverá ser capaz de:
 
     - diagnosticar os riscos de criar um objeto e configurá-lo em etapas separadas;
     - explicar como um construtor organiza o estado inicial de um objeto;
@@ -77,14 +77,12 @@ itemB.aumentarQuantidade(3);
 
 !!! activity "Atividade — quando o objeto fica pronto?"
 
-    Sem executar, compare as duas sequências. Pare aqui, formule suas respostas e espere a discussão antes de continuar.
+    Sem executar, compare as duas sequências e registre suas respostas antes de continuar.
 
     1. Depois de qual linha `itemA` possui todos os dados pretendidos?
     2. `itemB` chega ao mesmo ponto? Qual etapa ficou ausente?
     3. Qual dos dois poderia ser usado com mais segurança para calcular um subtotal?
     4. Se um método recebesse o objeto logo após o `new`, o que observaria?
-
-    O professor coleta hipóteses da turma, explora as justificativas e então organiza uma regra curta sobre o risco de preparar objetos em etapas separadas. A resposta não é um entregável.
 
 O segundo trecho compila. O preço não foi informado, então `calcularSubtotal()` usa `0.0`. A linguagem não sabe que a preparação ficou incompleta; essa expectativa pertence ao nosso domínio.
 
@@ -231,7 +229,7 @@ O mesmo vale para preço e quantidade. `this` aparece porque surgiu uma ambiguid
     2. O que aconteceria se escrevêssemos `descricao = descricao;` em vez de `this.descricao = descricao;`?
     3. Em `descricao = descricao;`, a qual `descricao` cada lado se refere?
 
-    Formule uma hipótese antes do fechamento. O professor espera respostas, contrasta as justificativas da turma e só então retoma o papel de `this`.
+    Registre uma hipótese antes de reler a explicação sobre o papel de `this`.
 
 O construtor resolveu o risco de esquecer uma etapa externa: a criação agora exige os três argumentos. Mas exigir dados e receber dados corretos não são a mesma coisa.
 
@@ -315,7 +313,7 @@ Essa estratégia não comunica ao código externo que um argumento foi rejeitado
     2. Qual proposta concentra a regra em todos os pontos de criação?
     3. Quem conhece melhor os estados aceitáveis de `ItemPedido`?
 
-    Escolha uma proposta e prepare uma justificativa. O professor coleta respostas da sala e formaliza a discussão em torno da responsabilidade, sem comparar ainda políticas de falha. Não é necessário entregar a resposta.
+    Escolha uma proposta e justifique sua decisão com base em quem conhece e deve preservar a regra. Não compare ainda políticas de comunicação da falha.
 
 !!! conceito-chave "Conceito-chave — invariante"
 
@@ -329,7 +327,7 @@ O construtor organiza a criação; a validação impede que os argumentos sejam 
 
 Usamos `ItemPedido` porque ele dá continuidade ao projeto. Para verificar se compreendemos a ideia, vamos transferi-la sem implementar outra classe completa.
 
-<!-- aprofundamento-elastico: encurtar a transferência conforme o ritmo da turma -->
+<!-- aprofundamento-elastico -->
 
 Considere uma `Reserva` que precisa nascer com um número de pessoas e um valor de diária:
 
@@ -337,7 +335,7 @@ Considere uma `Reserva` que precisa nascer com um número de pessoas e um valor 
 Reserva reserva = new Reserva(4, 180.0);
 ```
 
-Antes da síntese, formule respostas para estas perguntas:
+Antes da síntese, registre respostas para estas perguntas:
 
 1. quais informações a reserva precisa receber na criação?
 2. uma reserva para `-2` pessoas deveria ser possível?
@@ -346,8 +344,6 @@ Antes da síntese, formule respostas para estas perguntas:
 5. que resultado rápido mostraria que a proteção funcionou?
 
 Não desenvolva a implementação completa. A transferência serve para testar se a responsabilidade pelo estado inicial continua fazendo sentido fora de `ItemPedido`.
-
-O professor espera respostas da turma, explora justificativas diferentes e fecha a transferência coletivamente.
 
 ## Fechando a trajetória
 
