@@ -178,7 +178,7 @@ Ouvir formulações da turma. Precisamos agora nomear o valor que faz essa liga�
 ## Precisamos nomear essa relação
 
 ```text
-item1 ─────► objeto ItemPedido
+item1 ─────► ItemPedido#1
 ```
 
 O que a variável mantém para permitir o acesso ao objeto?
@@ -207,8 +207,9 @@ Formalização curta, depois da necessidade. Reforçar que é um modelo suficien
 
 ## Uma variável, um acesso
 
-<div class="refs">
-  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = 2</div></div>
+<div class="poo-diagram">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade = 2</div></div></div>
 </div>
 
 <!--
@@ -239,9 +240,10 @@ Não dizer que “Java copia o objeto”. Separar com precisão a atribuição d
 
 ## Duas variáveis, um objeto
 
-<div class="refs shared">
-  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = 7</div></div>
-  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade = 7</div></div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div>
 </div>
 
 <!--
@@ -306,9 +308,10 @@ Resposta esperada: duas variáveis, um objeto. A segunda linha não contém new.
 
 ## Cenário A — duas referências
 
-<div class="refs shared">
-  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto 1</div>
-  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div>
 </div>
 
 <div class="key-point">Duas variáveis. Um objeto.</div>
@@ -342,9 +345,9 @@ Resposta esperada: duas variáveis, dois objetos. Pedir que apontem as duas cria
 
 ## Cenário B — objetos distintos
 
-<div class="refs">
-  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1</div>
-  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2</div>
+<div class="poo-diagram">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#1</div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#2</div></div>
 </div>
 
 <div class="key-point">Duas variáveis. Dois objetos.</div>
@@ -396,8 +399,8 @@ Perguntar o que podemos dizer sobre os estados e sobre a quantidade de objetos.
 ## Estados equivalentes
 
 <div class="columns">
-<div class="identity-card"><strong>objeto 1</strong><div class="state">descricao = "Teclado"<br>quantidade = 2</div></div>
-<div class="identity-card"><strong>objeto 2</strong><div class="state">descricao = "Teclado"<br>quantidade = 2</div></div>
+<div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">quantidade = 2</div></div></div>
+<div class="poo-object"><div class="poo-object__header">ItemPedido#2</div><div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">quantidade = 2</div></div></div>
 </div>
 
 <div class="key-point">Os valores observados são iguais.</div>
@@ -441,9 +444,9 @@ Formalização como ponto de chegada. Relacionar aos dois usos de new.
 
 ## Mesmo estado, identidades diferentes
 
-<div class="refs">
-  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1<div class="state-line">"Teclado", 2</div></div>
-  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2<div class="state-line">"Teclado", 2</div></div>
+<div class="poo-diagram">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">quantidade = 2</div></div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#2</div><div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">quantidade = 2</div></div></div>
 </div>
 
 <!--
@@ -493,9 +496,10 @@ Esperar true e exigir justificativa pela referência copiada.
 
 <div class="result">true</div>
 
-<div class="refs shared">
-  <div class="var">item1</div><div class="arrow">↘</div><div class="object">objeto 1</div>
-  <div class="var second">item2</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div>
 </div>
 
 <!--
@@ -531,9 +535,9 @@ Esperar false e pedir que localizem as duas criações.
 
 <div class="result">false</div>
 
-<div class="refs">
-  <div class="var">item1</div><div class="arrow">→</div><div class="object">objeto 1</div>
-  <div class="var">item2</div><div class="arrow">→</div><div class="object">objeto 2</div>
+<div class="poo-diagram">
+  <div class="poo-var">item1</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#1</div></div>
+  <div class="poo-var">item2</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#2</div></div>
 </div>
 
 <!--
@@ -604,13 +608,14 @@ Atividade em dupla. Pedir um diagrama com setas e justificativa usando new, refe
 
 ## O diagrama explica o código
 
-<div class="refs shared">
-  <div class="var">a</div><div class="arrow">↘</div><div class="object">objeto 1<div class="state-line">quantidade = 4</div></div>
-  <div class="var second">b</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">a</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade = 4</div></div></div>
+  <div class="poo-var">b</div><div class="poo-arrow"></div>
 </div>
 
-<div class="refs" style="margin-top: 0.55em;">
-  <div class="var">c</div><div class="arrow">→</div><div class="object">objeto 2<div class="state-line">quantidade = 2</div></div>
+<div class="poo-diagram" style="margin-top: 0.55em;">
+  <div class="poo-var">c</div><div class="poo-arrow"></div><div class="poo-object"><div class="poo-object__header">ItemPedido#2</div><div class="poo-slots"><div class="poo-slot">quantidade = 2</div></div></div>
 </div>
 
 <!--

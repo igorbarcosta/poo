@@ -50,7 +50,7 @@ Em cada incremento, use como referência:
 
 **prever → modificar → executar → observar → compreender**
 
-Faça previsões breves antes das mudanças e compare-as com os resultados. Elas podem ficar em papel, rascunho ou conversa durante o acompanhamento. Você entregará somente o código final solicitado.
+Faça previsões breves antes das mudanças e compare-as com os resultados. Elas podem ficar em papel ou rascunho. Você entregará somente o código final solicitado.
 
 ## Evolução do projeto
 
@@ -76,31 +76,30 @@ Ao final deste incremento, descrição e preço já possuem um lugar próprio no
 
 ### Incremento B — Fazer o item conhecer um produto
 
-Agora reorganize `ItemPedido`. Substitua os campos `descricao` e `precoUnitario` por:
+Agora reorganize `ItemPedido`:
 
-```java
-private Produto produto;
-```
+- substitua os campos `descricao` e `precoUnitario` por um campo privado que mantenha uma referência para `Produto`;
+- preserve o campo privado `quantidade`;
+- altere o construtor para receber um `Produto` e uma quantidade;
+- mantenha a validação da quantidade;
+- adicione uma operação que permita consultar a referência mantida pelo item.
 
-Preserve o campo privado `quantidade`. Altere o construtor para receber um `Produto` e uma quantidade:
+??? tip "Dica"
 
-```java
-public ItemPedido(Produto produto, int quantidade) {
-    this.produto = produto;
+    O campo e o início do construtor podem ser:
 
-    if (quantidade >= 0) {
-        this.quantidade = quantidade;
+    ```java
+    private Produto produto;
+
+    public ItemPedido(Produto produto, int quantidade) {
+        this.produto = produto;
+        // preserve aqui a validação da quantidade
     }
-}
-```
 
-Adicione uma operação para consultar a referência mantida pelo item:
-
-```java
-public Produto getProduto() {
-    return produto;
-}
-```
+    public Produto getProduto() {
+        return produto;
+    }
+    ```
 
 Remova de `ItemPedido` as operações de consulta que existiam apenas para seus antigos campos de descrição e preço. Antes de compilar, preveja quais pontos de `Main` deixarão de funcionar por ainda usarem o construtor e as consultas da Versão 5.
 
@@ -118,20 +117,18 @@ ItemPedido itemObservado = itemPrincipal;
 ItemPedido itemIndependente = new ItemPedido(teclado, 1);
 ```
 
-Adapte as demais leituras de descrição e preço para consultar primeiro o produto do item. Por exemplo:
+Adapte as demais leituras de descrição e preço para consultar primeiro o produto do item. Por fim, altere `calcularSubtotal()` para que `ItemPedido` solicite ao produto o preço necessário.
 
-```java
-itemPrincipal.getProduto().getDescricao()
-itemPrincipal.getProduto().getPreco()
-```
+??? tip "Dica"
 
-Por fim, altere `calcularSubtotal()` para que `ItemPedido` solicite ao produto o preço necessário:
+    Para consultar os dados, encadeie as operações a partir do item:
 
-```java
-public double calcularSubtotal() {
-    return produto.getPreco() * quantidade;
-}
-```
+    ```java
+    itemPrincipal.getProduto().getDescricao()
+    itemPrincipal.getProduto().getPreco()
+    ```
+
+    O subtotal pode usar `produto.getPreco()` e a quantidade mantida pelo próprio item.
 
 Antes de executar, preveja:
 
@@ -195,11 +192,24 @@ Execute e confirme que as duas comparações produzem `false`, enquanto o subtot
 - como `ItemPedido` colabora com `Produto` durante `calcularSubtotal()`;
 - por que dois produtos com o mesmo estado ainda podem possuir identidades diferentes.
 
-Essas explicações podem ser demonstradas oralmente durante o acompanhamento e não precisam ser enviadas.
+??? "Ver explicações"
+
+    - Descrição e preço caracterizam `Produto`; quantidade caracteriza a participação específica do produto no item.
+    - O argumento fornece a referência ao parâmetro, que é armazenada no campo do item.
+    - Passar uma referência não executa `new` nem copia o objeto.
+    - `ItemPedido` solicita `getPreco()` ao produto e combina o resultado com sua quantidade.
+    - Expressões `new Produto(...)` diferentes criam identidades distintas, mesmo com valores iguais.
+
+Use os resultados dos incrementos para conferir essas explicações. Elas são autoavaliação e não fazem parte da entrega.
 
 ## Desafio adicional — outra colaboração no mesmo modelo
 
 Se concluir o núcleo, crie um produto diferente, como `Mouse` de preço `80.0`, e dois itens que compartilhem esse produto com quantidades distintas. Antes de executar, preveja as identidades compartilhadas e os subtotais.
+
+??? "Ver resultado esperado"
+
+    - Os dois itens possuem identidades próprias, mas seus campos `produto` chegam ao mesmo objeto `Mouse`.
+    - Cada subtotal deve corresponder a `80.0` multiplicado pela quantidade daquele item.
 
 O desafio não faz parte dos critérios obrigatórios nem exige mudar a estrutura das classes.
 
@@ -210,6 +220,12 @@ Um `Pedido` precisará reunir vários itens e calcular um total. Considere:
 1. de quais colaboradores o pedido precisaria obter os subtotais;
 2. por que o próprio produto não deveria calcular o total do pedido;
 3. qual nova dificuldade aparece quando ainda não sabemos representar vários itens juntos.
+
+??? "Ver resposta"
+
+    1. O pedido precisa obter um subtotal de cada `ItemPedido`.
+    2. `Produto` conhece seu preço, mas não conhece o conjunto do pedido nem as quantidades de cada item.
+    3. Falta uma estrutura capaz de manter uma quantidade variável de referências para itens.
 
 Não implemente `Pedido` nem entregue respostas escritas. Essas perguntas deixam explícito o próximo problema do projeto sem antecipar sua solução.
 

@@ -65,6 +65,32 @@ O requisito deve deixar inequívoco **o que** o programa precisa fazer. Isso nã
 
 Sempre que houver liberdade pedagógica de solução, essa liberdade deve ser preservada. Evitar comandos vagos como “registre um segundo item”. Preferir uma descrição que identifique os dados envolvidos e o resultado observável esperado, sem determinar desnecessariamente a organização do código.
 
+### Autonomia antes do código de apoio
+
+O texto principal de um incremento deve pedir a mudança por comportamento, responsabilidade, dados e resultado observável. Não apresentar diretamente a implementação que o estudante precisa produzir.
+
+Quando um trecho de apoio puder evitar bloqueio, colocá-lo imediatamente depois da solicitação em um bloco expansível:
+
+````markdown
+??? tip "Dica"
+
+    ```java
+    // menor trecho suficiente para destravar a implementação
+    ```
+````
+
+A dica é apoio progressivo, não gabarito antecipado. Deve mostrar o mínimo necessário e evitar entregar classes ou incrementos completos quando uma assinatura, expressão ou estrutura parcial for suficiente.
+
+Código pode permanecer visível quando tiver outra função didática claramente identificável:
+
+- estado inicial fornecido para um experimento;
+- cenário de execução que precisa ser reproduzido com dados exatos;
+- assinatura obrigatória que integra partes do projeto;
+- nova sintaxe de Java ainda não consolidada;
+- código defeituoso destinado a leitura, diagnóstico ou correção.
+
+Mesmo nesses casos, mostrar somente o contrato ou ponto de partida indispensável. Resultado esperado e explicação pertencem aos blocos de resposta, não ao bloco `Dica`.
+
 Quando a atividade exigir um projeto configurado, o roteiro deve fornecer a preparação mínima necessária antes da implementação. Em ambientes heterogêneos, evitar dependência desnecessária de uma versão exata do Java, de uma única IDE ou da execução obrigatória pelo terminal, desde que o estudante consiga compilar e executar o projeto com uma versão compatível.
 
 ## Investigação e entrega
@@ -74,9 +100,25 @@ Investigar não implica entregar. Toda atividade deve distinguir com clareza o q
 - Previsões, diagramas, hipóteses, discussões, explicações e anotações podem ser necessários durante a investigação sem compor o artefato de entrega.
 - Quando a entrega for somente código, isso deve ser declarado explicitamente, inclusive informando que os registros da investigação não precisam ser enviados.
 - Critérios de aprendizagem e critérios do artefato entregue não devem ser confundidos. Os critérios de conclusão devem priorizar evidências observáveis no artefato, enquanto a compreensão pode ser verificada separadamente.
-- Quando necessário, o estudante pode demonstrar compreensão oralmente durante o acompanhamento, sem produzir um relatório escrito.
+- O laboratório é autoguiado: compreender não exige explicar respostas ao professor nem aguardar validação oral. Perguntas retóricas, previsões e checkpoints de compreensão devem permitir autoavaliação e trazer resposta, resultado esperado ou explicação possível em bloco expansível imediatamente posterior.
 
 O laboratório deve exigir raciocínio, não relatório. Previsões, tabelas de observação, respostas conceituais e diagramas de raciocínio não se tornam entregáveis apenas porque participam da investigação. Quando a entrega definida for somente código, ela deve continuar sendo somente código.
+
+### Respostas imediatas e expansíveis
+
+Toda pergunta, prática de leitura, previsão, desafio ou reflexão proposta no roteiro deve ser acompanhada de uma resposta, resultado esperado ou critério de verificação no próprio material. A resposta deve aparecer imediatamente depois da proposta, preferencialmente em um bloco expansível nativo:
+
+```markdown
+??? "Ver resposta"
+
+    A resposta, o resultado esperado ou uma forma de verificar aparece aqui.
+```
+
+O bloco permite que o estudante tente raciocinar antes de conferir. A resposta precisa ser facilmente escaneável: usar enumerações correspondentes às perguntas e bullets para resultados ou critérios independentes. Em atividades práticas, a resposta pode ser uma saída esperada, uma mudança de estado, um critério observável ou uma solução possível. Quando houver mais de uma implementação válida, explicitar o que todas precisam satisfazer, sem eliminar a liberdade de projeto.
+
+Esta regra não transforma previsões, respostas e reflexões em entregáveis. O roteiro deve continuar distinguindo o que é necessário para aprender e verificar a atividade do que precisa ser enviado.
+
+Não usar formulações como “explique ao professor”, “demonstre oralmente” ou “aguarde a liberação”. O acompanhamento pode oferecer ajuda durante a execução, mas o roteiro permanente precisa funcionar integralmente sem intervenção docente.
 
 ## Incremento como evolução do programa
 

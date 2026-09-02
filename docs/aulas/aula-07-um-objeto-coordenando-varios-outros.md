@@ -50,6 +50,12 @@ Esse trecho produz `380.0`, mas depende de `Main` conhecer cada item e lembrar d
 
     Para cada alternativa, identifique quais informações o objeto conhece e explique se a responsabilidade combina com aquilo que ele representa.
 
+??? "Ver resposta"
+
+    - **`Produto`:** conhece o preço, mas não representa o conjunto de itens.
+    - **`Main`:** cria os objetos, mas não representa uma regra do domínio.
+    - **`Pedido`:** representa o conjunto; deve manter os itens e coordenar o total, solicitando a cada `ItemPedido` seu subtotal.
+
 `Produto` representa algo que pode participar de muitos pedidos. Ele não deve conhecer todos os itens em que aparece nem o pedido ao qual cada participação pertence.
 
 `Main` pode montar um cenário e iniciar o programa, mas não representa um conceito do domínio. Se as regras do pedido ficarem espalhadas ali, outros pontos do sistema terão de conhecê-las e repeti-las.
@@ -136,36 +142,41 @@ pedido.adicionarItem(itemMouse);
 Cada chamada a `adicionarItem` transmite uma referência já existente. `itens.add(item)` guarda essa referência na lista. Não aparece `new ItemPedido(...)` no método, portanto nenhum item novo é criado e nenhuma cópia automática é feita.
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "stepAfter", "nodeSpacing": 22, "rankSpacing": 44}}}%%
 flowchart LR
-    pedidoVar["<span style='color:#7A1B1B!important'>variável pedido<br/>(referência)</span>"]:::referencia
-    tecladoVar["<span style='color:#7A1B1B!important'>variável itemTeclado<br/>(referência)</span>"]:::referencia
-    mouseVar["<span style='color:#7A1B1B!important'>variável itemMouse<br/>(referência)</span>"]:::referencia
+    pedidoVar["pedido"]:::pooVar
+    tecladoVar["itemTeclado"]:::pooVar
+    mouseVar["itemMouse"]:::pooVar
 
-    subgraph pedidoObj["<span style='color:#174EA6!important'>objeto Pedido</span>"]
+    subgraph pedidoObj["Pedido#1"]
         direction TB
-        lista["<span style='color:#7A1B1B!important'>campo itens<br/>(referência para a lista)</span>"]:::referencia
+        listaRef["itens"]:::pooRefSlot
     end
 
-    subgraph listaObj["<span style='color:#174EA6!important'>objeto ArrayList</span>"]
+    subgraph listaObj["ArrayList&lt;ItemPedido&gt;#1"]
         direction TB
-        refTeclado["<span style='color:#7A1B1B!important'>elemento 0<br/>(referência)</span>"]:::referencia
-        refMouse["<span style='color:#7A1B1B!important'>elemento 1<br/>(referência)</span>"]:::referencia
+        refTeclado["[0]"]:::pooRefSlot
+        refMouse["[1]"]:::pooRefSlot
     end
 
-    itemTeclado["<span style='color:#174EA6!important'>objeto ItemPedido<br/>quantidade = 2</span>"]:::objeto
-    itemMouse["<span style='color:#174EA6!important'>objeto ItemPedido<br/>quantidade = 1</span>"]:::objeto
+    subgraph itemTecladoObj["ItemPedido#1"]
+        direction TB
+        quantidadeTeclado["quantidade = 2"]:::pooValueSlot
+    end
+
+    subgraph itemMouseObj["ItemPedido#2"]
+        direction TB
+        quantidadeMouse["quantidade = 1"]:::pooValueSlot
+    end
 
     pedidoVar --> pedidoObj
-    lista --> listaObj
-    tecladoVar --> itemTeclado
-    mouseVar --> itemMouse
-    refTeclado --> itemTeclado
-    refMouse --> itemMouse
+    listaRef --> listaObj
+    tecladoVar --> itemTecladoObj
+    mouseVar --> itemMouseObj
+    refTeclado --> itemTecladoObj
+    refMouse --> itemMouseObj
 
-    classDef referencia fill:#FCE8E6,stroke:#C5221F,color:#7A1B1B!important,stroke-width:2px
-    classDef objeto fill:#E8F0FE,stroke:#4285F4,color:#174EA6!important,stroke-width:2px
-    style pedidoObj fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
-    style listaObj fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
+    class pedidoObj,listaObj,itemTecladoObj,itemMouseObj pooObject
 ```
 
 !!! activity "Atividade — acompanhe as referências"
@@ -176,6 +187,13 @@ flowchart LR
     2. a variável `itemTeclado` e o primeiro elemento da lista permitem chegar a qual objeto?
     3. alterar o estado de `itemTeclado` por uma operação pública seria percebido ao acessar o item pela lista? Por quê?
     4. o que aconteceria se `itemTeclado` fosse adicionado uma segunda vez?
+
+??? "Ver resposta"
+
+    1. As chamadas a `adicionarItem` não criam objetos; os dois `ItemPedido` já existiam.
+    2. `itemTeclado` e o primeiro elemento da lista chegam à mesma identidade.
+    3. Uma alteração feita por uma referência será observada pela outra, pois ambas apontam para o mesmo item.
+    4. Se `itemTeclado` for adicionado novamente, duas posições da lista apontarão para a mesma identidade.
 
 As chamadas não criam nenhum `ItemPedido`: elas guardam referências para os dois objetos que já existiam. Se o mesmo item for adicionado novamente, a lista terá duas posições apontando para a mesma identidade. A lista não impede isso automaticamente; decidir se a repetição deve ser aceita é uma regra de domínio que não precisamos acrescentar nesta etapa.
 
@@ -222,8 +240,8 @@ Leia agora o fluxo completo de responsabilidades:
 sequenceDiagram
     participant C as Código cliente
     participant P as Pedido
-    participant I as ItemPedido
-    participant R as Produto
+    participant I as item atual : ItemPedido
+    participant R as produto do item : Produto
 
     C->>P: calcularTotal()
     loop para cada item
@@ -250,6 +268,14 @@ No cenário anterior:
     3. qual objeto conhece a quantidade usada em cada multiplicação?
     4. qual objeto conhece o conjunto completo de subtotais que precisam ser somados?
     5. qual é o resultado de `new Pedido().calcularTotal()`?
+
+??? "Ver resposta"
+
+    1. `ItemPedido.calcularSubtotal()` é chamado duas vezes.
+    2. `Produto.getPreco()` também é chamado duas vezes.
+    3. Cada `ItemPedido` conhece a quantidade usada em sua multiplicação.
+    4. `Pedido` conhece o conjunto de subtotais que precisam ser somados.
+    5. `new Pedido().calcularTotal()` não entra no laço e devolve `0.0`.
 
 Para dois itens, cada uma das duas operações é chamada duas vezes. Cada item conhece sua quantidade; cada produto fornece seu preço; somente o pedido conhece o conjunto de itens a percorrer. Em um pedido vazio, o laço não executa nenhuma repetição e o total permanece `0.0`.
 
@@ -282,7 +308,7 @@ Na solução por colaboração, `Pedido` conhece apenas o comportamento de que p
 
 <!-- aprofundamento-elastico -->
 
-Uma `Turma` reúne vários objetos `Aluno`. Cada aluno conhece suas próprias notas e sabe calcular sua média. A turma precisa contar quantos alunos estão aprovados.
+Uma `Turma` reúne vários objetos `Aluno`. Cada aluno conhece suas próprias notas e a regra que determina sua aprovação. A turma precisa contar quantos alunos estão aprovados.
 
 Sem implementar as classes, proponha:
 
@@ -291,7 +317,19 @@ Sem implementar as classes, proponha:
 3. qual objeto percorre a coleção;
 4. por que a turma não deveria recalcular diretamente a média de cada aluno.
 
-A estrutura se transfere sem depender de pedidos: um objeto conhece o conjunto, percorre seus colaboradores e solicita a cada um o comportamento que lhe pertence.
+??? "Ver resposta"
+
+    1. `Turma` deve manter a lista de alunos.
+    2. Para cada aluno, solicita `estaAprovado()`.
+    3. A própria `Turma` percorre a coleção.
+    4. `Turma` não acessa notas nem recalcula a média para decidir a aprovação. O estado e a regra de aprovação pertencem a `Aluno`; o papel da turma é coordenar os colaboradores e contar os resultados.
+
+A estrutura se transfere sem depender de pedidos:
+
+- `Pedido` percorre `ItemPedido` e solicita `calcularSubtotal()`;
+- `Turma` percorre `Aluno` e solicita `estaAprovado()`.
+
+Nos dois casos, o coordenador conhece o conjunto e organiza as chamadas, mas não absorve a responsabilidade de seus colaboradores.
 
 ## Fechando a trajetória
 

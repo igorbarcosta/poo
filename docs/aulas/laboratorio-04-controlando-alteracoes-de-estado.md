@@ -42,7 +42,7 @@ O novo requisito é:
 
 ## Como conduzir a investigação
 
-Em cada experimento, preserve o ciclo **prever → executar → observar → explicar**. As previsões podem ser breves e feitas em papel, rascunho, comentário temporário no código ou durante a conversa com sua dupla e com o professor. Não mude uma previsão depois de conhecer o resultado: compare as duas coisas.
+Em cada experimento, preserve o ciclo **prever → executar → observar → explicar**. As previsões podem ser breves e feitas em papel, rascunho ou comentário temporário no código. Não mude uma previsão depois de conhecer o resultado: compare as duas coisas.
 
 Previsões, mensagens de erro, classificações, anotações e explicações fazem parte da investigação, mas não da entrega. Ao final, você enviará somente o código-fonte solicitado.
 
@@ -82,7 +82,11 @@ Antes de corrigir, observe:
 3. o que as mensagens informam sobre o acesso a `quantidade`;
 4. quais dependências de `Main` em relação ao campo exposto ficaram visíveis.
 
-Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na forma de acesso oferecida pela classe. Consiga explicar essa relação à sua dupla ou ao professor; não é necessário enviar as mensagens nem uma análise por escrito.
+Os erros fazem parte do experimento. Eles mostram o alcance de uma mudança na forma de acesso oferecida pela classe. Não é necessário enviar as mensagens nem uma análise por escrito.
+
+??? "Ver explicação"
+
+    Ao tornar o campo privado, a classe muda sua fronteira de acesso. As linhas de `Main` que liam ou alteravam diretamente `quantidade` deixam de compilar e revelam quais dependências precisam ser substituídas por operações públicas.
 
 ### Incremento C — Planejar a reparação
 
@@ -140,7 +144,7 @@ Antes da sequência de testes, compile, execute e confirme este estado-base:
 
 Só avance quando as quatro verificações forem atendidas.
 
-Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute, observe e explique o resultado à sua dupla ou ao professor.
+Antes de cada execução, preveja o que será consultado pelas duas variáveis. Depois execute, observe e formule uma explicação antes de abrir a resposta.
 
 1. Use `itemObservado.aumentarQuantidade(-10)`.
 2. Consulte a quantidade e o subtotal por `itemPrincipal` e `itemObservado`.
@@ -158,6 +162,10 @@ O resultado esperado é:
 
 Antes de avançar, confirme que você consegue explicar por que a alteração válida continua visível pelas duas referências e por que a tentativa inválida não muda o objeto.
 
+??? "Ver explicação"
+
+    As duas referências chegam ao mesmo objeto, então ambas observam qualquer alteração aceita. A tentativa negativa não muda o estado porque `aumentarQuantidade` rejeita unidades que não sejam positivas.
+
 ### Incremento G — Confirmar o contraste com outro objeto
 
 Use `itemIndependente`, que foi criado com outra execução de `new ItemPedido()`, e confirme que ele continua independente:
@@ -165,7 +173,11 @@ Use `itemIndependente`, que foi criado com outra execução de `new ItemPedido()
 1. aumente sua quantidade em um valor positivo;
 2. consulte seu estado e o de `itemPrincipal`;
 3. verifique novamente `itemPrincipal == itemIndependente`;
-4. explique à sua dupla ou ao professor por que a regra é preservada separadamente em cada objeto.
+4. formule por que a regra é preservada separadamente em cada objeto.
+
+??? "Ver explicação"
+
+    Cada objeto mantém seu próprio campo privado e executa a regra em suas próprias operações. Alterar um deles não modifica o estado da outra identidade.
 
 Agora há duas conclusões que precisam conviver:
 
@@ -194,9 +206,17 @@ Agora há duas conclusões que precisam conviver:
 - por que um `setQuantidade(...)` irrestrito não resolve sozinho o problema;
 - o que encapsulamento significa neste exemplo.
 
-Essas explicações podem ser demonstradas oralmente durante o acompanhamento e não precisam ser enviadas.
+??? "Ver explicações"
 
-Ao concluir corretamente, verifique os critérios, envie a atividade e aguarde a liberação do professor.
+    - Os acessos diretos deixam de compilar porque `private` restringe o campo à própria classe.
+    - Duas referências continuam chegando ao mesmo objeto e observando o mesmo estado.
+    - `private` muda a fronteira de acesso, não a identidade.
+    - Um setter irrestrito ainda permitiria estados contrários às regras do objeto.
+    - Encapsular é fazer as alterações passarem por operações que preservam as regras do estado.
+
+Use os resultados e as respostas expansíveis para conferir essas explicações. Elas são autoavaliação e não fazem parte da entrega.
+
+Ao concluir, verifique os critérios e envie a atividade.
 
 ## Desafio opcional — Reduzindo quantidade com segurança
 

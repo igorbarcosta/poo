@@ -57,6 +57,23 @@ Não escrever na página “espere a discussão”, “o professor coleta”, �
 
 Essa orientação não se aplica como restrição aos laboratórios. Neles, investigação conjunta, previsão compartilhada, ajuda entre pares e comparação entre implementações podem ocorrer naturalmente quando servirem ao objetivo prático.
 
+### Respostas imediatas e expansíveis
+
+Toda pergunta que solicitar uma previsão, explicação, comparação, decisão ou transferência deve ser acompanhada de uma resposta no próprio roteiro. A resposta deve aparecer imediatamente depois da pergunta ou atividade, para que o estudante não precise procurá-la em outra seção.
+
+Quando houver uma resposta esperada, usar preferencialmente um bloco expansível nativo:
+
+```markdown
+??? "Ver resposta"
+
+    1. A primeira resposta aparece aqui.
+    2. A segunda aparece na mesma ordem das perguntas.
+```
+
+O estudante deve poder tentar responder mentalmente antes de expandir o bloco. A resposta precisa ser facilmente escaneável: quando houver várias perguntas ou informações independentes, usar enumerações ou bullets e manter a correspondência entre pergunta e resposta. Para questões abertas, apresentar uma resposta possível, os critérios de raciocínio que a sustentam ou as alternativas aceitáveis; não transformar uma decisão de modelagem em uma única resposta correta quando o problema comportar mais de uma solução justificada.
+
+Essa regra vale também para perguntas narrativas, desafios, práticas de leitura e atividades conceituais. Código executável deve vir acompanhado do resultado ou comportamento esperado quando a página solicitar uma previsão. Uma pergunta pode permanecer retórica somente quando a resposta estiver imediatamente formalizada no texto seguinte e não houver expectativa de produção independente do estudante.
+
 ## Piloto da oferta 2026.2 — granularidade por blocos didáticos
 
 Esta seção registra uma hipótese experimental para as Aulas 05, 06 e 07 da oferta atual. Ela não altera retroativamente as Aulas 01–04 nem estabelece uma regra permanente da disciplina. Depois da Aula 07, uma retrospectiva específica deve avaliar a experiência antes de decidir se o padrão será mantido, ajustado ou abandonado.
@@ -142,20 +159,11 @@ Essas diretrizes apoiam a clareza sem impor uniformidade artificial.
 ### Diagramas de referências e objetos
 
 Quando um diagrama representar o estado de execução de um programa orientado a
-objetos, usar uma notação pequena e consistente:
-
-- representar cada objeto como um contêiner identificado por sua classe;
-- mostrar dentro do contêiner somente os campos relevantes para o raciocínio;
-- representar variáveis e campos que guardam referências como caixas vermelhas,
-  sempre acompanhadas dos rótulos `variável`, `campo` e `referência`, para que a
-  distinção não dependa apenas da cor;
-- fazer cada seta partir da variável ou do campo que guarda a referência e apontar
-  para o objeto acessado; nesse tipo de diagrama, a seta significa somente
-  **aponta para**;
-- comunicar que um campo pertence a um objeto por contenção, nunca por uma seta;
-- mostrar valores primitivos como campos neutros dentro do objeto;
-- omitir detalhes de memória, JVM e estado que não contribuam para a pergunta em
-  discussão.
+objetos, seguir o design system registrado em
+[`padrao-diagramas-poo.md`](padrao-diagramas-poo.md). A estrutura visual deve
+distinguir variáveis, objetos, slots de referência, valores e coleções sem repetir
+essas categorias em todos os rótulos. Preservar contenção para pertencimento,
+setas somente para “aponta para” e fluxo preferencial da esquerda para a direita.
 
 Uma visão simplificada pode omitir os campos e ligar objetos diretamente apenas
 quando o grafo de objetos for o único foco. Não usá-la quando a aprendizagem

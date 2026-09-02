@@ -74,6 +74,7 @@ Repetição é útil quando muda a operação cognitiva do estudante, por exempl
 - Alinhar código à esquerda e manter o fundo escuro atual.
 - Simular arquivo, trecho, console ou mensagem de compilação sem copiar a interface de uma IDE.
 - Preferir diagramas simples quando relações espaciais comunicarem melhor que prosa, especialmente entre variável, referência e objeto.
+- Diagramas de estado de objetos e referências devem seguir [`padrao-diagramas-poo.md`](padrao-diagramas-poo.md) e usar os componentes `.poo-*` fornecidos pelo tema compartilhado.
 - Verificar contraste, espaço em branco, geometria estável e ausência de overflow em todas as miniaturas.
 - Quando ocorrer overflow, revisar primeiro a densidade: dividir frames, remover redundância ou deixar detalhes no roteiro. Reduzir fonte é uma alternativa posterior, não a resposta automática.
 

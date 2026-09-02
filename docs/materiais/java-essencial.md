@@ -218,6 +218,39 @@ ItemPedido item = new ItemPedido(teclado, 2);
 
 Passar o objeto como argumento não executa `new Produto(...)` nem cria automaticamente uma cópia. O campo do item e a variável `teclado` podem permitir acesso ao mesmo objeto `Produto`.
 
+## Listas e percurso de objetos
+
+`List<ItemPedido>` declara uma coleção em sequência cujos elementos são referências para objetos `ItemPedido`. `ArrayList` fornece uma implementação concreta dessa lista:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+private List<ItemPedido> itens;
+
+public Pedido() {
+    itens = new ArrayList<>();
+}
+```
+
+Use `add` para guardar na lista a referência recebida:
+
+```java
+public void adicionarItem(ItemPedido item) {
+    itens.add(item);
+}
+```
+
+O `for` aprimorado percorre essas referências uma de cada vez:
+
+```java
+for (ItemPedido item : itens) {
+    total += item.calcularSubtotal();
+}
+```
+
+Leia: “para cada `ItemPedido`, chamado temporariamente de `item`, presente em `itens`”. Adicionar ou percorrer um elemento não cria automaticamente uma cópia do objeto.
+
 O método `calcularSubtotal()` mostra uma colaboração simples: o item solicita ao produto o preço que pertence ao estado do produto e combina essa informação com sua própria quantidade.
 
 ## Controle de acesso e alteração do estado

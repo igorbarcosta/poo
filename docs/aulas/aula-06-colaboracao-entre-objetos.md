@@ -54,6 +54,13 @@ Qual é o preço do teclado nesse modelo: `150.0` ou `160.0`?
     3. quem conhece o preço?
     4. quem conhece a quantidade?
 
+??? "Ver resposta"
+
+    1. Descrição e preço continuam fazendo sentido em `Produto`.
+    2. A quantidade varia entre os itens de um mesmo produto e pertence a `ItemPedido`.
+    3. `Produto` conhece o preço.
+    4. `ItemPedido` conhece a quantidade e mantém uma referência para o produto.
+
 Uma distribuição possível começa a aparecer:
 
 - `Produto` mantém sua descrição e seu preço;
@@ -122,31 +129,29 @@ Nesta aula, consideramos que o parâmetro `produto` recebe uma referência para 
 
 O campo `produto` não contém uma descrição nem um preço copiado. Ele mantém uma referência que permite ao item chegar a um objeto `Produto`.
 
-Nos diagramas desta aula, caixas vermelhas representam variáveis ou campos que guardam referências relevantes para acompanhar os objetos do modelo. Cada seta parte desse lugar e aponta para o objeto ao qual a referência permite chegar. Para manter o foco nessa colaboração, `String` aparece como um valor conceitual do domínio, embora também seja um tipo de referência em Java.
+Neste diagrama, a caixa vermelha pequena representa uma variável; os contêineres azuis representam objetos; as linhas internas representam campos; e cada seta significa **aponta para**. Para manter o foco nessa colaboração, `String` aparece como um valor conceitual do domínio, embora também seja um tipo de referência em Java.
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "stepAfter", "nodeSpacing": 24, "rankSpacing": 48}}}%%
 flowchart LR
-    item["<span style='color:#7A1B1B!important'>variável item<br/>(referência)</span>"]:::referencia
+    item["item"]:::pooVar
 
-    subgraph itemPedido["<span style='color:#174EA6!important'>objeto ItemPedido</span>"]
+    subgraph itemPedido["ItemPedido"]
         direction TB
-        campoProduto["<span style='color:#7A1B1B!important'>campo produto<br/>(referência)</span>"]:::referencia
-        quantidade["<span style='color:#1F2937!important'>campo quantidade<br/>(int)</span>"]:::valor
+        produtoRef["produto"]:::pooRefSlot
+        quantidade["quantidade: int"]:::pooValueSlot
     end
 
-    subgraph produto["<span style='color:#174EA6!important'>objeto Produto</span>"]
+    subgraph produto["Produto"]
         direction TB
-        descricao["<span style='color:#1F2937!important'>campo descricao<br/>(String)</span>"]:::valor
-        preco["<span style='color:#1F2937!important'>campo preco<br/>(double)</span>"]:::valor
+        descricao["descricao: String"]:::pooValueSlot
+        preco["preco: double"]:::pooValueSlot
     end
 
     item --> itemPedido
-    campoProduto --> produto
+    produtoRef --> produto
 
-    classDef referencia fill:#FCE8E6,stroke:#C5221F,color:#7A1B1B!important,stroke-width:2px
-    classDef valor fill:#FFFFFF,stroke:#6B7280,color:#1F2937!important
-    style itemPedido fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
-    style produto fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
+    class itemPedido,produto pooObject
 ```
 
 !!! java-focus "Java em foco — um tipo de classe também pode ser tipo de campo"
@@ -196,6 +201,13 @@ O produto fornece uma informação que lhe pertence. O item preserva a responsab
 
     O subtotal esperado é `450.0`. Confira se sua explicação percorre a consulta ao preço do produto e o uso da quantidade mantida pelo item.
 
+??? "Ver resposta"
+
+    1. `Produto` fornece o preço porque essa informação pertence ao seu estado.
+    2. Ele não calcula sozinho o subtotal porque não conhece a quantidade do item.
+    3. `ItemPedido` não copia o preço: solicita `produto.getPreco()`.
+    4. O item multiplica `150.0` por sua quantidade `3` e devolve `450.0`.
+
 O novo modelo não eliminou `calcularSubtotal()`. Ele mudou a maneira pela qual o item consegue a informação necessária. A operação agora torna visível uma colaboração.
 
 <!-- bloco-didatico: 6.3 | estimativa: 25–30 min -->
@@ -218,6 +230,13 @@ ItemPedido item = new ItemPedido(teclado, 2);
     3. qual expressão criaria de fato outro produto com outra identidade?
     4. qual resultado você prevê para `teclado == item.getProduto()` e por quê?
 
+??? "Ver resposta"
+
+    1. Foram criados dois objetos do modelo: um `Produto` e um `ItemPedido`.
+    2. Duas referências chegam ao produto: a variável `teclado` e o campo `produto` do item.
+    3. `new Produto("Teclado", 150.0)` criaria outro produto, com outra identidade.
+    4. `teclado == item.getProduto()` resulta em `true`, pois as duas referências chegam ao mesmo objeto.
+
 As duas expressões `new` mostradas criam explicitamente dois objetos do nosso modelo: um `Produto` e um `ItemPedido`.
 
 Na segunda linha, o argumento `teclado` fornece ao parâmetro `produto` do construtor a referência que já permite chegar ao produto existente:
@@ -232,30 +251,28 @@ public ItemPedido(Produto produto, int quantidade) {
 O parâmetro recebe a referência; a atribuição guarda essa referência no campo do novo item. Não aparece `new Produto(...)` dentro do construtor, portanto nenhum segundo produto é criado.
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "stepAfter", "nodeSpacing": 24, "rankSpacing": 48}}}%%
 flowchart LR
-    teclado["<span style='color:#7A1B1B!important'>variável teclado<br/>(referência)</span>"]:::referencia
-    item["<span style='color:#7A1B1B!important'>variável item<br/>(referência)</span>"]:::referencia
+    teclado["teclado"]:::pooVar
+    item["item"]:::pooVar
 
-    subgraph itemPedido["<span style='color:#174EA6!important'>objeto ItemPedido</span>"]
+    subgraph itemPedido["ItemPedido#1"]
         direction TB
-        campoProduto["<span style='color:#7A1B1B!important'>campo produto<br/>(referência)</span>"]:::referencia
-        quantidade["<span style='color:#1F2937!important'>quantidade = 2</span>"]:::valor
+        produtoRef["produto"]:::pooRefSlot
+        quantidade["quantidade = 2"]:::pooValueSlot
     end
 
-    subgraph produto["<span style='color:#174EA6!important'>objeto Produto</span>"]
+    subgraph produto["Produto#1"]
         direction TB
-        descricao["<span style='color:#1F2937!important'>descricao = Teclado</span>"]:::valor
-        preco["<span style='color:#1F2937!important'>preco = 150.0</span>"]:::valor
+        descricao["descricao = &quot;Teclado&quot;"]:::pooValueSlot
+        preco["preco = 150.0"]:::pooValueSlot
     end
 
     teclado --> produto
     item --> itemPedido
-    campoProduto --> produto
+    produtoRef --> produto
 
-    classDef referencia fill:#FCE8E6,stroke:#C5221F,color:#7A1B1B!important,stroke-width:2px
-    classDef valor fill:#FFFFFF,stroke:#6B7280,color:#1F2937!important
-    style itemPedido fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
-    style produto fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6!important
+    class itemPedido,produto pooObject
 ```
 
 Podemos verificar a identidade compartilhada:
@@ -294,6 +311,14 @@ Registre uma proposta e sua justificativa:
 3. quem deve calcular o total da estadia?
 4. de qual informação esse objeto precisa solicitar ao colaborador?
 5. quantos objetos são criados nesse trecho?
+
+??? "Ver resposta"
+
+    1. `Quarto` deve conhecer o valor da diária.
+    2. `Reserva` deve conhecer a quantidade de noites.
+    3. `Reserva` deve calcular o total da estadia.
+    4. Para isso, solicita ao quarto o valor da diária.
+    5. As duas expressões `new` criam dois objetos do modelo: um `Quarto` e uma `Reserva`.
 
 Use suas respostas para verificar se a distribuição de responsabilidades continua fazendo sentido em outro domínio, sem desenvolver as classes completas.
 

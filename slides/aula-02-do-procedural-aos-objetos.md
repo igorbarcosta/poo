@@ -384,9 +384,9 @@ Tratar como criação e preenchimento de um objeto. Por enquanto, basta a leitur
 
 ## Estado do objeto usado por `item1`
 
-<div class="concept-card">
-<strong>objeto ItemPedido</strong>
-<div class="state">descricao = "Teclado"<br>precoUnitario = 150.0<br>quantidade = 2</div>
+<div class="poo-object">
+<div class="poo-object__header">ItemPedido#1</div>
+<div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">precoUnitario = 150.0</div><div class="poo-slot">quantidade = 2</div></div>
 </div>
 
 <!--
@@ -436,8 +436,8 @@ Esperar respostas. Não discutir ainda identidade nem o papel das variáveis.
 ## Estrutura comum, estados próprios
 
 <div class="columns">
-<div class="concept-card"><strong>objeto usado por <code>item1</code></strong><div class="state">"Teclado"<br>150.0<br>2</div></div>
-<div class="concept-card"><strong>objeto usado por <code>item2</code></strong><div class="state">"Mouse"<br>80.0<br>3</div></div>
+<div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">descricao = "Teclado"</div><div class="poo-slot">precoUnitario = 150.0</div><div class="poo-slot">quantidade = 2</div></div></div>
+<div class="poo-object"><div class="poo-object__header">ItemPedido#2</div><div class="poo-slots"><div class="poo-slot">descricao = "Mouse"</div><div class="poo-slot">precoUnitario = 80.0</div><div class="poo-slot">quantidade = 3</div></div></div>
 </div>
 
 <div class="key-point">Uma classe pode originar vários objetos com estados diferentes.</div>

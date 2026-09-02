@@ -32,6 +32,51 @@
   --section: #2b5fb8;
   --surface: #f8fafc;
   --code: #101827;
+  --poo-ref-border: #b43a32;
+  --poo-ref-text: #7f2520;
+  --poo-ref-bg: #fff8f7;
+  --poo-object-border: #4f86d9;
+  --poo-object-header-bg: #eaf2ff;
+  --poo-object-header-border: #b8d2f5;
+  --poo-object-header-text: #24558f;
+  --poo-object-bg: #fdfefe;
+  --poo-value-border: #d5dde8;
+  --poo-value-bg: #f5f7fa;
+  --poo-value-text: #243044;
+  --poo-arrow: #a8322c;
+  --poo-diagram-text: #243044;
+  --poo-diagram-muted: #526178;
+  --poo-diagram-shadow: rgb(31 45 61 / 10%);
+}
+
+section.poo-dark,
+.poo-theme-dark {
+  --poo-ref-border: #ef8c84;
+  --poo-ref-text: #ffc1bb;
+  --poo-ref-bg: #2d2022;
+  --poo-object-border: #83aef2;
+  --poo-object-header-bg: #203a5b;
+  --poo-object-header-border: #496b94;
+  --poo-object-header-text: #d0e1ff;
+  --poo-object-bg: #18232f;
+  --poo-value-border: #435165;
+  --poo-value-bg: #222e3b;
+  --poo-value-text: #e6edf6;
+  --poo-arrow: #ff9a91;
+  --poo-diagram-text: #e6edf6;
+  --poo-diagram-muted: #b1bece;
+  --poo-diagram-shadow: rgb(0 0 0 / 28%);
+}
+
+/* Classe Marp usada para slides escuros e para validar os mesmos diagramas.
+ * Os componentes e sua semântica não mudam; apenas os tokens do tema mudam. */
+section.poo-dark {
+  --accent: #8ab4f8;
+  --ink: #e6edf6;
+  --muted: #b1bece;
+  --surface: #111923;
+  background: var(--surface);
+  color: var(--ink);
 }
 
 section {
@@ -432,6 +477,152 @@ section.compact-code pre {
   color: var(--blue-dark);
 }
 
+/* Design system para diagramas de objetos e referências.
+ * A estrutura comunica a semântica; os rótulos mostram apenas nomes e valores. */
+.poo-diagram {
+  align-items: center;
+  display: grid;
+  gap: 22px 26px;
+  grid-template-columns: max-content 72px minmax(260px, 1fr);
+  margin: 0.8em auto 0;
+  max-width: 980px;
+  position: relative;
+}
+
+.poo-var {
+  background: var(--poo-ref-bg);
+  border: 2px solid var(--poo-ref-border);
+  border-radius: 8px;
+  color: var(--poo-ref-text);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.82em;
+  font-weight: 700;
+  justify-self: end;
+  min-width: 108px;
+  padding: 0.3em 0.55em;
+  text-align: center;
+}
+
+.poo-arrow {
+  align-items: center;
+  display: flex;
+  height: 2px;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+}
+
+.poo-arrow::before {
+  background: var(--poo-arrow);
+  content: "";
+  height: 2px;
+  inset: 0 7px 0 0;
+  position: absolute;
+}
+
+.poo-arrow::after {
+  border-bottom: 6px solid transparent;
+  border-left: 9px solid var(--poo-arrow);
+  border-top: 6px solid transparent;
+  content: "";
+  position: absolute;
+  right: 0;
+}
+
+.poo-object {
+  background: var(--poo-object-bg);
+  border: 2px solid var(--poo-object-border);
+  border-radius: 10px;
+  box-shadow: 0 5px 14px var(--poo-diagram-shadow);
+  color: var(--poo-diagram-text);
+  min-width: 250px;
+  overflow: hidden;
+}
+
+.poo-object__header {
+  background: var(--poo-object-header-bg);
+  border-bottom: 1px solid var(--poo-object-header-border);
+  color: var(--poo-object-header-text);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.84em;
+  font-weight: 800;
+  padding: 0.38em 0.65em;
+  text-align: left;
+}
+
+.poo-slots {
+  display: grid;
+}
+
+.poo-slot {
+  align-items: center;
+  background: var(--poo-value-bg);
+  border-top: 1px solid var(--poo-value-border);
+  color: var(--poo-value-text);
+  display: flex;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.72em;
+  min-height: 1.75em;
+  padding: 0.3em 0.75em;
+  text-align: left;
+}
+
+.poo-slot:first-child {
+  border-top: 0;
+}
+
+.poo-slot--ref {
+  background: var(--poo-ref-bg);
+  color: var(--poo-ref-text);
+  font-weight: 700;
+}
+
+.poo-slot--ref::before {
+  background: var(--poo-ref-border);
+  border-radius: 50%;
+  content: "";
+  flex: 0 0 7px;
+  height: 7px;
+  margin-right: 0.55em;
+}
+
+.poo-collection .poo-slot--ref::before {
+  border-radius: 2px;
+}
+
+.poo-legend {
+  color: var(--poo-diagram-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.58em;
+  gap: 0.4em 1.2em;
+  justify-content: center;
+  margin: 0.75em auto 0;
+  max-width: 980px;
+}
+
+.poo-legend span {
+  white-space: nowrap;
+}
+
+.poo-diagram--shared {
+  grid-template-columns: max-content 72px minmax(280px, 1fr);
+}
+
+.poo-diagram--shared .poo-object {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.poo-diagram--objects {
+  grid-template-columns: minmax(260px, 1fr) 72px minmax(260px, 1fr);
+}
+
+.poo-diagram--objects .poo-object {
+  width: 100%;
+}
+
+/* Componentes legados. Novos diagramas devem usar as classes .poo-*. */
 .refs {
   align-items: center;
   display: grid;

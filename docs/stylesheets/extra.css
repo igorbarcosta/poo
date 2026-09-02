@@ -199,6 +199,92 @@
   color: #f1f5f9;
 }
 
+/* Diagramas de objetos e referências. A semântica permanece estável; cada
+   esquema fornece apenas os valores concretos dos tokens visuais. */
+:root {
+  --poo-ref-border: #b43a32;
+  --poo-ref-text: #7f2520;
+  --poo-ref-bg: #fff8f7;
+  --poo-object-border: #4f86d9;
+  --poo-object-header-bg: #eaf2ff;
+  --poo-object-header-border: #b8d2f5;
+  --poo-object-header-text: #24558f;
+  --poo-object-bg: #fdfefe;
+  --poo-value-border: #d5dde8;
+  --poo-value-bg: #f5f7fa;
+  --poo-value-text: #243044;
+  --poo-arrow: #a8322c;
+  --poo-diagram-text: #243044;
+  --poo-diagram-muted: #526178;
+}
+
+[data-md-color-scheme="slate"] {
+  --poo-ref-border: #ef8c84;
+  --poo-ref-text: #ffc1bb;
+  --poo-ref-bg: #2d2022;
+  --poo-object-border: #83aef2;
+  --poo-object-header-bg: #203a5b;
+  --poo-object-header-border: #496b94;
+  --poo-object-header-text: #d0e1ff;
+  --poo-object-bg: #18232f;
+  --poo-value-border: #435165;
+  --poo-value-bg: #222e3b;
+  --poo-value-text: #e6edf6;
+  --poo-arrow: #ff9a91;
+  --poo-diagram-text: #e6edf6;
+  --poo-diagram-muted: #b1bece;
+}
+
+.md-typeset .mermaid:has(.pooVar) {
+  color: var(--poo-diagram-text);
+}
+
+.md-typeset .mermaid .pooVar > :is(rect, polygon, path) {
+  fill: var(--poo-ref-bg) !important;
+  stroke: var(--poo-ref-border) !important;
+  stroke-width: 2px !important;
+}
+
+.md-typeset .mermaid .pooVar .label,
+.md-typeset .mermaid .pooRefSlot .label {
+  color: var(--poo-ref-text) !important;
+}
+
+.md-typeset .mermaid .pooRefSlot > :is(rect, polygon, path) {
+  fill: var(--poo-ref-bg) !important;
+  stroke: var(--poo-ref-border) !important;
+}
+
+.md-typeset .mermaid .pooValueSlot > :is(rect, polygon, path) {
+  fill: var(--poo-value-bg) !important;
+  stroke: var(--poo-value-border) !important;
+}
+
+.md-typeset .mermaid .pooValueSlot .label {
+  color: var(--poo-value-text) !important;
+}
+
+.md-typeset .mermaid .cluster.pooObject > rect {
+  fill: var(--poo-object-bg) !important;
+  stroke: var(--poo-object-border) !important;
+  stroke-width: 2px !important;
+}
+
+.md-typeset .mermaid .cluster.pooObject .cluster-label {
+  color: var(--poo-object-header-text) !important;
+  font-weight: 700;
+}
+
+.md-typeset .mermaid:has(.pooVar) .flowchart-link {
+  stroke: var(--poo-arrow) !important;
+  stroke-width: 2px !important;
+}
+
+.md-typeset .mermaid:has(.pooVar) marker path {
+  fill: var(--poo-arrow) !important;
+  stroke: var(--poo-arrow) !important;
+}
+
 /* Refinamento de navegação: amplia a área de toque no drawer sem alterar a
    densidade do menu permanente e torna o foco perceptível sem dominar a tela. */
 .md-nav--primary

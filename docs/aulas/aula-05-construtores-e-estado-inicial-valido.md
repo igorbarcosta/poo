@@ -84,6 +84,13 @@ itemB.aumentarQuantidade(3);
     3. Qual dos dois poderia ser usado com mais segurança para calcular um subtotal?
     4. Se um método recebesse o objeto logo após o `new`, o que observaria?
 
+??? "Ver resposta"
+
+    1. `itemA` possui todos os dados depois de `itemA.aumentarQuantidade(2)`.
+    2. `itemB` não recebe um preço; o campo permanece em `0.0` e seu subtotal será `0.0`.
+    3. `itemA` pode ser usado com mais segurança porque recebeu todos os dados pretendidos.
+    4. Logo após o `new`, um método observaria `descricao == null`, `precoUnitario == 0.0` e `quantidade == 0`.
+
 O segundo trecho compila. O preço não foi informado, então `calcularSubtotal()` usa `0.0`. A linguagem não sabe que a preparação ficou incompleta; essa expectativa pertence ao nosso domínio.
 
 Na Aula 04, nossa pergunta era quem controla as alterações posteriores. Agora o problema aparece antes: um objeto pode nascer e circular pelo programa sem as informações que lhe dão sentido.
@@ -231,6 +238,12 @@ O mesmo vale para preço e quantidade. `this` aparece porque surgiu uma ambiguid
 
     Registre uma hipótese antes de reler a explicação sobre o papel de `this`.
 
+??? "Ver resposta"
+
+    1. Estado final: `descricao = "Mouse"`, `precoUnitario = 80.0` e `quantidade = 3`.
+    2. Em `descricao = descricao;`, a atribuição não altera o campo do objeto.
+    3. Os dois lados se referem ao parâmetro. `this.descricao = descricao;` é necessário para atribuir o parâmetro ao campo do objeto atual.
+
 O construtor resolveu o risco de esquecer uma etapa externa: a criação agora exige os três argumentos. Mas exigir dados e receber dados corretos não são a mesma coisa.
 
 Considere:
@@ -315,6 +328,12 @@ Essa estratégia não comunica ao código externo que um argumento foi rejeitado
 
     Escolha uma proposta e justifique sua decisão com base em quem conhece e deve preservar a regra. Não compare ainda políticas de comunicação da falha.
 
+??? "Ver resposta"
+
+    1. Na proposta A, outro cliente pode esquecer a verificação e enviar valores negativos ao construtor.
+    2. A proposta B concentra a regra na própria classe e a aplica em todo ponto que usa esse construtor.
+    3. `ItemPedido` conhece seus estados aceitáveis e deve preservar suas invariantes.
+
 !!! conceito-chave "Conceito-chave — invariante"
 
     Uma invariante é uma regra que deve permanecer verdadeira para o estado do objeto. Nesta etapa, `precoUnitario >= 0` e `quantidade >= 0` são invariantes simples de `ItemPedido`.
@@ -344,6 +363,14 @@ Antes da síntese, registre respostas para estas perguntas:
 5. que resultado rápido mostraria que a proteção funcionou?
 
 Não desenvolva a implementação completa. A transferência serve para testar se a responsabilidade pelo estado inicial continua fazendo sentido fora de `ItemPedido`.
+
+??? "Ver resposta"
+
+    1. A reserva precisa receber o número de pessoas e o valor da diária.
+    2. Uma reserva para `-2` pessoas não deve ser aceita em seu estado.
+    3. Uma diária negativa também não deve fazer parte do estado.
+    4. A própria `Reserva`, por meio do construtor ou de outra operação adequada, deve proteger essas regras.
+    5. Um teste com valores inválidos e uma consulta ao estado — ou ao comportamento resultante — deve mostrar que eles não foram incorporados, conforme a política adotada para comunicar a falha.
 
 ## Fechando a trajetória
 

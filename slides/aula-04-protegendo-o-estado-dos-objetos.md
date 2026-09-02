@@ -37,9 +37,10 @@ Leitura breve. Os objetivos orientam a trajetória, mas não são conteúdo para
 
 ## A descoberta da Aula 03
 
-<div class="refs shared" style="grid-template-columns: 320px 75px 1fr; max-width: 1100px;">
-  <div class="var">itemPrincipal</div><div class="arrow">↘</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = 5</div></div>
-  <div class="var second">itemObservado</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">itemPrincipal</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade = 5</div></div></div>
+  <div class="poo-var">itemObservado</div><div class="poo-arrow"></div>
 </div>
 
 <div class="key-point">Duas referências podem permitir acesso ao mesmo objeto.</div>
@@ -140,9 +141,10 @@ Retomar as previsões. A resposta vem somente agora. Pedir que uma dupla expliqu
 
 ## A alteração chegou ao único objeto
 
-<div class="refs shared" style="grid-template-columns: 320px 75px 1fr; max-width: 1100px;">
-  <div class="var">itemPrincipal</div><div class="arrow">↘</div><div class="object">objeto ItemPedido<div class="state-line">quantidade = -3</div></div>
-  <div class="var second">itemObservado</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">itemPrincipal</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade = -3</div></div></div>
+  <div class="poo-var">itemObservado</div><div class="poo-arrow"></div>
 </div>
 
 <div class="key-point">A alteração foi feita por um nome e observada pelo outro.</div>
@@ -465,9 +467,10 @@ Esperar a previsão e exigir uma justificativa com referência, objeto e comport
 
 ## A fronteira não muda a identidade
 
-<div class="refs shared" style="grid-template-columns: 320px 75px 1fr; max-width: 1100px;">
-  <div class="var">itemPrincipal</div><div class="arrow">↘</div><div class="object">objeto ItemPedido<div class="state-line">quantidade privada = 7</div></div>
-  <div class="var second">itemObservado</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">itemPrincipal</div><div class="poo-arrow"></div>
+  <div class="poo-object"><div class="poo-object__header">ItemPedido#1</div><div class="poo-slots"><div class="poo-slot">quantidade: private int = 7</div></div></div>
+  <div class="poo-var">itemObservado</div><div class="poo-arrow"></div>
 </div>
 
 <div class="key-point">As duas referências chegam ao mesmo objeto; o acesso externo acontece pelas operações disponíveis.</div>

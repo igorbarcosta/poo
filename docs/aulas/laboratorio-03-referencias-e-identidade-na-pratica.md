@@ -99,7 +99,11 @@ Em seguida:
 1. execute a alteração somente por `itemObservado`;
 2. exiba no console as quantidades e os subtotais observados pelas duas variáveis;
 3. compare o resultado com sua previsão;
-4. explique à sua dupla ou ao professor por que as duas variáveis permitem observar quantidade `5` e subtotal `750.0`.
+4. explique para si por que as duas variáveis permitem observar quantidade `5` e subtotal `750.0`.
+
+??? "Ver explicação"
+
+    `itemPrincipal` e `itemObservado` guardam referências para o mesmo objeto. A alteração muda esse único objeto; por isso, os dois caminhos observam quantidade `5` e subtotal `750.0`.
 
 Antes de avançar, confirme que sua explicação distingue as duas variáveis do único objeto cujo estado foi alterado. Dizer apenas “porque uma recebeu a outra” ainda não explica o resultado.
 
@@ -116,7 +120,11 @@ Antes de executar, preveja o resultado e justifique sua hipótese. Depois:
 1. exiba a comparação no console;
 2. confronte o resultado com sua previsão;
 3. corrija, se necessário, o diagrama do Incremento B;
-4. explique à sua dupla ou ao professor o resultado usando **referência**, **objeto**, **estado** e **identidade**.
+4. formule uma explicação usando **referência**, **objeto**, **estado** e **identidade**.
+
+??? "Ver explicação"
+
+    As duas variáveis guardam referências que chegam ao mesmo objeto e, portanto, à mesma identidade. Como existe um único estado compartilhado, `itemPrincipal == itemObservado` resulta em `true`.
 
 Ao corrigir sua hipótese, o desenho deve representar duas variáveis apontando para o mesmo objeto. Ele continua sendo uma ferramenta de raciocínio, não um artefato de entrega.
 
@@ -136,7 +144,11 @@ Antes de executar, preveja os subtotais de `itemPrincipal` e `itemIndependente` 
 
 Execute, exiba os resultados e compare-os com sua previsão. Os subtotais devem ser iguais a `750.0`, mas as duas comparações de identidade não devem produzir o mesmo resultado.
 
-Consiga explicar por que estado equivalente não torna `itemIndependente` o mesmo objeto que `itemPrincipal`.
+Confira se você consegue explicar por que estado equivalente não torna `itemIndependente` o mesmo objeto que `itemPrincipal`.
+
+??? "Ver explicação"
+
+    Os valores dos campos podem coincidir, mas cada expressão `new ItemPedido()` cria um objeto com identidade própria. Por isso, a comparação com `==` resulta em `false`.
 
 ### Incremento F — Fazer o contraste aparecer no estado
 
@@ -162,7 +174,11 @@ Faça um último desenho rápido, ou corrija o anterior, para representar:
 - `itemIndependente` permitindo acesso a outro objeto;
 - o estado final de cada objeto.
 
-O desenho pode permanecer no seu espaço de rascunho e não será enviado. Por fim, explique à sua dupla ou ao professor por que a alteração apareceu por duas variáveis, mas não pela terceira. Sua conclusão deve usar a relação entre referência e identidade, e não apenas repetir os valores exibidos.
+O desenho pode permanecer no seu espaço de rascunho e não será enviado. Por fim, formule por que a alteração apareceu por duas variáveis, mas não pela terceira. Sua conclusão deve usar a relação entre referência e identidade, e não apenas repetir os valores exibidos.
+
+??? "Ver explicação"
+
+    `itemPrincipal` e `itemObservado` chegam à mesma identidade e observam o mesmo estado. `itemIndependente` chega a outro objeto; por isso, sua alteração não afeta o primeiro.
 
 !!! success "Critérios de conclusão"
 
@@ -187,9 +203,16 @@ O desenho pode permanecer no seu espaço de rascunho e não será enviado. Por f
 - por que estados iguais não implicam a mesma identidade;
 - por que `==` muda de resultado entre os dois casos.
 
-Essas explicações podem ser demonstradas oralmente durante o acompanhamento e não precisam ser enviadas.
+??? "Ver explicações"
 
-Depois de concluir, verificar os critérios e realizar o envio, você poderá ser liberado. O desafio a seguir permanece opcional.
+    - No cenário compartilhado há um objeto; depois de `itemIndependente`, há dois.
+    - Duas variáveis observam o mesmo estado quando suas referências chegam ao mesmo objeto.
+    - Estados iguais podem pertencer a objetos criados por expressões `new` diferentes.
+    - `==` resulta em `true` para referências à mesma identidade e em `false` para identidades diferentes.
+
+Use as respostas dos experimentos anteriores para conferir essas explicações. Elas são autoavaliação e não fazem parte da entrega.
+
+Depois de concluir, verifique os critérios e realize o envio. O desafio a seguir permanece opcional.
 
 ## Desafio opcional — Três referências, um objeto
 
@@ -206,6 +229,12 @@ Antes de executar, preveja:
 - quantos objetos existem;
 - quais comparações entre `a`, `b` e `c` resultarão em `true`;
 - o que será observado por `a` e `b` se a quantidade for alterada usando `c`.
+
+??? "Ver resposta"
+
+    - Existe um único objeto.
+    - `a == b`, `a == c` e `b == c` resultam em `true`.
+    - Uma alteração feita por `c` será observada pelos três nomes.
 
 Depois, realize o experimento, faça um desenho rápido e explique os resultados. Você pode usar o mesmo ciclo leve de investigação; não é necessário entregar previsão, diagrama ou explicação. O desafio amplia a quantidade de referências, mas não introduz um conceito novo nem altera os critérios obrigatórios.
 

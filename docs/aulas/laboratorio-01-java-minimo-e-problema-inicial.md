@@ -237,7 +237,7 @@ Não há uma única forma obrigatória de organizar esses incrementos. É aceit�
     - realizou o envio conforme as orientações do [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5);
     - formulou respostas para as questões propostas ao final do roteiro.
 
-Depois de atender aos critérios e realizar o envio, você poderá ser liberado. O desafio a seguir permanece opcional.
+Depois de atender aos critérios e realizar o envio, o desafio a seguir permanece opcional.
 
 ## Desafio opcional — Mais itens, menos repetição
 

@@ -276,9 +276,22 @@ private Produto produto;
 
 ## O campo permite chegar ao produto
 
-<div class="cards">
-  <div class="concept-card"><strong>objeto ItemPedido</strong><div class="state">produto → referência<br>quantidade = 2</div></div>
-  <div class="concept-card"><strong>objeto Produto</strong><div class="state">descricao = "Teclado"<br>preco = 150.0</div></div>
+<div class="poo-diagram poo-diagram--objects">
+  <div class="poo-object">
+    <div class="poo-object__header">ItemPedido#1</div>
+    <div class="poo-slots">
+      <div class="poo-slot poo-slot--ref">produto</div>
+      <div class="poo-slot">quantidade = 2</div>
+    </div>
+  </div>
+  <div class="poo-arrow"></div>
+  <div class="poo-object">
+    <div class="poo-object__header">Produto#1</div>
+    <div class="poo-slots">
+      <div class="poo-slot">descricao = "Teclado"</div>
+      <div class="poo-slot">preco = 150.0</div>
+    </div>
+  </div>
 </div>
 
 <div class="key-point">O campo não contém uma cópia da descrição e do preço.</div>
@@ -451,9 +464,16 @@ public ItemPedido(Produto produto, int quantidade) {
 
 ## Duas referências, o mesmo produto
 
-<div class="refs shared wide-vars">
-  <div class="var">teclado</div><div class="arrow">↘</div><div class="object">objeto Produto<div class="state-line">"Teclado", 150.0</div></div>
-  <div class="var second">item.produto</div><div class="arrow second-arrow">↗</div>
+<div class="poo-diagram poo-diagram--shared">
+  <div class="poo-var">teclado</div><div class="poo-arrow"></div>
+  <div class="poo-object">
+    <div class="poo-object__header">Produto#1</div>
+    <div class="poo-slots">
+      <div class="poo-slot">descricao = "Teclado"</div>
+      <div class="poo-slot">preco = 150.0</div>
+    </div>
+  </div>
+  <div class="poo-var">item.produto</div><div class="poo-arrow"></div>
 </div>
 
 <div class="key-point">A variável e o campo permitem chegar ao mesmo objeto.</div>

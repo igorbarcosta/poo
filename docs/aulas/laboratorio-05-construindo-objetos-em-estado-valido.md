@@ -47,7 +47,7 @@ Em cada incremento, use como referência:
 
 **prever → modificar → executar → observar → compreender**
 
-Faça previsões breves antes da mudança e compare-as com o resultado. Elas podem ficar em papel, rascunho ou conversa com sua dupla e com o professor. Você entregará somente o código final solicitado.
+Faça previsões breves antes da mudança e compare-as com o resultado. Elas podem ficar em papel ou rascunho. Você entregará somente o código final solicitado.
 
 ## Evolução do projeto
 
@@ -59,17 +59,21 @@ Em `ItemPedido`, adicione um construtor que receba:
 - `double precoUnitario`;
 - `int quantidade`.
 
-Use os parâmetros para inicializar os campos. Quando o parâmetro e o campo tiverem o mesmo nome, use `this` para indicar o campo do objeto atual:
+Use os parâmetros para inicializar os campos. Quando o parâmetro e o campo tiverem o mesmo nome, use `this` para indicar o campo do objeto atual.
 
-```java
-public ItemPedido(String descricao,
-                  double precoUnitario,
-                  int quantidade) {
-    this.descricao = descricao;
-    this.precoUnitario = precoUnitario;
-    this.quantidade = quantidade;
-}
-```
+??? tip "Dica"
+
+    A estrutura pode começar assim:
+
+    ```java
+    public ItemPedido(String descricao,
+                      double precoUnitario,
+                      int quantidade) {
+        this.descricao = descricao;
+        this.precoUnitario = precoUnitario;
+        this.quantidade = quantidade;
+    }
+    ```
 
 Antes de compilar, preveja o que acontecerá com as expressões `new ItemPedido()` existentes em `Main`.
 
@@ -90,12 +94,14 @@ itemPrincipal.precoUnitario = 150.0;
 itemPrincipal.aumentarQuantidade(5);
 ```
 
-passa a ser:
+deve ser substituída por uma única criação completa.
 
-```java
-ItemPedido itemPrincipal =
-    new ItemPedido("Teclado", 150.0, 5);
-```
+??? tip "Dica"
+
+    ```java
+    ItemPedido itemPrincipal =
+        new ItemPedido("Teclado", 150.0, 5);
+    ```
 
 Adapte também `itemIndependente`, preservando os dados e o estado final que sua Versão 4 já utilizava. Não execute outro `new` para `itemObservado`: ele deve continuar recebendo a referência de `itemPrincipal`.
 
@@ -111,27 +117,29 @@ Execute e confirme:
 
 Antes de avançar, você deve conseguir explicar por que adicionar um construtor exigiu mudanças em `Main` sem mudar a identidade dos objetos.
 
+??? "Ver explicação"
+
+    `Main` precisou fornecer os argumentos no momento de cada criação, mas as expressões `new` continuam criando as mesmas identidades independentes; a mudança está na forma de inicializar o estado.
+
 ### Incremento C — Impedir a preparação direta por código externo
 
-O construtor organiza a criação, mas `descricao` e `precoUnitario` ainda podem estar expostos em sua versão. Torne privados os três campos de `ItemPedido`:
+O construtor organiza a criação, mas `descricao` e `precoUnitario` ainda podem estar expostos em sua versão. Torne privados os três campos de `ItemPedido`. Preserve `getQuantidade()` e adicione operações públicas de consulta para descrição e preço unitário. Não crie setters.
 
-```java
-private String descricao;
-private double precoUnitario;
-private int quantidade;
-```
+??? tip "Dica"
 
-Preserve `getQuantidade()` e adicione operações públicas de consulta para descrição e preço unitário:
+    Os campos e uma das consultas podem assumir esta forma:
 
-```java
-public String getDescricao() {
-    return descricao;
-}
+    ```java
+    private String descricao;
+    private double precoUnitario;
+    private int quantidade;
 
-public double getPrecoUnitario() {
-    return precoUnitario;
-}
-```
+    public String getDescricao() {
+        return descricao;
+    }
+    ```
+
+    A consulta do preço segue a mesma estrutura e devolve `precoUnitario`.
 
 Procure em `Main` qualquer leitura direta dos campos que acabou de proteger e substitua-a pela operação de consulta correspondente. Não crie setters.
 
@@ -152,23 +160,19 @@ Até agora, o construtor copia qualquer valor numérico recebido. Antes de edita
 new ItemPedido("Teste", -10.0, -2)
 ```
 
-Evolua o construtor para copiar preço e quantidade somente quando forem não negativos:
+Evolua o construtor para copiar preço e quantidade somente quando forem não negativos.
 
-```java
-public ItemPedido(String descricao,
-                  double precoUnitario,
-                  int quantidade) {
-    this.descricao = descricao;
+??? tip "Dica"
 
+    Proteja cada valor antes de copiá-lo para o campo:
+
+    ```java
     if (precoUnitario >= 0) {
         this.precoUnitario = precoUnitario;
     }
+    ```
 
-    if (quantidade >= 0) {
-        this.quantidade = quantidade;
-    }
-}
-```
+    A quantidade exige uma verificação equivalente. A descrição pode ser inicializada normalmente.
 
 Para verificar a mudança, altere temporariamente os argumentos numéricos de uma das criações em `Main` para valores negativos, execute e consulte o estado. O preço deve permanecer em `0.0` e a quantidade em `0`, seus valores padrão. Em seguida, restaure os argumentos válidos que pertencem ao estado final do projeto.
 
@@ -182,6 +186,10 @@ Execute novamente e confirme:
 A modificação permanente deste incremento está no construtor. A troca temporária de argumentos serve apenas para verificar a regra e não precisa permanecer no código entregue.
 
 Antes de avançar, você deve conseguir explicar por que validar apenas em `Main` deixaria outros pontos de criação responsáveis por repetir ou lembrar a mesma regra.
+
+??? "Ver explicação"
+
+    Qualquer código pode chamar o construtor. Se a validação ficar em `Main`, outros clientes poderão criar estados inválidos ou terão de duplicar a regra. No construtor, a classe protege todas as criações.
 
 !!! success "Critérios de conclusão"
 
@@ -209,7 +217,15 @@ Antes de avançar, você deve conseguir explicar por que validar apenas em `Main
 - por que a classe, e não cada trecho de `Main`, deve preservar as regras da criação;
 - como construtor e métodos de alteração protegem momentos diferentes da vida do objeto.
 
-Essas explicações podem ser demonstradas oralmente durante o acompanhamento e não precisam ser enviadas.
+??? "Ver explicações"
+
+    - A criação em várias etapas expunha estados parciais entre `new` e as atribuições.
+    - O argumento fornece um valor ao parâmetro; o construtor usa esse parâmetro para inicializar o campo.
+    - `this.descricao` é o campo do objeto; `descricao` é o parâmetro recebido.
+    - A classe centraliza a regra para todos os pontos que criarem objetos.
+    - O construtor protege o nascimento; os métodos controlam mudanças posteriores.
+
+Use as respostas expansíveis e os resultados executados para conferir essas explicações. Elas são autoavaliação e não fazem parte da entrega.
 
 ## Para consolidar
 
@@ -218,6 +234,12 @@ Considere uma classe `Pedido` que futuramente precisará reunir vários itens:
 1. de quais informações um pedido precisa quando nasce?
 2. um pedido precisa nascer com itens ou pode começar vazio?
 3. quem deveria controlar a entrada e a retirada de itens?
+
+??? "Ver resposta"
+
+    1. Depende das regras definidas para a criação; nesta etapa, uma coleção vazia é suficiente.
+    2. Ele pode começar vazio e receber itens depois.
+    3. O próprio `Pedido` deve oferecer operações que controlem sua coleção.
 
 Não implemente `Pedido` ainda e não entregue respostas escritas. Essas perguntas preparam a próxima etapa do projeto.
 
