@@ -2,6 +2,8 @@
 
 Na Aula 06, `ItemPedido` passou a colaborar com `Produto`: o item mantém sua quantidade e solicita ao produto o preço necessário para calcular o subtotal. Essa colaboração resolve um item isolado, mas um pedido real precisa reunir vários deles e coordenar o cálculo do total.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-07-um-objeto-coordenando-varios-outros.html) · [PDF](../slides/rendered/aula-07-um-objeto-coordenando-varios-outros.pdf)
+
 !!! lesson-question "Pergunta central"
 
     Como um objeto pode coordenar vários colaboradores sem assumir as responsabilidades deles?
