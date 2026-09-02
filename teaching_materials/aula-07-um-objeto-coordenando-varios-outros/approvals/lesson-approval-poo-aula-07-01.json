@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-07-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-07-um-objeto-coordenando-varios-outros",
+    "path": "lesson-design.md",
+    "sha256": "3e9c045b9599f12ab6d0981934666fb613abe37dc33a510de5830ecc6d517d17",
+    "version": "aula-07-canonical-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-07-um-objeto-coordenando-varios-outros",
+    "path": "lesson.md",
+    "sha256": "c5c94aae43d6e16490b645bb24c896855ee7da22f40961e3e84d25484e6a89fb",
+    "version": "aula-07-canonical-baseline-01"
+  },
+  "combined_semantic_sha256": "26a97ae09e5bba0c07e2807a50dac23e2853a2ca3922a667369e8c39937457a4",
+  "approved_at": "2026-09-02T17:20:04-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the exact combined semantic hash"
+  },
+  "consumer_context_refs": [
+    "../semantic-approval-gate.md",
+    "../../../slides/presentation-profile.md"
+  ]
+}
