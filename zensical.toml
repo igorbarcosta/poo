@@ -25,6 +25,7 @@ nav = [
     { "04 — Protegendo o estado dos objetos" = "aulas/aula-04-protegendo-o-estado-dos-objetos.md" },
     { "05 — Construtores e estado inicial válido" = "aulas/aula-05-construtores-e-estado-inicial-valido.md" },
     { "06 — Colaboração entre objetos" = "aulas/aula-06-colaboracao-entre-objetos.md" },
+    { "07 — Um objeto coordenando vários outros" = "aulas/aula-07-um-objeto-coordenando-varios-outros.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
