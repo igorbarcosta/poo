@@ -44,6 +44,11 @@ nav = [
       { "Gabarito — Variante A" = "avaliacoes/checkpoint-01/gabarito-variante-a.md" },
       { "Gabarito — Variante B" = "avaliacoes/checkpoint-01/gabarito-variante-b.md" },
     ] },
+    { "Checkpoint 02" = [
+      { "Visão geral" = "avaliacoes/checkpoint-02/index.md" },
+      { "Gabarito — Variante A" = "avaliacoes/checkpoint-02/gabarito-variante-a.md" },
+      { "Gabarito — Variante B" = "avaliacoes/checkpoint-02/gabarito-variante-b.md" },
+    ] },
   ] },
   { "Materiais" = [
     { "Materiais" = "materiais/index.md" },

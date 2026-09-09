@@ -11,3 +11,4 @@ Avisos, entregas, notas e demais informações operacionais continuam sendo publ
 ## Checkpoints
 
 - [Checkpoint 01 — Objetos, referências e encapsulamento](checkpoint-01/index.md)
+- [Checkpoint 02 — Construtores, colaboração e coleções](checkpoint-02/index.md)
