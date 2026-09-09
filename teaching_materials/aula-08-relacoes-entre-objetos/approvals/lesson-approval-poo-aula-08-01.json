@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-08-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-08-relacoes-entre-objetos",
+    "path": "lesson-design.md",
+    "sha256": "d57aa9043f84ea3925455154a55801b4512e0d9729c21bc0ce2bbd071fe91726",
+    "version": "aula-08-canonical-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-08-relacoes-entre-objetos",
+    "path": "lesson.md",
+    "sha256": "6757abc7402b00c830ee02746b2061a04a3a43a135a1f8ce0121450ce53c71e7",
+    "version": "aula-08-canonical-baseline-01"
+  },
+  "combined_semantic_sha256": "432659b089016076f548c22a50c2bef0d189400e6a13916da4a72c1476dd4d92",
+  "approved_at": "2026-09-09T18:12:45-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the Aula 08 canonical pair and instruction to derive its slides"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

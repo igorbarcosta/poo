@@ -26,6 +26,7 @@ nav = [
     { "05 — Construtores e estado inicial válido" = "aulas/aula-05-construtores-e-estado-inicial-valido.md" },
     { "06 — Colaboração entre objetos" = "aulas/aula-06-colaboracao-entre-objetos.md" },
     { "07 — Um objeto coordenando vários outros" = "aulas/aula-07-um-objeto-coordenando-varios-outros.md" },
+    { "08 — Relações entre objetos" = "aulas/aula-08-relacoes-entre-objetos.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -36,6 +37,7 @@ nav = [
     { "05 — Construindo objetos em estado válido" = "aulas/laboratorio-05-construindo-objetos-em-estado-valido.md" },
     { "06 — Conectando produtos e itens" = "aulas/laboratorio-06-conectando-produtos-e-itens.md" },
     { "07 — Coordenando itens em um pedido" = "aulas/laboratorio-07-coordenando-itens-em-um-pedido.md" },
+    { "08 — Mantendo relações no pedido" = "aulas/laboratorio-08-mantendo-relacoes-no-pedido.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },

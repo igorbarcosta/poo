@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "deck_identity": "slide-deck-poo-aula-08-relacoes-entre-objetos-01",
+  "source_lesson": "lesson-poo-aula-08-relacoes-entre-objetos",
+  "source_approval": "lesson-approval-poo-aula-08-01",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "approved_combined_semantic_sha256": "432659b089016076f548c22a50c2bef0d189400e6a13916da4a72c1476dd4d92",
+  "presentation_profile": {
+    "identity": "poo-marp-v1",
+    "reference": "slides/presentation-profile.md",
+    "format": "Marp Markdown",
+    "syntax": "Marp front matter with POO deck classes, components, and notes",
+    "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+    "theme": "slides/theme/poo.css",
+    "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+    "density": "one central idea per frame with progressive code and activity pauses",
+    "delivery_context": "90-minute presencial POO lesson"
+  },
+  "derived_at": "2026-09-09T18:13:54-03:00"
+}
