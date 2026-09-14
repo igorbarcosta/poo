@@ -272,6 +272,81 @@ Quais referências `Emprestimo` precisa manter? Qual relação é estrutural?
 
 ---
 
+<!-- _class: activity -->
+
+<div class="chapter">Transferência</div>
+
+## Agora surgem novas responsabilidades
+
+- registrar a devolução de um empréstimo;
+- contar os empréstimos **ativos** de um usuário;
+- contar todos os empréstimos que esse usuário já realizou;
+- mostrar retiradas anteriores de um livro.
+
+Quais delas exigem uma relação adicional? Quais podem usar a estrutura que já existe?
+
+<!--
+Não responder de imediato. Pedir que distingam consulta de informação já mantida
+de uma nova necessidade de preservar dados. A questão não é escolher uma lista
+para todas as classes, mas justificar a responsabilidade.
+-->
+
+---
+
+<div class="chapter">Transferência</div>
+
+## Devolver muda a estrutura ativa
+
+`Biblioteca` mantém os empréstimos ativos.
+
+<div class="key-point">Por isso, ela deve coordenar a operação de devolução.</div>
+
+O detalhe de encerrar ou retirar o registro será uma regra posterior.
+
+Nesta aula, basta identificar: quem mantém a estrutura controla sua mudança.
+
+---
+
+<div class="chapter">Transferência</div>
+
+## Contar ativos não exige lista em `Usuario`
+
+```java
+biblioteca.quantidadeEmprestimosAtivosDe(usuario);
+```
+
+`Biblioteca` já mantém os empréstimos ativos e pode consultar quais se referem ao usuário.
+
+<div class="statement">Uma consulta nova não obriga, por si só, uma referência de `Usuario` para empréstimos.</div>
+
+---
+
+<div class="chapter">Transferência</div>
+
+## Histórico revela uma decisão que ainda não existe
+
+Se empréstimos devolvidos deixam o conjunto de ativos, ele não basta para responder:
+
+<div class="statement">“Quantos empréstimos este usuário já realizou?”</div>
+
+Agora o modelo precisa decidir se — e onde — preserva registros encerrados.
+
+---
+
+<div class="chapter">Transferência</div>
+
+## Listas reversas são uma decisão, não um reflexo
+
+`Usuario` ou `Livro` poderiam manter listas de empréstimos apenas se uma responsabilidade deles exigisse navegar por esses registros.
+
+Antes de acrescentá-las, pergunte:
+
+- que consulta ou comportamento a lista permite?
+- quem a atualiza junto com a estrutura da biblioteca?
+- ela duplica uma informação que já pode ser consultada?
+
+---
+
 <!-- _class: synthesis -->
 
 ## Síntese
@@ -283,4 +358,6 @@ Quais referências `Emprestimo` precisa manter? Qual relação é estrutural?
 - encapsulamento protege também as relações;
 - dependências aparecem quando uma operação precisa de outra.
 
-<div class="statement">Antes de acrescentar uma relação, pergunte: quem precisa conhecer quem — e para fazer o quê?</div>
+<div class="statement">Uma responsabilidade nova pode pedir uma relação nova — mas nunca automaticamente.</div>
+
+Antes de acrescentar uma relação, pergunte: quem precisa conhecer quem — e para fazer o quê?

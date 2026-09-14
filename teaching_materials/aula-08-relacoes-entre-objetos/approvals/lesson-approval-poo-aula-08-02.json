@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-08-02",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-08-relacoes-entre-objetos",
+    "path": "lesson-design.md",
+    "sha256": "b7159180f8119d6711855a4298bbd5208dec02519459e0029dd103461a897cf1",
+    "version": "aula-08-canonical-baseline-02"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-08-relacoes-entre-objetos",
+    "path": "lesson.md",
+    "sha256": "be305773da6ca51bab14e057debc736311f9ab6d356e6383b1d16429a6606d76",
+    "version": "aula-08-canonical-baseline-02"
+  },
+  "combined_semantic_sha256": "b182f0652af2284bef5544549c662e5b9ec2b69b5b269a39ca4221ad4c19ed79",
+  "approved_at": "2026-09-09T18:44:25-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user instruction to extend the Aula 08 transfer scenario and its slides with responsibility-driven decisions about library loans"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

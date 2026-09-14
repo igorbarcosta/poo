@@ -18,5 +18,6 @@ Da transição do pensamento procedural à modelagem de pequenos problemas com o
 - [Aula 06 — Colaboração entre objetos](aula-06-colaboracao-entre-objetos.md)
 - [Aula 07 — Um objeto coordenando vários outros](aula-07-um-objeto-coordenando-varios-outros.md)
 - [Aula 08 — Relações entre objetos](aula-08-relacoes-entre-objetos.md)
+- [Aula 09 — Fechamento do pedido](aula-09-fechamento-do-pedido.md)
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

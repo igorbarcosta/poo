@@ -1,4 +1,4 @@
-"""Persist Docemas approval and deck provenance for Aula 08."""
+"""Persist Docemas approval and deck provenance for Aula 09."""
 
 from __future__ import annotations
 
@@ -17,9 +17,9 @@ import teaching_materials_integration as integration  # noqa: E402
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
 DESIGN_PATH = PACKAGE_ROOT / "lesson-design.md"
-LESSON_PATH = POO_ROOT / "docs/aulas/aula-08-relacoes-entre-objetos.md"
-APPROVAL_PATH = PACKAGE_ROOT / "approvals/lesson-approval-poo-aula-08-02.json"
-PROVENANCE_PATH = PACKAGE_ROOT / "slides/aula-08-relacoes-entre-objetos-02.provenance.json"
+LESSON_PATH = POO_ROOT / "docs/aulas/aula-09-fechamento-do-pedido.md"
+APPROVAL_PATH = PACKAGE_ROOT / "approvals/lesson-approval-poo-aula-09-01.json"
+PROVENANCE_PATH = PACKAGE_ROOT / "slides/aula-09-fechamento-do-pedido.provenance.json"
 
 
 def _canonical() -> tuple[bytes, bytes]:
@@ -32,25 +32,26 @@ def approve() -> None:
     approval = workflow.create_lesson_approval(
         lesson_design=design,
         lesson=lesson,
-        lesson_design_identity="lesson-design-poo-aula-08-relacoes-entre-objetos",
-        lesson_identity="lesson-poo-aula-08-relacoes-entre-objetos",
-        approval_id="lesson-approval-poo-aula-08-02",
+        lesson_design_identity="lesson-design-poo-aula-09-fechamento-do-pedido",
+        lesson_identity="lesson-poo-aula-09-fechamento-do-pedido",
+        approval_id="lesson-approval-poo-aula-09-01",
         decision="approved",
         approver={
             "identity": "human-professor-poo",
             "display_name": "Professor da disciplina de POO",
-            "source": "explicit user instruction to extend the Aula 08 transfer scenario and its slides with responsibility-driven decisions about library loans",
+            "source": "explicit user approval of the Aula 09 lesson and laboratory design",
         },
         approved_at=datetime.now(ZoneInfo("America/Sao_Paulo")).isoformat(timespec="seconds"),
-        lesson_design_version="aula-08-canonical-baseline-02",
-        lesson_version="aula-08-canonical-baseline-02",
+        lesson_design_version="aula-09-canonical-baseline-01",
+        lesson_version="aula-09-canonical-baseline-01",
         consumer_context_refs=["../../../slides/presentation-profile.md"],
     )
     workflow.persist_lesson_approval(APPROVAL_PATH, approval)
+    persisted = json.loads(APPROVAL_PATH.read_text(encoding="utf-8"))
     print(json.dumps({
-        "schema_validation": workflow.validate_lesson_approval(approval),
-        "classification": workflow.classify_lesson_approval(approval, design, lesson),
-        "eligibility": integration.can_derive_poo_lesson(approval, design, lesson),
+        "schema_validation": workflow.validate_lesson_approval(persisted),
+        "classification": workflow.classify_lesson_approval(persisted, design, lesson),
+        "eligibility": integration.can_derive_poo_lesson(persisted, design, lesson),
     }, ensure_ascii=False, indent=2))
 
 
@@ -59,21 +60,27 @@ def provenance() -> None:
     design, lesson = _canonical()
     approval = json.loads(APPROVAL_PATH.read_text(encoding="utf-8"))
     eligibility = integration.can_derive_poo_lesson(approval, design, lesson)
-    if eligibility["reason_code"] != "CURRENT_APPROVAL":
+    if eligibility != {
+        "eligible": True,
+        "reason_code": "CURRENT_APPROVAL",
+        "reason": "current approval is valid",
+        "classification": "VALID_CURRENT",
+    }:
         raise RuntimeError(f"derivation not eligible: {eligibility}")
-    provenance = integration.create_poo_deck_provenance(
+    record = integration.create_poo_deck_provenance(
         approval=approval,
         lesson_design=design,
         lesson=lesson,
-        deck_identity="slide-deck-poo-aula-08-relacoes-entre-objetos-02",
+        deck_identity="slide-deck-poo-aula-09-fechamento-do-pedido-01",
         derived_at=datetime.now(ZoneInfo("America/Sao_Paulo")).isoformat(timespec="seconds"),
     )
-    workflow.persist_slide_deck_provenance(PROVENANCE_PATH, provenance)
+    workflow.persist_slide_deck_provenance(PROVENANCE_PATH, record)
+    persisted = json.loads(PROVENANCE_PATH.read_text(encoding="utf-8"))
     print(json.dumps({
         "eligibility": eligibility,
-        "schema_validation": workflow.validate_slide_deck_provenance(provenance),
+        "schema_validation": workflow.validate_slide_deck_provenance(persisted),
         "classification": workflow.classify_slide_deck_provenance(
-            provenance, approval, design, lesson
+            persisted, approval, design, lesson
         ),
     }, ensure_ascii=False, indent=2))
 

@@ -282,6 +282,41 @@ class ItemPedido {
 
 Neste exemplo, o campo `int quantidade` começa com `0` quando nenhum valor foi atribuído explicitamente.
 
+### Estado `boolean` e inclusão condicional
+
+Um campo `boolean` também pertence a cada objeto. Podemos deixar explícito que
+um `Pedido` começa aberto e oferecer uma operação para fechá-lo:
+
+```java
+private boolean fechado;
+
+public Pedido() {
+    itens = new ArrayList<>();
+    fechado = false;
+}
+
+public void fechar() {
+    fechado = true;
+}
+```
+
+O operador `!` inverte um valor `boolean`. Assim, `!fechado` é verdadeiro
+enquanto o pedido **não** está fechado. Uma condição pode proteger a criação e
+a inclusão de um item:
+
+```java
+public void adicionarItem(Produto produto, int quantidade) {
+    if (!fechado) {
+        ItemPedido item = new ItemPedido(produto, quantidade);
+        itens.add(item);
+    }
+}
+```
+
+Quando `fechado` é `true`, nenhuma instrução dentro do `if` é executada. O
+campo permanece privado; o cliente solicita `fechar()` e o próprio `Pedido`
+controla a regra. Veja a [Aula 09 — Fechamento do pedido](../aulas/aula-09-fechamento-do-pedido.md).
+
 ## Construtores e estado inicial
 
 Uma classe pode declarar quais dados devem ser fornecidos quando um objeto é criado:

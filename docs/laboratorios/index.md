@@ -16,5 +16,6 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 06 — Conectando produtos e itens](../aulas/laboratorio-06-conectando-produtos-e-itens.md)
 - [Laboratório 07 — Coordenando itens em um pedido](../aulas/laboratorio-07-coordenando-itens-em-um-pedido.md)
 - [Laboratório 08 — Mantendo relações no pedido](../aulas/laboratorio-08-mantendo-relacoes-no-pedido.md)
+- [Laboratório 09 — Fechando um pedido](../aulas/laboratorio-09-fechamento-do-pedido.md)
 
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

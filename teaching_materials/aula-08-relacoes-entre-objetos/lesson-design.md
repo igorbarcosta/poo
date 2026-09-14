@@ -58,7 +58,9 @@ modelo existente.
   como `adicionarItem` e `calcularTotal`;
 - comparação com uma relação reversa de `Produto` para pedidos sem
   responsabilidade que a justifique; e
-- transferência curta para `Biblioteca`, `Emprestimo`, `Livro` e `Usuario`.
+- transferência para `Biblioteca`, `Emprestimo`, `Livro` e `Usuario`, em que
+  novas responsabilidades (devolução, consultas ativas e histórico) permitem
+  avaliar quando uma relação adicional é ou não justificada.
 
 ### Excluded
 
@@ -68,7 +70,7 @@ modelo existente.
 - novas operações no Projeto 1, como remoção, descontos, fechamento, preço
   histórico, busca ou regras para itens repetidos;
 - `null`, cópia de objetos e gerenciamento de memória;
-- alterações no Laboratório 07 ou criação de um Laboratório 08; e
+- alterações no Laboratório 07; e
 - decisão das regras que evoluirão `Pedido` na Aula 09.
 
 ## Activities or checks
@@ -76,7 +78,10 @@ modelo existente.
 As atividades são formativas, autoguiadas e respondíveis na própria página. O
 estudante primeiro mapeia referências e responsabilidades do modelo existente;
 depois compara uma relação unidirecional com uma alternativa bidirecional sem
-necessidade; por fim, transfere a análise para um cardápio. Cada atividade
+necessidade; por fim, transfere a análise para uma biblioteca. Nessa
+transferência, diferencia devolução, consulta de empréstimos ativos e consulta
+de histórico para perceber que uma nova responsabilidade pode exigir uma nova
+decisão de estrutura, mas não uma relação reversa automática. Cada atividade
 possui resposta expansível imediatamente após as perguntas.
 
 ## Relationship to adjacent material

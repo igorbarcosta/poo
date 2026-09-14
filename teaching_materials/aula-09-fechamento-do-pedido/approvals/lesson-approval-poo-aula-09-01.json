@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-09-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-09-fechamento-do-pedido",
+    "path": "lesson-design.md",
+    "sha256": "f1a4c461a5782484703a607fd284186bd06694dbc25a4526afe33a28eb41d38c",
+    "version": "aula-09-canonical-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-09-fechamento-do-pedido",
+    "path": "lesson.md",
+    "sha256": "fc5cef03eb326586c9c996a6e92f0d855c153910eb1f5df1484fcad890f92e7d",
+    "version": "aula-09-canonical-baseline-01"
+  },
+  "combined_semantic_sha256": "ffff13e23a0077ac08775e5cde8ee6cf44b01da8214c50abbc04aee9cf3419d5",
+  "approved_at": "2026-09-14T20:43:17-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the Aula 09 lesson and laboratory design"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

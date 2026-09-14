@@ -285,10 +285,9 @@ Uma biblioteca empresta livros a usuários. `Livro` mantém título e autor;
 `Emprestimo` guarda o livro, o usuário e a data prevista para devolução. A
 `Biblioteca` mantém os empréstimos que estão ativos.
 
-Considere que, no problema atual, a biblioteca precisa registrar empréstimos
-e consultar quais estão ativos. Ela não precisa que um livro liste todos os
-empréstimos de que já participou, nem que um usuário mantenha os empréstimos
-de outros usuários.
+No primeiro recorte do problema, a biblioteca precisa registrar empréstimos e
+consultar quais estão ativos. Começamos por essa estrutura mínima antes de
+decidir se livro ou usuário também precisam alcançar empréstimos.
 
 Sem implementar as classes completas, proponha respostas para estas perguntas:
 
@@ -296,7 +295,7 @@ Sem implementar as classes completas, proponha respostas para estas perguntas:
 2. quais objetos `Emprestimo` precisa conhecer para representar uma retirada?
 3. qual objeto deve manter o conjunto de empréstimos ativos?
 4. qual relação parece estrutural: `Biblioteca` → `Emprestimo`, `Emprestimo` → `Livro` ou `Emprestimo` → `Usuario`?
-5. por que `Livro` não precisa conhecer todos os empréstimos para fornecer seu título e autor?
+5. por que `Livro` e `Usuario` não precisam, por enquanto, manter listas de empréstimos?
 
 ??? "Ver resposta"
 
@@ -304,12 +303,48 @@ Sem implementar as classes completas, proponha respostas para estas perguntas:
     2. `Emprestimo` precisa conhecer o `Livro` retirado e o `Usuario` que o retirou. Também mantém a data prevista para devolução, que descreve aquele empréstimo.
     3. `Biblioteca` deve manter o conjunto de empréstimos ativos, pois representa o local que os registra e consulta.
     4. `Biblioteca` → `Emprestimo` parece estrutural: os empréstimos ativos formam uma estrutura que a biblioteca mantém. `Emprestimo` → `Livro` e `Emprestimo` → `Usuario` são associações necessárias para identificar os participantes daquele registro.
-    5. Fornecer título e autor não exige que o livro alcance seus empréstimos. Essa relação só faria sentido se uma nova responsabilidade do modelo precisasse dela.
+    5. Fornecer título e autor, ou o nome de um usuário, não exige alcançar empréstimos. No recorte atual, a biblioteca já possui o conjunto necessário para registrá-los e consultá-los. Uma lista em `Livro` ou `Usuario` só faria sentido diante de uma responsabilidade que a exigisse.
 
 O novo domínio exige olhar para duas associações — empréstimo com livro e com
 usuário — e para uma estrutura mantida pela biblioteca. A resposta não está no
 nome das classes: ela depende de identificar quem possui a informação, quem
 precisa colaborar e quem mantém o conjunto.
+
+### Quando uma pergunta nova muda as relações?
+
+Agora suponha que a biblioteca receba novas responsabilidades:
+
+- registrar a devolução de um empréstimo;
+- informar quantos empréstimos **ativos** um usuário possui;
+- informar quantos empréstimos um usuário já realizou ao longo do tempo;
+- mostrar as retiradas anteriores de um livro.
+
+Essas perguntas não têm todas a mesma consequência. Elas servem para testar se
+uma relação adicional resolve uma responsabilidade real ou apenas cria um
+atalho aparente.
+
+!!! activity "Atividade — novas responsabilidades, novas decisões"
+
+    Analise as quatro responsabilidades acima.
+
+    1. quem deve coordenar a devolução de um empréstimo ativo? Por quê?
+    2. para contar os empréstimos ativos de um usuário, é obrigatório que `Usuario` mantenha sua própria lista? Que objeto já possui os registros necessários?
+    3. se a devolução fizer o empréstimo deixar o conjunto de ativos, por que esse conjunto não basta para contar todos os empréstimos que o usuário já realizou?
+    4. uma lista de empréstimos em `Livro` ou em `Usuario` seria sempre uma boa solução para consultar histórico? Que responsabilidade e que custo de manutenção precisariam ser esclarecidos antes?
+
+??? "Ver resposta"
+
+    1. `Biblioteca` deve coordenar a devolução porque mantém o conjunto de empréstimos ativos. A forma precisa de encerrar ou retirar o registro será uma regra posterior; o ponto atual é que quem mantém a estrutura controla essa mudança.
+    2. Não. `Biblioteca` já mantém os empréstimos ativos e pode consultar nesse conjunto quantos se referem ao usuário. Uma operação como `quantidadeEmprestimosAtivosDe(usuario)` expressaria essa consulta sem obrigar `Usuario` a guardar uma segunda lista.
+    3. Depois que um empréstimo deixa de estar ativo, ele não aparece mais nessa coleção. Para responder sobre todo o passado, o modelo precisaria decidir se e onde preserva registros encerrados. A necessidade revela uma decisão nova de estrutura e ciclo de vida.
+    4. Não necessariamente. Uma lista poderia ser justificada se o próprio livro ou usuário precisasse navegar por seus empréstimos para cumprir uma responsabilidade definida. Mas ela também cria uma relação que precisa ser atualizada junto com a biblioteca. Antes de acrescentá-la, é preciso explicar qual consulta ela permite e quem manterá os dois lados coerentes.
+
+Uma pergunta nova pode justificar rever o modelo, mas não determina sozinha uma
+lista em cada classe. Contar empréstimos ativos é uma consulta que a
+`Biblioteca` já pode realizar sobre sua estrutura. Guardar histórico, por sua
+vez, mostra que a estrutura atual não contém mais toda a informação necessária.
+É a responsabilidade desejada — e não a vontade de deixar as relações
+simétricas — que orienta a próxima decisão.
 
 ## Fechando a trajetória
 
