@@ -42,11 +42,23 @@ public double calcularTotal() {
 
 ---
 
+<div class="chapter">Novo requisito</div>
+
+## O pedido agora pode ser fechado
+
+<div class="statement">Depois que um pedido é fechado, não podem ser adicionados novos itens.</div>
+
+O que precisa mudar para o próprio `Pedido` fazer essa regra valer?
+
+---
+
 <!-- _class: activity code-focus -->
 
 <div class="chapter">Ponto de partida</div>
 
 ## O requisito muda a sequência de uso
+
+Considere teclado a `150.0` e mouse a `80.0`:
 
 ```java
 Pedido pedido = new Pedido();
@@ -57,7 +69,7 @@ pedido.adicionarItem(teclado, 2);
 pedido.adicionarItem(mouse, 1);
 ```
 
-O que deveria acontecer com a segunda chamada?
+**Preveja:** total atual, total esperado após fechar e informação que falta ao `Pedido`.
 
 <!--
 Dar tempo para prever. O comentário ainda não muda o objeto.
@@ -68,8 +80,6 @@ Dar tempo para prever. O comentário ainda não muda o objeto.
 <div class="chapter">Ponto de partida</div>
 
 ## O comentário não muda o objeto
-
-Com teclado a `150.0` e mouse a `80.0`:
 
 - o código atual calcula `380.0`;
 - o requisito espera `300.0`;
@@ -96,18 +106,6 @@ O estado pertence a cada objeto `Pedido`.
 
 ---
 
-<div class="chapter">Responsabilidade</div>
-
-## Quem deve proteger a inclusão?
-
-- `Main` é cliente e pode esquecer a regra;
-- `ItemPedido` não conhece o estado do pedido;
-- `Pedido` recebe a solicitação e mantém a coleção.
-
-<div class="key-point">A operação que altera a coleção deve proteger a regra.</div>
-
----
-
 <!-- _class: activity -->
 
 <div class="chapter">Responsabilidade</div>
@@ -128,6 +126,18 @@ Coletar justificativas. A resposta aparece somente depois da discussão.
 
 ---
 
+<div class="chapter">Responsabilidade</div>
+
+## Quem deve proteger a inclusão?
+
+- `Main` é cliente e pode esquecer a regra;
+- `ItemPedido` não conhece o estado do pedido;
+- `Pedido` recebe a solicitação e mantém a coleção.
+
+<div class="key-point">A operação que altera a coleção deve proteger a regra.</div>
+
+---
+
 <div class="chapter">Estado do pedido</div>
 
 ## Um campo privado representa a situação
@@ -139,6 +149,7 @@ private boolean fechado;
 - `false`: o pedido está aberto;
 - `true`: o pedido está fechado;
 - cada `Pedido` possui seu próprio valor.
+- `!fechado` significa “não está fechado”: é `true` somente enquanto aberto.
 
 <div class="statement">Código externo solicita ações; não altera o campo diretamente.</div>
 
@@ -324,16 +335,14 @@ Qual proposta protege a inclusão? Qual altera uma responsabilidade que o requis
 
 ## Fechar não apaga itens existentes
 
-O requisito impede novas inclusões.
+**Proposta 2:** a guarda dentro de `Pedido.adicionarItem` protege toda chamada.
 
-Ele não diz que:
+- **Proposta 1:** depende de cada cliente lembrar da verificação.
+- **Proposta 3:** muda indevidamente o subtotal e exigiria que `ItemPedido` conhecesse o estado de `Pedido`.
 
-- itens já presentes desaparecem;
-- o subtotal deixa de funcionar;
-- `Produto` precisa conhecer o pedido;
-- toda alteração possível foi proibida.
+Fechar impede novas inclusões. Não apaga itens, não zera subtotais e não proíbe toda mudança possível.
 
-<div class="key-point">Uma regra precisa ser tão ampla quanto o requisito que a motivou.</div>
+<div class="key-point">A proteção deve ser tão ampla quanto o requisito — e não mais ampla.</div>
 
 ---
 
@@ -346,6 +355,16 @@ Uma `Turma` mantém estudantes inscritos e oferece `inscrever(estudante)`.
 Depois do encerramento, novas inscrições não entram.
 
 Quem deve proteger essa regra? O que acontece com estudantes já inscritos?
+
+---
+
+<div class="chapter">Transferência</div>
+
+## A turma protege suas inscrições
+
+`Turma` verifica seu estado dentro de `inscrever(estudante)`: ela recebe a solicitação e mantém a lista privada.
+
+Os estudantes já inscritos permanecem. Encerrar inscrições impede novas entradas; não remove as anteriores.
 
 ---
 

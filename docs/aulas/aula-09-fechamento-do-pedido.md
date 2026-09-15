@@ -9,6 +9,8 @@ Surge agora um requisito: **depois que um pedido é fechado, não podem ser
 adicionados novos itens**. Vamos evoluir o modelo existente e descobrir que
 partes precisam mudar para proteger essa regra.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-09-fechamento-do-pedido.html) · [PDF](../slides/rendered/aula-09-fechamento-do-pedido.pdf)
+
 !!! lesson-question "Pergunta central"
 
     Como `Pedido` pode impedir novas inclusões depois do fechamento sem refazer as responsabilidades dos objetos que já colaboram com ele?
