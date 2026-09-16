@@ -253,6 +253,26 @@ Leia: “para cada `ItemPedido`, chamado temporariamente de `item`, presente em 
 
 O método `calcularSubtotal()` mostra uma colaboração simples: o item solicita ao produto o preço que pertence ao estado do produto e combina essa informação com sua própria quantidade.
 
+### Localizar e remover uma referência da lista
+
+Quando uma operação de domínio precisa encontrar um elemento, o `for` aprimorado
+também pode percorrer a lista e comparar referências. Por exemplo, depois de
+encontrar um item, `itens.remove(item)` remove aquela referência da lista:
+
+```java
+for (ItemPedido item : itens) {
+    if (item.representa(produto)) {
+        itens.remove(item);
+        return;
+    }
+}
+```
+
+`return` encerra o método imediatamente. Neste padrão, ele interrompe o
+percurso logo depois da remoção. O importante no Projeto 1 não é decorar a API
+de listas: é que `Pedido` percorre e altera sua lista privada porque mantém a
+coleção e suas regras.
+
 ## Controle de acesso e alteração do estado
 
 ### `private` e `public`

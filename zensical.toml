@@ -28,6 +28,7 @@ nav = [
     { "07 — Um objeto coordenando vários outros" = "aulas/aula-07-um-objeto-coordenando-varios-outros.md" },
     { "08 — Relações entre objetos" = "aulas/aula-08-relacoes-entre-objetos.md" },
     { "09 — Fechamento do pedido" = "aulas/aula-09-fechamento-do-pedido.md" },
+    { "10 — Completando as regras do pedido" = "aulas/aula-10-completando-as-regras-do-pedido.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -40,6 +41,7 @@ nav = [
     { "07 — Coordenando itens em um pedido" = "aulas/laboratorio-07-coordenando-itens-em-um-pedido.md" },
     { "08 — Mantendo relações no pedido" = "aulas/laboratorio-08-mantendo-relacoes-no-pedido.md" },
     { "09 — Fechando um pedido" = "aulas/laboratorio-09-fechamento-do-pedido.md" },
+    { "10 — Completando as regras do pedido" = "aulas/laboratorio-10-completando-as-regras-do-pedido.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },
