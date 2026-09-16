@@ -186,6 +186,14 @@ Uma **pausa didática** interrompe deliberadamente esse fluxo para concentrar a 
 
 No roteiro e no laboratório, cada admonition preserva uma única função. Elas devem permanecer raras o suficiente para terem peso; o texto sequencial continua sendo a estrutura principal.
 
+### Sínteses
+
+Uma síntese deve deixar visíveis os resultados recuperáveis da trajetória, sem
+recontar a aula. Quando fechar duas ou mais consequências, responsabilidades ou
+decisões independentes, usar uma lista curta de bullets; uma única proposição
+pode permanecer em frase. O bloco não substitui a narrativa anterior nem deve
+virar uma parede de texto.
+
 No site, cada pausa possui a combinação fixa de nome, função, cor e ícone registrada acima. A identidade deve permanecer reconhecível nos temas claro e escuro, com contraste adequado de título, conteúdo, ícone, links e código.
 
 ### Java em foco

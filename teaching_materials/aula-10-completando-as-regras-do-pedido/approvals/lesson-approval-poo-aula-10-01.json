@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-10-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-10-completando-as-regras-do-pedido",
+    "path": "lesson-design.md",
+    "sha256": "a467eed5e6081f868a080c64aa1e45b320b70c740886f0c7cf4c36eba11f72d0",
+    "version": "aula-10-canonical-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-10-completando-as-regras-do-pedido",
+    "path": "lesson.md",
+    "sha256": "76b46095cc4ffb3f54854b58a4a11e6479abf35625ebf78b766ad1890fa7bb6c",
+    "version": "aula-10-canonical-baseline-01"
+  },
+  "combined_semantic_sha256": "e4e5a37970650f7ba62ccd2d8773eb1da9924bc7dde009f9214196e46d2bb8cb",
+  "approved_at": "2026-09-16T07:43:30-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the reviewed Aula 10 lesson"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

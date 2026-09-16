@@ -268,7 +268,15 @@ sua lista privada e oferece `inscrever(estudante)`.
 
 !!! synthesis "Síntese"
 
-    O novo requisito faz `Pedido` ganhar um estado e controlar uma transição. A guarda em `adicionarItem` impede a criação e a inclusão de novos itens depois do fechamento. A coleção continua privada; `calcularTotal()` continua delegando os subtotais a `ItemPedido`, que colabora com `Produto`. Uma evolução bem localizada preserva o que já cumpria sua responsabilidade.
+    O novo requisito faz `Pedido` ganhar estado e controlar uma transição:
+
+    - cada pedido mantém seu próprio estado aberto ou fechado;
+    - a guarda em `adicionarItem` impede criar e incluir itens após o fechamento;
+    - a coleção permanece privada e as inclusões anteriores permanecem no pedido;
+    - `calcularTotal()` continua delegando subtotais a `ItemPedido`; e
+    - `Produto` continua fornecendo o preço sem conhecer o pedido.
+
+    A evolução é localizada: a nova regra muda `Pedido`, sem deslocar o trabalho que já pertence aos seus colaboradores.
 
 No [Laboratório 09](laboratorio-09-fechamento-do-pedido.md), essa evolução será
 aplicada à Versão 8 do Projeto 1. As previsões da aula ajudam a verificar tanto

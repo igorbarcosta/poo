@@ -95,9 +95,11 @@ objeto que mantém a lista:
 ```java
 public void removerItem(Produto produto) {
     if (!fechado) {
-        for (ItemPedido item : itens) {
+        for (int indice = 0; indice < itens.size(); indice++) {
+            ItemPedido item = itens.get(indice);
+
             if (item.representa(produto)) {
-                itens.remove(item);
+                itens.remove(indice);
                 return;
             }
         }
@@ -108,6 +110,12 @@ public void removerItem(Produto produto) {
 O `return` encerra a operação ao remover a linha. O percurso aparece porque o
 pedido precisa encontrar a linha sobre a qual uma solicitação deve atuar; não
 porque estamos estudando todas as operações de `List`.
+
+!!! java-focus "Java em foco — remover durante um percurso"
+
+    Para remover uma posição, esta operação percorre a lista com um índice interno: `itens.size()` informa quantas posições existem, `itens.get(indice)` obtém a referência naquela posição e `itens.remove(indice)` a remove. O índice é um detalhe de navegação usado dentro de `Pedido`; não é a identidade de uma linha para o cliente do pedido.
+
+    O método retorna imediatamente após a remoção. Assim, não continua um percurso cuja estrutura acabou de mudar.
 
 !!! conceito-chave "Conceito-chave — operação do conjunto"
 
@@ -170,10 +178,12 @@ item:
 ```java
 public void alterarQuantidade(Produto produto, int novaQuantidade) {
     if (!fechado) {
-        for (ItemPedido item : itens) {
+        for (int indice = 0; indice < itens.size(); indice++) {
+            ItemPedido item = itens.get(indice);
+
             if (item.representa(produto)) {
                 if (novaQuantidade == 0) {
-                    itens.remove(item);
+                    itens.remove(indice);
                 } else {
                     item.alterarQuantidade(novaQuantidade);
                 }
@@ -247,7 +257,13 @@ System.out.println(pedido.calcularTotal());
 
 !!! synthesis "Síntese"
 
-    Completar um modelo não é acrescentar métodos aleatoriamente. Nesta versão, cada linha é identificada pela mesma referência de `Produto`; `Pedido` localiza e controla mudanças em sua coleção; `ItemPedido` preserva a quantidade e o subtotal; quantidade zero remove a linha; e um pedido fechado preserva suas linhas e quantidades. `Produto` e o cálculo por delegação não precisaram mudar.
+    Completar um modelo significa preservar as responsabilidades ao acrescentar operações:
+
+    - cada linha é localizada pela mesma referência de `Produto` usada na inclusão;
+    - `Pedido` mantém a coleção privada, localiza linhas e decide se a edição é permitida;
+    - `ItemPedido` preserva a quantidade positiva e calcula seu próprio subtotal;
+    - quantidade zero remove a linha, e quantidade negativa preserva o estado; e
+    - um pedido fechado preserva itens e quantidades, enquanto `Produto` e `calcularTotal()` permanecem com as responsabilidades que já tinham.
 
 Essas regras agora são claras o bastante para serem verificadas sistematicamente
 na próxima aula. Antes disso, o [Laboratório 10](laboratorio-10-completando-as-regras-do-pedido.md)

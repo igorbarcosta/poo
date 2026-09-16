@@ -255,23 +255,26 @@ O método `calcularSubtotal()` mostra uma colaboração simples: o item solicita
 
 ### Localizar e remover uma referência da lista
 
-Quando uma operação de domínio precisa encontrar um elemento, o `for` aprimorado
-também pode percorrer a lista e comparar referências. Por exemplo, depois de
-encontrar um item, `itens.remove(item)` remove aquela referência da lista:
+Quando uma operação de domínio precisa encontrar e remover um elemento, um
+índice interno permite identificar a posição durante o percurso. `size()`
+informa a quantidade de posições, `get(indice)` fornece a referência naquela
+posição e `remove(indice)` a remove:
 
 ```java
-for (ItemPedido item : itens) {
+for (int indice = 0; indice < itens.size(); indice++) {
+    ItemPedido item = itens.get(indice);
+
     if (item.representa(produto)) {
-        itens.remove(item);
+        itens.remove(indice);
         return;
     }
 }
 ```
 
-`return` encerra o método imediatamente. Neste padrão, ele interrompe o
-percurso logo depois da remoção. O importante no Projeto 1 não é decorar a API
-de listas: é que `Pedido` percorre e altera sua lista privada porque mantém a
-coleção e suas regras.
+`return` encerra o método imediatamente depois da remoção. O índice é um detalhe
+interno da lista, não uma identidade que o cliente de `Pedido` deve conhecer. O
+importante no Projeto 1 não é decorar a API de listas: é que `Pedido` percorre
+e altera sua lista privada porque mantém a coleção e suas regras.
 
 ## Controle de acesso e alteração do estado
 

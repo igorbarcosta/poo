@@ -60,6 +60,13 @@ Ao final, o estudante deve ser capaz de:
 - localizar o impacto da evolução, preservando `Produto` e o cálculo por
   delegação.
 
+## Java necessário
+
+Para localizar e remover uma linha com segurança durante o percurso, a aula
+introduz somente o uso pragmático de `size()`, `get(indice)` e
+`remove(indice)`. O índice permanece um detalhe interno da implementação de
+`Pedido`, não uma forma de o cliente identificar uma linha do domínio.
+
 ## Trajetória narrativa e dimensionamento
 
 O núcleo é planejado para aproximadamente 90 minutos, em três blocos. As
@@ -75,8 +82,9 @@ solicitação de domínio ao pedido. Escolher uma linha por referência de
 
 O estudante percebe que o índice da lista é detalhe de armazenamento, não a
 identidade do item no domínio. Como `Pedido` criou e mantém seus itens, ele
-percorre a lista; `ItemPedido` oferece apenas a pergunta necessária para saber
-se representa aquele mesmo produto.
+percorre a lista com um índice interno para remover a posição encontrada;
+`ItemPedido` oferece apenas a pergunta necessária para saber se representa
+aquele mesmo produto.
 
 ### 10.2 — Alterar uma quantidade muda a linha, não o pedido inteiro
 
