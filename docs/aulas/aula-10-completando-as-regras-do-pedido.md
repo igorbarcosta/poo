@@ -1,5 +1,7 @@
 # Aula 10 — Completando as regras do pedido
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-10-completando-as-regras-do-pedido.html) · [PDF](../slides/rendered/aula-10-completando-as-regras-do-pedido.pdf)
+
 Na Versão 9 do Projeto 1, `Pedido` cria e mantém seus itens, calcula o total
 por colaboração e recusa novas inclusões depois de fechado. O modelo ainda não
 permite corrigir uma quantidade nem retirar uma linha. Essas operações parecem
