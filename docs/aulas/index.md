@@ -20,5 +20,6 @@ Da transição do pensamento procedural à modelagem de pequenos problemas com o
 - [Aula 08 — Relações entre objetos](aula-08-relacoes-entre-objetos.md)
 - [Aula 09 — Fechamento do pedido](aula-09-fechamento-do-pedido.md)
 - [Aula 10 — Completando as regras do pedido](aula-10-completando-as-regras-do-pedido.md)
+- [Aula 11 — Revisão da Unidade 01](aula-11-revisao-da-unidade-01.md)
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

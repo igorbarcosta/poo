@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-11-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-11-revisao-da-unidade-01",
+    "path": "lesson-design.md",
+    "sha256": "b9c1448683ba8b6ed8fd48afd56795fd7bc75f4d5e3fa63a4d1f1e122ef3b6a1",
+    "version": "aula-11-canonical-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-11-revisao-da-unidade-01",
+    "path": "lesson.md",
+    "sha256": "fd36a03ed3f370584bde55ae9e05d36961e42bb008740d508645b14bd9185a47",
+    "version": "aula-11-canonical-baseline-01"
+  },
+  "combined_semantic_sha256": "0700221b83fb4945b7f84eed8ca3e64de0550438c0d18546c52f60c1e0d06cf9",
+  "approved_at": "2026-09-22T09:01:44-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the complete Aula 11 lesson, slide deck, and publication"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

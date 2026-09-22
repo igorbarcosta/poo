@@ -29,6 +29,7 @@ nav = [
     { "08 — Relações entre objetos" = "aulas/aula-08-relacoes-entre-objetos.md" },
     { "09 — Fechamento do pedido" = "aulas/aula-09-fechamento-do-pedido.md" },
     { "10 — Completando as regras do pedido" = "aulas/aula-10-completando-as-regras-do-pedido.md" },
+    { "11 — Revisão da Unidade 01" = "aulas/aula-11-revisao-da-unidade-01.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
