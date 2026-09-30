@@ -12,3 +12,7 @@ Avisos, entregas, notas e demais informações operacionais continuam sendo publ
 
 - [Checkpoint 01 — Objetos, referências e encapsulamento](checkpoint-01/index.md)
 - [Checkpoint 02 — Construtores, colaboração e coleções](checkpoint-02/index.md)
+
+## Provas de unidade
+
+- [Prova da Unidade 01 — Objetos, referências e relações](prova-unidade-01/index.md)

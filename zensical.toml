@@ -56,6 +56,10 @@ nav = [
       { "Gabarito — Variante A" = "avaliacoes/checkpoint-02/gabarito-variante-a.md" },
       { "Gabarito — Variante B" = "avaliacoes/checkpoint-02/gabarito-variante-b.md" },
     ] },
+    { "Prova da Unidade 01" = [
+      { "Visão geral" = "avaliacoes/prova-unidade-01/index.md" },
+      { "Gabarito comentado" = "avaliacoes/prova-unidade-01/gabarito.md" },
+    ] },
   ] },
   { "Materiais" = [
     { "Materiais" = "materiais/index.md" },
