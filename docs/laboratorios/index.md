@@ -19,4 +19,8 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 09 — Fechando um pedido](../aulas/laboratorio-09-fechamento-do-pedido.md)
 - [Laboratório 10 — Completando as regras do pedido](../aulas/laboratorio-10-completando-as-regras-do-pedido.md)
 
+## Unidade 2 — Colaboração, Contratos e Polimorfismo
+
+- [Laboratório 12 — Quando uma segunda solução aparece](../aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md) — prática em casa, com transferência para um sistema de lembretes.
+
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

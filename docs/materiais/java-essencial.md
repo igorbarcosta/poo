@@ -218,6 +218,21 @@ ItemPedido item = new ItemPedido(teclado, 2);
 
 Passar o objeto como argumento não executa `new Produto(...)` nem cria automaticamente uma cópia. O campo do item e a variável `teclado` podem permitir acesso ao mesmo objeto `Produto`.
 
+### `this` como argumento
+
+Em um método de instância, `this` também pode ser passado a um colaborador:
+
+```java
+public double calcularCustoEntrega() {
+    return entrega.calcularCusto(this);
+}
+```
+
+Aqui, `this` referencia o próprio `Pedido` que executa o método. O parâmetro
+de `calcularCusto(Pedido pedido)` recebe uma referência para esse mesmo objeto;
+nenhum novo pedido é criado. Esse uso aparece na
+[Aula 12](../aulas/aula-12-quando-um-colaborador-comeca-a-variar.md).
+
 ## Listas e percurso de objetos
 
 `List<ItemPedido>` declara uma coleção em sequência cujos elementos são referências para objetos `ItemPedido`. `ArrayList` fornece uma implementação concreta dessa lista:

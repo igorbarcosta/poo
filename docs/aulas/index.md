@@ -22,4 +22,10 @@ Da transição do pensamento procedural à modelagem de pequenos problemas com o
 - [Aula 10 — Completando as regras do pedido](aula-10-completando-as-regras-do-pedido.md)
 - [Aula 11 — Revisão da Unidade 01](aula-11-revisao-da-unidade-01.md)
 
+## Unidade 2 — Colaboração, Contratos e Polimorfismo
+
+Da colaboração com objetos concretos à necessidade de acomodar diferentes objetos capazes de realizar a mesma responsabilidade.
+
+- [Aula 12 — Quando um colaborador começa a variar](aula-12-quando-um-colaborador-comeca-a-variar.md)
+
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

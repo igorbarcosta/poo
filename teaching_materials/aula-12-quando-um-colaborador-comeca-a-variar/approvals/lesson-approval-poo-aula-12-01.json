@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-12-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-12-quando-um-colaborador-comeca-a-variar",
+    "path": "lesson-design.md",
+    "sha256": "93a5221d2e8cc070e0d24000f84a39701008e694d612836246c713ebce8fe9dc",
+    "version": "aula-12-approved-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-12-quando-um-colaborador-comeca-a-variar",
+    "path": "lesson.md",
+    "sha256": "f4c799c0a5ab52e681096c2afd50f5cff79eb73f74e26fb9b5718bce3ccde130",
+    "version": "aula-12-approved-01"
+  },
+  "combined_semantic_sha256": "9c129a7b434ebf1f5a918fc97e751630f35c0391d5c9648fec20a49821305ba4",
+  "approved_at": "2026-10-01T07:20:01-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the completed Aula 12 materials and publication in the current conversation"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

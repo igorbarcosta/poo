@@ -30,6 +30,7 @@ nav = [
     { "09 — Fechamento do pedido" = "aulas/aula-09-fechamento-do-pedido.md" },
     { "10 — Completando as regras do pedido" = "aulas/aula-10-completando-as-regras-do-pedido.md" },
     { "11 — Revisão da Unidade 01" = "aulas/aula-11-revisao-da-unidade-01.md" },
+    { "12 — Quando um colaborador começa a variar" = "aulas/aula-12-quando-um-colaborador-comeca-a-variar.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -43,6 +44,7 @@ nav = [
     { "08 — Mantendo relações no pedido" = "aulas/laboratorio-08-mantendo-relacoes-no-pedido.md" },
     { "09 — Fechando um pedido" = "aulas/laboratorio-09-fechamento-do-pedido.md" },
     { "10 — Completando as regras do pedido" = "aulas/laboratorio-10-completando-as-regras-do-pedido.md" },
+    { "12 — Quando uma segunda solução aparece" = "aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },
