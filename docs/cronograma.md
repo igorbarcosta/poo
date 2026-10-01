@@ -29,7 +29,7 @@ O cronograma detalhado será construído e atualizado progressivamente, de acord
 
 **Parte 1 → CP3 → Parte 2 → CP4 → Parte 3 → Prova U2**
 
-A abertura está desenvolvida na [Aula 12 — Quando um colaborador começa a variar](aulas/aula-12-quando-um-colaborador-comeca-a-variar.md), com o [Laboratório 12 — Quando uma segunda solução aparece](aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md) como prática em casa. A data será acrescentada aos encontros confirmados quando for definida.
+A abertura está desenvolvida na [Aula 12 — Quando um colaborador começa a variar](aulas/aula-12-quando-um-colaborador-comeca-a-variar.md), com o [Laboratório 12 — Quando uma segunda solução aparece](aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md) como prática em casa e início do Projeto 2 — Sistema de lembretes e notificações. A data será acrescentada aos encontros confirmados quando for definida.
 
 ### Unidade 3 — Evolução de Software Orientado a Objetos
 

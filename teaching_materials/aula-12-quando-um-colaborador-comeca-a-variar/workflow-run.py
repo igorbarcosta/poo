@@ -17,9 +17,9 @@ import teaching_materials_integration as integration  # noqa: E402
 PACKAGE_ROOT = Path(__file__).resolve().parent
 DESIGN_PATH = PACKAGE_ROOT / "lesson-design.md"
 LESSON_PATH = POO_ROOT / "docs/aulas/aula-12-quando-um-colaborador-comeca-a-variar.md"
-APPROVAL_PATH = PACKAGE_ROOT / "approvals/lesson-approval-poo-aula-12-01.json"
-PROVENANCE_PATH = PACKAGE_ROOT / "slides/aula-12-quando-um-colaborador-comeca-a-variar.provenance.json"
-APPROVAL_ID = "lesson-approval-poo-aula-12-01"
+APPROVAL_PATH = PACKAGE_ROOT / "approvals/lesson-approval-poo-aula-12-02.json"
+PROVENANCE_PATH = PACKAGE_ROOT / "slides/aula-12-quando-um-colaborador-comeca-a-variar-02.provenance.json"
+APPROVAL_ID = "lesson-approval-poo-aula-12-02"
 LESSON_ID = "lesson-poo-aula-12-quando-um-colaborador-comeca-a-variar"
 
 
@@ -41,15 +41,16 @@ def approve() -> None:
             "identity": "human-professor-poo",
             "display_name": "Professor da disciplina de POO",
             "source": (
-                "explicit user approval of the completed Aula 12 materials and "
-                "publication in the current conversation"
+                "explicit user approval of the revision plan: delivery chosen at "
+                "checkout and continuous reminder/notification Project 2 in labs; "
+                "user requested implementation with scenario introduction before increments"
             ),
         },
         approved_at=datetime.now(ZoneInfo("America/Sao_Paulo")).isoformat(
             timespec="seconds"
         ),
-        lesson_design_version="aula-12-approved-01",
-        lesson_version="aula-12-approved-01",
+        lesson_design_version="aula-12-approved-02",
+        lesson_version="aula-12-approved-02",
         consumer_context_refs=["../../../slides/presentation-profile.md"],
     )
     workflow.persist_lesson_approval(APPROVAL_PATH, approval)
@@ -83,7 +84,7 @@ def provenance() -> None:
         approval=approval,
         lesson_design=design,
         lesson=lesson,
-        deck_identity="slide-deck-poo-aula-12-quando-um-colaborador-comeca-a-variar-01",
+        deck_identity="slide-deck-poo-aula-12-quando-um-colaborador-comeca-a-variar-02",
         derived_at=datetime.now(ZoneInfo("America/Sao_Paulo")).isoformat(
             timespec="seconds"
         ),

@@ -11,7 +11,10 @@ limites e as pontes em seu pedido de criação da Aula 12, Laboratório 12 e sli
 Essa instrução autorizou produzir o conjunto nesta tarefa, com revisão do roteiro
 antes do deck. Depois de revisar os materiais, o professor aprovou-os
 explicitamente para publicação no site. O registro Docemas abaixo liga a decisão
-à versão exata deste desenho e da página canônica, validada pelo workflow.
+à versão então publicada. Posteriormente, o professor aprovou o ajuste para
+entrega no fechamento e a adoção de lembretes e notificações como Projeto 2
+contínuo nos laboratórios, solicitando a introdução do cenário antes dos
+incrementos. Esta revisão implementa essas decisões, sem nova publicação.
 
 ## Continuidade efetiva
 
@@ -43,7 +46,9 @@ Java. Não entregar a solução formal.
 - Usar cópia de trabalho da Versão 10; não declarar nova versão oficial do projeto.
 - Normal 10.0, expressa 25.0, retirada 0.0; sem regra financeira adicional.
 - `calcularTotal()` continua sendo total dos itens; entrega é consulta separada.
-- Entrega recebida no construtor, não nula nos cenários; sem troca posterior.
+- Pedido nasce aberto sem entrega; fechar(EntregaNormal) recebe a escolha,
+  exige colaborador existente e conserva a escolha após fechamento. Consultar
+  custo apenas depois de fechar, sem introduzir tratamento de consulta antecipada.
 - `calcularCusto(Pedido)` recebe contexto, mas regras fixas não o consultam.
 - `this` como argumento tem apoio mínimo no roteiro, deck e Java essencial.
 - Campos múltiplos e indicador são hipóteses analisadas após o novo requisito;
@@ -68,7 +73,10 @@ adequado no pedido. Não preencher tempo com conceitos futuros.
 
 ## Laboratório de transferência
 
-Prática em casa, independente do Projeto 1 e sem definição do Projeto 2.
+Prática em casa, início do Projeto 2 — Sistema de lembretes e notificações.
+Apresentar transição do Projeto 1 e cenário de agenda de estudos antes do código.
+Aulas mantêm Pedido; laboratórios continuam o novo projeto ao longo da U2.
+O Laboratório 12 entrega a Versão 1, preservada para os próximos incrementos.
 Lembrete mantém mensagem e contador; NotificadorEmail simula envio no console.
 Primeiro mudar a apresentação do canal existente sem mudar Lembrete. Depois
 introduzir SMS e painel local, manter alternativas coexistindo usando recursos

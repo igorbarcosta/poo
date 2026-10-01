@@ -10,7 +10,7 @@ alterações. Foram lidos AGENTS, plano, cronograma, specs, retrospectiva, Aulas
 06–11 e Laboratórios 06–10, além dos decks 10–11 e do tema compartilhado.
 
 O arco é: Projeto 1 válido → nova responsabilidade de entrega → colaboração
-adequada com EntregaNormal → alternativa Expressa não aceita pelo construtor
+adequada com EntregaNormal → alternativa Expressa não aceita pela operação de fechamento
 atual → propostas e impactos → RetiradaLocal → estável/variável → ponto de
 variação → dependência concreta → necessidade de verificações → pergunta aberta.
 
@@ -44,7 +44,9 @@ concretas e a integração usa apenas recursos conhecidos. O aluno pode escolher
 campos, parâmetros, operações específicas ou seleção numérica.
 
 Entrega somente código; nenhuma nova data, nota, peso ou regra institucional.
-Prática independente, sem definir domínio ou requisitos oficiais do Projeto 2.
+Início do Projeto 2 — Sistema de lembretes e notificações, conforme decisão
+posterior do professor. Introdução da transição, cenário da agenda e divisão
+de responsabilidades antecedem o código e os incrementos.
 
 ## Validação técnica
 
@@ -82,8 +84,32 @@ São evidências da inspeção desta sessão, não artefatos oficiais do pipelin
 
 Após revisar os materiais, o professor aprovou a Aula 12 e sua publicação no
 site. A decisão foi registrada para os bytes exatos da página e deste desenho.
-O workflow Docemas validou a aprovação como `VALID_CURRENT`; o deck foi ligado
-a esse estado exato por seu registro de provenance.
+O workflow Docemas validou aquela aprovação como `VALID_CURRENT` na publicação;
+o registro 01 corresponde à versão histórica. A revisão posterior foi autorizada
+explicitamente pelo professor, que aprovou o plano de ajustes e pediu a
+introdução do cenário do Projeto 2. O registro 02 representa essa revisão.
 
 A aprovação também aceitou o ritmo das hipóteses abertas e a transferência para
 notificações simuladas no laboratório. O nível de IA já havia sido confirmado.
+
+## Revisão posterior — fechamento e continuidade do Projeto 2
+
+Plano aprovado pelo professor e implementado: Pedido() continua criando pedido
+aberto; fechar(EntregaNormal) recebe e conserva a escolha, exigindo colaborador
+existente. Exemplos consultam custo apenas após fechar. O limite de Expressa
+aparece agora no argumento de fechar, sem alterar a pergunta central.
+
+Laboratório 12 apresenta a transição U1 → U2 e a agenda de estudos antes do
+código. A Versão 1 do Projeto 2 é preservada para os próximos laboratórios;
+aulas continuam com Pedido. E-mail, SMS e painel permanecem incrementos concretos
+simulados, com IA Nível 1 e entrega apenas de código. Specs, índice e cronograma
+acompanham a decisão; nenhuma data nova foi definida.
+
+Validações desta revisão: build Zensical sem problemas; exemplos e incrementos
+compilados e executados com saídas conferidas; incompatibilidade Expressa/Normal
+confirmada; fechamento com null preserva pedido aberto e fechamento válido
+bloqueia edição. Renderização final: 40 fontes/seções/páginas; revisão global e
+ampliada do código, sem overflow na inspeção geométrica final. Retirado comentário
+do frame 35 e levado o contexto dos preços à pergunta para ampliar a margem.
+Git diff --check passou. Registros 01 preservados; aprovação e provenance 02
+validados como VALID_CURRENT. Alterações permanecem locais na branch draft.

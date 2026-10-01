@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-12-02",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-12-quando-um-colaborador-comeca-a-variar",
+    "path": "lesson-design.md",
+    "sha256": "185df500e41ac88508151a090f80bfe272516dc178d6b9b368cb107e84b93164",
+    "version": "aula-12-approved-02"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-12-quando-um-colaborador-comeca-a-variar",
+    "path": "lesson.md",
+    "sha256": "ec4c3fb07db10b27960b0c600c5eb21ea244f4ceba70facbac22942b9a3a6f3e",
+    "version": "aula-12-approved-02"
+  },
+  "combined_semantic_sha256": "1d6381b3bf47ba9fed4f3421faf2fd7193386cff40bebbfa170b7de732ae9d5a",
+  "approved_at": "2026-10-01T08:06:39-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "explicit user approval of the revision plan: delivery chosen at checkout and continuous reminder/notification Project 2 in labs; user requested implementation with scenario introduction before increments"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

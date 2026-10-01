@@ -8,8 +8,8 @@ o repertório atual e perceber onde o código precisa mudar.
 !!! info "Prática autônoma — em casa"
 
     Este laboratório é realizado em casa. O código inicial e os resultados de
-    verificação estão nesta página. A prática é uma transferência independente
-    do Projeto 1; não exige adaptar pedidos nem define o Projeto 2.
+    verificação estão nesta página. Esta prática inicia o Projeto 2, que será
+    desenvolvido nos laboratórios da Unidade 02.
 
 !!! info "Uso de IA — Nível 1: Tutor"
 
@@ -25,7 +25,32 @@ o repertório atual e perceber onde o código precisa mudar.
 - identificar quais classes passaram a conhecer as alternativas; e
 - distinguir a responsabilidade estável das formas que podem realizá-la.
 
-## Ponto de partida — um lembrete que já funciona
+## Do Projeto 1 ao Projeto 2
+
+Na Unidade 01, você construiu um sistema de pedidos. Ao evoluí-lo, aprendeu a
+separar responsabilidades, proteger o estado e coordenar objetos. Agora vai
+usar esse repertório em outro domínio: **Projeto 2 — Sistema de lembretes e
+notificações**.
+
+Nas aulas da Unidade 02, continuaremos usando `Pedido` como exemplo conhecido.
+Nos laboratórios, desenvolveremos este novo projeto ao longo da unidade. Você
+receberá uma primeira versão que funciona e fará incrementos sobre ela, com
+mais autonomia para decidir como organizar a colaboração.
+
+Imagine uma pequena agenda de estudos. Ela registra lembretes como “Revisar
+colaboração” e permite avisar o usuário. Na primeira versão, o aviso sai por
+e-mail. Depois, chegam pedidos de outros canais: SMS e um painel local.
+A mensagem continua sendo a mesma; quem realiza o aviso pode variar.
+
+Um lembrete guarda a mensagem e conta os avisos realizados. O canal conhece o
+formato do envio. `Main` representa o uso da agenda: cria os objetos e pede que
+o lembrete avise. Não precisamos construir telas ou uma agenda completa para
+investigar essa colaboração.
+
+Antes de ler o código, pense: o que desse cenário você já sabe modelar com o
+repertório do Projeto 1? Quem deveria conhecer o formato de um e-mail?
+
+## Projeto 2 — Versão 1: um lembrete que já funciona
 
 Um `Lembrete` mantém sua mensagem e conta quantos avisos foram realizados.
 Inicialmente, o canal disponível é `NotificadorEmail`, recebido na criação.
@@ -305,6 +330,9 @@ contadores. Criar o segundo objeto exige nova classe ou nova seleção de canal?
 O desafio é opcional e não integra os critérios de conclusão.
 
 ## Entrega
+
+Guarde o projeto ao concluir: esta é a **Versão 1 do Projeto 2**, ponto de
+partida para os próximos laboratórios da unidade.
 
 Entregue somente o código-fonte final do Laboratório 12, conforme as orientações
 do [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5).

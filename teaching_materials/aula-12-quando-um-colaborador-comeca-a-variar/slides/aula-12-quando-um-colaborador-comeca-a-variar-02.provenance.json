@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "deck_identity": "slide-deck-poo-aula-12-quando-um-colaborador-comeca-a-variar-02",
+  "source_lesson": "lesson-poo-aula-12-quando-um-colaborador-comeca-a-variar",
+  "source_approval": "lesson-approval-poo-aula-12-02",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "approved_combined_semantic_sha256": "1d6381b3bf47ba9fed4f3421faf2fd7193386cff40bebbfa170b7de732ae9d5a",
+  "presentation_profile": {
+    "identity": "poo-marp-v1",
+    "reference": "slides/presentation-profile.md",
+    "format": "Marp Markdown",
+    "syntax": "Marp front matter with POO deck classes, components, and notes",
+    "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+    "theme": "slides/theme/poo.css",
+    "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+    "density": "one central idea per frame with progressive code and activity pauses",
+    "delivery_context": "90-minute presencial POO lesson"
+  },
+  "derived_at": "2026-10-01T08:06:39-03:00"
+}

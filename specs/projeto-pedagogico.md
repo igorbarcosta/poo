@@ -163,13 +163,13 @@ A progressão de autonomia é:
 
 Pequenos exercícios formativos podem ocorrer nas aulas teóricas sem constituir instrumentos formais de avaliação.
 
-### Hipóteses atuais de domínio
+### Domínios dos projetos
 
 - **Projeto 1:** sistema de pedidos, possivelmente evoluindo de `Produto` para `ItemPedido`, `Pedido`, vários itens, cálculos, fechamento e regras de estado.
-- **Projeto 2:** sistema relacionado a entregas ou mobilidade, com requisitos sucessivos que provoquem variações, crescimento de condicionais, contratos, polimorfismo e comparação entre composição e herança.
+- **Projeto 2:** sistema de lembretes e notificações, adotado nos laboratórios da Unidade 02 a partir do Laboratório 12. As aulas continuam usando o sistema de pedidos como referência conhecida; os laboratórios transferem e desenvolvem os conceitos no novo projeto, com requisitos definidos progressivamente.
 - **Projeto 3:** aplicação interativa ou jogo simples, com infraestrutura ou interface fornecida pelo professor. O núcleo OO, e não a GUI, é o objeto de estudo.
 
-Esses domínios são opções preferenciais, não decisões imutáveis. Requisitos específicos serão definidos progressivamente.
+O domínio do Projeto 2 foi definido pelo professor na preparação do Laboratório 12. O domínio do Projeto 3 permanece uma hipótese. Requisitos específicos serão definidos progressivamente.
 
 ## Avaliação
 

@@ -34,13 +34,15 @@ Atividades formativas: Nível 1 — Tutor, conforme práticas anteriores. -->
 
 O novo requisito é simples:
 
-> Cada pedido possui uma forma de entrega. Inicialmente, só existe entrega
-> normal, com custo fixo de R$ 10.
+> No fechamento, o cliente escolhe a forma de entrega do pedido. Inicialmente,
+> só existe entrega normal, com custo fixo de R$ 10.
 
 Nesta investigação, `calcularTotal()` continua significando **total dos itens**.
-O custo da entrega será consultado separadamente. Consideramos pedidos criados
-com um colaborador existente; troca de entrega depois da criação e ausência de
-colaborador não fazem parte deste recorte.
+O pedido continua nascendo aberto, com a lista de itens vazia. A entrega é
+escolhida **no fechamento**, quando passa a ser uma colaboração necessária.
+Depois de fechado, o pedido conserva essa escolha. Neste cenário, consultamos
+o custo da entrega separadamente e somente depois do fechamento; consultas
+antecipadas não fazem parte desta investigação.
 
 Quem deveria conhecer a regra que calcula o custo da entrega? `Pedido` já
 coordena itens e protege sua estrutura. A entrega tem uma regra própria, que
@@ -58,7 +60,8 @@ O parâmetro permite receber o pedido para o qual o custo é calculado. Nesta
 primeira regra, o valor é fixo e não precisa consultar seus dados. Receber o
 pedido não cria outro pedido nem exige guardar uma referência para ele.
 
-Em `Pedido`, acrescentamos o campo e substituímos o construtor sem argumentos:
+Em `Pedido`, acrescentamos o campo e passamos a receber a entrega em `fechar`.
+O construtor sem argumentos continua criando um pedido aberto:
 
 ```java
 // Trecho de Pedido; os imports de List e ArrayList continuam necessários.
@@ -66,10 +69,16 @@ private List<ItemPedido> itens;
 private boolean fechado;
 private EntregaNormal entrega;
 
-public Pedido(EntregaNormal entrega) {
-    this.entrega = entrega;
+public Pedido() {
     itens = new ArrayList<>();
     fechado = false;
+}
+
+public void fechar(EntregaNormal entrega) {
+    if (!fechado && entrega != null) {
+        this.entrega = entrega;
+        fechado = true;
+    }
 }
 
 public double calcularCustoEntrega() {
@@ -78,8 +87,10 @@ public double calcularCustoEntrega() {
 ```
 
 As operações da Versão 10 continuam na classe: `adicionarItem(Produto, int)`,
-`removerItem(Produto)`, `alterarQuantidade(Produto, int)`, `fechar()` e
-`calcularTotal()`. Adaptamos as criações de pedido para fornecer a entrega.
+`removerItem(Produto)`, `alterarQuantidade(Produto, int)` e `calcularTotal()`.
+A antiga operação `fechar()` é substituída por `fechar(EntregaNormal)`: só fecha
+um pedido ainda aberto quando recebe um colaborador existente. Assim, a entrega
+não é exigida na criação nem pode ser trocada por um segundo fechamento.
 
 !!! java-focus "Java em foco — passar o próprio objeto"
 
@@ -123,9 +134,10 @@ Produto teclado = new Produto("Teclado", 150.0);
 Produto mouse = new Produto("Mouse", 80.0);
 EntregaNormal normal = new EntregaNormal();
 
-Pedido pedido = new Pedido(normal);
+Pedido pedido = new Pedido();
 pedido.adicionarItem(teclado, 2);
 pedido.adicionarItem(mouse, 1);
+pedido.fechar(normal);
 
 System.out.println(pedido.calcularTotal());
 System.out.println(pedido.calcularCustoEntrega());
@@ -163,25 +175,26 @@ Vamos tentar fornecer o novo colaborador ao pedido atual:
 
 ```java
 EntregaExpressa expressa = new EntregaExpressa();
-Pedido urgente = new Pedido(expressa);
+Pedido urgente = new Pedido();
+urgente.fechar(expressa);
 ```
 
 !!! activity "Atividade — preveja antes de compilar"
 
-    1. O construtor atual aceita essa chamada?
+    1. A operação de fechamento atual aceita essa chamada?
     2. A responsabilidade de coordenar o custo mudou? O comportamento solicitado mudou?
     3. O que as duas classes têm em comum do ponto de vista de quem precisa da entrega?
 
 ??? "Ver resposta"
 
-    1. Não. O construtor recebe `EntregaNormal`, e o argumento é `EntregaExpressa`.
+    1. Não. `fechar` recebe `EntregaNormal`, e o argumento é `EntregaExpressa`.
        As classes mostradas são tipos distintos. Ter um método de mesmo nome
        não basta para que esse argumento seja aceito.
     2. Não. O pedido ainda precisa solicitar o custo da sua forma de entrega.
     3. Ambas oferecem `calcularCusto(Pedido)` e devolvem um `double`.
        O que mudou foi quem pode realizar o trabalho e a regra usada por esse objeto.
 
-Mesmo trocar **somente** o parâmetro do construtor para `EntregaExpressa`
+Mesmo trocar **somente** o parâmetro de `fechar` para `EntregaExpressa`
 deixaria outro obstáculo: o campo ainda é `EntregaNormal`. Trocar ambos faria
 pedidos normais perderem o encaixe nessa versão. Precisamos atender às duas
 alternativas, não apenas substituir uma pela outra no código da classe.
@@ -206,7 +219,7 @@ proposta exige de `Pedido`.
 Uma proposta mantém duas referências:
 
 ```java
-// Proposta parcial, ainda sem construtor nem seleção.
+// Proposta parcial, ainda sem operação de fechamento nem seleção.
 private EntregaNormal entregaNormal;
 private EntregaExpressa entregaExpressa;
 ```
@@ -324,7 +337,7 @@ Que frase descreve a necessidade do pedido sem citar uma das alternativas?
 
     Uma classe está acoplada a outra quando depende dela para realizar seu
     trabalho. Na primeira solução, `Pedido` depende concretamente de
-    `EntregaNormal`: o campo e o construtor nomeiam essa classe.
+    `EntregaNormal`: o campo e a operação de fechamento nomeiam essa classe.
 
 Essa dependência era adequada ao requisito inicial. Dependências permitem a
 colaboração que aprendemos na Unidade 01. O novo requisito revelou uma limitação
@@ -364,7 +377,7 @@ referências de produto em todas as chamadas:
 ```java
 Produto teclado = new Produto("Teclado", 150.0);
 Produto mouse = new Produto("Mouse", 80.0);
-Pedido pedido = new Pedido(new EntregaNormal());
+Pedido pedido = new Pedido();
 
 pedido.adicionarItem(teclado, 2);
 pedido.adicionarItem(mouse, 1);
@@ -374,7 +387,7 @@ System.out.println(pedido.calcularTotal());
 pedido.alterarQuantidade(teclado, 3);
 System.out.println(pedido.calcularTotal());
 
-pedido.fechar();
+pedido.fechar(new EntregaNormal());
 pedido.adicionarItem(mouse, 1);
 pedido.removerItem(teclado);
 pedido.alterarQuantidade(teclado, 1);

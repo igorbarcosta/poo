@@ -16,7 +16,7 @@ lang: pt-BR
 Abre a Unidade 02. Retomada muito curta; não anunciar mecanismo de solução.
 Núcleo de 90 min: colaboração 25; segunda alternativa 30; terceira e conceitos 20;
 verificações e fechamento 15. Perguntas à turma toda com formulação individual.
-Deck solicitado junto ao par; aprovação formal do estado final permanece pendente.
+Revisão solicitada pelo professor: entrega no fechamento e Projeto 2 nos laboratórios.
 -->
 
 ---
@@ -41,6 +41,8 @@ Respostas: ItemPedido; Pedido. Não reensinar as classes do Projeto 1.
 <div class="chapter">Novo requisito</div>
 
 ## O pedido precisa de uma forma de entrega
+
+A escolha acontece **no fechamento**.
 
 Por enquanto, só existe **entrega normal**.
 
@@ -78,19 +80,20 @@ Recebe o pedido como contexto. Nesta regra fixa, não precisa consultar seus dad
 ```java
 private EntregaNormal entrega;
 
-public Pedido(EntregaNormal entrega) {
-    this.entrega = entrega;
-    itens = new ArrayList<>();
-    fechado = false;
+public void fechar(EntregaNormal entrega) {
+    if (!fechado && entrega != null) {
+        this.entrega = entrega;
+        fechado = true;
+    }
 }
 ```
 
-Os campos `itens` e `fechado` continuam na classe.
+O pedido nasce aberto. A entrega é escolhida no fechamento.
 
 <!--
-Trecho de Pedido. Substitui o construtor vazio; adaptar as criações dos cenários.
+Trecho de Pedido. Mantém Pedido() e substitui fechar() por fechar(EntregaNormal).
 Imports de List e ArrayList e operações da Versão 10 permanecem necessários.
-Não abrir discussão de null nem troca de entrega após criação.
+A guarda exige colaborador existente e preserva a escolha após fechar. Consultar custo apenas depois do fechamento.
 -->
 
 ---
@@ -190,11 +193,11 @@ Não chamar a solução de defeito nem antecipar outra representação.
 ## Dois resultados, duas responsabilidades
 
 ```java
-Produto teclado = new Produto("Teclado", 150.0);
-Produto mouse = new Produto("Mouse", 80.0);
-Pedido pedido = new Pedido(new EntregaNormal());
+// teclado: 150.0; mouse: 80.0
+Pedido pedido = new Pedido();
 pedido.adicionarItem(teclado, 2);
 pedido.adicionarItem(mouse, 1);
+pedido.fechar(new EntregaNormal());
 System.out.println(pedido.calcularTotal());
 System.out.println(pedido.calcularCustoEntrega());
 ```
@@ -241,9 +244,10 @@ Também calcula o custo da entrega. Usa outra regra.
 ## Podemos fornecer a nova entrega?
 
 ```java
-// Pedido recebe EntregaNormal no construtor.
+// fechar recebe EntregaNormal.
 EntregaExpressa expressa = new EntregaExpressa();
-Pedido urgente = new Pedido(expressa);
+Pedido urgente = new Pedido();
+urgente.fechar(expressa);
 ```
 
 O compilador aceita essa chamada? Por quê?
@@ -260,7 +264,7 @@ decorada de um compilador específico.
 ## O parâmetro pede uma classe concreta
 
 ```java
-public Pedido(EntregaNormal entrega)
+public void fechar(EntregaNormal entrega)
 ```
 
 O argumento é `EntregaExpressa`.
@@ -304,7 +308,7 @@ Dois objetos da mesma classe.
 Agora: `EntregaNormal` e `EntregaExpressa` são classes diferentes.
 
 <!--
-Aprofundamento elástico: outro EntregaNormal também caberia no construtor atual.
+Aprofundamento elástico: outro EntregaNormal também caberia na operação de fechamento atual.
 Perguntar se duas instâncias normais resolvem o requisito expresso de outra regra.
 -->
 
@@ -536,7 +540,7 @@ Ainda falta representar isso em Java.
 
 Uma classe está acoplada a outra quando depende dela para realizar seu trabalho.
 
-O campo e o construtor tornam `Pedido` dependente de `EntregaNormal`.
+O campo e a operação de fechamento tornam `Pedido` dependente de `EntregaNormal`.
 
 Essa dependência era adequada enquanto havia só essa alternativa.
 
@@ -598,7 +602,6 @@ normal 10. Não ensinar ferramenta de teste nem antecipar solução da colabora�
 ## Registre os resultados esperados
 
 ```java
-// teclado: 150.0; mouse: 80.0; pedido com entrega normal
 pedido.adicionarItem(teclado, 2);
 pedido.adicionarItem(mouse, 1);
 System.out.println(pedido.calcularTotal());
@@ -608,10 +611,10 @@ pedido.alterarQuantidade(teclado, 3);
 System.out.println(pedido.calcularTotal());
 ```
 
-Quais três valores são esperados?
+Teclado: R$ 150; mouse: R$ 80. Quais três valores são esperados?
 
 <!--
-Mesmo cenário executável da página; criação Pedido(new EntregaNormal()).
+Mesmo cenário executável da página; criação Pedido(). A entrega será escolhida no fechamento.
 Produtos nas mesmas referências em cada chamada. Saída 380, 300, 450.
 -->
 
@@ -622,7 +625,7 @@ Produtos nas mesmas referências em cada chamada. Saída 380, 300, 450.
 ## E depois de fechar?
 
 ```java
-pedido.fechar();
+pedido.fechar(new EntregaNormal());
 pedido.adicionarItem(mouse, 1);
 pedido.removerItem(teclado);
 pedido.alterarQuantidade(teclado, 1);
@@ -662,9 +665,10 @@ Próxima aula: verificar comportamento. Só depois retomar a expressão da neces
 
 <div class="chapter">Laboratório 12 — em casa</div>
 
-## A mesma fronteira em um sistema de lembretes
+## Projeto 2 começa com lembretes
 
-Um lembrete solicita envio e conta avisos.
+Nas aulas, continuamos com `Pedido`. Nos laboratórios,
+evoluímos um sistema de lembretes e notificações.
 
 1. evoluir o canal de e-mail existente;
 2. permitir também SMS;
@@ -675,7 +679,7 @@ Onde o código precisa mudar a cada nova alternativa?
 <!--
 Nível 1 — Tutor. Simulação no console, sem envio real. Entrega apenas código.
 Manter em Lembrete mensagem/contador e nos notificadores os formatos.
-Não definir Projeto 2 nem entregar uma solução formal para o limite encontrado.
+Versão 1 do Projeto 2, continuado nos laboratórios da unidade. Apresentar cenário antes do código; não entregar solução formal para o limite encontrado.
 -->
 
 ---
