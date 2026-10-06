@@ -400,6 +400,53 @@ this.descricao = descricao;
 
 Neste exemplo, os campos numéricos só recebem valores não negativos. Caso contrário, permanecem com os valores padrão `0.0` e `0`. Essa regra simples protege o estado inicial sem introduzir ainda mecanismos de comunicação de erro.
 
+## Verificações com JUnit
+
+JUnit permite organizar expectativas executáveis sobre o comportamento de um programa. Em uma classe de teste, `@Test` marca os métodos que o executor deve executar; `assertEquals` compara o valor esperado com o observado:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class PedidoTest {
+    @Test
+    void pedidoVazioTemTotalZero() {
+        Pedido pedido = new Pedido();
+        assertEquals(0.0, pedido.calcularTotal());
+    }
+}
+```
+
+O primeiro argumento de `assertEquals` é o **esperado**; o segundo é o **observado**. Uma diferença faz o teste falhar. A biblioteca JUnit Jupiter precisa estar configurada no projeto para que os imports e o executor estejam disponíveis. Veja a [Aula 13](../aulas/aula-13-como-saber-se-ainda-funciona.md) para construir a verificação a partir de um comportamento.
+
+## Interfaces e tipos de referência
+
+Uma interface nomeia um contrato que outras classes podem cumprir. Em `Entrega.java`:
+
+```java
+public interface Entrega {
+    double calcularCusto(Pedido pedido);
+}
+```
+
+Em `EntregaNormal.java`:
+
+```java
+public class EntregaNormal implements Entrega {
+    public double calcularCusto(Pedido pedido) {
+        return 10.0;
+    }
+}
+```
+
+`implements Entrega` declara que a classe oferece a operação exigida. O método de uma interface é público; a implementação também precisa ser pública. A interface não cria uma entrega nem fornece a regra de cálculo.
+
+```java
+Entrega entrega = new EntregaNormal();
+```
+
+`entrega` é uma variável declarada com o tipo do contrato; `new EntregaNormal()` cria o objeto concreto que ela referencia. Por meio dessa variável, o código pode solicitar as operações declaradas em `Entrega`. Veja a [Aula 14](../aulas/aula-14-do-colaborador-concreto-ao-contrato.md) para a mudança da dependência de `Pedido`.
+
 ## Estilo e convenções essenciais
 
 ### Nomes

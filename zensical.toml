@@ -31,6 +31,8 @@ nav = [
     { "10 — Completando as regras do pedido" = "aulas/aula-10-completando-as-regras-do-pedido.md" },
     { "11 — Revisão da Unidade 01" = "aulas/aula-11-revisao-da-unidade-01.md" },
     { "12 — Quando um colaborador começa a variar" = "aulas/aula-12-quando-um-colaborador-comeca-a-variar.md" },
+    { "13 — Como saber se ainda funciona?" = "aulas/aula-13-como-saber-se-ainda-funciona.md" },
+    { "14 — Do colaborador concreto ao contrato" = "aulas/aula-14-do-colaborador-concreto-ao-contrato.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -45,6 +47,8 @@ nav = [
     { "09 — Fechando um pedido" = "aulas/laboratorio-09-fechamento-do-pedido.md" },
     { "10 — Completando as regras do pedido" = "aulas/laboratorio-10-completando-as-regras-do-pedido.md" },
     { "12 — Quando uma segunda solução aparece" = "aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md" },
+    { "13 — Protegendo os avisos do lembrete" = "aulas/laboratorio-13-protegendo-os-avisos-do-lembrete.md" },
+    { "14 — Um contrato para os avisos" = "aulas/laboratorio-14-um-contrato-para-os-avisos.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },

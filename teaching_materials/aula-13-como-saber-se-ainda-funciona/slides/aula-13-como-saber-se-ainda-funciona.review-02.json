@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-13-projection-02",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-13-como-saber-se-ainda-funciona-01",
+      "sha256": "c2566dafcac6310c8c50ed1e8a2bd3dbb78c23375d417eb413bbf43c2384e2b7",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-13-como-saber-se-ainda-funciona",
+        "path": "lesson-design.md",
+        "sha256": "392eea12d42f1a565e47e18cc250857e7fc8408991670f154b26164364f31b5a"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-13-como-saber-se-ainda-funciona",
+        "path": "lesson.md",
+        "sha256": "1cb08621347a8dfd3e5de0ff8c4458760afb4849f3516eed09f64213d0179f1a"
+      },
+      "combined_semantic_sha256": "37cd256e4cc20d663a9e8f0e6e59d449b01db6e85e9e32b08e9b0711df3d3961"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-13-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-13-como-saber-se-ainda-funciona-01",
+      "source_lesson": "lesson-poo-aula-13-como-saber-se-ainda-funciona",
+      "source_approval": "lesson-approval-poo-aula-13-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "37cd256e4cc20d663a9e8f0e6e59d449b01db6e85e9e32b08e9b0711df3d3961",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-10-06T06:08:39-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_PROJECTION_DECISION",
+  "reviewer_provenance": {
+    "identity": "codex-source-review",
+    "source": "read-only source comparison with approved Aula 13 and POO presentation profile"
+  },
+  "created_at": "2026-10-06T06:15:19-03:00",
+  "context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

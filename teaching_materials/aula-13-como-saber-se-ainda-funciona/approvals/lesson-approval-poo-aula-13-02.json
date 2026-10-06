@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-13-02",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-13-como-saber-se-ainda-funciona",
+    "path": "lesson-design.md",
+    "sha256": "db59c9a676d4527a2eb9a24144d8f0ecd8784ef42054905c54c35d097136f293",
+    "version": "aula-13-approved-02"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-13-como-saber-se-ainda-funciona",
+    "path": "lesson.md",
+    "sha256": "63f15433588372fe74ca106a8c85238db8d0b9caebab424ee8c5e427c9631f20",
+    "version": "aula-13-approved-02"
+  },
+  "combined_semantic_sha256": "94b80078dfd5199f8c632525a6b2b4ca2659b8cae6cd46199f9abe1f857553fc",
+  "approved_at": "2026-10-06T06:26:14-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "prior explicit user authorization for Aula 13 slides, followed by user-directed correction that Laboratorio 13 continues the final Project 2 state from Laboratorio 12; the lesson bridge was updated"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

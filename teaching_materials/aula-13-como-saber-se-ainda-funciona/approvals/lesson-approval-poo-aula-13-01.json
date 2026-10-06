@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-13-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-13-como-saber-se-ainda-funciona",
+    "path": "lesson-design.md",
+    "sha256": "392eea12d42f1a565e47e18cc250857e7fc8408991670f154b26164364f31b5a",
+    "version": "aula-13-approved-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-13-como-saber-se-ainda-funciona",
+    "path": "lesson.md",
+    "sha256": "1cb08621347a8dfd3e5de0ff8c4458760afb4849f3516eed09f64213d0179f1a",
+    "version": "aula-13-approved-01"
+  },
+  "combined_semantic_sha256": "37cd256e4cc20d663a9e8f0e6e59d449b01db6e85e9e32b08e9b0711df3d3961",
+  "approved_at": "2026-10-06T06:06:41-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "user reviewed Aula 13, confirmed that delivery is supplied at checkout, requested removal of the constructor comparison, and explicitly authorized slide creation"
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}
