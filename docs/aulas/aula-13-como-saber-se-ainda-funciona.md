@@ -161,11 +161,34 @@ O teste usa a **mesma referência** `teclado` nas duas chamadas, como exige a re
 
 <!-- aprofundamento-elastico -->
 
-Imagine um pedido com teclado de `150.0` e mouse de `80.0`. Depois de uma operação, o total continua `230.0`. Isso basta para concluir que cada linha permaneceu igual?
+Considere um pedido aberto com um teclado e um fone, ambos de `150.0`. Queremos verificar que a remoção do teclado preserva o fone:
 
-??? "Ver resposta"
+```java
+Produto teclado = new Produto("Teclado", 150.0);
+Produto fone = new Produto("Fone", 150.0);
+Pedido pedido = new Pedido();
+pedido.adicionarItem(teclado, 1);
+pedido.adicionarItem(fone, 1);
 
-    Não necessariamente. O mesmo total pode resultar de estados diferentes. Um teste precisa escolher uma observação pública que distinga o comportamento relevante. Nos cenários simples acima, o total basta porque cada alteração proibida teria um efeito numérico visível. Para outra regra, talvez seja necessário combinar operações públicas em um cenário mais específico.
+pedido.removerItem(teclado);
+assertEquals(150.0, pedido.calcularTotal());
+```
+
+Se um defeito remover o **fone** em vez do teclado, essa verificação falha? Que operação pública permitiria distinguir os dois estados?
+
+??? "Ver resposta e continuar o cenário"
+
+    A verificação passa nos dois casos: tanto um fone quanto um teclado somam `150.0`. Ela verifica o total, mas não distingue qual produto permaneceu. Podemos continuar o cenário com a **mesma referência** de `fone`:
+
+    ```java
+    pedido.alterarQuantidade(fone, 2);
+    assertEquals(300.0, pedido.calcularTotal());
+    ```
+
+    - Na implementação correta, o fone permaneceu e passa a ter duas unidades: total `300.0`.
+    - Na implementação defeituosa, o fone foi removido. A alteração não encontra sua linha, e o teclado permanece com uma unidade: total `150.0`. A segunda verificação falha.
+
+    O teste continua usando operações públicas. A observação adicional distingue o defeito que a primeira comparação deixava passar.
 
 ## Proteger a entrega antes de mudar a colaboração
 

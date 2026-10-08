@@ -316,68 +316,64 @@ Perguntar se duas instâncias normais resolvem o requisito expresso de outra reg
 
 <!-- _class: activity -->
 
-<div class="chapter">Investigue com o repertório atual</div>
+<div class="chapter">Normal e expressa precisam coexistir</div>
 
-## Como manter as duas alternativas?
+## Como guardar a entrega escolhida?
 
-Proponha uma solução para pedidos normais e expressos coexistirem.
+Cada pedido recebe **uma escolha no fechamento**:
+normal custa R$ 10; expressa custa R$ 25.
 
-Que referências `Pedido` manteria?
+Com os recursos que já conhecemos:
 
-Como saberia qual comportamento solicitar?
+1. Que referências permitiriam alcançar os dois colaboradores?
+2. Como registrar qual deles atende a este pedido?
 
-<!--
-Dar espaço para hipóteses antes dos próximos frames. Campos separados,
-indicador textual/numérico ou cálculos no pedido podem aparecer. Investigar
-consequências sem rejeitar de imediato. Não exigir implementação completa.
--->
+<!-- Coletar hipóteses. Não exigir uma implementação completa. O próximo
+recorte analisa uma proposta da turma sem torná-la versão oficial do projeto. -->
 
 ---
 
-<div class="chapter">Uma proposta possível</div>
+<div class="chapter">Hipótese com duas entregas — guardar referências</div>
 
-## Duas referências concretas
+## Dois campos permitem alcançar os colaboradores
 
 ```java
 private EntregaNormal entregaNormal;
 private EntregaExpressa entregaExpressa;
 ```
 
-Ainda precisamos indicar qual forma pertence àquele pedido.
+Suponha que os dois campos já apontem para objetos existentes.
 
-Quem passa a conhecer as duas classes?
+Ainda falta registrar **qual entrega foi escolhida para este pedido**.
 
-<!--
-Trecho parcial. Pedido passa a conhecer ambas. Campos podem ser parte de
-solução funcional; avaliar preparação e seleção, sem chamar de erro automático.
--->
+<!-- Estamos examinando outro recorte de Pedido. O campo único da solução
+inicial deu lugar a estes dois campos nesta hipótese. -->
 
 ---
 
-<div class="chapter">Outra proposta possível</div>
+<div class="chapter">A mesma hipótese — registrar a escolha</div>
 
-## Guardar a escolha no pedido
+## Acrescentamos um indicador aos dois campos
 
 ```java
 private int tipoEntrega;
 ```
 
-Nesta hipótese: `1` significa normal, `2` significa expressa.
+No fechamento, esta hipótese guarda um código válido:
 
-Um texto como `"NORMAL"` também poderia representar a escolha.
+- `1`: usar `entregaNormal`;
+- `2`: usar `entregaExpressa`.
 
-Quem precisa conhecer o significado dessas alternativas?
+Agora podemos decidir a qual objeto solicitar o custo.
 
-<!--
-Escolha numérica só para analisar código usando sintaxe conhecida. Não ensinar
-comparação de String nem consolidar convenção como arquitetura do projeto.
--->
+<!-- O indicador completa a proposta anterior; não é uma alternativa aos
+campos. São recortes de uma hipótese, não uma API nova prescrita ao projeto. -->
 
 ---
 
-<div class="chapter">Selecionar dentro do coordenador</div>
+<div class="chapter">A mesma hipótese — solicitar o custo</div>
 
-## Pedido decide a quem solicitar
+## A escolha guardada determina a chamada
 
 ```java
 public double calcularCustoEntrega() {
@@ -389,47 +385,51 @@ public double calcularCustoEntrega() {
 }
 ```
 
-Hipótese: código válido e dois colaboradores já disponíveis.
+Recorte para pedidos fechados: código `1` ou `2`, colaboradores disponíveis.
 
 ---
 
-<div class="chapter">Consequências das propostas</div>
+<!-- _class: activity -->
 
-## Que conhecimento chegou a Pedido?
+<div class="chapter">Execute mentalmente a hipótese</div>
 
-| Proposta | Conhecimento necessário no pedido |
+## Dois pedidos, duas escolhas
+
+| Pedido fechado | Escolha guardada |
 | --- | --- |
-| campos e seleção | classes concretas e escolha entre elas |
-| fórmulas no pedido | alternativas e regras de cada cálculo |
-
-O pedido precisa conhecer os nomes das alternativas para continuar coordenando?
-
-<!--
-Avaliar cada hipótese levantada pela turma com o mesmo critério. Uma tabela
-não estabelece que só existam essas alternativas ou uma única resposta correta.
--->
-
----
-
-<div class="chapter">Reaplique o critério da Unidade 01</div>
-
-## Uma condição pode proteger uma responsabilidade
+| `normal` | `tipoEntrega = 1` |
+| `urgente` | `tipoEntrega = 2` |
 
 ```java
-if (!fechado) {
-    // Pedido autoriza uma edição de sua estrutura.
-}
+System.out.println(normal.calcularCustoEntrega());
+System.out.println(urgente.calcularCustoEntrega());
 ```
 
-Isso continua fazendo sentido.
+Quais valores aparecem? Qual classe decide **quem** fará cada cálculo?
 
-Agora investigamos quanto o pedido precisa conhecer sobre **quem calcula a entrega**.
+<!-- Normal 10.0; urgente 25.0. Pedido lê o indicador e seleciona o objeto.
+As regras de custo continuam nas entregas. Dar tempo antes do próximo slide. -->
 
 ---
 
-<div class="chapter">O conjunto de alternativas cresceu</div>
+<div class="chapter">A hipótese atende às duas opções</div>
 
-## O cliente também pode retirar no local
+## Funciona, mas Pedido conhece cada alternativa
+
+```text
+10.0
+25.0
+```
+
+`Pedido` conhece os dois tipos, os códigos `1` e `2` e a seleção.
+
+As entregas continuam responsáveis pelos valores de cada custo.
+
+---
+
+<div class="chapter">O requisito muda outra vez</div>
+
+## Agora também podemos retirar no local
 
 ```java
 public class RetiradaLocal {
@@ -439,142 +439,147 @@ public class RetiradaLocal {
 }
 ```
 
-Mais uma forma concreta de realizar a mesma responsabilidade.
-
-<!--
-Só revelar depois de compreender duas alternativas. Não transformar isso em
-pedido para aumentar a cadeia de condições; perguntar sobre impacto completo.
--->
+O cliente quer escolher retirada no fechamento do pedido.
 
 ---
 
 <!-- _class: activity -->
 
-<div class="chapter">Preveja o impacto</div>
+<div class="chapter">Use a mesma hipótese para investigar o impacto</div>
 
-## Criar a classe basta?
+## Criar RetiradaLocal.java é suficiente?
 
-Na proposta com campos concretos e seleção em `Pedido`:
+`Pedido` ainda tem dois campos e seleciona entre os códigos `1` e `2`.
 
-1. criar `RetiradaLocal.java` já integra a alternativa?
-2. onde precisamos adaptar referências, preparação e seleção?
-3. a responsabilidade de `Pedido` mudou de novo?
+1. Onde guardaríamos a referência para a retirada?
+2. Como representaríamos essa terceira escolha?
+3. Qual método precisaria solicitar o custo ao novo objeto?
+
+<!-- Campo RetiradaLocal, código 3 e seleção em calcularCustoEntrega.
+A preparação no fechamento e o cliente também precisariam aceitar essa escolha.
+Não presumir que acrescentar somente um else resolve toda a integração. -->
 
 ---
+
+<div class="chapter">A hipótese cresce — referência e escolha</div>
+
+## Pedido ganha conhecimento da terceira opção
+
+```java
+private RetiradaLocal retirada;
+```
+
+Além dos dois colaboradores anteriores, precisamos fornecer a retirada.
+
+A convenção passa a ter três códigos: `1` normal, `2` expressa, `3` retirada.
+
+O fechamento e o código que monta o pedido também precisam aceitar essa escolha.
+
+---
+
+<div class="chapter">A hipótese cresce — seleção</div>
+
+## O mesmo método precisa de outro caminho
+
+```java
+public double calcularCustoEntrega() {
+    if (tipoEntrega == 1) {
+        return entregaNormal.calcularCusto(this);
+    } else if (tipoEntrega == 2) {
+        return entregaExpressa.calcularCusto(this);
+    } else {
+        return retirada.calcularCusto(this);
+    }
+}
+```
+
+Recorte: código `1`, `2` ou `3`; colaboradores já disponíveis.
+
+---
+
+<!-- _class: concept-key -->
 
 <div class="chapter">O que a terceira opção revelou</div>
 
-## A coordenação continua; as alternativas crescem
-
-Só a classe nova não basta naquela proposta.
-
-`Pedido` precisa ser adaptado para receber e selecionar a retirada.
-
-O cliente também precisa solicitar a nova opção.
-
-<div class="key-point">A tarefa continua sendo solicitar o custo da entrega.</div>
-
----
-
-<div class="chapter">Separe o estável do variável</div>
-
-## O que permanece? O que varia?
-
-| Permanece | Varia |
-| --- | --- |
-| solicitar custo para um pedido | qual objeto responde |
-| receber um resultado `double` | qual regra ele realiza |
-| coordenação do pedido | classe concreta do colaborador |
-
-`EntregaNormal` · `EntregaExpressa` · `RetiradaLocal`
-
----
-
-<!-- _class: concept-key -->
-
-<div class="chapter">Agora podemos nomear o fenômeno</div>
-
 ## Conceito-chave — ponto de variação
 
-Uma parte do sistema em que esperamos alternativas de comportamento.
+O trabalho solicitado continua sendo **calcular o custo da entrega**.
 
-Aqui: **calcular o custo da entrega**.
+Quem realiza esse trabalho pode variar:
+`EntregaNormal`, `EntregaExpressa` ou `RetiradaLocal`.
 
-Normal, expressa e retirada são formas concretas de realizar essa responsabilidade.
+Esse trabalho com alternativas é o ponto de variação que encontramos.
 
 ---
 
-<div class="chapter">A necessidade declarada</div>
+<div class="chapter">Volte à solução inicial — uma entrega normal</div>
 
-## O que esse campo está dizendo?
+## O campo inicial limita quem pode colaborar
 
 ```java
 private EntregaNormal entrega;
+
+public void fechar(EntregaNormal entrega) {
+    // guarda a escolha no primeiro fechamento válido
+}
 ```
 
-“Preciso de um objeto `EntregaNormal`.”
+O tipo pede `EntregaNormal`, embora o pedido precise apenas de alguém
+capaz de calcular o custo.
 
-Essa frase descreve tudo de que o pedido realmente precisa?
-
----
-
-<div class="chapter">Observe o uso</div>
-
-## A necessidade pode ser descrita pelo trabalho
-
-```java
-return entrega.calcularCusto(this);
-```
-
-<div class="statement">“Preciso de algo capaz de calcular o custo da entrega para este pedido.”</div>
-
-Ainda falta representar isso em Java.
+<!-- Volta explícita ao código inicial que retomaremos nas Aulas 13 e 14.
+Este trecho não pertence à hipótese de campos e códigos examinada acima. -->
 
 ---
 
 <!-- _class: concept-key -->
 
-<div class="chapter">Dar nome à dependência observada</div>
+<div class="chapter">Nomear a dependência que observamos</div>
 
 ## Conceito-chave — acoplamento
 
-Uma classe está acoplada a outra quando depende dela para realizar seu trabalho.
+`Pedido` depende de `EntregaNormal` para realizar seu trabalho.
 
-O campo e a operação de fechamento tornam `Pedido` dependente de `EntregaNormal`.
+O campo e o parâmetro de `fechar` nomeiam essa classe concreta.
 
-Essa dependência era adequada enquanto havia só essa alternativa.
+Essa dependência atendia ao requisito inicial.
+A entrega expressa revelou seu limite.
 
 ---
 
 <!-- _class: trap -->
 
-<div class="chapter">Um cuidado com o diagnóstico</div>
+<div class="chapter">Compare o motivo de cada condição</div>
 
-## O que devemos investigar?
+## Qual mudança faz cada trecho crescer?
 
-Dependências permitem colaboração. Condições podem expressar regras adequadas.
+| Trecho em Pedido | O que ele decide |
+| --- | --- |
+| `if (!fechado)` | se o pedido permite uma edição |
+| `if (tipoEntrega == 1)` | qual classe de entrega será chamada |
 
-O critério desta aula:
+Foi a **nova entrega** que exigiu ampliar a segunda seleção.
 
-<div class="statement">Pedido precisa conhecer cada implementação concreta para continuar solicitando o mesmo trabalho?</div>
+O diagnóstico depende da responsabilidade que cada condição expressa.
 
 ---
 
-<div class="chapter">Alguém ainda terá de escolher</div>
+<div class="chapter">Na solução inicial, mude somente quem cria o objeto</div>
 
-## E se Main criar a alternativa?
+## Criar a expressa em Main resolve o encaixe?
 
-`Main` já monta os cenários e pode conhecer a opção escolhida.
+```java
+EntregaExpressa expressa = new EntregaExpressa();
+Pedido pedido = new Pedido();
+pedido.fechar(expressa);
+```
 
-Mas ainda precisa fornecer esse objeto a `Pedido`.
+`fechar` ainda recebe `EntregaNormal`. Esta chamada continua sem compilar.
 
-O campo `EntregaNormal` passaria a aceitar as outras classes só por mudar onde escolhemos?
+Precisamos representar em `Pedido` a capacidade comum às entregas.
 
-<!--
-Aprofundamento elástico. Não: localização da escolha não resolve o encaixe dos tipos.
-Uma escolha concreta continua necessária em algum ponto; a pergunta é quanto
-desse conhecimento precisa chegar ao coordenador.
--->
+<!-- Aprofundamento: Main pode escolher e criar objetos; deslocar a criação
+não modifica o tipo do parâmetro. Não apresentar interface antes da Aula 14. -->
 
 ---
 
@@ -697,18 +702,17 @@ Versão 1 do Projeto 2, continuado nos laboratórios da unidade. Apresentar cen�
 
 ---
 
-<div class="chapter">O problema continua aberto</div>
+<div class="chapter">A próxima mudança precisa preservar o comportamento</div>
 
-## Pedido precisa de...
+## Antes de mudar Pedido, como saber se ainda funciona?
 
-<div class="statement">“Algo que calcule o custo da entrega.”</div>
+```java
+private EntregaNormal entrega;
+```
 
-Alternativas: `EntregaNormal`, `EntregaExpressa`, `RetiradaLocal`.
+Queremos mudar essa dependência para aceitar outras entregas.
 
-**Como representar essa necessidade em Java sem dizer qual classe concreta fará o trabalho?**
+<div class="statement">Como saber se a mudança que fizermos preservou o total, as edições e o fechamento?</div>
 
-<!--
-Encerrar sem responder. Duas pontes: Aula 13 verifica comportamentos;
-Aula 14 retoma como representar a responsabilidade necessária. Não mostrar
-assinatura, declaração ou nome do mecanismo formal neste deck.
--->
+<!-- Encerrar nesta necessidade imediata. A Aula 13 transforma expectativas
+em testes; a Aula 14 retoma a representação da capacidade comum em Java. -->

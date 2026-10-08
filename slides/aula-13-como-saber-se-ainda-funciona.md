@@ -20,29 +20,29 @@ formulação individual antes das respostas. Não antecipar interface.
 
 ---
 
-<div class="chapter">A colaboração que vamos mudar</div>
+<div class="chapter">A mudança deixada pela Aula 12</div>
 
-## Pedido já funciona com entrega normal
+## Queremos aceitar outras entregas em Pedido
 
 ```java
-Pedido pedido = new Pedido();
 pedido.fechar(new EntregaNormal());
 ```
 
-Depois, queremos aceitar outras formas de entrega.
+Antes de mudar essa colaboração, queremos preservar:
 
-<div class="key-point">Como preservar o que já estava correto?</div>
+- o total dos itens;
+- o bloqueio de inclusões após fechar;
+- o custo normal de R$ 10.
 
-<!--
-Retomar apenas a tensão final da Aula 12. O pedido recebe a entrega no
-fechamento; não apresentar nenhuma alternativa antiga de API.
--->
+Vamos começar pela primeira expectativa e transformá-la em código.
 
 ---
 
-<div class="chapter">Uma regra conhecida</div>
+<!-- _class: activity code-focus -->
 
-## Duas unidades de teclado
+<div class="chapter">A primeira regra que queremos proteger</div>
+
+## Duas unidades de teclado devem somar quanto?
 
 ```java
 Produto teclado = new Produto("Teclado", 150.0);
@@ -52,130 +52,96 @@ pedido.adicionarItem(teclado, 2);
 System.out.println(pedido.calcularTotal());
 ```
 
-Como você confere que o resultado está correto?
+Qual valor esperamos? Se aparecer outro valor, quem percebe a diferença?
+
+<!-- 300.0; a pessoa compara a saída com a expectativa que conhece.
+Esta regra deverá continuar verdadeira depois da mudança de entrega. -->
 
 ---
 
-<!-- _class: activity -->
+<div class="chapter">A expectativa precisa aparecer no programa</div>
 
-<div class="chapter">Antes da ferramenta</div>
-
-## Preveja e compare
-
-O teclado custa **150.0**. O pedido contém **duas unidades**.
-
-1. Que valor deve aparecer?
-2. Quem compara esse valor com o resultado impresso?
-
-<!--
-Resposta: 300.0; uma pessoa conhece a expectativa e olha a saída.
-Perguntar se imprimir 300.0, sozinho, registra o que era esperado.
--->
-
----
-
-<div class="chapter">O primeiro resultado</div>
-
-## O console mostra um valor
-
-```text
-300.0
-```
-
-Nós sabemos que é o esperado porque fizemos a conta.
-
-O programa ainda não conhece essa expectativa.
-
----
-
-<div class="chapter">Escreva a expectativa</div>
-
-## O programa pode fazer a comparação
+## Podemos escrever a comparação
 
 ```java
-System.out.println(
-    pedido.calcularTotal() == 300.0
-);
+System.out.println(pedido.calcularTotal() == 300.0);
 ```
 
 ```text
 true
 ```
 
-Melhorou. O que ainda precisamos fazer?
+O programa já compara com `300.0`.
 
-<!--
-Ainda precisamos executar e olhar a saída. O exemplo usa valores inteiros
-representáveis exatamente em double; não abrir aula de precisão numérica.
--->
+Mas esta linha só informa `true` ou `false`; não identifica a regra que falhou.
 
 ---
 
-<div class="chapter">Uma verificação mais explícita</div>
+<div class="chapter">Torne a divergência identificável</div>
 
-## Esperado e observado no código
+## Informe o esperado e o observado
 
 ```java
 double esperado = 300.0;
 double observado = pedido.calcularTotal();
 
 if (observado != esperado) {
-    System.out.println("ERRO: esperado " + esperado
+    System.out.println("ERRO no total: esperado " + esperado
         + ", obtido " + observado);
 }
 ```
 
-Agora o programa aponta a divergência.
+A mensagem identifica esta verificação e os valores diferentes.
 
 ---
 
 <!-- _class: activity -->
 
-<div class="chapter">Siga o desvio</div>
+<div class="chapter">Leia a verificação que acabamos de escrever</div>
 
-## O que aparece no console?
+## O que ela informa em cada caso?
 
-Com `esperado = 300.0`:
+O preço continua `150.0` e a quantidade continua `2`.
 
-1. se o método devolver `300.0`;
-2. se o método devolver `150.0`.
+1. O cálculo devolve `300.0`: o bloco de erro executa?
+2. Um defeito faz o cálculo devolver `150.0`: qual mensagem aparece?
 
-O que mudaria se tivéssemos **trinta regras**?
-
-<!--
-Resposta: no primeiro caso não imprime; no segundo imprime erro com esperado
-300.0 e obtido 150.0. Trinta regras exigiriam muitas comparações e mensagens.
--->
+<!-- Nenhuma mensagem no primeiro caso. No segundo:
+ERRO no total: esperado 300.0, obtido 150.0.
+As entradas e o requisito são os mesmos; mudou o resultado da implementação. -->
 
 ---
 
-<div class="chapter">A necessidade surgiu</div>
+<div class="chapter">Uma comparação detecta uma diferença</div>
 
-## Muitas verificações, uma mesma estrutura
+## Já sabemos verificar esta regra
 
-Para cada regra, queremos:
+| Resultado do cálculo | Resultado da verificação |
+| --- | --- |
+| `300.0` | nenhuma mensagem de erro |
+| `150.0` | esperado `300.0`, obtido `150.0` |
 
-<div class="sequence"><span>preparar</span><span class="arrow">→</span><span>observar</span><span class="arrow">→</span><span>comparar</span></div>
+Agora queremos verificar também remoção, alteração e fechamento.
 
-Também queremos executar tudo e saber **qual cenário falhou**.
-
----
-
-<!-- _class: concept-key -->
-
-<div class="chapter">O que estamos automatizando</div>
-
-## Conceito-chave — expectativa executável
-
-Um teste prepara um cenário, observa uma operação e compara o resultado com uma expectativa definida.
-
-A expectativa fica escrita no código.
+Como executar todas essas verificações e identificar quais falharam?
 
 ---
 
-<div class="chapter">Uma estrutura para essa tarefa</div>
+<div class="chapter">A estrutura que começaria a se repetir</div>
 
-## JUnit reúne verificações em métodos
+## Cada regra precisa de cenário e expectativa
+
+Para trinta regras, repetiríamos preparação, comparação e mensagens.
+
+Queremos executar o conjunto e receber um resultado para **cada teste**.
+
+JUnit oferece essa organização. Vamos usar o mesmo cenário do teclado.
+
+---
+
+<div class="chapter">A comparação vira uma afirmação</div>
+
+## O primeiro teste protege o total
 
 ```java
 @Test
@@ -188,32 +154,27 @@ void calculaTotalDeUmItem() {
 }
 ```
 
-O cenário da Unidade 01 continua o mesmo.
+A expectativa continua `300.0`; JUnit registra sucesso ou falha deste método.
 
 ---
 
 <!-- _class: java-focus -->
 
-<div class="chapter">O mínimo para ler o teste</div>
+<div class="chapter">Como ler a nova escrita</div>
 
 ## Java em foco — JUnit básico
 
-`@Test` marca uma verificação para o executor.
+`@Test` identifica um método que o executor deve executar.
 
-`assertEquals(esperado, observado)` compara os valores.
+`assertEquals(esperado, observado)` verifica a igualdade dos valores.
 
-Se diferirem, o teste falha e JUnit mostra qual método falhou.
-
-<!--
-Mostrar os imports no próximo frame. Não entrar em runner, Maven, ciclo de vida
-ou outros recursos de JUnit.
--->
+Se o total vier `150.0`, o teste falha e informa a diferença para `300.0`.
 
 ---
 
-<div class="chapter">A classe de teste</div>
+<div class="chapter">Onde escrever e executar o teste</div>
 
-## O que precisamos importar
+## Uma classe de testes, com os imports de JUnit
 
 ```java
 import org.junit.jupiter.api.Test;
@@ -222,39 +183,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PedidoTest {
     @Test
     void calculaTotalDeUmItem() {
-        // cenário, ação e verificação
+        // corpo do teste mostrado no slide anterior
     }
 }
 ```
 
-O executor chama o método de teste. Não usamos `main` para isso.
+Execute a classe pelo executor de testes da IDE.
+
+<!-- O trecho mostra a organização, não um teste vazio a executar.
+Na demonstração, manter o corpo real do teste. Não ensinar Maven ou runner. -->
 
 ---
 
 <!-- _class: activity -->
 
-<div class="chapter">Leia antes de executar</div>
-
-## Que história o teste conta?
-
-```java
-Produto teclado = new Produto("Teclado", 150.0);
-Pedido pedido = new Pedido();
-pedido.adicionarItem(teclado, 2);
-
-assertEquals(300.0, pedido.calcularTotal());
-```
-
-Qual é o cenário? Qual operação observamos? O que esperamos?
-
-<!--
-Cenário: pedido com duas unidades de teclado a 150. Operação observada:
-calcularTotal. Expectativa: 300.0.
--->
-
----
-
-<div class="chapter">Três movimentos no mesmo teste</div>
+<div class="chapter">Identifique o que o teste faz</div>
 
 ## Prepare → execute → verifique
 
@@ -268,7 +211,11 @@ double total = pedido.calcularTotal();
 assertEquals(300.0, total);
 ```
 
-Arrange → Act → Assert é um nome útil, não uma exigência de comentários.
+Quais linhas preparam o cenário, executam o cálculo e verificam a expectativa?
+
+<!-- Preparação: produto, pedido e inclusão. Ação observada: calcularTotal.
+Verificação: assertEquals. Arrange/Act/Assert nomeia esse percurso, sem exigir
+comentários. O total verde ainda não verifica fechamento nem entrega. -->
 
 ---
 
@@ -392,35 +339,86 @@ O estado observável deve permanecer igual.
 
 ---
 
-<!-- _class: activity -->
+<div class="chapter">Aprofundamento — testar a remoção</div>
 
-<div class="chapter">Aprofundamento</div>
+## Prepare dois produtos com o mesmo preço
 
-## Um total igual conta a história inteira?
+```java
+Produto teclado = new Produto("Teclado", 150.0);
+Produto fone = new Produto("Fone", 150.0);
+Pedido pedido = new Pedido();
+pedido.adicionarItem(teclado, 1);
+pedido.adicionarItem(fone, 1);
+```
 
-Um pedido contém teclado de `150.0` e mouse de `80.0`.
-
-Depois de uma operação, o total continua `230.0`.
-
-Podemos concluir que cada linha permaneceu igual?
-
-<!--
-Não necessariamente. Estados diferentes podem somar o mesmo total.
-Neste encontro, escolher cenários em que uma violação da regra produza uma
-diferença observável. Não abrir discussão de getters ou detalhes internos.
--->
+O pedido está aberto e contém uma unidade de cada produto.
 
 ---
 
-<div class="chapter">Escolha a evidência adequada</div>
+<!-- _class: activity -->
 
-## O cenário deve distinguir o erro
+<div class="chapter">Execute a remoção no pedido que acabamos de preparar</div>
 
-O mesmo total pode resultar de estados diferentes.
+## O total detecta a remoção do produto errado?
 
-Nos nossos exemplos, cada operação proibida teria um efeito numérico visível.
+```java
+pedido.removerItem(teclado);
+assertEquals(150.0, pedido.calcularTotal());
+```
 
-Para outra regra, talvez precisemos de outro cenário ou de mais uma operação pública.
+Se um defeito remover o **fone** em vez do teclado, esta verificação falha?
+
+<!-- Dar tempo para comparar os dois estados. Não é uma mudança de regra:
+estamos supondo um defeito na implementação. -->
+
+---
+
+<div class="chapter">Dois estados passam pela mesma comparação</div>
+
+## O total é igual, mas o produto restante é diferente
+
+| Depois de removerItem(teclado) | O que restou | Total |
+| --- | --- | ---: |
+| implementação correta | um fone | `150.0` |
+| defeito: remove o fone | um teclado | `150.0` |
+
+`assertEquals(150.0, ...)` passa nos dois casos.
+
+Precisamos de uma observação que distinga **qual produto permaneceu**.
+
+---
+
+<!-- _class: activity -->
+
+<div class="chapter">Continue o mesmo cenário por uma operação pública</div>
+
+## Tente alterar a quantidade do fone
+
+```java
+pedido.alterarQuantidade(fone, 2);
+assertEquals(300.0, pedido.calcularTotal());
+```
+
+1. Qual total aparece se o fone permaneceu?
+2. Qual total aparece se o defeito deixou apenas o teclado?
+
+<!-- Correto: fone com 2 unidades, 300.0. Defeito: fone ausente, nenhuma
+quantidade é alterada, teclado continua com 1 unidade, 150.0. -->
+
+---
+
+<div class="chapter">A segunda observação distingue o defeito</div>
+
+## Agora o teste percebe qual produto foi removido
+
+| Implementação | Após alterar o fone para 2 | Verificação |
+| --- | ---: | --- |
+| correta | `300.0` | passa |
+| removeu o fone por engano | `150.0` | falha |
+
+Observamos operações públicas, sem ler a lista privada.
+
+O cenário precisa tornar o defeito que queremos detectar observável.
 
 ---
 
@@ -442,51 +440,67 @@ Quando a dependência mudar, este cenário deve continuar passando.
 
 ---
 
-<div class="chapter">Vamos provocar uma falha</div>
+<div class="chapter">Antes da experiência, identifique a suíte</div>
 
-## E se a regra for alterada por engano?
+## Vamos executar estes três testes
+
+| Método de teste | Expectativa |
+| --- | --- |
+| `calculaTotalDeUmItem()` | duas unidades somam `300.0` |
+| `pedidoFechadoNaoAceitaNovosItens()` | inclusão recusada: total `150.0` |
+| `entregaNormalCustaDezReais()` | custo da entrega `10.0` |
+
+Os três cenários foram apresentados nesta aula.
+
+---
+
+<div class="chapter">Altere somente a regra da entrega normal</div>
+
+## Um defeito em EntregaNormal.java
 
 ```java
-public double calcularCusto(Pedido pedido) {
-    return 20.0;
+public class EntregaNormal {
+    public double calcularCusto(Pedido pedido) {
+        return 20.0; // deveria continuar sendo 10.0
+    }
 }
 ```
 
-O teste ainda espera `10.0`.
+Produtos, quantidades e expectativas dos testes continuam iguais.
 
 ---
 
 <!-- _class: activity -->
 
-<div class="chapter">Preveja a suíte</div>
+<div class="chapter">Preveja antes de executar os três testes</div>
 
-## Qual teste ficará vermelho?
+## Quais verificações detectam essa mudança?
 
-- total de duas unidades de teclado;
-- inclusão após fechamento;
-- custo da entrega normal.
+1. `calculaTotalDeUmItem()`
+2. `pedidoFechadoNaoAceitaNovosItens()`
+3. `entregaNormalCustaDezReais()`
 
-Qual diferença JUnit mostrará?
+Para cada teste, preveja **passa ou falha**.
+No teste que falha, indique esperado e observado.
 
-<!--
-Somente o teste do custo deve falhar nesse recorte; esperado 10.0,
-observado 20.0. Restaurar 10.0 e executar novamente.
--->
+<!-- Passa, passa, falha. Os totais continuam somando apenas itens.
+O último compara 10.0 com 20.0. Formular hipóteses antes de revelar. -->
 
 ---
 
-<div class="chapter">Vermelho → verde</div>
+<div class="chapter">Execute e compare com a previsão</div>
 
-## A falha identifica uma divergência
+## A suíte localiza a expectativa que deixou de ser atendida
 
-```text
-esperado: 10.0
-obtido:   20.0
-```
+| Verificação | Resultado |
+| --- | --- |
+| total dos itens | passa |
+| inclusão após fechamento | passa |
+| custo da entrega normal | falha: esperado `10.0`, obtido `20.0` |
 
-Restauramos `return 10.0;` e executamos os testes outra vez.
+Restaure `return 10.0;` em `EntregaNormal` e execute novamente.
 
-Agora o cenário protegido passa.
+Os três testes voltam a passar.
 
 ---
 
