@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-14-projection-01",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-14-01",
+      "sha256": "48c94b02b25c640f721ad0fe006215d21d70e1bcfc9148d7b623df90f77ddee0",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-14-do-colaborador-concreto-ao-contrato",
+        "path": "lesson-design.md",
+        "sha256": "6e6fff172fe57396f848559b40a1499e249b50cb208e3742041703afe32e84f1"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-14-do-colaborador-concreto-ao-contrato",
+        "path": "lesson.md",
+        "sha256": "116743245888941c22af05093b40803b006df096a5d9aa8a4db9fcd0676761c6"
+      },
+      "combined_semantic_sha256": "df1259e763d51ef8b969ad11aea533556415b23d9a88d03dc23c6a9c2274f562"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-14-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-14-01",
+      "source_lesson": "lesson-poo-aula-14-do-colaborador-concreto-ao-contrato",
+      "source_approval": "lesson-approval-poo-aula-14-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "df1259e763d51ef8b969ad11aea533556415b23d9a88d03dc23c6a9c2274f562",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-10-08T06:40:30-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_PROJECTION_DECISION",
+  "reviewer_provenance": {
+    "identity": "codex-source-review",
+    "source": "Separate source-review pass comparing the complete adjusted lesson and design with the Marp deck: causal progression, activity premises and delayed answers, stable closing lifecycle, unchanged delegation, test scope, extension impact, reference/object distinction, optional depth, lab transfer, next-lesson exclusions, and POO presentation profile. Rendered geometry is checked separately."
+  },
+  "created_at": "2026-10-08T06:40:30-03:00",
+  "context_refs": [
+    "slides/presentation-profile.md",
+    "specs/padrao-slides.md"
+  ]
+}

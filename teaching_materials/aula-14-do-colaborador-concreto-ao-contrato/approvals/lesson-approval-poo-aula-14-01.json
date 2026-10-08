@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-14-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-14-do-colaborador-concreto-ao-contrato",
+    "path": "lesson-design.md",
+    "sha256": "6e6fff172fe57396f848559b40a1499e249b50cb208e3742041703afe32e84f1"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-14-do-colaborador-concreto-ao-contrato",
+    "path": "lesson.md",
+    "sha256": "116743245888941c22af05093b40803b006df096a5d9aa8a4db9fcd0676761c6"
+  },
+  "combined_semantic_sha256": "df1259e763d51ef8b969ad11aea533556415b23d9a88d03dc23c6a9c2274f562",
+  "approved_at": "2026-10-08T06:36:35-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user instruction after the four-finding narrative review: faça os ajustes na aula e gere/verifique os slides se ainda não houver. Coloque também o link no roteiro. Approval scope is the reported narrative adjustments and their deck derivation; no new curriculum decisions."
+  },
+  "consumer_context_refs": [
+    "slides/presentation-profile.md"
+  ]
+}

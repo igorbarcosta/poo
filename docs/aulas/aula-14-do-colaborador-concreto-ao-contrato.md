@@ -2,6 +2,8 @@
 
 Na Aula 12, `Pedido` passou a solicitar o cálculo do custo a uma entrega escolhida no fechamento. A colaboração com `EntregaNormal` funciona, mas outras classes capazes de calcular o custo não cabem no tipo declarado pelo pedido. Na Aula 13, escrevemos expectativas executáveis para verificar comportamentos antes de mudar essa estrutura. Agora vamos mudar **de que tipo de colaborador o pedido depende**.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-14-do-colaborador-concreto-ao-contrato.html) · [PDF](../slides/rendered/aula-14-do-colaborador-concreto-ao-contrato.pdf)
+
 Este é o estado de partida de `Pedido`:
 
 ```java
@@ -31,10 +33,11 @@ O pedido nasce aberto, sem entrega. A colaboração começa em `fechar(...)`; o 
     - distinguir o tipo de uma referência da classe do objeto que ela alcança; e
     - verificar que uma nova entrega pode ser acrescentada sem modificar `Pedido`.
 
-<!-- Núcleo de 90 min: recuperar impedimento e papel estável; contrato e
-implementações; Pedido, ciclo de vida e testes; referência e métodos visíveis;
-nova implementação, critério de uso e pergunta final. Elasticidade: segundo
-fechamento, método específico e escolha concreta em Main. -->
+<!-- Núcleo de 90 min: impedimento e papel estável (20 min); contrato, mudança
+e mesma chamada aceita (25 min); testes e nova entrega (25 min); referência,
+objeto e síntese (20 min). Estimativas incluem previsão, leitura e discussão.
+Elasticidade: segundo fechamento, método específico e necessidade de outros
+contratos; aprofundamentos substituem parte do processamento conforme o ritmo. -->
 
 ## Por que a segunda entrega não cabe?
 
@@ -209,103 +212,39 @@ Nesta investigação, `calcularCustoEntrega()` é chamado **depois** de um fecha
 
 Antes, a dependência declarada era `Pedido → EntregaNormal`. Agora é `Pedido → Entrega`. Mudou **o tipo da dependência**, não a responsabilidade de `Pedido` nem o momento em que a colaboração começa.
 
-```java
-Pedido p1 = new Pedido();
-p1.fechar(new EntregaNormal());
-
-Pedido p2 = new Pedido();
-p2.fechar(new EntregaExpressa());
-
-Pedido p3 = new Pedido();
-p3.fechar(new RetiradaLocal());
-```
-
-Os três pedidos nascem sem entrega. Cada um passa a manter uma referência para a forma escolhida no fechamento. Depois disso, os custos consultados são, respectivamente, `10.0`, `25.0` e `0.0`.
-
-### Para aprofundar: o segundo fechamento
-
-<!-- aprofundamento-elastico -->
-
-Considere um pedido que já foi fechado com entrega normal:
+Retome exatamente a tentativa que abriu a investigação, agora com as classes cumprindo `Entrega` e `Pedido` dependendo desse contrato:
 
 ```java
 Pedido pedido = new Pedido();
-pedido.fechar(new EntregaNormal());
-pedido.fechar(new EntregaExpressa());
+EntregaExpressa expressa = new EntregaExpressa();
+
+pedido.fechar(expressa);
+System.out.println(pedido.calcularCustoEntrega());
 ```
 
-Qual custo deve permanecer? A interface permitiu trocar a entrega depois do primeiro fechamento?
+!!! activity "Atividade — confira se o impedimento foi resolvido"
+
+    1. A mesma chamada `fechar(expressa)` agora compila? O que mudou para isso acontecer?
+    2. Qual valor é impresso? Quem conhece essa regra de custo?
 
 ??? "Ver resposta"
 
-    O custo permanece `10.0`. O segundo `fechar(...)` recebe um objeto de tipo aceito pelo contrato, mas a guarda `!fechado` impede substituir a escolha já conservada pelo pedido. Aceitar mais classes não altera essa regra de estado.
+    1. Sim. `EntregaExpressa` declara `implements Entrega`, e o parâmetro de `fechar` agora é `Entrega`. Apenas mudar um desses lados não resolveria o encaixe mostrado.
+    2. `25.0`. A implementação de `EntregaExpressa` calcula o custo; `Pedido` continua apenas solicitando o trabalho.
 
-## A referência conhece o contrato; o objeto continua concreto
-
-Uma interface também pode ser o tipo de uma variável:
-
-```java
-Entrega entrega = new EntregaExpressa();
-```
-
-```mermaid
-%%{init: {"flowchart": {"curve": "stepAfter", "nodeSpacing": 24, "rankSpacing": 48}}}%%
-flowchart LR
-    entrega["entrega"]:::pooVar --> expressa["EntregaExpressa#1"]:::pooObject
-```
-
-A seta significa **aponta para**. O identificador `#1` apenas distingue essa instância no desenho; não é um endereço de memória. A variável `entrega` tem tipo declarado `Entrega`. O objeto criado por `new` continua sendo uma instância de `EntregaExpressa`. Não criamos um objeto com `new Entrega()`: a interface declara o papel, e as classes concretas fornecem objetos que o cumprem.
-
-!!! activity "Atividade — separe variável e objeto"
-
-    1. O que `new EntregaExpressa()` cria?
-    2. Qual é o tipo declarado da variável `entrega`?
-    3. A variável é o objeto? O objeto deixou de ser `EntregaExpressa`?
-
-??? "Ver resposta"
-
-    1. Cria um objeto concreto da classe `EntregaExpressa`.
-    2. `Entrega`, o tipo da interface.
-    3. Não. A variável guarda uma referência para o objeto. A declaração da variável não muda a classe do objeto que foi criado.
-
-Esse é o raciocínio de referências da Aula 03, agora aplicado a uma referência declarada pelo contrato. O tipo declarado também determina **o que o código pode solicitar por meio daquela referência**.
-
-Suponha que a entrega expressa tenha uma operação própria, além da operação do contrato:
-
-```java
-public class EntregaExpressa implements Entrega {
-    public double calcularCusto(Pedido pedido) {
-        return 25.0;
-    }
-
-    public void priorizarNaFila() {
-        // comportamento específico desta classe
-    }
-}
-```
-
-Com a variável declarada como `Entrega`:
-
-```java
-Entrega entrega = new EntregaExpressa();
-Pedido pedido = new Pedido();
-pedido.fechar(entrega);
-
-entrega.calcularCusto(pedido); // compila
-entrega.priorizarNaFila();     // não compila
-```
-
-!!! activity "Atividade — por que a segunda chamada falha?"
-
-    O objeto possui `priorizarNaFila()`. Por que a chamada por `entrega` não compila? Se a variável fosse declarada `EntregaExpressa expressa = new EntregaExpressa();`, aquela operação estaria disponível?
-
-??? "Ver resposta"
-
-    O tipo da referência `entrega` é `Entrega`. Por meio dela, o compilador garante somente as operações declaradas no contrato, que não inclui `priorizarNaFila()`. Com uma referência declarada `EntregaExpressa`, a operação específica estaria disponível. O objeto não perdeu seu método; mudou o conjunto de operações que podemos solicitar **através daquela referência**.
+A chamada que antes não compilava agora produz o custo expresso. Isso resolve o novo encaixe, mas ainda precisamos verificar se os comportamentos anteriores foram preservados.
 
 ## Os testes verificam o que a mudança preservou
 
-O teste de entrega normal apresentado na Aula 13 continua expressando a mesma regra:
+A chamada expressa foi aceita. Antes de considerar a mudança concluída, retomamos a suíte da Aula 13, com as mesmas entradas e expectativas:
+
+| Teste existente | Comportamento a preservar |
+| --- | --- |
+| `calculaTotalDeUmItem()` | duas unidades de teclado a `150.0` somam `300.0` |
+| `pedidoFechadoNaoAceitaNovosItens()` | a inclusão recusada mantém o total em `150.0` |
+| `entregaNormalCustaDezReais()` | a entrega normal continua custando `10.0` |
+
+Execute esses testes após a alteração. Eles devem continuar passando. O teste de entrega normal permanece assim:
 
 ```java
 @Test
@@ -338,9 +277,11 @@ void segundoFechamentoNaoTrocaEntrega() {
 ??? "Ver resposta"
 
     1. Nestes cenários, a entrega normal ainda custa `10.0` e uma segunda chamada a `fechar(...)` não substitui a escolha inicial.
-    2. Não. Cada teste cobre sua expectativa e seu cenário. Outras regras, como edições de itens e custo expresso, precisam de verificações próprias se quisermos protegê-las automaticamente.
+    2. Não. Cada teste cobre sua expectativa e seu cenário. Os testes retomados acima também verificam o total simples e uma inclusão recusada. Remoção, alteração de quantidade e custo expresso exigem seus próprios cenários se quisermos protegê-los automaticamente.
 
 O Laboratório 13 aplicou a mesma ideia de proteção no Projeto 2, testando o contador de avisos de `Lembrete`. Aqui os exemplos de teste são para `Pedido`, que continua sendo o domínio das aulas.
+
+Os comportamentos conhecidos continuam protegidos nesses cenários. Agora podemos verificar o ganho da mudança: o que acontece quando chega uma entrega que `Pedido` ainda não conhece?
 
 ## Uma nova entrega põe o contrato à prova
 
@@ -377,39 +318,105 @@ System.out.println(pedido.calcularCustoEntrega());
 
     `Pedido` depende do contrato `Entrega`, que expressa a capacidade estável de calcular o custo. As classes concretas podem variar sem que `Pedido` precise nomear cada uma delas.
 
-### Mesmo contrato, resultados diferentes
+Compare as chamadas já observadas:
 
-Uma variável `Entrega` pode apontar para objetos de classes diferentes:
+| Objeto fornecido no fechamento | Consulta pública | Resultado |
+| --- | --- | ---: |
+| `EntregaNormal` | `pedido.calcularCustoEntrega()` | `10.0` |
+| `EntregaExpressa` | `pedido.calcularCustoEntrega()` | `25.0` |
+| `EntregaAgendada` | `pedido.calcularCustoEntrega()` | `15.0` |
+
+O corpo de `Pedido.calcularCustoEntrega()` permanece igual nos três casos. O contrato garante a operação disponível, mas **não exige o mesmo resultado**. O objeto escolhido continua realizando sua própria regra. Como uma referência declarada pelo mesmo contrato permite alcançar esses objetos diferentes?
+
+## A referência conhece o contrato; o objeto continua concreto
+
+O campo de `Pedido` agora tem tipo `Entrega`, mas o colaborador fornecido continua sendo um objeto concreto. Podemos observar a mesma distinção numa variável local:
 
 ```java
-Entrega e1 = new EntregaNormal();
-Entrega e2 = new EntregaExpressa();
-
-Pedido p1 = new Pedido();
-Pedido p2 = new Pedido();
-
-p1.fechar(e1);
-p2.fechar(e2);
-
-System.out.println(p1.calcularCustoEntrega());
-System.out.println(p2.calcularCustoEntrega());
+Entrega entrega = new EntregaExpressa();
 ```
 
-!!! activity "Atividade — a mesma chamada, dois resultados"
+```mermaid
+%%{init: {"flowchart": {"curve": "stepAfter", "nodeSpacing": 24, "rankSpacing": 48}}}%%
+flowchart LR
+    entrega["entrega"]:::pooVar --> expressa["EntregaExpressa#1"]:::pooObject
+```
 
-    1. Que valores são impressos?
-    2. `p1` e `p2` executam uma operação de mesmo nome em `Pedido`?
-    3. O contrato exigiu que as duas entregas devolvessem o mesmo valor?
+A seta significa **aponta para**. O identificador `#1` apenas distingue essa instância no desenho; não é um endereço de memória. A variável `entrega` tem tipo declarado `Entrega`. O objeto criado por `new` continua sendo uma instância de `EntregaExpressa`. Não criamos um objeto com `new Entrega()`: a interface declara o papel, e as classes concretas fornecem objetos que o cumprem.
+
+!!! activity "Atividade — separe variável e objeto"
+
+    1. O que `new EntregaExpressa()` cria?
+    2. Qual é o tipo declarado da variável `entrega`?
+    3. A variável é o objeto? O objeto deixou de ser `EntregaExpressa`?
 
 ??? "Ver resposta"
 
-    1. `10.0` e `25.0`, nessa ordem.
-    2. Sim. Ambos executam `calcularCustoEntrega()`, cujo corpo solicita `entrega.calcularCusto(this)`.
-    3. Não. O contrato garante a operação disponível; cada classe concreta realiza sua regra. **Mesmo contrato não significa mesmo resultado.**
+    1. Cria um objeto concreto da classe `EntregaExpressa`.
+    2. `Entrega`, o tipo da interface.
+    3. Não. A variável guarda uma referência para o objeto. A declaração da variável não muda a classe do objeto que foi criado.
 
-Ainda não explicamos como Java escolhe qual corpo de `calcularCusto()` executar quando a referência é declarada `Entrega`. Essa pergunta ficará para a próxima aula.
+Esse é o raciocínio de referências da Aula 03, agora aplicado a uma referência declarada pelo contrato. O tipo declarado também determina **o que o código pode solicitar por meio daquela referência**.
 
-## Contratos surgem de uma necessidade
+### Para aprofundar: uma operação fora do contrato
+
+<!-- aprofundamento-elastico -->
+
+Suponha que a entrega expressa tenha uma operação própria, além da operação do contrato:
+
+```java
+public class EntregaExpressa implements Entrega {
+    public double calcularCusto(Pedido pedido) {
+        return 25.0;
+    }
+
+    public void priorizarNaFila() {
+        // comportamento específico desta classe
+    }
+}
+```
+
+Com a variável declarada como `Entrega`:
+
+```java
+Entrega entrega = new EntregaExpressa();
+Pedido pedido = new Pedido();
+pedido.fechar(entrega);
+
+entrega.calcularCusto(pedido); // compila
+entrega.priorizarNaFila();     // não compila
+```
+
+!!! activity "Atividade — por que a segunda chamada falha?"
+
+    O objeto possui `priorizarNaFila()`. Por que a chamada por `entrega` não compila? Se a variável fosse declarada `EntregaExpressa expressa = new EntregaExpressa();`, aquela operação estaria disponível?
+
+??? "Ver resposta"
+
+    O tipo da referência `entrega` é `Entrega`. Por meio dela, o compilador garante somente as operações declaradas no contrato, que não inclui `priorizarNaFila()`. Com uma referência declarada `EntregaExpressa`, a operação específica estaria disponível. O objeto não perdeu seu método; mudou o conjunto de operações que podemos solicitar **através daquela referência**.
+
+### Para aprofundar: o segundo fechamento
+
+<!-- aprofundamento-elastico -->
+
+Considere um pedido que já foi fechado com entrega normal:
+
+```java
+Pedido pedido = new Pedido();
+pedido.fechar(new EntregaNormal());
+pedido.fechar(new EntregaExpressa());
+```
+
+Qual custo deve permanecer? A interface permitiu trocar a entrega depois do primeiro fechamento?
+
+??? "Ver resposta"
+
+    O custo permanece `10.0`. O segundo `fechar(...)` recebe um objeto de tipo aceito pelo contrato, mas a guarda `!fechado` impede substituir a escolha já conservada pelo pedido. Aceitar mais classes não altera essa regra de estado.
+
+### Para aprofundar: contratos surgem de uma necessidade
+
+<!-- aprofundamento-elastico -->
+
 
 Aprender `interface` não torna necessário criar uma interface para todas as classes. No problema atual, a responsabilidade “calcular o custo da entrega” é estável, e já existem várias classes concretas que precisam ocupar esse papel no mesmo ponto de colaboração.
 
@@ -420,6 +427,8 @@ Aprender `interface` não torna necessário criar uma interface para todas as cl
 ??? "Ver uma análise possível"
 
     Não há necessidade mostrada neste problema para criar essas interfaces. Antes, identificaríamos um papel que algum cliente precisa e uma razão concreta para depender desse papel em vez de uma classe específica, como variações que devem caber na mesma colaboração. A existência de uma classe, por si só, não exige uma interface correspondente.
+
+## Fechando a trajetória
 
 !!! synthesis "Síntese"
 
@@ -436,6 +445,8 @@ public double calcularCustoEntrega() {
     return entrega.calcularCusto(this);
 }
 ```
+
+No [Laboratório 14](laboratorio-14-um-contrato-para-os-avisos.md), a capacidade comum será enviar uma mensagem: `Lembrete` passará a depender de `Notificador`. A entrega de `Pedido` é escolhida no fechamento; o canal inicial do lembrete continua sendo recebido na criação. O contrato muda o tipo de colaborador aceito, sem decidir quando cada modelo deve recebê-lo.
 
 **Quando essa chamada acontece, como Java sabe qual implementação de `calcularCusto()` executar?** Essa é a pergunta de entrada para a Aula 15 — *Polimorfismo: a mesma mensagem, comportamentos diferentes*.
 

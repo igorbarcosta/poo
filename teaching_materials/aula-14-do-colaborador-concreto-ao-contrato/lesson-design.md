@@ -2,7 +2,7 @@
 
 ## Intenção e fonte
 
-O professor definiu a Aula 14 como resposta ao limite deixado pela Aula 12, depois da introdução de testes na Aula 13. A fonte pública é `docs/aulas/aula-14-do-colaborador-concreto-ao-contrato.md`. Este desenho e o roteiro ainda dependem de revisão e aprovação pedagógica antes de derivar slides.
+O professor definiu a Aula 14 como resposta ao limite deixado pela Aula 12, depois da introdução de testes na Aula 13. A fonte pública é `docs/aulas/aula-14-do-colaborador-concreto-ao-contrato.md`. O professor autorizou os ajustes narrativos da revisão e a geração dos slides em 8 de outubro de 2026. A derivação consome o registro de aprovação do estado ajustado pelo workflow Docemas.
 
 ## Continuidade e transformação
 
@@ -16,7 +16,7 @@ O professor definiu a Aula 14 como resposta ao limite deixado pela Aula 12, depo
 
 ## Trajetória e dimensionamento
 
-Para 90 minutos: recuperar o impedimento de compilação e o papel estável; construir contrato e classes; trocar a dependência preservando ciclo de vida e testes; ler referência e capacidade visível; experimentar nova implementação e fechar a pergunta seguinte. Perguntas dirigidas à turma permitem previsão, justificativa e síntese. Aprofundamentos elásticos: segunda tentativa de fechamento, método específico da classe concreta e necessidade de interfaces em outros pontos do sistema.
+Para 90 minutos: recuperar o impedimento de compilação e o papel estável; construir contrato e classes; trocar a dependência e retomar a mesma chamada expressa com saída `25.0`; verificar os testes conhecidos; experimentar nova implementação sem mudar `Pedido`; ler referência e objeto e fechar a pergunta seguinte. Perguntas dirigidas à turma permitem previsão, justificativa e síntese. Aprofundamentos elásticos: segunda tentativa de fechamento, método específico da classe concreta e necessidade de interfaces em outros pontos do sistema.
 
 ## Limites
 
