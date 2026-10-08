@@ -30,6 +30,20 @@ O slide normal:
 
 Perguntas que fazem parte da exposição permanecem neutras. Somente quando a aula realmente suspende a resposta e espera produção do estudante o frame se torna uma pausa `activity`.
 
+### Continuidade do storytelling
+
+O storytelling é requisito de construção e revisão do deck. Cada etapa deve nascer de um problema, resultado, limite ou pergunta produzido pela etapa anterior. A sequência deve permitir ao estudante explicar por que o próximo assunto se tornou necessário, preservando a causalidade entre investigação, descoberta, mecanismo e aplicação.
+
+Antes de mudar o cenário, a versão do código, o domínio ou o foco da investigação, explicitar a transição e o que permanece válido. Resolver a pergunta em andamento antes de abrir outra investigação. Evitar mudanças bruscas e sequências de tópicos que dependam da fala do professor para reconstruir sua ligação.
+
+### Atividades e respostas imediatas
+
+Toda pergunta de um slide `activity` deve ser respondida no slide imediatamente seguinte. Esse slide deve apresentar visivelmente a resposta e a justificativa necessária para conferi-la, mantendo o cenário, os dados e a correspondência com todas as perguntas feitas. Respostas somente nas notas do professor ou em slides posteriores não satisfazem essa regra.
+
+Para questões abertas, apresentar uma análise possível e os critérios de raciocínio, sem impor uma única solução quando houver alternativas justificáveis. Se as respostas não couberem de forma legível no próximo slide, reduzir ou dividir a atividade em pares de solicitação e resposta.
+
+Cada pergunta de atividade deve contribuir para a compreensão: prever um efeito, justificar uma decisão, comparar alternativas, diagnosticar um problema ou transferir uma ideia. Evitar perguntas redundantes, respostas já entregues pela explicação anterior e questões que apenas repetem a mesma conclusão sem uma nova operação cognitiva. Recuperações são úteis quando consolidam um pré-requisito necessário ao próximo avanço. Preferir poucas perguntas relevantes, com tempo real de elaboração.
+
 ## Pausas didáticas
 
 Uma pausa didática interrompe deliberadamente a narrativa e concentra toda a atenção em uma função. Cada pausa ocupa um frame inteiro. Um frame possui no máximo uma pausa: não misturar funções, labels ou caixas de outra pausa no mesmo slide.
@@ -61,7 +75,7 @@ Os aliases legados `question`, `concept`, `example`, `takeaway`, `definition`, `
 
 - Trabalhar uma ideia principal por slide, com pouco texto e sem listas extensas.
 - Preferir frames sucessivos simples a concentrar pergunta, resposta, código e explicação.
-- Em previsões e atividades, apresentar primeiro a solicitação; revelar resultado e explicação em frames narrativos posteriores.
+- Em atividades, apresentar primeiro a solicitação; responder todas as perguntas no slide imediatamente seguinte, conforme a regra de respostas imediatas. Em outras previsões, manter solicitação e explicação em sequência causal clara.
 - Não estabelecer meta fixa de quantidade. Dezenas de slides simples podem servir a uma aula de 90 minutos.
 - Manter muitos slides neutros entre as pausas; as miniaturas não devem parecer um festival de cores.
 
@@ -84,4 +98,4 @@ O deck acompanha o tom de conversa técnica dos roteiros: rigoroso, claro, natur
 
 ## Notas e efeitos
 
-Notas do professor podem registrar respostas esperadas e cuidados conceituais, sem se tornar roteiro palavra por palavra. Priorizar slides estáticos; animações ou transições só entram diante de necessidade pedagógica concreta.
+Notas do professor podem complementar respostas e registrar cuidados conceituais, sem se tornar roteiro palavra por palavra nem substituir a resposta projetada no slide seguinte à atividade. Priorizar slides estáticos; animações ou transições só entram diante de necessidade pedagógica concreta.

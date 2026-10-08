@@ -114,6 +114,9 @@ Quando houver experimento, verificar se a previsão é possível e determinada, 
 ### Slides no escopo
 
 - Confirmar que o deck preserva a narrativa e a causalidade do roteiro, sem converter mecanicamente suas seções em frames.
+- Verificar que cada etapa nasce da anterior e que mudanças de cenário, versão do código, domínio ou foco são explicitadas. Identificar mudanças bruscas e ligações que dependem de reconstrução oral pelo professor.
+- Conferir cada par atividade → slide seguinte: todas as perguntas devem receber resposta visível e justificativa suficiente no slide imediatamente seguinte, preservando cenário e dados. Respostas apenas em notas ou mais adiante são insuficientes.
+- Avaliar a contribuição de cada pergunta de atividade à compreensão; sinalizar perguntas redundantes, respostas já entregues e repetição sem nova operação cognitiva. Preservar recuperações que sustentem o próximo avanço.
 - Verificar legibilidade a distância, densidade, tamanho e recorte do código projetado, alinhamento, contraste e composição.
 - Conferir se as pausas didáticas têm função real, ocupam frames próprios e seguem `specs/padrao-slides.md`.
 - Comparar o deck com o roteiro para identificar lacunas, antecipações, redundâncias ou mudanças de ênfase.

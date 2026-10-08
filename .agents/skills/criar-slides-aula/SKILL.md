@@ -37,9 +37,9 @@ HTML/PDF, Zensical, publicação e retrospectivas continuam pertencendo ao POO.
 ## Derivar o deck
 
 1. Identificar a trajetória da aula: problema, perguntas, previsões, descobertas, formalizações, aplicações e sínteses.
-2. Planejar frames com uma ideia principal cada, preservando a causalidade e as pausas didáticas definidas no roteiro.
+2. Planejar frames com uma ideia principal cada, preservando a causalidade e as pausas didáticas definidas no roteiro. Explicitar transições de cenário, versão de código, domínio ou foco; cada etapa deve decorrer da investigação anterior, sem mudanças bruscas.
 3. Preservar o núcleo necessário e representar aprofundamentos elásticos planejados quando tiverem função pedagógica real.
-4. Procurar redundância expositiva: manter retomadas que mudem a operação cognitiva e reduzir reformulações que apenas repitam a explicação.
+4. Procurar redundância expositiva e nas atividades: manter retomadas que mudem a operação cognitiva e remover perguntas que apenas repitam respostas já dadas ou acrescentem pouco à compreensão. Para cada slide `activity`, planejar o slide imediatamente seguinte com resposta visível a todas as perguntas e a justificativa necessária, conforme `specs/padrao-slides.md`; notas do professor não substituem essa resposta.
 5. Selecionar apenas texto, código, perguntas, atividades e diagramas que precisem permanecer projetados. Usar notas do apresentador para orientações de condução que não devam ocupar o frame.
 6. Criar ou atualizar `slides/aula-XX-<slug>.md` com o tema compartilhado.
 7. Preservar o conteúdo e a intenção da aula original. Não alterar a página salvo correção técnica ou inconsistência pequena indispensável; diante de mudança pedagógica, parar e pedir orientação.
