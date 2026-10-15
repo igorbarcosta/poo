@@ -33,6 +33,7 @@ nav = [
     { "12 — Quando um colaborador começa a variar" = "aulas/aula-12-quando-um-colaborador-comeca-a-variar.md" },
     { "13 — Como saber se ainda funciona?" = "aulas/aula-13-como-saber-se-ainda-funciona.md" },
     { "14 — Do colaborador concreto ao contrato" = "aulas/aula-14-do-colaborador-concreto-ao-contrato.md" },
+    { "15 — Polimorfismo: a mesma mensagem, comportamentos diferentes" = "aulas/aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -49,6 +50,7 @@ nav = [
     { "12 — Quando uma segunda solução aparece" = "aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md" },
     { "13 — Protegendo os avisos do lembrete" = "aulas/laboratorio-13-protegendo-os-avisos-do-lembrete.md" },
     { "14 — Um contrato para os avisos" = "aulas/laboratorio-14-um-contrato-para-os-avisos.md" },
+    { "15 — A mesma chamada, vários canais" = "aulas/laboratorio-15-a-mesma-chamada-varios-canais.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },
@@ -61,6 +63,10 @@ nav = [
       { "Visão geral" = "avaliacoes/checkpoint-02/index.md" },
       { "Gabarito — Variante A" = "avaliacoes/checkpoint-02/gabarito-variante-a.md" },
       { "Gabarito — Variante B" = "avaliacoes/checkpoint-02/gabarito-variante-b.md" },
+    ] },
+    { "Checkpoint 03" = [
+      { "Visão geral" = "avaliacoes/checkpoint-03/index.md" },
+      { "Gabarito comentado" = "avaliacoes/checkpoint-03/gabarito.md" },
     ] },
     { "Prova da Unidade 01" = [
       { "Visão geral" = "avaliacoes/prova-unidade-01/index.md" },

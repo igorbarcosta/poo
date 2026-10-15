@@ -24,5 +24,6 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 12 — Quando uma segunda solução aparece](../aulas/laboratorio-12-quando-uma-segunda-solucao-aparece.md) — prática em casa; início do Projeto 2 — Sistema de lembretes e notificações.
 - [Laboratório 13 — Protegendo os avisos do lembrete](../aulas/laboratorio-13-protegendo-os-avisos-do-lembrete.md) — testes sobre a Versão 1 do Projeto 2.
 - [Laboratório 14 — Um contrato para os avisos](../aulas/laboratorio-14-um-contrato-para-os-avisos.md) — notificadores por contrato e evolução do Projeto 2.
+- [Laboratório 15 — A mesma chamada, vários canais](../aulas/laboratorio-15-a-mesma-chamada-varios-canais.md) — polimorfismo em uma sequência de envios, com preservação do canal inicial.
 
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

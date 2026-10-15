@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-15-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-15",
+    "path": "lesson-design.md",
+    "sha256": "14f181f24f2ffdaa881407359d6a5dd432c8e6f6b7211ab50ae1e08baeb3d34d"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-15",
+    "path": "lesson.md",
+    "sha256": "96a57454433b351fcaad5fbef0bb2fe079f8b5ea05cf234e9db6351d01a54105"
+  },
+  "combined_semantic_sha256": "07375d65e4a5637985fbcefc0fd468f737cb14ac56d027ce118aff4e11f8cec0",
+  "approved_at": "2026-10-15T07:42:39-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user instruction after review: faca o ajuste pontual e pode em seguida gerar os slides. The requested lab verification adjustment has been applied; Aula semantic content is unchanged; distribution links were added before recording this snapshot."
+  },
+  "consumer_context_refs": [
+    "specs/planejamento-aula-15.md",
+    "slides/presentation-profile.md"
+  ]
+}

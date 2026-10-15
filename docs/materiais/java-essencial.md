@@ -447,6 +447,49 @@ Entrega entrega = new EntregaNormal();
 
 `entrega` é uma variável declarada com o tipo do contrato; `new EntregaNormal()` cria o objeto concreto que ela referencia. Por meio dessa variável, o código pode solicitar as operações declaradas em `Entrega`. Veja a [Aula 14](../aulas/aula-14-do-colaborador-concreto-ao-contrato.md) para a mudança da dependência de `Pedido`.
 
+### Polimorfismo e despacho dinâmico
+
+Uma referência de interface pode apontar para objetos de classes diferentes que
+cumprem o contrato. Com as entregas da [Aula 15](../aulas/aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md):
+
+```java
+Pedido pedido = new Pedido();
+Entrega entrega = new EntregaNormal();
+Entrega outra = entrega;
+
+entrega = new EntregaExpressa();
+
+System.out.println(entrega.calcularCusto(pedido)); // 25.0
+System.out.println(outra.calcularCusto(pedido));   // 10.0
+```
+
+O tipo declarado permite verificar a chamada na compilação. Durante a execução,
+o objeto alcançado determina a implementação do método de instância: essa
+escolha é o despacho dinâmico. Reatribuir `entrega` não transforma o objeto
+anterior nem muda a referência guardada em `outra`.
+
+Um método específico de `EntregaExpressa` que não pertence a `Entrega`, como
+`priorizarNaFila()`, não pode ser chamado por uma referência declarada `Entrega`.
+O despacho dinâmico não torna válida uma chamada recusada pelo compilador.
+
+O contrato também pode ser o tipo dos elementos de uma lista:
+
+```java
+List<Entrega> entregas = new ArrayList<>();
+entregas.add(new EntregaNormal());
+entregas.add(new EntregaExpressa());
+
+for (Entrega entrega : entregas) {
+    System.out.println(entrega.calcularCusto(pedido));
+}
+```
+
+Com os imports de `List` e `ArrayList` já apresentados e o mesmo `pedido` do
+exemplo anterior, a saída é `10.0` e depois `25.0`. Cada posição é percorrida na
+ordem da lista; o objeto atual determina a implementação executada. Uma lista
+vazia não executa o corpo do laço; uma referência em duas posições recebe duas
+chamadas.
+
 ## Estilo e convenções essenciais
 
 ### Nomes
