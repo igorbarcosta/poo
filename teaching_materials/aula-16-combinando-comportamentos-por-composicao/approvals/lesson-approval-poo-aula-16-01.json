@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-16-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-16",
+    "path": "lesson-design.md",
+    "sha256": "e4c3dfb16effc1c3edda187b5de989d6f7cdad97f0c4cba574364bd3ecc33f6e"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-16",
+    "path": "lesson.md",
+    "sha256": "b787d8d1558ff680af7ba949be378ba97943511d4a0c6b37e9581e06015c6684"
+  },
+  "combined_semantic_sha256": "9b7d88f5767af8fc5f1602e7d60c2be73c88c2a2da40c9a835e17aa1ce421257",
+  "approved_at": "2026-10-16T10:06:27-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user instruction after the pair audit and requested lab improvement: Pode criar os slides. The lab improvement was applied in the preceding turn. Distribution links were added before this snapshot; lesson pedagogical content is unchanged."
+  },
+  "consumer_context_refs": [
+    "slides/presentation-profile.md",
+    "specs/padrao-slides.md"
+  ]
+}

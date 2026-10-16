@@ -490,6 +490,42 @@ ordem da lista; o objeto atual determina a implementação executada. Uma lista
 vazia não executa o corpo do laço; uma referência em duas posições recebe duas
 chamadas.
 
+### Cumprir um contrato e guardar um colaborador
+
+Uma classe pode cumprir uma interface e guardar outro objeto por esse mesmo
+tipo, como na [Aula 16](../aulas/aula-16-combinando-comportamentos-por-composicao.md):
+
+```java
+public class EntregaComSeguro implements Entrega {
+    private Entrega entregaBase;
+
+    public EntregaComSeguro(Entrega entregaBase) {
+        this.entregaBase = entregaBase;
+    }
+
+    public double calcularCusto(Pedido pedido) {
+        return entregaBase.calcularCusto(pedido) + 5.0;
+    }
+}
+```
+
+`implements` permite usar a combinação como uma `Entrega`; o campo guarda o
+colaborador que calcula a base. A chamada pelo campo chega a outro objeto,
+recebido na criação. Não é necessário copiar sua implementação.
+
+### Concatenar um prefixo à mensagem
+
+O operador `+` combina textos na ordem em que aparecem:
+
+```java
+String prefixo = "[URGENTE] ";
+String mensagem = "Revisar colaboração";
+String textoDoEnvio = prefixo + mensagem;
+```
+
+`textoDoEnvio` contém `"[URGENTE] Revisar colaboração"`. A variável `mensagem`
+continua com o texto original. O espaço entre os trechos faz parte do prefixo.
+
 ## Estilo e convenções essenciais
 
 ### Nomes

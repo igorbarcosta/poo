@@ -30,5 +30,6 @@ Da colaboração com objetos concretos à necessidade de acomodar diferentes obj
 - [Aula 13 — Como saber se ainda funciona?](aula-13-como-saber-se-ainda-funciona.md)
 - [Aula 14 — Do colaborador concreto ao contrato](aula-14-do-colaborador-concreto-ao-contrato.md)
 - [Aula 15 — Polimorfismo: a mesma mensagem, comportamentos diferentes](aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md)
+- [Aula 16 — Combinando comportamentos por composição](aula-16-combinando-comportamentos-por-composicao.md)
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.
