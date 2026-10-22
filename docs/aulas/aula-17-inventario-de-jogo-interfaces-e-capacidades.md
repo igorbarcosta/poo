@@ -6,6 +6,8 @@ todos os itens podem ser guardados e apresentados, mas apenas alguns aceitam
 reparo. A seleção de um item vai nos obrigar a distinguir o que o objeto
 oferece daquilo que uma referência permite solicitar.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-17-inventario-de-jogo-interfaces-e-capacidades.html) · [PDF](../slides/rendered/aula-17-inventario-de-jogo-interfaces-e-capacidades.pdf)
+
 !!! lesson-question "Pergunta central"
 
     Como um inventário guarda itens diferentes e permite operações específicas
