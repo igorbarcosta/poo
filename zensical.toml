@@ -35,6 +35,7 @@ nav = [
     { "14 — Do colaborador concreto ao contrato" = "aulas/aula-14-do-colaborador-concreto-ao-contrato.md" },
     { "15 — Polimorfismo: a mesma mensagem, comportamentos diferentes" = "aulas/aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md" },
     { "16 — Combinando comportamentos por composição" = "aulas/aula-16-combinando-comportamentos-por-composicao.md" },
+    { "17 — Inventário de jogo: interfaces e capacidades" = "aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },

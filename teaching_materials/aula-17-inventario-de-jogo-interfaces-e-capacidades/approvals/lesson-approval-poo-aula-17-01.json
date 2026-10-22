@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-17-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-17",
+    "path": "lesson-design.md",
+    "sha256": "074630dea81a791c23be9db89dbbb3604b2f9ed7dc867fc52124816dcbb5f6ca"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-17",
+    "path": "lesson.md",
+    "sha256": "e30087087485ddd26401a9127ae5299ed6e858ddcce0ca46d655e936994a7f17"
+  },
+  "combined_semantic_sha256": "e9d4f3faa2157aac7cf7fcb82e5929f09a53382198a4625e2527d1677fccbb60",
+  "approved_at": "2026-10-21T23:46:17-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user reply \"sim\" to the question \"Você aprova a versão atual da Aula 17 para eu gerar os slides?\" in the current session."
+  },
+  "consumer_context_refs": [
+    "../../../slides/presentation-profile.md"
+  ]
+}

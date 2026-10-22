@@ -526,6 +526,61 @@ String textoDoEnvio = prefixo + mensagem;
 `textoDoEnvio` contém `"[URGENTE] Revisar colaboração"`. A variável `mensagem`
 continua com o texto original. O espaço entre os trechos faz parte do prefixo.
 
+### Um objeto, duas interfaces
+
+Uma classe pode cumprir interfaces independentes, separadas por vírgula em
+`implements`. Na [Aula 17](../aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md),
+`Espada` declara `implements Item, Reparavel`: oferece `descrever()` por
+`Item` e `repararCom(...)` e `getDurabilidade()` por `Reparavel`.
+
+```java
+Espada espada = new Espada(40);
+Item item = espada;
+Reparavel equipamento = espada;
+```
+
+São três referências para o mesmo objeto. Cada tipo declarado permite usar
+as operações de seu contrato: `equipamento.descrever()` não compila, pois
+`Reparavel` não declara esse método.
+
+### Cast de referências e `instanceof`
+
+Quando uma referência `Item` pode alcançar objetos diferentes, `instanceof`
+permite verificar uma capacidade antes da conversão explícita:
+
+```java
+Item item = new Espada(40);
+PilhaMaterial ferro = new PilhaMaterial("ferro", 2);
+
+if (item instanceof Reparavel) {
+    Reparavel equipamento = (Reparavel) item;
+    equipamento.repararCom(ferro);
+}
+```
+
+O cast `(Reparavel) item` permite usar a referência pelo outro tipo. Não cria
+outro objeto, não muda a classe da espada e não altera o tipo declarado de
+`item`. O reparo do exemplo deixa a mesma espada em `65/100` e o ferro em `1`.
+
+Um cast aceito na compilação ainda pode falhar na execução: se `item` alcança
+uma `Maca`, `(Espada) item` causa `ClassCastException`. A verificação deve
+anteceder essa conversão. Para `null`, `instanceof` resulta em `false`.
+Reconhecer essa falha não exige estudar tratamento de exceções agora.
+
+### Comparar o conteúdo de textos
+
+Para verificar o material da pilha, a Aula 17 usa `equals`:
+
+```java
+String tipo = "ferro";
+System.out.println(tipo.equals("ferro"));   // true
+System.out.println(tipo.equals("madeira")); // false
+```
+
+Aqui, `equals` compara o conteúdo dos textos. O `==` apresentado nas
+investigações de referências compara identidade. Neste exemplo, `tipo` é
+diferente de `null`.
+
 ## Estilo e convenções essenciais
 
 ### Nomes

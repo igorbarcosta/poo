@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-17-projection-01",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-17",
+      "sha256": "ce7c648ceb2c3c6ade88384457e39cab823ccf1ac881f9c1cf49abe65ca8fcd2",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-17",
+        "path": "lesson-design.md",
+        "sha256": "074630dea81a791c23be9db89dbbb3604b2f9ed7dc867fc52124816dcbb5f6ca"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-17",
+        "path": "lesson.md",
+        "sha256": "e30087087485ddd26401a9127ae5299ed6e858ddcce0ca46d655e936994a7f17"
+      },
+      "combined_semantic_sha256": "e9d4f3faa2157aac7cf7fcb82e5929f09a53382198a4625e2527d1677fccbb60"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-17-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-17",
+      "source_lesson": "lesson-poo-aula-17",
+      "source_approval": "lesson-approval-poo-aula-17-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "e9d4f3faa2157aac7cf7fcb82e5929f09a53382198a4625e2527d1677fccbb60",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-10-21T23:49:07-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_PROJECTION_DECISION",
+  "reviewer_provenance": {
+    "identity": "codex-source-review",
+    "source": "Read-only source-level comparison of the 53-frame deck with the explicitly approved Aula 17 and LessonDesign, POO profile and slide standard. Preserves initial Item-only version, listing and declared type, explicit cast and shared identity, incompatible cast and execution failure, traditional instanceof, separate Reparavel capability, both independent interfaces, delegated repair and material ownership, refusal versus capacity, three priority JUnit scenarios and their coverage limits, Picareta extension, four individual decisions and optional local reassignment appendix. Each of 13 activity frames has a visible complete answer on the immediately following frame. Progressive code recuts and scenario resets are explicit; full support classes and complementary tests remain in the lesson. No new curriculum, laboratory or assessment rules. Schema resolution uses the current jsonschema Registry API with unchanged Docemas schemas after legacy RefResolver failed to resolve nested $defs/sha; all deterministic semantic checks remain enabled. This review does not claim visual or publication correctness."
+  },
+  "created_at": "2026-10-21T23:49:39-03:00",
+  "context_refs": [
+    "specs/padrao-slides.md",
+    "specs/padrao-diagramas-poo.md",
+    "slides/presentation-profile.md",
+    "retrospectivas/2026-2.md"
+  ]
+}

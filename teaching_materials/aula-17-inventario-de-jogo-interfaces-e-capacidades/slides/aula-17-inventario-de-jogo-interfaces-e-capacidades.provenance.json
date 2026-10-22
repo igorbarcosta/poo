@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "deck_identity": "slide-deck-poo-aula-17",
+  "source_lesson": "lesson-poo-aula-17",
+  "source_approval": "lesson-approval-poo-aula-17-01",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "approved_combined_semantic_sha256": "e9d4f3faa2157aac7cf7fcb82e5929f09a53382198a4625e2527d1677fccbb60",
+  "presentation_profile": {
+    "identity": "poo-marp-v1",
+    "reference": "slides/presentation-profile.md",
+    "format": "Marp Markdown",
+    "syntax": "Marp front matter with POO deck classes, components, and notes",
+    "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+    "theme": "slides/theme/poo.css",
+    "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+    "density": "one central idea per frame with progressive code and activity pauses",
+    "delivery_context": "90-minute presencial POO lesson"
+  },
+  "derived_at": "2026-10-21T23:49:07-03:00"
+}

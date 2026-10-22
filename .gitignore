@@ -4,3 +4,4 @@ __pycache__/
 node_modules/
 .slides-build/
 /.codex/config.toml
+*:Zone.Identifier

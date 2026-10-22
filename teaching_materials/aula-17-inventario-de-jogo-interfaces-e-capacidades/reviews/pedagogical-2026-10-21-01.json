@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-17-pedagogical-20261021-01",
+  "review_domain": "canonical_lesson",
+  "reviewed_snapshot": {
+    "snapshot_type": "canonical",
+    "semantic_hash_version": "docemas-lesson-semantic-v1",
+    "lesson_design": {
+      "identity": "lesson-design-poo-aula-17",
+      "path": "lesson-design.md",
+      "sha256": "074630dea81a791c23be9db89dbbb3604b2f9ed7dc867fc52124816dcbb5f6ca"
+    },
+    "lesson": {
+      "identity": "lesson-poo-aula-17",
+      "path": "lesson.md",
+      "sha256": "668537a6f9ee5201643038b96e2549b6c2699d0b828ee2b25946f2e608490793"
+    },
+    "combined_semantic_sha256": "80b710a430aba8621d4211de45505a4eaf19eb8d9a03a179ac997a991c0232c7"
+  },
+  "findings": [
+    {
+      "finding_id": "F1",
+      "artifact": "lesson.md",
+      "location": "docs/aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md:681-692",
+      "concern": "RECOMENDADO: a questão individual 3 concentra várias solicitações em um único parágrafo.",
+      "rationale": "A retrospectiva da Aula 15 recomenda separar solicitações quando a atividade exige várias análises. Aqui o aluno precisa justificar o cast, identificar a implementação, prever retorno e estados e analisar as operações acessíveis por Reparavel.",
+      "impact": "O cenário é determinado e a resposta está correta, mas o aluno pode omitir uma parte da tarefa ou ter mais dificuldade para conferir sua resposta. Não é bloqueio conceitual.",
+      "recommendation": "Preservar cenário e conteúdo; enumerar as solicitações e alinhar a resposta à mesma ordem, incluindo explicitamente retorno, durabilidade e saldo na previsão.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    }
+  ],
+  "recommendation": "CORRECTIONS_RECOMMENDED",
+  "reviewer_provenance": {
+    "identity": "codex-pedagogical-review",
+    "source": "Revisão delimitada e sem edição do par canônico pela skill local revisar-material-didatico e Docemas review-lesson-material. Contexto: planejamento, projeto pedagógico, padrão de aula, estrutura do site, Aula 16, repertório de Java essencial e retrospectiva da Aula 15. Sem laboratório ou slides da Aula 17, conforme escopo definido. Nenhum erro conceitual, gabarito incorreto ou pré-requisito indevido identificado. Estimativa interna de 90 minutos plausível mantendo classes completas e casos complementares como consulta; tempo real ainda não observado. Preservar progressão listagem → cast → falha → capacidade → delegação → verificação e aplicação individual. Build Zensical sem problemas; git diff --check passou. Código extraído do roteiro compilado com JDK 24 pelo script /tmp/aula17-java-check.py: 3 testes JUnit do roteiro e 6 verificações complementares passaram, assim como cinco cenários de saída, duas rejeições esperadas de compilação e a versão progressiva anterior a Reparavel. Referências Java e Minecraft acessadas; regras numéricas explicitamente didáticas. Esta revisão não registra aprovação docente."
+  },
+  "created_at": "2026-10-21T23:36:12-03:00",
+  "context_refs": [
+    "AGENTS.md",
+    "specs/projeto-pedagogico.md",
+    "specs/padrao-aula.md",
+    "specs/estrutura-site.md",
+    "specs/planejamento-aula-17.md",
+    "docs/aulas/aula-16-combinando-comportamentos-por-composicao.md",
+    "docs/materiais/java-essencial.md",
+    "retrospectivas/2026-2.md",
+    "https://docs.oracle.com/javase/specs/jls/se25/html/jls-5.html#jls-5.5",
+    "https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.20.2"
+  ]
+}
