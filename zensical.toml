@@ -71,6 +71,11 @@ nav = [
       { "Visão geral" = "avaliacoes/checkpoint-03/index.md" },
       { "Gabarito comentado" = "avaliacoes/checkpoint-03/gabarito.md" },
     ] },
+    { "Checkpoint 04" = [
+      { "Visão geral" = "avaliacoes/checkpoint-04/index.md" },
+      { "Gabarito — Variante A" = "avaliacoes/checkpoint-04/gabarito-variante-a.md" },
+      { "Gabarito — Variante B" = "avaliacoes/checkpoint-04/gabarito-variante-b.md" },
+    ] },
     { "Prova da Unidade 01" = [
       { "Visão geral" = "avaliacoes/prova-unidade-01/index.md" },
       { "Gabarito comentado" = "avaliacoes/prova-unidade-01/gabarito.md" },
