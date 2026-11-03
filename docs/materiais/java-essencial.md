@@ -581,6 +581,46 @@ Aqui, `equals` compara o conteúdo dos textos. O `==` apresentado nas
 investigações de referências compara identidade. Neste exemplo, `tipo` é
 diferente de `null`.
 
+### Herança, classe abstrata e sobrescrita
+
+Na [Aula 18](../aulas/aula-18-compartilhando-regras-sem-perder-os-contratos.md),
+`Equipamento` é uma classe abstrata que cumpre `Item` e `Reparavel`. Ela
+implementa o reparo e a consulta da durabilidade, mas deixa `descrever()`
+abstrato. Uma subclasse concreta fornece a descrição:
+
+```java
+public class Espada extends Equipamento {
+    public Espada(int durabilidadeInicial) {
+        super(durabilidadeInicial, 100, "ferro", 25);
+    }
+
+    @Override
+    public String descrever() {
+        return "Espada de ferro: " + getDurabilidade() + "/100";
+    }
+}
+```
+
+- `extends` estabelece a herança de uma classe; a espada também cumpre as
+  interfaces da base, sem repetir `implements`.
+- `super(...)` chama o construtor da base para inicializar o mesmo objeto.
+  O construtor `protected` permite essa chamada pelas subclasses.
+- O campo de durabilidade permanece privado em `Equipamento`. A subclasse
+  usa a consulta herdada, sem acessar o campo diretamente.
+- `abstract` impede criar diretamente um `Equipamento`. Ainda podemos
+  declarar `Equipamento equipamento = new Espada(40)`.
+- A subclasse concreta precisa implementar as operações abstratas pendentes.
+  `@Override` permite ao compilador conferir a correspondência da declaração.
+
+Um método implementado na base também pode chamar uma operação sobrescrita
+no próprio objeto. O objeto concreto determina qual implementação executa,
+inclusive nessa chamada interna. Neste percurso, os construtores apenas
+inicializam campos; não chamam métodos sobrescrevíveis.
+
+Java permite estender uma única classe diretamente e cumprir várias interfaces.
+Guardar outro objeto e delegar a ele continua sendo uma alternativa distinta,
+usada na composição com prefixo do Projeto 2.
+
 ## Estilo e convenções essenciais
 
 ### Nomes

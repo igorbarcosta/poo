@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-18-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-18",
+    "path": "lesson-design.md",
+    "sha256": "a07998442a14d61f7ff686669eae7ece8f749ef75d853248dec9d58e094cb7d1"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-18",
+    "path": "lesson.md",
+    "sha256": "6281fa5c687c443f6e34bb1227298b848b74d228641ae4e6d2eac8361127bf44"
+  },
+  "combined_semantic_sha256": "a010e78b572f6e479d5005759d80f15aa060e770fb223ebc8e86ac3ffac5065d",
+  "approved_at": "2026-11-03T07:40:53-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user instruction after the bounded audit identified only F1: \"faça os ajustes, prepare os slides da aula.\" Approval covers the audited Aula 18 with that specific adjustment, now applied; no other pedagogical change was made. HTML/PDF links are derivative navigation."
+  },
+  "consumer_context_refs": [
+    "slides/presentation-profile.md",
+    "specs/planejamento-fechamento-unidade-02.md"
+  ]
+}

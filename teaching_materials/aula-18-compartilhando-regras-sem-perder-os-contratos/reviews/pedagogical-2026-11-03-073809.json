@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-18-pedagogical-20261103t073809",
+  "review_domain": "canonical_lesson",
+  "reviewed_snapshot": {
+    "snapshot_type": "canonical",
+    "semantic_hash_version": "docemas-lesson-semantic-v1",
+    "lesson_design": {
+      "identity": "lesson-design-poo-aula-18",
+      "path": "lesson-design.md",
+      "sha256": "a07998442a14d61f7ff686669eae7ece8f749ef75d853248dec9d58e094cb7d1"
+    },
+    "lesson": {
+      "identity": "lesson-poo-aula-18",
+      "path": "lesson.md",
+      "sha256": "96ad3237050b81f3afab596f0b389b120788355dee5edff716da14d336fa6aec"
+    },
+    "combined_semantic_sha256": "327fd5e47fd76a17ca080558813c0cf58ef8fd9b3881176ee82e2cfd6b56404d"
+  },
+  "findings": [
+    {
+      "finding_id": "F1",
+      "artifact": "lesson.md",
+      "location": "docs/aulas/aula-18-compartilhando-regras-sem-perder-os-contratos.md:652-666",
+      "concern": "RECOMENDADO: a chamada de uma operação sobrescrita a partir de um método implementado na base aparece somente como exposição na ponte para o laboratório.",
+      "rationale": "A Aula 18 exercita chamadas herdadas e sobrescritas separadamente. O Laboratório 18 exige combinar as duas em NotificadorConsole.enviar(), que solicita descreverCanal() no próprio objeto. A ponte ensina corretamente esse mecanismo, mas fornece imediatamente a saída de apresentar(), sem pedir que o estudante reconstrua esse fluxo.",
+      "impact": "O pré-requisito está presente e não há bloqueio conceitual. Falta uma oportunidade curta de verificar se o estudante compreendeu a chamada interna antes de precisar implementá-la no laboratório.",
+      "recommendation": "Converter o exemplo existente de apresentar() em uma previsão curta: pedir a saída e a localização dos corpos de apresentar() e descrever(), mantendo a explicação atual em resposta expansível imediata. Reutilizar esse trecho, sem acrescentar outro conceito ou ampliar o roteiro.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    }
+  ],
+  "recommendation": "CORRECTIONS_RECOMMENDED",
+  "reviewer_provenance": {
+    "identity": "codex-pedagogical-review",
+    "source": "Auditoria delimitada com revisar-material-didatico e review-lesson-material do Docemas, sem editar desenho, aula ou laboratório. Nenhum achado NECESSÁRIO. Desenho e aula consistentes com o recorte aprovado; exceções permanecem para a Aula 19, ainda inexistente. Continuidade conferida com Aula 17, Aula 16 e Laboratórios 14–16. Laboratório revisado como artefato local separado: requisitos determinados, incrementos A/B de produção e C de testes significativos, dois contadores distintos, cenários e gabaritos corretos, entrega somente de código e IA Nível 1. Dimensionamento interno de 90 minutos por encontro plausível com JUnit e solução anterior funcionais; não há observação de aplicação dos encontros 18. Código da aula extraído com /tmp/aula18-check.py: compilação com --release 17 em Temurin 21, quatro testes JUnit (três anteriores e um atual), cinco cenários de reparo, seis linhas exatas da previsão e seis diagnósticos de compilação conferidos. Laboratório: /tmp/auditoria-lab18.py construiu implementação de referência exclusivamente temporária, com seis testes derivados da tabela e as duas demonstrações literais do roteiro; seis testes passaram e doze linhas exatas conferiram. Isso valida a exequibilidade do roteiro, não uma solução de estudante ou uma suíte anterior não fornecida. Build Zensical sem problemas, destinos dos links locais existentes e git diff --check sem problemas. Referências Oracle consultadas. Preservar campos privados, um único objeto na construção, clientes dependentes das interfaces, prefixo fora da base e verificação por objeto compartilhado. Sem slides no escopo; nenhum registro de aprovação ou alteração de estado. Hash semântico do laboratório local: 182d402c73e101a0f056cc17a8cb950f0fc058482ead6b065dcf340244367acc"
+  },
+  "created_at": "2026-11-03T07:38:09-03:00",
+  "context_refs": [
+    "AGENTS.md",
+    "specs/projeto-pedagogico.md",
+    "specs/padrao-aula.md",
+    "specs/padrao-laboratorio.md",
+    "specs/estrutura-site.md",
+    "specs/planejamento-fechamento-unidade-02.md",
+    "docs/aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md",
+    "docs/aulas/aula-16-combinando-comportamentos-por-composicao.md",
+    "docs/aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md",
+    "docs/aulas/laboratorio-15-a-mesma-chamada-varios-canais.md",
+    "docs/aulas/laboratorio-14-um-contrato-para-os-avisos.md",
+    "docs/aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md",
+    "docs/materiais/java-essencial.md",
+    "retrospectivas/2026-2.md",
+    "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
+    "https://docs.oracle.com/javase/tutorial/java/IandI/super.html",
+    "https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html",
+    "https://docs.oracle.com/javase/tutorial/java/IandI/override.html"
+  ]
+}

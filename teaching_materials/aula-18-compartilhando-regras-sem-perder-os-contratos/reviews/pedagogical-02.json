@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-18-pedagogical-02",
+  "review_domain": "canonical_lesson",
+  "reviewed_snapshot": {
+    "snapshot_type": "canonical",
+    "semantic_hash_version": "docemas-lesson-semantic-v1",
+    "lesson_design": {
+      "identity": "lesson-design-poo-aula-18",
+      "path": "lesson-design.md",
+      "sha256": "a07998442a14d61f7ff686669eae7ece8f749ef75d853248dec9d58e094cb7d1"
+    },
+    "lesson": {
+      "identity": "lesson-poo-aula-18",
+      "path": "lesson.md",
+      "sha256": "6281fa5c687c443f6e34bb1227298b848b74d228641ae4e6d2eac8361127bf44"
+    },
+    "combined_semantic_sha256": "a010e78b572f6e479d5005759d80f15aa060e770fb223ebc8e86ac3ffac5065d"
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_HUMAN_SEMANTIC_REVIEW",
+  "reviewer_provenance": {
+    "identity": "codex-canonical-rereview",
+    "source": "Bounded rereview after user-authorized local F1 adjustment. The existing apresentar() example now asks for output, method-body locations and shared object identity, followed immediately by an expandable answer. No new concept, numerical rule or prerequisite. Reviewed exact final lesson and unchanged design; distribution links and authorship-status comment are the only other changes. This is a review execution, not a correction-cycle record or approval."
+  },
+  "created_at": "2026-11-03T07:40:53-03:00",
+  "context_refs": [
+    "AGENTS.md",
+    "specs/padrao-aula.md",
+    "slides/presentation-profile.md",
+    "teaching_materials/aula-18-compartilhando-regras-sem-perder-os-contratos/reviews/pedagogical-2026-11-03-073809.json"
+  ]
+}

@@ -26,5 +26,6 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 14 — Um contrato para os avisos](../aulas/laboratorio-14-um-contrato-para-os-avisos.md) — notificadores por contrato e evolução do Projeto 2.
 - [Laboratório 15 — A mesma chamada, vários canais](../aulas/laboratorio-15-a-mesma-chamada-varios-canais.md) — polimorfismo em uma sequência de envios, com preservação do canal inicial.
 - [Laboratório 16 — Acrescentando informação antes do envio](../aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md) — composição de notificadores e verificação do texto encaminhado.
+- [Laboratório 18 — Compartilhando a contagem dos canais](../aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md) — classe abstrata, contagem por objeto de canal e integração com a composição do Projeto 2.
 
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

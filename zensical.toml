@@ -36,6 +36,7 @@ nav = [
     { "15 — Polimorfismo: a mesma mensagem, comportamentos diferentes" = "aulas/aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md" },
     { "16 — Combinando comportamentos por composição" = "aulas/aula-16-combinando-comportamentos-por-composicao.md" },
     { "17 — Inventário de jogo: interfaces e capacidades" = "aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md" },
+    { "18 — Compartilhando regras sem perder os contratos" = "aulas/aula-18-compartilhando-regras-sem-perder-os-contratos.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
@@ -54,6 +55,7 @@ nav = [
     { "14 — Um contrato para os avisos" = "aulas/laboratorio-14-um-contrato-para-os-avisos.md" },
     { "15 — A mesma chamada, vários canais" = "aulas/laboratorio-15-a-mesma-chamada-varios-canais.md" },
     { "16 — Acrescentando informação antes do envio" = "aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md" },
+    { "18 — Compartilhando a contagem dos canais" = "aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },

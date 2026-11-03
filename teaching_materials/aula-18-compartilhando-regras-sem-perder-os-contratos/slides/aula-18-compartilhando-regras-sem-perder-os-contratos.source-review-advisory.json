@@ -1,0 +1,64 @@
+{
+  "kind": "poo-source-review-advisory",
+  "status": "STRUCTURED_REVIEW_INCOMPLETE",
+  "created_at": "2026-11-03T07:46:56-03:00",
+  "projection_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-18-compartilhando-regras-sem-perder-os-contratos",
+      "sha256": "38fc6cb5aa4d46f3b737a575e10f8b3679fee826ae63b57e97cbe9edd4a48e54",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-18",
+        "path": "lesson-design.md",
+        "sha256": "a07998442a14d61f7ff686669eae7ece8f749ef75d853248dec9d58e094cb7d1"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-18",
+        "path": "lesson.md",
+        "sha256": "6281fa5c687c443f6e34bb1227298b848b74d228641ae4e6d2eac8361127bf44"
+      },
+      "combined_semantic_sha256": "a010e78b572f6e479d5005759d80f15aa060e770fb223ebc8e86ac3ffac5065d"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-18-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-18-compartilhando-regras-sem-perder-os-contratos",
+      "source_lesson": "lesson-poo-aula-18",
+      "source_approval": "lesson-approval-poo-aula-18-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "a010e78b572f6e479d5005759d80f15aa060e770fb223ebc8e86ac3ffac5065d",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-11-03T07:45:43-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "error": "invalid review_run structure",
+  "cause": "Unresolvable JSON pointer: '$defs/sha'",
+  "limitation": "emit_review_run failed while resolving a projection JSON Schema reference. This is not a validated ReviewRun, does not satisfy the Docemas review evidence boundary and does not approve the projection.",
+  "known_prior_report": "teaching_materials/diagnostico-narrativo-aulas-12-13.md",
+  "source_inspection": {
+    "slides_reviewed": 50,
+    "activity_answer_pairs_reviewed": 14,
+    "material_findings": [],
+    "observations": "Compared all source frames with approved Aula 18 and LessonDesign. Preserved repair duplication, base extraction, state and construction, abstract references, inherited/overridden dispatch, interface-dependent clients, composition comparison, regression checks and individual transfer. The corrected apresentar() prediction appears before the laboratory bridge. Each activity has visible answers and justification immediately afterward. No curriculum expansion or missing mandatory laboratory prerequisite found."
+  }
+}

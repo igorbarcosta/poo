@@ -32,5 +32,6 @@ Da colaboração com objetos concretos à necessidade de acomodar diferentes obj
 - [Aula 15 — Polimorfismo: a mesma mensagem, comportamentos diferentes](aula-15-polimorfismo-a-mesma-mensagem-comportamentos-diferentes.md)
 - [Aula 16 — Combinando comportamentos por composição](aula-16-combinando-comportamentos-por-composicao.md)
 - [Aula 17 — Inventário de jogo: interfaces e capacidades](aula-17-inventario-de-jogo-interfaces-e-capacidades.md)
+- [Aula 18 — Compartilhando regras sem perder os contratos](aula-18-compartilhando-regras-sem-perder-os-contratos.md) — prática no [Laboratório 18](laboratorio-18-compartilhando-a-contagem-dos-canais.md).
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

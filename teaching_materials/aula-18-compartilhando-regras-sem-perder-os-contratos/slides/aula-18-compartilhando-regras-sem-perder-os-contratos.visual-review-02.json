@@ -1,0 +1,45 @@
+{
+  "kind": "poo-rendered-slide-inspection",
+  "created_at": "2026-11-03T07:58:17-03:00",
+  "deck": {
+    "path": "slides/aula-18-compartilhando-regras-sem-perder-os-contratos.md",
+    "sha256": "aa6512480a3af41c9c760bdcdd97c15978a48da7e9856e30ed769c0624434c34"
+  },
+  "artifacts": {
+    "html": {
+      "path": "slides/rendered/aula-18-compartilhando-regras-sem-perder-os-contratos.html",
+      "sha256": "b36eed8fad7138fec136ab502301af38d93be0ad11df6178fd06ca95251109ec"
+    },
+    "pdf": {
+      "path": "slides/rendered/aula-18-compartilhando-regras-sem-perder-os-contratos.pdf",
+      "sha256": "d2dbd67b6968d94f0b7f13770ce76a76df64d3dbedbc9926c9452987d0e3bcb8"
+    }
+  },
+  "counts": {
+    "source": 51,
+    "html": 51,
+    "pdf": 51,
+    "activity_answer_pairs": 14
+  },
+  "corrections": {
+    "authorization": "User: faca as correcoes. coloque o link dos slides no roteiro. publique o site",
+    "changes": [
+      "Visible IA Nível 1 — Tutor orientation on the opening slide.",
+      "Full repair bodies for Espada and Escudo on successive frames before the immediate answer; bodies checked against Aula 17."
+    ],
+    "scope": "Local deck changes only. Existing HTML/PDF lesson links verified in the built site; canonical lesson, approval and provenance unchanged."
+  },
+  "checks": {
+    "provenance": "VALID_CURRENT",
+    "elements_outside_safe_slide_bounds": 0,
+    "code_horizontal_overflow": 0,
+    "enlarged_inspection": [
+      1,
+      5,
+      6
+    ],
+    "build": "Zensical: No issues found"
+  },
+  "evidence_directory": "/tmp/aula18-correcao-visual",
+  "limitations": "Local rendering and bounded correction verification only. Earlier visual-review and source-review-advisory records refer to the historical 50-frame version. Docemas formal projection ReviewRun remains unavailable due to the previously reported JSON Schema reference error; this record is not a ReviewRun, CorrectionRun or approval."
+}
