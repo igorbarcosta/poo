@@ -57,6 +57,7 @@ nav = [
     { "15 — A mesma chamada, vários canais" = "aulas/laboratorio-15-a-mesma-chamada-varios-canais.md" },
     { "16 — Acrescentando informação antes do envio" = "aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md" },
     { "18 — Compartilhando a contagem dos canais" = "aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md" },
+    { "19 — Iniciando seu jogo" = "aulas/laboratorio-19-iniciando-seu-jogo.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },

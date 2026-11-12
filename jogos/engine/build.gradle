@@ -1,0 +1,11 @@
+plugins { id 'java-library' }
+
+dependencies {
+    // As mesmas versões já usadas no protótipo validado da disciplina.
+    implementation enforcedPlatform('org.lwjgl:lwjgl-bom:3.4.0')
+    implementation 'com.badlogicgames.gdx:gdx:1.14.2'
+    implementation 'com.badlogicgames.gdx:gdx-backend-lwjgl3:1.14.2'
+    implementation 'com.badlogicgames.gdx:gdx-freetype:1.14.2'
+    runtimeOnly 'com.badlogicgames.gdx:gdx-platform:1.14.2:natives-desktop'
+    runtimeOnly 'com.badlogicgames.gdx:gdx-freetype-platform:1.14.2:natives-desktop'
+}

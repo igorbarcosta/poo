@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Meu jogo",
+            "mainClass": "meujogo.Iniciar",
+            "projectName": "meu-jogo",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Exemplo Megamania",
+            "mainClass": "br.edu.ifpb.jogos.megamania.IniciarMegamania",
+            "projectName": "exemplo-megamania",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
+        }
+    ]
+}

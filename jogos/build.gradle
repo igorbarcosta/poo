@@ -1,0 +1,68 @@
+plugins {
+    id 'application'
+}
+
+// Infraestrutura fornecida. O jogo do aluno fica em src/main/java/meujogo.
+allprojects {
+    repositories { mavenCentral() }
+    plugins.withType(JavaPlugin).configureEach {
+        tasks.withType(JavaCompile).configureEach {
+            options.encoding = 'UTF-8'
+            options.release = 17
+        }
+        dependencies {
+            testImplementation platform('org.junit:junit-bom:5.11.4')
+            testImplementation 'org.junit.jupiter:junit-jupiter'
+            testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+        }
+        tasks.withType(Test).configureEach { useJUnitPlatform() }
+    }
+    plugins.withType(ApplicationPlugin).configureEach {
+        application {
+            applicationDefaultJvmArgs = ['--enable-native-access=ALL-UNNAMED']
+            if (System.getProperty('os.name').toLowerCase().contains('mac')) {
+                applicationDefaultJvmArgs += ['-XstartOnFirstThread']
+            }
+        }
+    }
+}
+
+dependencies { implementation project(':engine') }
+
+application { mainClass = 'meujogo.Iniciar' }
+
+tasks.register('megamania') {
+    group = 'application'
+    description = 'Abre o exemplo Megamania com a mesma engine do jogo do aluno.'
+    dependsOn ':exemplo-megamania:run'
+}
+
+tasks.register('verificar') {
+    group = 'verification'
+    description = 'Compila os jogos e executa os testes sem abrir janela.'
+    dependsOn 'test', ':engine:build', ':exemplo-megamania:test'
+}
+
+tasks.register('prepararDistribuicao', Zip) {
+    group = 'distribution'
+    description = 'Prepara a pasta de desenvolvimento dos alunos em um ZIP limpo.'
+    dependsOn 'verificar'
+    archiveFileName = 'base-jogo-poo.zip'
+    destinationDirectory = layout.buildDirectory.dir('distribuicoes')
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    into('meu-jogo') {
+        from(rootDir) {
+            include '*.md', '*.gradle', '*.cmd', '*.sh', 'gradlew', 'gradlew.bat'
+            include '.gitignore', '.gitattributes', '.vscode/*.json', 'gradle/**', 'src/**'
+            include 'engine/**', 'exemplo-megamania/**'
+            exclude '**/build/**', '**/bin/**', '**/.gradle/**', '**/.idea/**'
+            exclude '**/*.iml', '**/.classpath', '**/.project', '**/.settings/**'
+            exclude 'gradlew', 'jogar.sh'
+        }
+        from(rootDir) {
+            include 'gradlew', 'jogar.sh'
+            filePermissions { unix('rwxr-xr-x') }
+        }
+    }
+}

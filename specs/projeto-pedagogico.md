@@ -147,6 +147,11 @@ A sequência conceitual preferencial é: colaboração → dependências → var
 
 Deve haver pouco conteúdo técnico novo. O foco é integrar e usar o repertório anterior.
 
+O jogo Megamania fornecido pelo professor será a base comum das aulas teóricas
+da Unidade 03. Nos laboratórios, cada aluno desenvolverá seu próprio jogo,
+consultando esse exemplo como inspiração e transferindo o raciocínio para seu
+projeto. A infraestrutura gráfica e sua configuração serão fornecidas prontas.
+
 Nas etapas de consolidação e nos checkpoints cumulativos, problemas mistos podem intercalar conceitos já estudados e exigir que o estudante decida qual ideia se aplica — composição, interface, herança ou mesmo nenhuma abstração adicional. O objetivo é praticar seleção e discriminação, não criar uma nova taxonomia de atividades.
 
 ## Práticas e projetos
@@ -159,7 +164,7 @@ A progressão de autonomia é:
 
 1. **Projeto 1:** construção bastante guiada e evolutiva;
 2. **Projeto 2:** novo domínio, com maior autonomia e necessidade de decisões;
-3. **Projeto 3:** compreensão e evolução de uma aplicação existente, sem começar de uma pasta vazia.
+3. **Projeto 3:** cada aluno desenvolve seu próprio jogo, compreendendo e evoluindo uma base executável fornecida, sem começar de uma pasta vazia.
 
 Pequenos exercícios formativos podem ocorrer nas aulas teóricas sem constituir instrumentos formais de avaliação.
 
@@ -167,9 +172,13 @@ Pequenos exercícios formativos podem ocorrer nas aulas teóricas sem constituir
 
 - **Projeto 1:** sistema de pedidos, possivelmente evoluindo de `Produto` para `ItemPedido`, `Pedido`, vários itens, cálculos, fechamento e regras de estado.
 - **Projeto 2:** sistema de lembretes e notificações, adotado nos laboratórios da Unidade 02 a partir do Laboratório 12. As aulas continuam usando o sistema de pedidos como referência conhecida; os laboratórios transferem e desenvolvem os conceitos no novo projeto, com requisitos definidos progressivamente.
-- **Projeto 3:** aplicação interativa ou jogo simples, com infraestrutura ou interface fornecida pelo professor. O núcleo OO, e não a GUI, é o objeto de estudo.
+- **Projeto 3:** jogo próprio de cada aluno, iniciado no Laboratório 19 e evoluído ao longo dos laboratórios da Unidade 03. Uma engine comum fornecida pelo professor abstrai janela, entrada e desenho. O núcleo OO é o objeto de estudo; configuração gráfica e de ferramentas fica preparada na base. Megamania é a referência das aulas teóricas e um exemplo disponível para inspiração, sem impor suas mecânicas aos jogos dos alunos. IA Nível 3 — Colaborador, com responsabilidade por compreender, verificar, explicar e modificar o código incorporado.
 
-O domínio do Projeto 2 foi definido pelo professor na preparação do Laboratório 12. O domínio do Projeto 3 permanece uma hipótese. Requisitos específicos serão definidos progressivamente.
+O domínio do Projeto 2 foi definido pelo professor na preparação do Laboratório 12.
+O desenho do Projeto 3 foi definido pelo professor na preparação do Laboratório
+19 e está detalhado em [Planejamento da Unidade 03](planejamento-unidade-03.md).
+Os requisitos específicos dos jogos e a sequência dos incrementos serão
+definidos progressivamente.
 
 ## Avaliação
 
@@ -217,6 +226,7 @@ Quem realizou as três provas poderá utilizá-la para substituir a menor nota e
 ### Práticas de laboratório
 
 - Os projetos podem ser desenvolvidos em duplas.
+- No Projeto 3, cada aluno desenvolve seu próprio jogo, conforme a decisão específica para a Unidade 03.
 - Cada estudante realiza sua própria entrega, mesmo quando o trabalho é feito em dupla.
 - As práticas valorizam realização, evolução, participação e cumprimento de prazo.
 - Não é necessário corrigir detalhadamente todas as soluções individualmente.

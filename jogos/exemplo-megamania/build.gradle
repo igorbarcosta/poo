@@ -1,0 +1,5 @@
+plugins { id 'application' }
+
+dependencies { implementation project(':engine') }
+
+application { mainClass = 'br.edu.ifpb.jogos.megamania.IniciarMegamania' }

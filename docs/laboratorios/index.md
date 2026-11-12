@@ -28,4 +28,8 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 - [Laboratório 16 — Acrescentando informação antes do envio](../aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md) — composição de notificadores e verificação do texto encaminhado.
 - [Laboratório 18 — Compartilhando a contagem dos canais](../aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md) — classe abstrata, contagem por objeto de canal e integração com a composição do Projeto 2.
 
+## Unidade 3 — Evolução de Software Orientado a Objetos
+
+- [Laboratório 19 — Iniciando seu jogo](../aulas/laboratorio-19-iniciando-seu-jogo.md) — início do Projeto 3, com engine comum, jogo próprio e Megamania como referência.
+
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.
