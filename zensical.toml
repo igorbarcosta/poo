@@ -82,6 +82,11 @@ nav = [
       { "Visão geral" = "avaliacoes/prova-unidade-01/index.md" },
       { "Gabarito comentado" = "avaliacoes/prova-unidade-01/gabarito.md" },
     ] },
+    { "Prova da Unidade 02" = [
+      { "Visão geral" = "avaliacoes/prova-unidade-02/index.md" },
+      { "Gabarito — Variante A" = "avaliacoes/prova-unidade-02/gabarito-variante-a.md" },
+      { "Gabarito — Variante B" = "avaliacoes/prova-unidade-02/gabarito-variante-b.md" },
+    ] },
   ] },
   { "Materiais" = [
     { "Materiais" = "materiais/index.md" },

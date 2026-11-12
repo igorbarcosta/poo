@@ -18,3 +18,4 @@ Avisos, entregas, notas e demais informações operacionais continuam sendo publ
 ## Provas de unidade
 
 - [Prova da Unidade 01 — Objetos, referências e relações](prova-unidade-01/index.md)
+- [Prova da Unidade 02 — Exploração e itens mágicos](prova-unidade-02/index.md)
