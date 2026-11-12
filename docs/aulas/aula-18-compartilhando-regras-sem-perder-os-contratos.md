@@ -56,8 +56,8 @@ a capacidade de reparo.
 Nesta aula, as referências recebidas pelos equipamentos são diferentes de
 `null` e os construtores recebem valores válidos: durabilidade entre zero e
 o máximo, máximo e acréscimo positivos, material não nulo nem vazio. As pilhas
-têm quantidades não negativas. O tratamento de entradas inválidas será
-investigado no próximo encontro.
+têm quantidades não negativas. O tratamento de entradas inválidas não faz
+parte deste recorte.
 
 Os contratos continuam independentes. Cada tipo público fica em seu próprio
 arquivo `.java`, com o mesmo nome do tipo:

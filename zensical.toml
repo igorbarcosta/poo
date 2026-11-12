@@ -37,6 +37,7 @@ nav = [
     { "16 — Combinando comportamentos por composição" = "aulas/aula-16-combinando-comportamentos-por-composicao.md" },
     { "17 — Inventário de jogo: interfaces e capacidades" = "aulas/aula-17-inventario-de-jogo-interfaces-e-capacidades.md" },
     { "18 — Compartilhando regras sem perder os contratos" = "aulas/aula-18-compartilhando-regras-sem-perder-os-contratos.md" },
+    { "19 — Correção da Prova da Unidade 02" = "aulas/aula-19-correcao-da-prova-da-unidade-02.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },

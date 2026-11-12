@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-19-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-19",
+    "path": "lesson-design.md",
+    "sha256": "39827eb96271102da941d21b2c38cda1e72b974dcde5cbf8584cf14266a48821"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-19",
+    "path": "lesson.md",
+    "sha256": "f2944f90d4b7f844cd8280386b52bc520054dcb5b58167bb313959faa8b75fb0"
+  },
+  "combined_semantic_sha256": "1c3bfb5414b617e0f31506fc5949f0bbb108be39f702c5acf1420349b626345b",
+  "approved_at": "2026-11-12T10:34:09+00:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Decisão explícita nesta conversa após apresentação do roteiro completo: \"pode publicar\"; seguida de \"faltou os slides da aula nova\". Registro da decisão já dada, sem aprovação semântica pelo agente."
+  },
+  "consumer_context_refs": [
+    "specs/planejamento-aula-19.md",
+    "docs/aulas/aula-19-correcao-da-prova-da-unidade-02.md",
+    "slides/presentation-profile.md"
+  ]
+}

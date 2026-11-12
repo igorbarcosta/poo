@@ -1,5 +1,18 @@
 # Planejamento do fechamento da Unidade 02 — Aulas 18 e 19
 
+## Atualização — destinação da Aula 19
+
+O professor redefiniu a Aula 19 como correção da Prova da Unidade 02, questão
+por questão, com explicitação das habilidades avaliadas e nivelamento do
+repertório acumulado. A variante A conduz a resolução; a B é conferida a
+partir das diferenças. O desenho atual está em
+[Planejamento da Aula 19](planejamento-aula-19.md).
+
+Essa decisão substitui a destinação da Aula 19 a exceções básicas e
+consolidação pré-prova descrita abaixo. O texto anterior permanece como
+histórico do planejamento; a Aula 18 e seu laboratório não são redefinidos.
+Não há nova decisão sobre quando trabalhar exceções.
+
 ## Situação e estatuto deste desenho
 
 O professor definiu o encerramento da Unidade 02 em mais duas aulas e aprovou

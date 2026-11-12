@@ -1,0 +1,64 @@
+{
+  "kind": "poo-rendered-slide-inspection",
+  "created_at": "2026-11-12T10:39:45+00:00",
+  "deck": {
+    "path": "slides/aula-19-correcao-da-prova-da-unidade-02.md",
+    "sha256": "618243bf1f0cc0e913cef02561e92edeee94c9d0a991cd223fdc6ef63eb3d165"
+  },
+  "artifacts": {
+    "html": {
+      "path": "slides/rendered/aula-19-correcao-da-prova-da-unidade-02.html",
+      "sha256": "8676663f6c73f5cab2f56752fc178f0e0c8c15e41990be6767355ce5659af127"
+    },
+    "pdf": {
+      "path": "slides/rendered/aula-19-correcao-da-prova-da-unidade-02.pdf",
+      "sha256": "255a3550b614cd3f41d7cf9bd6f3aa6a4286c2d479b8697e668db1378b0cd459"
+    }
+  },
+  "counts": {
+    "source": 63,
+    "html": 63,
+    "pdf": 63,
+    "questions": 20,
+    "skills": 20,
+    "activity_answer_pairs": [
+      [
+        16,
+        17
+      ],
+      [
+        25,
+        26
+      ],
+      [
+        36,
+        37
+      ],
+      [
+        47,
+        48
+      ]
+    ]
+  },
+  "checks": {
+    "global_visual_inspection": "63 slides inspected in contact sheets; changed slides reinspected",
+    "enlarged_inspection": [
+      16,
+      29,
+      33,
+      41,
+      47,
+      49,
+      56,
+      58,
+      59
+    ],
+    "elements_outside_safe_bounds": 0,
+    "code_horizontal_overflow": 0,
+    "zensical_build": "No issues found",
+    "canonical_provenance": "VALID_CURRENT",
+    "whitespace_correction": "Markdown hard breaks changed to backslashes; all 63 rendered section HTML hashes identical to the visually inspected version."
+  },
+  "evidence_directory": "/tmp/aula19-visual",
+  "limitations": "Local rendered inspection only. Docemas ReviewRun emission failed with unresolved $defs/sha; see source-review-advisory. This record is not formal source review or publication approval."
+}
