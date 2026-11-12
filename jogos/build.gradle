@@ -43,10 +43,24 @@ tasks.register('verificar') {
     dependsOn 'test', ':engine:build', ':exemplo-megamania:test'
 }
 
+// Nomes neutros evitam alterar exclusões globais do Gradle/Ant entre projetos.
+def metadadosDaBase = layout.buildDirectory.dir('metadados-base')
+tasks.register('prepararMetadadosDaBase') {
+    inputs.files('.gitignore', '.gitattributes')
+    outputs.dir(metadadosDaBase)
+    doLast {
+        def destino = metadadosDaBase.get().asFile
+        destino.mkdirs()
+        ['gitignore', 'gitattributes'].each { nome ->
+            new File(destino, nome).bytes = file(".${nome}").bytes
+        }
+    }
+}
+
 tasks.register('prepararDistribuicao', Zip) {
     group = 'distribution'
     description = 'Prepara a pasta de desenvolvimento dos alunos em um ZIP limpo.'
-    dependsOn 'verificar'
+    dependsOn 'verificar', 'prepararMetadadosDaBase'
     archiveFileName = 'base-jogo-poo.zip'
     destinationDirectory = layout.buildDirectory.dir('distribuicoes')
     preserveFileTimestamps = false
@@ -54,7 +68,7 @@ tasks.register('prepararDistribuicao', Zip) {
     into('meu-jogo') {
         from(rootDir) {
             include '*.md', '*.gradle', '*.cmd', '*.sh', 'gradlew', 'gradlew.bat'
-            include '.gitignore', '.gitattributes', '.vscode/*.json', 'gradle/**', 'src/**'
+            include '.vscode/*.json', 'gradle/**', 'src/**'
             include 'engine/**', 'exemplo-megamania/**'
             exclude '**/build/**', '**/bin/**', '**/.gradle/**', '**/.idea/**'
             exclude '**/*.iml', '**/.classpath', '**/.project', '**/.settings/**'
@@ -63,6 +77,9 @@ tasks.register('prepararDistribuicao', Zip) {
         from(rootDir) {
             include 'gradlew', 'jogar.sh'
             filePermissions { unix('rwxr-xr-x') }
+        }
+        from(metadadosDaBase) {
+            rename { nome -> ".${nome}" }
         }
     }
 }

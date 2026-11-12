@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 cd -- "$(dirname -- "$0")" || exit 1
-exec ./gradlew --console=plain run "$@"
+exec ./gradlew --console=plain :run "$@"

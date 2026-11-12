@@ -60,8 +60,11 @@ Para executar pelo PowerShell, na pasta deste README:
 
 ```powershell
 .\gradlew.bat test
-.\gradlew.bat run
+.\gradlew.bat :run
 ```
+
+`:run` abre apenas seu jogo. Para abrir o exemplo, use a configuração
+**Exemplo Megamania** ou o comando indicado na próxima seção.
 
 `test` também verifica os testes do exemplo incluído. O relatório dos testes
 do seu jogo fica em `build/reports/tests/test/index.html`.
@@ -118,7 +121,7 @@ O objetivo é desenvolver seu jogo e seu domínio de POO.
 
 ## Linux e macOS
 
-Abra a mesma pasta no VS Code. Pelo terminal, use `./gradlew run`,
+Abra a mesma pasta no VS Code. Pelo terminal, use `./gradlew :run`,
 `./gradlew test` e `./gradlew megamania`. Não é necessário instalar Gradle.
 Se a extração perder a permissão de execução, use `chmod +x gradlew jogar.sh`.
 

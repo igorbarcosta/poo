@@ -30,16 +30,21 @@ class TelaLibGdx implements Tela, Disposable {
         this.viewport = viewport;
     }
 
-    void iniciar() {
+    boolean iniciar() {
+        float novaEscala = EscalaDaTela.calcular(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+                Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(),
+                viewport.getScreenWidth(), viewport.getWorldWidth());
+        if (novaEscala == 0) {
+            return false;
+        }
         formas.setProjectionMatrix(viewport.getCamera().combined);
         lote.setProjectionMatrix(viewport.getCamera().combined);
         // O framebuffer pode ter mais pixels que a janela em monitores HiDPI.
-        float novaEscala = viewport.getScreenWidth() / viewport.getWorldWidth()
-                * Gdx.graphics.getBackBufferWidth() / Gdx.graphics.getWidth();
         if (Float.compare(novaEscala, escalaPixels) != 0) {
             liberarFontes();
             escalaPixels = novaEscala;
         }
+        return true;
     }
 
     private void prepararForma(Cor cor) {
@@ -95,7 +100,7 @@ class TelaLibGdx implements Tela, Disposable {
             desenhandoTexto = true;
         }
 
-        int tamanho = Math.max(1, (int) Math.round(20 * escala * escalaPixels));
+        int tamanho = EscalaDaTela.tamanhoFonte(escala, escalaPixels);
         BitmapFont fonte = fontes.computeIfAbsent(tamanho, this::criarFonte);
         int rgb = cor.getRgb();
         fonte.setColor(

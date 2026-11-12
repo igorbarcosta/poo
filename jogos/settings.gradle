@@ -1,6 +1,2 @@
 rootProject.name = 'meu-jogo'
 include 'engine', 'exemplo-megamania'
-
-// A distribuição de desenvolvimento também precisa destes arquivos de projeto.
-org.apache.tools.ant.DirectoryScanner.removeDefaultExclude('**/.gitignore')
-org.apache.tools.ant.DirectoryScanner.removeDefaultExclude('**/.gitattributes')

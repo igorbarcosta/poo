@@ -50,7 +50,7 @@ Para executar toda a verificação sem janela:
 .\gradlew.bat verificar
 ```
 
-`installDist` cria também uma distribuição executável do jogo do aluno;
+`:installDist` cria também uma distribuição executável do jogo do aluno;
 `:exemplo-megamania:installDist` cria a do exemplo. Ambas ainda precisam de Java.
 
 ## Conferir na máquina da turma antes do encontro
@@ -78,6 +78,7 @@ As versões de libGDX, LWJGL, JUnit e Gradle foram mantidas iguais às do
 protótipo. Nenhuma biblioteca gráfica nova foi adicionada.
 
 A execução por F5 deve ser conferida no VS Code da turma antes do encontro.
-Build e testes por `gradlew.bat` foram executados no Windows, mas isso não
-equivale a verificar a integração da IDE ou a janela nesse sistema.
+Build, testes, execução por `jogar.cmd` e minimização/restauração da janela
+foram verificados no Windows. A integração por F5 ficou pendente porque
+o VS Code disponível estava bloqueado por uma atualização em andamento.
 Resultados e limitações estão em [Validação da base](VALIDACAO.md).

@@ -61,10 +61,10 @@ alterar as regras.
     Abra o terminal do VS Code na pasta `meu-jogo` e execute:
 
     ```powershell
-    .\gradlew.bat run
+    .\gradlew.bat :run
     ```
 
-    No Linux/macOS, use `./gradlew run`. O `README.md` incluído no ZIP reúne
+    No Linux/macOS, use `./gradlew :run`. O `README.md` incluído no ZIP reúne
     as instruções de ambiente. Não é necessário editar `build.gradle`,
     `engine/` ou as configurações da janela para começar.
 
@@ -232,7 +232,8 @@ Desenhar não deve consumir cargas, recuperar energia ou causar dano.
 ??? tip "Apoio para mostrar o estado"
 
     `MeuJogo.desenhar` já usa `tela.texto(...)`. Você pode acrescentar uma
-    linha em `y = 585`, usando `x = 40`, escala `1` e `Cor.BRANCO`, por exemplo.
+    linha em `y = 100`, usando `x = 40`, escala `1` e `Cor.BRANCO`, por exemplo.
+    Essa faixa fica abaixo da área de movimento do jogador e acima dos controles.
     Monte o texto com a consulta do seu objeto. `API.md` explica os parâmetros;
     não é preciso importar a biblioteca gráfica.
 

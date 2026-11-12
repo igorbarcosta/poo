@@ -16,6 +16,8 @@ class Aplicacao extends ApplicationAdapter {
     private TelaLibGdx tela;
     private int larguraJanela;
     private int alturaJanela;
+    private int larguraAplicada;
+    private int alturaAplicada;
 
     Aplicacao(Jogo jogo) {
         this.jogo = jogo;
@@ -25,16 +27,33 @@ class Aplicacao extends ApplicationAdapter {
     public void create() {
         viewport = new FitViewport(Tela.LARGURA, Tela.ALTURA);
         tela = new TelaLibGdx(viewport);
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
     public void render() {
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
             Gdx.app.exit();
+            return;
+        }
+
+        if (!desenhoDisponivel()) {
+            return;
         }
 
         if (Gdx.input.isKeyJustPressed(Keys.F11)) {
             alternarTelaCheia();
+        }
+
+        // Alternar tela cheia também pode produzir callbacks com tamanho zero.
+        if (!desenhoDisponivel()) {
+            return;
+        }
+        if (larguraAplicada != Gdx.graphics.getWidth() || alturaAplicada != Gdx.graphics.getHeight()) {
+            resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
+        if (!tela.iniciar()) {
+            return;
         }
 
         // Descartar o excesso evita saltos depois de arrastar/minimizar a janela.
@@ -43,9 +62,13 @@ class Aplicacao extends ApplicationAdapter {
         Gdx.gl.glClearColor(0.03f, 0.05f, 0.10f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         viewport.apply();
-        tela.iniciar();
         jogo.desenhar(tela);
         tela.terminar();
+    }
+
+    private boolean desenhoDisponivel() {
+        return EscalaDaTela.disponivel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+                Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight());
     }
 
     private void alternarTelaCheia() {
@@ -60,7 +83,12 @@ class Aplicacao extends ApplicationAdapter {
 
     @Override
     public void resize(int largura, int altura) {
+        if (viewport == null || largura <= 0 || altura <= 0) {
+            return;
+        }
         viewport.update(largura, altura, true);
+        larguraAplicada = largura;
+        alturaAplicada = altura;
     }
 
     @Override

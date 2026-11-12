@@ -52,6 +52,9 @@ A área lógica mede **960 × 720**, independentemente do tamanho da janela.
 A origem `(0, 0)` fica no canto inferior esquerdo. `x` cresce para a direita;
 `y` cresce para cima. A engine mantém a proporção ao redimensionar a janela.
 
+Quando a janela fica sem área de desenho, a engine suspende a atualização
+e o desenho do jogo. Ao restaurar a janela, retoma com uma escala válida.
+
 ```java
 tela.retangulo(x, y, largura, altura, cor);
 tela.circulo(x, y, raio, cor);
