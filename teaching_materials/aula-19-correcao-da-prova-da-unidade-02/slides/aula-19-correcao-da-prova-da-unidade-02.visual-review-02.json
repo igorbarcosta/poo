@@ -1,0 +1,61 @@
+{
+  "kind": "poo-rendered-slide-inspection",
+  "created_at": "2026-11-12T14:55:26+00:00",
+  "authorization": "User: Ajuste os slides para que os slides que aprensetam as questoes tem o layout de atividade (aquele verde).",
+  "change": "Apply the shared activity class to all twenty question prompts. Q19 code setup retains a neutral frame with a distinct chapter. Answers and lesson semantics unchanged.",
+  "artifacts": [
+    {
+      "path": "slides/aula-19-correcao-da-prova-da-unidade-02.md",
+      "sha256": "efe33fcd717d0b76f19ea40b870ec91e565f5c63212ebe6c6053500019cd7157"
+    },
+    {
+      "path": "slides/rendered/aula-19-correcao-da-prova-da-unidade-02.html",
+      "sha256": "b539139bfd26e0176485864c098387c81fd560a0f1d13a58be7a83ad3c278017"
+    },
+    {
+      "path": "slides/rendered/aula-19-correcao-da-prova-da-unidade-02.pdf",
+      "sha256": "54809650c758212e01eefa3fdc78f768d7db26841e608c5ee803e446a73b0ca6"
+    }
+  ],
+  "counts": {
+    "source": 63,
+    "html": 63,
+    "pdf": 63,
+    "activity_question_prompts": 20
+  },
+  "activity_slides": [
+    6,
+    10,
+    14,
+    16,
+    19,
+    21,
+    23,
+    25,
+    27,
+    30,
+    33,
+    36,
+    38,
+    41,
+    43,
+    47,
+    49,
+    52,
+    56,
+    59
+  ],
+  "checks": {
+    "immediate_answers": true,
+    "elements_outside_safe_bounds": 0,
+    "code_horizontal_overflow": 0,
+    "global_visual_inspection": "63 frames in contact sheets",
+    "enlarged_inspection": [
+      33,
+      41,
+      59
+    ]
+  },
+  "evidence_directory": "/tmp/aula19-activity-visual",
+  "limitations": "Local rendering/layout correction evidence only; not a Docemas ReviewRun. Earlier source-review advisory remains a historical snapshot with the previously documented Docemas schema error."
+}

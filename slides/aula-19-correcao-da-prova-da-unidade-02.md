@@ -98,6 +98,9 @@ Chegar a zero não impede uma recuperação posterior neste código.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q1 · Variante A</div>
 
 ## Qual é a saída?
@@ -174,6 +177,9 @@ variação negativa causa dano; as demais pedem recuperação.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q2 · Variante A</div>
 
 ## Qual é a saída?
@@ -244,6 +250,9 @@ public void listar() {
 <!-- Recorte do código de consulta; omissões de contexto estão explicitadas. O código completo permanece no roteiro. -->
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q3 · Variante A</div>
 
@@ -342,6 +351,9 @@ O campo guarda a referência recebida na chamada a `equipar`.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q5 · Variante A</div>
 
 ## Qual é a saída?
@@ -376,6 +388,9 @@ System.out.println(alvo.getVida());
 **B:** o alvo começa com `60`. Saída: `48`.
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q6 · Variante A</div>
 
@@ -412,6 +427,9 @@ System.out.println(b.getVida());
 **B:** vidas iniciais `34` e `66`. Saídas: `49` e `54`.
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q7 · Variante A</div>
 
@@ -477,6 +495,9 @@ O personagem já está no teto, então sua vida continua `100`.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q9 · Variante A</div>
 
 ## Qual é a saída?
@@ -536,6 +557,9 @@ public class CajadoLivre extends Cajado {
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q10 · Variante A</div>
 
 ## Qual é a saída?
@@ -585,6 +609,9 @@ A poção não oferece `Recarregavel`; os dois equipamentos oferecem.
 <!-- Recorte do código de consulta; omissões de contexto estão explicitadas. O código completo permanece no roteiro. -->
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q11 · Variante A</div>
 
@@ -681,6 +708,9 @@ As duas camadas retornam antes da cura.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q13 · Variante A</div>
 
 ## Por que o compilador rejeita descrever?
@@ -731,6 +761,9 @@ Na próxima etapa, usamos essas distinções para avaliar mudanças.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q14 · Variante A</div>
 
 ## Personagem deve herdar de Inventario?
@@ -768,6 +801,9 @@ public class Personagem extends Inventario { /* ... */ }
 **B:** o mesmo argumento está na letra **C**.
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q15 · Variante A</div>
 
@@ -884,6 +920,9 @@ Cada teste cria um cajado novo e verifica `getCargas()`.
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q17 · Variante A</div>
 
 ## Onde proteger a nova regra?
@@ -940,6 +979,9 @@ assertEquals(34, alvo.getVida());
 
 ---
 
+
+<!-- _class: activity -->
+
 <div class="chapter">Q18 · Variante A</div>
 
 ## Qual defeito é identificado somente por II?
@@ -991,7 +1033,7 @@ Na Q19, vamos avaliar outra mudança que compila, mas pede julgamento.
 
 ---
 
-<div class="chapter">Q19 · Variante A</div>
+<div class="chapter">Q19 · Mudança local em Equipamento</div>
 
 ## A base agora oferece uma implementação padrão
 
@@ -1007,6 +1049,9 @@ public class Orbe extends Equipamento {
 `Equipamento` continua abstrata. Os demais métodos são mantidos.
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q19 · Variante A</div>
 
@@ -1058,6 +1103,9 @@ A Q20 retoma a outra face do problema: proteger uma regra existente.
 <!-- Consequência explicitada no roteiro. Não criar um requisito novo para Orbe. -->
 
 ---
+
+
+<!-- _class: activity -->
 
 <div class="chapter">Q20 · Variante A</div>
 
