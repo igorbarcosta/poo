@@ -52,6 +52,10 @@ No VS Code no Windows:
    use o suporte Java e o JDK preparados para a disciplina.
 4. Em **Executar e Depurar**, selecione **Meu jogo** e pressione **F5**.
 
+Você também pode abrir `src/main/java/meujogo/Iniciar.java` e clicar em
+**Run** acima do método `main`. Mantenha a pasta inteira aberta no VS Code
+e aguarde a importação Java antes de executar.
+
 Você deve ver um quadrado ciano. Setas ou WASD movem; **R** reinicia a posição;
 **Esc** fecha; **F11** alterna tela cheia. Confira esse comportamento antes de
 alterar as regras.
@@ -67,6 +71,37 @@ alterar as regras.
     No Linux/macOS, use `./gradlew :run`. O `README.md` incluído no ZIP reúne
     as instruções de ambiente. Não é necessário editar `build.gradle`,
     `engine/` ou as configurações da janela para começar.
+
+??? warning "Windows 11: erro glfw.dll com código 4551"
+
+    Se aparecer `Failed to load library: ... glfw.dll (error code = 4551)`,
+    o Windows bloqueou a biblioteca gráfica por uma política de segurança.
+    Esse bloqueio foi observado com o **Controle Inteligente de Aplicativos
+    (Smart App Control)**. Trocar Run por F5 ou pelo terminal não resolve
+    esse bloqueio.
+
+    Em computador pessoal, a desativação é uma opção: afeta todo o computador
+    e reduz a proteção contra outros aplicativos não confiáveis. Antes de
+    decidir, confira as condições de reativação na
+    [orientação da Microsoft](https://support.microsoft.com/en-gb/windows/security/threat-malware-protection/smart-app-control-frequently-asked-questions).
+    Atualizações recentes permitem reativar o recurso, mas essa possibilidade
+    depende do Windows instalado. Se não puder garantir a reativação ou
+    preferir manter a proteção, peça apoio ao professor para usar outra máquina.
+
+    Se optar pela mudança:
+
+    1. Abra **Segurança do Windows → Controle de aplicativos e navegador →
+       Configurações do Controle Inteligente de Aplicativos**.
+    2. Anote o estado atual. Se estiver **Ativado**, selecione **Desativado**
+       e execute o jogo novamente.
+    3. Ao terminar as atividades, volte à mesma tela e **reative a proteção
+       se ela estava ativada antes**, quando disponível. Se a opção não
+       aparecer, peça apoio; não altere o Registro do Windows.
+
+    Mantenha o Microsoft Defender e o antivírus ativos. Em computador
+    institucional, solicite apoio à TI antes de mudar configurações.
+    Se o recurso já estiver desativado ou o erro for outro, envie a mensagem
+    completa ao professor. Reativar a proteção pode voltar a bloquear o jogo.
 
 Para conferir uma alteração, **salve, encerre a execução anterior e execute de
 novo**. R reinicia o estado da partida, mas não recompila o código.

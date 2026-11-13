@@ -63,6 +63,15 @@ Para executar toda a verificação sem janela:
 6. Executar **Verificar meu jogo** e confirmar que os testes não abrem janela.
 7. Executar **Exemplo Megamania**; conferir início e controles.
 
+Conferir também **Run** acima de `main` em `src/main/java/meujogo/Iniciar.java`.
+No Windows 11, verificar o estado do Controle Inteligente de Aplicativos.
+Se houver bloqueio de `glfw.dll` com código 4551, seguir o diagnóstico do
+[README](README.md#windows-11-erro-glfwdll-com-código-4551). A desativação
+afeta todo o computador e não deve ser uma tentativa genérica para outros
+erros. Antes de orientar uma mudança, conferir a possibilidade de reativação
+na versão instalada; oferecer apoio para usar outra máquina a quem mantiver
+a proteção. Em máquinas institucionais, envolver a TI.
+
 Preparar o cache de dependências nas máquinas antes da aula quando a rede do
 laboratório puder limitar downloads. A base não inclui JDK ou extensões do
 VS Code e não instala programas automaticamente.

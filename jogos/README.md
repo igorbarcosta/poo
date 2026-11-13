@@ -16,6 +16,10 @@ jogos usam a mesma engine.
    extensões Java do VS Code. A pasta já recomenda as extensões necessárias.
 4. Na área **Executar e Depurar**, selecione **Meu jogo** e pressione **F5**.
 
+Você também pode abrir `src/main/java/meujogo/Iniciar.java` e clicar em
+**Run** acima do método `main`, com a pasta inteira aberta e a importação
+Java concluída.
+
 Você deve ver um quadrado ciano. Setas ou WASD movem; **R** reinicia;
 **Esc** fecha; **F11** alterna tela cheia.
 
@@ -134,6 +138,37 @@ Se a extração perder a permissão de execução, use `chmod +x gradlew jogar.s
 | `java` não foi encontrado ao usar os atalhos | Use o JDK adotado na disciplina no terminal ou peça apoio para preparar o ambiente. |
 | Primeira importação não termina | Confira a conexão e a mensagem de erro do download; não altere bibliotecas ao acaso. |
 | Alteração não aparece | Salve, feche a execução anterior e execute de novo. |
+
+### Windows 11: erro glfw.dll com código 4551
+
+Se aparecer `Failed to load library: ... glfw.dll (error code = 4551)`,
+o Windows bloqueou a biblioteca gráfica por uma política de segurança.
+Esse bloqueio foi observado com o **Controle Inteligente de Aplicativos
+(Smart App Control)**. Trocar Run por F5 ou pelo terminal não resolve
+esse bloqueio.
+
+Em computador pessoal, a desativação é uma opção: afeta todo o computador
+e reduz a proteção contra outros aplicativos não confiáveis. Antes de
+decidir, confira as condições de reativação na
+[orientação da Microsoft](https://support.microsoft.com/en-gb/windows/security/threat-malware-protection/smart-app-control-frequently-asked-questions).
+Atualizações recentes permitem reativar o recurso, mas essa possibilidade
+depende do Windows instalado. Se não puder garantir a reativação ou
+preferir manter a proteção, peça apoio ao professor para usar outra máquina.
+
+Se optar pela mudança:
+
+1. Abra **Segurança do Windows → Controle de aplicativos e navegador →
+   Configurações do Controle Inteligente de Aplicativos**.
+2. Anote o estado atual. Se estiver **Ativado**, selecione **Desativado**
+   e execute o jogo novamente.
+3. Ao terminar as atividades, volte à mesma tela e **reative a proteção
+   se ela estava ativada antes**, quando disponível. Se a opção não
+   aparecer, peça apoio; não altere o Registro do Windows.
+
+Mantenha o Microsoft Defender e o antivírus ativos. Em computador
+institucional, solicite apoio à TI antes de mudar configurações.
+Se o recurso já estiver desativado ou o erro for outro, envie a mensagem
+completa ao professor. Reativar a proteção pode voltar a bloquear o jogo.
 
 Referências de configuração da infraestrutura:
 [projetos Java no VS Code](https://code.visualstudio.com/docs/java/java-project),

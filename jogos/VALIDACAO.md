@@ -29,6 +29,12 @@ O ZIP não é uma distribuição completamente offline e não inclui JDK.
 
 ## Limites observados
 
+- Na execução relatada pela turma no Windows, `glfw.dll` foi bloqueada com
+  código 4551, tanto pelo VS Code quanto pelo Gradle. O evento 3077 identificou
+  a política do Smart App Control. O professor confirmou que desativar esse
+  recurso permitiu executar o jogo; na máquina dele, o recurso já estava
+  desativado. Esse relato não valida a execução com a proteção ativa nem a
+  reativação posterior. O README e o Laboratório 19 incluem essa limitação.
 - F5 e os botões de testes não foram exercitados dentro do VS Code do Windows:
   a instalação disponível estava bloqueada por uma atualização em andamento.
   Conferir a importação e as duas configurações de execução na máquina da turma.
