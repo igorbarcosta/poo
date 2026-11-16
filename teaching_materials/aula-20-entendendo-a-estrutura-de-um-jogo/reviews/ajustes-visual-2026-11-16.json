@@ -1,0 +1,44 @@
+{
+  "kind": "poo-visual-review",
+  "created_at": "2026-11-16T13:35:05+00:00",
+  "reviewer": "Codex, agente principal; inspeção local sem auditor independente",
+  "artifacts": {
+    "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md": "38bd4b7daa84416ae4107f0794dff9abeb8462a99fe63c20a10291832228238b",
+    "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md": "7f8e3f8bbbe514a3747eee943c492620e2061bffa150d26355fe7380b354572a",
+    "slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.html": "1935729e170157c02bec97d3d9fac3b16746a879e4f5202f2ceabce32066bb94",
+    "slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.pdf": "9d483314c7356b32a00f2cd19333af2921ee6f62dd6b777bfe21137335924306",
+    "docs/assets/aula-20/disparo.svg": "3bc77a11610277bc839705e3507d71219e37e621c74775e16440cbaf88a4995e",
+    "docs/assets/aula-20/impacto.svg": "31ecbf320e43a801d9bc547ef627bf95de3d90770bc51a6bbd6e7588b0430c7e",
+    "docs/assets/aula-20/movimento.svg": "eb418aac5f95cd4f811d6137f9dd467676ab351a7226846856167f955a51a439"
+  },
+  "counts": {
+    "source": 58,
+    "html": 58,
+    "pdf": 58
+  },
+  "global_review": "58 slides inspecionados em três folhas de contato da renderização HTML no Chrome em print media.",
+  "enlarged_frames": [
+    12,
+    28,
+    31,
+    36
+  ],
+  "geometry_check": "Nenhum conteúdo fora dos limites ou invadindo a margem reservada ao rodapé nas métricas verificadas.",
+  "activity_frames": [
+    12,
+    15,
+    24,
+    29,
+    36,
+    43,
+    51,
+    53
+  ],
+  "activity_response_review": "Oito atividades seguidas imediatamente de resposta visível, com cenário e justificativas correspondentes.",
+  "validation": {
+    "zensical_build": "No issues found",
+    "git_diff_check": "passed",
+    "svg_assets": "3 documentos XML válidos e copiados para o site gerado"
+  },
+  "limitations": "Inspeção visual local a 1280×720. Miniaturas derivadas do HTML; contagem de páginas PDF conferida pelo entrypoint oficial. Não houve projeção em sala nem nova aprovação semântica."
+}

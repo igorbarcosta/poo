@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula20-didatica-canonical_lesson-20261116",
+  "review_domain": "canonical_lesson",
+  "reviewed_snapshot": {
+    "snapshot_type": "canonical",
+    "semantic_hash_version": "docemas-lesson-semantic-v1",
+    "lesson_design": {
+      "identity": "lesson-design-poo-aula-20",
+      "path": "lesson-design.md",
+      "sha256": "d9a3e34652680377de2feafc8cc0510cc3deb063b63108d8e6d608d3c33ec255"
+    },
+    "lesson": {
+      "identity": "lesson-poo-aula-20",
+      "path": "lesson.md",
+      "sha256": "ce5d1f83f56c79a11a94d76f59c9e53c319943325eb5baaac4a73c3b27e60e6f"
+    },
+    "combined_semantic_sha256": "1a7b04677ab9a2aa69470cd6115447e03843ab543f6e21fb459a10f0e18aca3f"
+  },
+  "findings": [
+    {
+      "finding_id": "F1",
+      "artifact": "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Linhas 25–109; Percurso 1",
+      "concern": "NECESSÁRIO: falta uma ponte explícita entre cena, estado e repetição de atualização/desenho antes da leitura detalhada.",
+      "rationale": "A execução é solicitada, mas o roteiro passa à navegação e ao código; o ciclo é nomeado apenas no mapa final. O Lab 19 o apresenta, mas não substitui sua retomada integrada à nova execução.",
+      "impact": "O aluno pode seguir chamadas sem explicar como posições sucessivas se tornam movimento visível.",
+      "recommendation": "Antes dos recortes, acompanhar a mesma nave em dois instantes: comando, alteração do estado e desenho; explicar que a engine repete esse processo, sem aprofundar infraestrutura.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F2",
+      "artifact": "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Linhas 98–114, 200–222 e Percurso 3",
+      "concern": "NECESSÁRIO: a saída visual é descrita, mas a tradução do estado em formas, placar e desaparecimento fica pouco demonstrada.",
+      "rationale": "O movimento termina em desenharNave sem abrir um recorte mínimo; o disparo descreve a iteração sem mostrá-la; pontos e remoção não são ligados ao desenho por uma leitura concreta de getPontos e das coleções.",
+      "impact": "Permanece implícita a principal relação pedida pelo professor: o que aparece ou deixa de aparecer na tela e o estado que explica isso.",
+      "recommendation": "Mostrar um recorte de desenho usando coordenadas e um laço de projéteis; fechar o impacto com antes/depois do placar e da coleção e sua consulta na apresentação. Distinguir objeto do modelo de sua representação, sem estudar a biblioteca gráfica.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F3",
+      "artifact": "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Linhas 71–96",
+      "concern": "RECOMENDADO: a fórmula de deslocamento e limites recebe protagonismo antes da consolidação da relação estado–imagem.",
+      "rationale": "Math.min, Math.max, velocidade, intervalo e herança aparecem juntos no primeiro percurso. A primeira previsão exige cálculo da borda.",
+      "impact": "A operação cognitiva inicial pode se concentrar na expressão numérica em vez da execução distribuída.",
+      "recommendation": "Concluir primeiro o percurso conceitual e visual com valores simples; retomar a fórmula real e a previsão da borda depois, preservando o código correto.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F4",
+      "artifact": "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Previsões dos três percursos e transferência",
+      "concern": "RECOMENDADO: falta verificar explicitamente a leitura no sentido tela → estado → código.",
+      "rationale": "As atividades exercitam cálculo, retornos, permanência e responsabilidades; não pedem reconstruir a explicação de uma mudança mostrada em dois quadros.",
+      "impact": "Acertar as previsões existentes não demonstra necessariamente que o aluno consegue explicar a cena executada.",
+      "recommendation": "Adaptar uma previsão existente para relacionar dois quadros da mesma cena a valores alterados, objetos responsáveis e trechos de atualização/desenho, sem criar nova entrega.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    }
+  ],
+  "recommendation": "CORRECTIONS_RECOMMENDED",
+  "reviewer_provenance": {
+    "identity": "codex-aula20-auditoria-didatica-20261116",
+    "source": "Revisão pelo agente principal a pedido do professor, com foco na relação tela–estado–código e progressão de abstração. Leitura do par canônico, fonte dos 48 slides, contexto curricular e código Java real. Inspeção local separada das duas folhas de contato e ampliação dos slides 7, 21 e 28. Sem auditor independente, execução em sala ou aprovação semântica. Proveniência VALID_HISTORICAL contra roteiro atual: commit 382cd53 acrescentou somente links HTML/PDF. Fonte histórica aprovada recuperada em 06f9922 e conferida por hash e classificação VALID_CURRENT; snapshot da projeção usa essa fonte aprovada. Achados pedagógicos se aplicam a ambas as versões."
+  },
+  "created_at": "2026-11-16T13:23:54+00:00",
+  "context_refs": [
+    "specs/planejamento-aula-20.md",
+    "specs/padrao-aula.md",
+    "specs/padrao-slides.md",
+    "slides/presentation-profile.md",
+    "docs/aulas/laboratorio-19-iniciando-seu-jogo.md"
+  ]
+}

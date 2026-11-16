@@ -15,7 +15,8 @@ lang: pt-BR
 Como encontro, no exemplo, uma solução que me ajude a desenvolver meu jogo?
 
 <!-- Fonte: roteiro Aula 20 e LessonDesign registrados no pacote teaching_materials.
-90 minutos: observação 10; movimento 15; disparo 20; impacto 20; transferência 25.
+90 minutos: cena e ciclo 12; movimento 18; disparo 18; impacto 22; transferência 20.
+A previsão aritmética da borda pode ser abreviada; preservar tempo de elaboração.
 Executar o exemplo na abertura se o ambiente estiver disponível. O deck mantém
 o código necessário para seguir os percursos sem depender da IDE. Não implementar
 novas mecânicas. A elaboração individual precede a coleta de hipóteses.
@@ -51,6 +52,49 @@ Vamos seguir essa execução e localizar as responsabilidades.
 
 <!-- Reservar parte da abertura à observação. Cada percurso responderá à pergunta
 correspondente; não antecipar um catálogo de todas as classes. -->
+
+---
+
+<div class="chapter">Da cena ao estado</div>
+
+## O que precisa existir para vermos isso?
+
+| Na tela | No programa |
+| --- | --- |
+| Nave em uma posição | `x` e `y` guardados na `Nave`. |
+| Vários inimigos e tiros | Coleções de participantes em `Partida`. |
+| Número no placar | `pontos` guardados em `Partida`. |
+
+A figura representa o objeto. As formas são solicitadas pela apresentação.
+
+O texto fixo **PONTOS** e o número ao lado têm origens diferentes.
+
+---
+
+<div class="chapter">Da cena ao estado</div>
+
+## A mesma nave aparece mais à direita
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" width="1100" height="330" role="img" aria-label="A mesma nave em duas posições"><title>A mesma nave em duas posições</title><g transform="translate(0 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">QUADRO INICIAL</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(210 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(110 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(240 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(370 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">x = 458; y = 126</text></g><g transform="translate(560 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">DEPOIS DE MOVER À DIREITA</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(275 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(110 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(240 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(370 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">x = 497; y = 126</text></g></svg>
+
+Esquema sem escala: dez atualizações de `0.01` s para a direita.
+A posição muda; a nave continua sendo a mesma.
+
+---
+
+<div class="chapter">O ciclo fornecido pela engine</div>
+
+## Como chegamos ao próximo quadro?
+
+1. **Atualizar:** consultar comandos e alterar o estado dos objetos.
+2. **Desenhar:** consultar o estado e solicitar formas e textos.
+3. **Repetir:** posições sucessivas produzem o movimento visível.
+
+A imagem anterior não guarda a posição da nave.
+O próximo desenho usa os valores que continuam no modelo.
+
+<!-- Recuperação do Lab 19; não abrir a infraestrutura da engine.
+No exemplo: jogo iniciado, sem pausa e partida JOGANDO. -->
 
 ---
 
@@ -107,6 +151,71 @@ nave.atualizar(segundos, direcao);
 ```
 
 A nave recebe a direção. Ela não precisa consultar uma tecla.
+
+---
+
+<div class="chapter">1 · Movimento — JogoMegamania.desenhar</div>
+
+## O desenho usa a posição resultante
+
+```java
+Nave nave = partida.getNave();
+
+// Quando a nave deve ficar visível:
+desenharNave(tela, nave.getX(), nave.getY());
+```
+
+Desenhar duas vezes sem atualizar preserva a posição.
+O desenho consulta o estado; o movimento aconteceu antes.
+
+<!-- O exemplo também alterna a visibilidade durante a proteção. Essa escolha
+visual não altera posição nem vidas; não omitir a condição ao buscar o arquivo. -->
+
+---
+
+<div class="chapter">1 · Movimento — dentro de desenharNave</div>
+
+## As coordenadas viram vértices da figura
+
+```java
+tela.triangulo(x, y,
+        x + 22, y + 30,
+        x + 44, y, Cor.CIANO);
+```
+
+`getX()` e `getY()` forneceram os parâmetros `x` e `y`.
+Quando `x` muda, os três vértices se deslocam no próximo desenho.
+
+A figura combina esse triângulo com outras formas.
+Na tela lógica, `x` cresce à direita e `y` para cima.
+
+---
+
+<!-- _class: activity -->
+
+<div class="chapter">1 · Movimento — da cena ao código</div>
+
+## Explique a mudança entre os quadros
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" width="1100" height="330" role="img" aria-label="A mesma nave em duas posições"><title>A mesma nave em duas posições</title><g transform="translate(0 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">QUADRO INICIAL</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(210 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(110 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(240 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(370 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">x = 458; y = 126</text></g><g transform="translate(560 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">DEPOIS DE MOVER À DIREITA</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(275 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(110 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(240 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(370 115)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">x = 497; y = 126</text></g></svg>
+
+Qual informação mudou? Quem a alterou e quem a consultou?
+Apenas desenhar novamente produziria esse deslocamento?
+
+<!-- Dar tempo de elaboração. Usar o percurso já lido, sem calcular a fórmula. -->
+
+---
+
+<div class="chapter">1 · Movimento — conferência</div>
+
+## O estado explica o novo desenho
+
+- `x` da mesma nave passou de `458` para `497`; `y` ficou em `126`.
+- `Nave.atualizar`, chamada pela partida, alterou a posição.
+- `JogoMegamania.desenhar` consultou `getX()` e `getY()` e chamou `desenharNave`.
+- Desenhar outra vez, sem atualizar, preservaria a posição.
+
+Agora podemos abrir o cálculo que produz e limita o novo `x`.
 
 ---
 
@@ -170,25 +279,6 @@ A partida solicita; a nave protege seu estado.
 
 ---
 
-<div class="chapter">1 · Movimento — JogoMegamania.desenhar</div>
-
-## O desenho usa a posição resultante
-
-```java
-Nave nave = partida.getNave();
-
-// Quando a nave deve ficar visível:
-desenharNave(tela, nave.getX(), nave.getY());
-```
-
-Desenhar duas vezes sem atualizar preserva a posição.
-O desenho consulta o estado; o movimento aconteceu antes.
-
-<!-- O exemplo também alterna a visibilidade durante a proteção. Essa escolha
-visual não altera posição nem vidas; não omitir a condição ao buscar o arquivo. -->
-
----
-
 <div class="chapter">1 · Movimento — comparação com sua base</div>
 
 ## Uma responsabilidade a mais para coordenar
@@ -216,6 +306,17 @@ A estrutura do seu jogo deve acompanhar as colaborações de que ele precisa.
 **Objeto do domínio:** altera e protege seu estado.
 
 **Apresentação:** consulta o resultado para desenhá-lo.
+
+---
+
+<div class="chapter">2 · Disparo — o que a cena pede para explicar?</div>
+
+## Aparecer e continuar em movimento
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" width="1100" height="330" role="img" aria-label="O mesmo tiro permanece entre quadros"><title>O mesmo tiro permanece entre quadros</title><g transform="translate(0 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">O TIRO JÁ FOI CRIADO</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(245 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><rect x="264" y="185" width="6" height="16" fill="#55d9ed"/><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">Um projétil perto da nave</text></g><g transform="translate(560 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">APÓS OUTRAS ATUALIZAÇÕES</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(245 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><rect x="264" y="120" width="6" height="16" fill="#55d9ed"/><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">O mesmo projétil mais acima</text></g></svg>
+
+Criar o projétil, mantê-lo e desenhá-lo são passos diferentes.
+Uma nova imagem não exige um novo objeto.
 
 ---
 
@@ -362,22 +463,29 @@ A partida continua tendo acesso ao projétil após a chamada.
 
 ---
 
-<div class="chapter">2 · Disparo — atualização e apresentação</div>
+<div class="chapter">2 · Disparo — da atualização ao desenho</div>
 
-## O projétil segue seu próprio percurso
+## Cada tiro fornece sua posição ao retângulo
 
 ```java
 // Partida.atualizar, para cada projétil:
 projetil.atualizar(segundos);
-
-// JogoMegamania.desenhar consulta a coleção:
-partida.getProjeteis()
 ```
 
-O projétil muda sua posição. A apresentação desenha o estado atual.
+Em **JogoMegamania.desenhar**, recorte da forma principal:
 
-<!-- O código completo percorre as listas. O projétil também se marca inativo
-quando sai da área; a partida fará a limpeza que estudaremos no terceiro percurso. -->
+```java
+for (Projetil projetil : partida.getProjeteis()) {
+    Cor cor = projetil.isDoJogador() ? Cor.CIANO : Cor.LARANJA;
+    tela.retangulo(projetil.getX(), projetil.getY(), 6, 16, cor);
+}
+```
+
+`?` escolhe a cor: jogador em ciano; inimigo em laranja.
+O mesmo participante fornece posições diferentes em quadros sucessivos.
+
+<!-- Código completo também desenha um contorno. Projetil.atualizar muda
+sua posição e o marca inativo ao sair da área; limpeza no percurso 3. -->
 
 ---
 
@@ -408,6 +516,17 @@ A partida deixaria de atualizá-los por essa coleção.
 A apresentação deixaria de encontrá-los nela para desenhar.
 
 **Manter os objetos entre atualizações permite a continuidade da ação.**
+
+---
+
+<div class="chapter">3 · Impacto — da cena às consequências</div>
+
+## Um acerto muda mais que a imagem do inimigo
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" width="1100" height="330" role="img" aria-label="Um acerto muda participantes e placar"><title>Um acerto muda participantes e placar</title><g transform="translate(0 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">ANTES DO ACERTO</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00000</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(245 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(100 120)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><g transform="translate(245 120)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><rect x="260" y="163" width="6" height="16" fill="#55d9ed"/><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">Inimigo e tiro ainda na cena</text></g><g transform="translate(560 0)"><rect width="540" height="330" rx="12" fill="#111c30"/><text x="20" y="34" fill="#b7c9df" font-family="sans-serif" font-size="21">APÓS A LIMPEZA E O DESENHO</text><text x="20" y="75" fill="#f2f6ff" font-family="sans-serif" font-size="19">PONTOS</text><text x="385" y="75" fill="#55d9ed" font-family="sans-serif" font-size="26">00100</text><path d="M20 90H520 M20 267H520" stroke="#60738f"/><g transform="translate(245 215)"><path d="M0 30 L22 0 L44 30Z" fill="#55d9ed"/><rect x="17" y="12" width="10" height="15" fill="white"/><rect x="7" y="29" width="6" height="8" fill="#ffb466"/><rect x="31" y="29" width="6" height="8" fill="#ffb466"/></g><g transform="translate(100 120)" fill="#ffb466"><rect x="7" y="7" width="24" height="18"/><rect y="10" width="8" height="12"/><rect x="30" y="10" width="8" height="12"/><rect x="6" y="25" width="7" height="7"/><rect x="25" y="25" width="7" height="7"/><rect x="11" y="13" width="5" height="5" fill="#111c30"/><rect x="23" y="13" width="5" height="5" fill="#111c30"/></g><text x="20" y="307" fill="#f2f6ff" font-family="sans-serif" font-size="23">Ambos saíram das coleções</text></g></svg>
+
+Um acerto isolado, sem outros impactos nessa atualização.
+Precisamos explicar **o efeito, os 100 pontos e os dois desaparecimentos**.
 
 ---
 
@@ -501,6 +620,8 @@ Projetil tiro = new Projetil(110, 205, true);
 boolean a = tiro.tentarAtingir(primeiro);
 boolean b = tiro.tentarAtingir(segundo);
 ```
+
+Os dois inimigos estão vivos; o tiro está ativo e se sobrepõe a ambos.
 
 Quais são os retornos `a` e `b`? Quais inimigos ficam vivos?
 
@@ -648,6 +769,39 @@ Nas atualizações seguintes, a partida encerra o método sem avançar
 as regras, pois seu estado já não é `JOGANDO`.
 
 A apresentação consulta esse estado para mostrar o painel.
+
+---
+
+<div class="chapter">3 · Impacto — o próximo desenho</div>
+
+## Quem faz o placar mostrar 00100?
+
+Em **JogoMegamania.desenhar**:
+
+```java
+tela.texto(String.format("%05d", partida.getPontos()),
+        556, 659, 1.5, Cor.CIANO);
+```
+
+A partida alterou os pontos. A apresentação consulta o novo valor.
+
+`%05d` exibe o inteiro com pelo menos cinco dígitos:
+`100` aparece como **00100**. A formatação não acrescenta pontos.
+
+---
+
+<div class="chapter">3 · Impacto — o próximo desenho</div>
+
+## Por que o inimigo e o tiro desapareceram?
+
+| Após a atualização | No desenho seguinte |
+| --- | --- |
+| Inimigo morto removido de `inimigos`. | O laço não encontra esse inimigo. |
+| Tiro inativo removido de `projeteis`. | O laço não encontra esse tiro. |
+
+A engine limpa o quadro anterior; a apresentação desenha a cena atual.
+
+Sair da coleção não apaga outras referências ao objeto.
 
 ---
 

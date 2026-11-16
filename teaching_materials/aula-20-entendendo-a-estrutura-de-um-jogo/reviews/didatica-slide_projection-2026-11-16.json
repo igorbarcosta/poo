@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula20-didatica-slide_projection-20261116",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-20-01",
+      "sha256": "51517d50e82fad20534ea9668b922a4db8d450108e5dda3bc396a4e795a3a864",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-20",
+        "path": "lesson-design.md",
+        "sha256": "d9a3e34652680377de2feafc8cc0510cc3deb063b63108d8e6d608d3c33ec255"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-20",
+        "path": "lesson.md",
+        "sha256": "6af9d041f1ee0dd709290e5661e13b5cb4ab3f0ee525b7e30a57643292042f5d"
+      },
+      "combined_semantic_sha256": "8d3961c24a57b4bf81ad7f3e7b9c2821b250ada0912196b48451b090c922793a"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-20-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-20-01",
+      "source_lesson": "lesson-poo-aula-20",
+      "source_approval": "lesson-approval-poo-aula-20-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "8d3961c24a57b4bf81ad7f3e7b9c2821b250ada0912196b48451b090c922793a",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-11-16T10:08:45-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [
+    {
+      "finding_id": "F1",
+      "artifact": "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Slides 3–10",
+      "concern": "NECESSÁRIO: falta uma ponte explícita entre cena, estado e repetição de atualização/desenho antes da leitura detalhada.",
+      "rationale": "O deck preserva a mesma lacuna do roteiro. A abertura instrui executar o jogo, mas não representa a cena nem o ciclo antes dos recortes.",
+      "impact": "O aluno pode seguir chamadas sem explicar como posições sucessivas se tornam movimento visível.",
+      "recommendation": "Revisar primeiro a ponte conceitual no roteiro e então projetá-la em uma cena e uma sequência de atualização/desenho.",
+      "routing": {
+        "route": "UPSTREAM_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F2",
+      "artifact": "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Slides 10, 21, 30–36",
+      "concern": "NECESSÁRIO: a saída visual é descrita, mas a tradução do estado em formas, placar e desaparecimento fica pouco demonstrada.",
+      "rationale": "O slide 21 mostra projetil.atualizar e apenas partida.getProjeteis(); a consulta isolada não mostra como posições viram desenho. O placar e a limpeza também não são vinculados a recortes da apresentação.",
+      "impact": "Permanece implícita a principal relação pedida pelo professor: o que aparece ou deixa de aparecer na tela e o estado que explica isso.",
+      "recommendation": "Mostrar um recorte de desenho usando coordenadas e um laço de projéteis; fechar o impacto com antes/depois do placar e da coleção e sua consulta na apresentação. Distinguir objeto do modelo de sua representação, sem estudar a biblioteca gráfica.",
+      "routing": {
+        "route": "UPSTREAM_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F3",
+      "artifact": "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Slides 7–9",
+      "concern": "RECOMENDADO: a fórmula de deslocamento e limites recebe protagonismo antes da consolidação da relação estado–imagem.",
+      "rationale": "Math.min, Math.max, velocidade, intervalo e herança aparecem juntos no primeiro percurso. A primeira previsão exige cálculo da borda.",
+      "impact": "A operação cognitiva inicial pode se concentrar na expressão numérica em vez da execução distribuída.",
+      "recommendation": "Concluir primeiro o percurso conceitual e visual com valores simples; retomar a fórmula real e a previsão da borda depois, preservando o código correto.",
+      "routing": {
+        "route": "UPSTREAM_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F4",
+      "artifact": "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Atividades dos slides 8, 17, 22, 28 e 35",
+      "concern": "RECOMENDADO: falta verificar explicitamente a leitura no sentido tela → estado → código.",
+      "rationale": "As atividades exercitam cálculo, retornos, permanência e responsabilidades; não pedem reconstruir a explicação de uma mudança mostrada em dois quadros.",
+      "impact": "Acertar as previsões existentes não demonstra necessariamente que o aluno consegue explicar a cena executada.",
+      "recommendation": "Adaptar uma previsão existente para relacionar dois quadros da mesma cena a valores alterados, objetos responsáveis e trechos de atualização/desenho, sem criar nova entrega.",
+      "routing": {
+        "route": "UPSTREAM_CORRECTION"
+      }
+    },
+    {
+      "finding_id": "F5",
+      "artifact": "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+      "location": "Slide 28, cenário dos dois alvos",
+      "concern": "RECOMENDADO: explicitar na projeção que o projétil se sobrepõe aos dois inimigos.",
+      "rationale": "O roteiro informa essa premissa; no deck ela fica nas notas. O título afirma que os dois alvos estão sobrepostos, mas não explicita sua relação com o projétil. As dimensões dos corpos não estão projetadas.",
+      "impact": "O estudante depende de fala complementar ou de código fora do slide para conferir a premissa geométrica da primeira tentativa.",
+      "recommendation": "Projetar uma frase curta: os dois inimigos estão vivos e o projétil ativo se sobrepõe a ambos; ou representar a configuração em um esquema.",
+      "routing": {
+        "route": "LOCAL_CORRECTION"
+      }
+    }
+  ],
+  "recommendation": "CANONICAL_ISSUE_DISCOVERED",
+  "reviewer_provenance": {
+    "identity": "codex-aula20-auditoria-didatica-20261116",
+    "source": "Revisão pelo agente principal a pedido do professor, com foco na relação tela–estado–código e progressão de abstração. Leitura do par canônico, fonte dos 48 slides, contexto curricular e código Java real. Inspeção local separada das duas folhas de contato e ampliação dos slides 7, 21 e 28. Sem auditor independente, execução em sala ou aprovação semântica. Proveniência VALID_HISTORICAL contra roteiro atual: commit 382cd53 acrescentou somente links HTML/PDF. Fonte histórica aprovada recuperada em 06f9922 e conferida por hash e classificação VALID_CURRENT; snapshot da projeção usa essa fonte aprovada. Achados pedagógicos se aplicam a ambas as versões. Validação dos schemas inalterados via Registry local para resolver referências externas aninhadas; emit_review_run e validações semânticas preservados."
+  },
+  "created_at": "2026-11-16T13:24:02+00:00",
+  "context_refs": [
+    "specs/planejamento-aula-20.md",
+    "specs/padrao-aula.md",
+    "specs/padrao-slides.md",
+    "slides/presentation-profile.md",
+    "docs/aulas/laboratorio-19-iniciando-seu-jogo.md"
+  ]
+}

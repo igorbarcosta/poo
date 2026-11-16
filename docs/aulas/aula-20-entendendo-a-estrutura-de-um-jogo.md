@@ -29,6 +29,48 @@ Na pasta do projeto do Lab 19, selecione **Exemplo Megamania** em
 espaço dispara, P pausa e R reinicia. A base completa está no
 [ZIP do Projeto 3](../materiais/projeto-03/base-jogo-poo.zip).
 
+### A cena é uma representação do estado
+
+Observe a nave, os inimigos, os tiros e o placar. Para que essa cena exista,
+o programa precisa manter informações: onde cada participante está, quais
+continuam na partida e quantos pontos foram registrados.
+
+| O que você vê | Informação que explica a imagem |
+| --- | --- |
+| Nave em uma posição | `x` e `y` da `Nave`, herdados de `Corpo`. |
+| Vários inimigos ou tiros | Referências nas coleções de `Partida`, com a posição de cada participante. |
+| Número no placar | `pontos` de `Partida`, consultado pela apresentação. |
+
+O objeto `Nave` guarda estado e executa regras. A figura ciana é sua
+representação: `JogoMegamania` consulta o objeto e solicita formas para
+mostrá-lo. Uma figura pode combinar várias formas; cada retângulo desenhado
+não exige um objeto próprio do modelo. O texto fixo “PONTOS”, por exemplo,
+é desenhado pela apresentação; o número ao lado vem do estado da partida.
+
+### Como uma imagem dá lugar à seguinte
+
+![Dois quadros esquemáticos: a mesma nave aparece mais à direita no segundo.](../assets/aula-20/movimento.svg)
+
+Os esquemas desta aula destacam partes da cena; não são capturas nem estão
+em escala. Neste movimento, a nave começa em `x = 458`, `y = 126`. Após
+dez atualizações de `0.01` segundo para a direita, longe das bordas, termina
+em `x = 497`, com o mesmo `y`.
+
+A engine repete o ciclo já visto no Lab 19:
+
+1. Chama `atualizar`: o jogo consulta comandos e encaminha operações que
+   podem alterar o estado dos objetos.
+2. Chama `desenhar`: a apresentação consulta o estado resultante e solicita
+   as formas e os textos daquele quadro.
+3. Repete o processo. Posições sucessivas dão a impressão de movimento.
+
+A imagem anterior não é o lugar que guarda a posição da nave. O próximo
+quadro é desenhado a partir dos valores mantidos no modelo. Vamos seguir
+esse caminho em detalhes, começando pelo movimento e depois acrescentando
+criação de objetos e impacto.
+
+### Localizar o código a partir da ação
+
 O código do exemplo fica em
 `exemplo-megamania/src/main/java/br/edu/ifpb/jogos/megamania/`.
 Comece por `JogoMegamania.java`; as classes das regras ficam na subpasta
@@ -68,6 +110,55 @@ Em `Partida.atualizar`, uma das chamadas é:
 nave.atualizar(segundos, direcao);
 ```
 
+O caminho até aqui é **tecla → direção → partida → nave**. A nave calcula
+e protege sua nova posição. Antes de abrir esse cálculo, acompanhe como
+o resultado chega ao quadro seguinte.
+
+### Da posição guardada à figura na tela
+
+Em `JogoMegamania.desenhar`, a apresentação recupera a nave da partida:
+
+```java
+Nave nave = partida.getNave();
+```
+
+Quando a nave deve ficar visível, a chamada é:
+
+```java
+desenharNave(tela, nave.getX(), nave.getY());
+```
+
+Dentro de `desenharNave`, esta é a forma principal da figura:
+
+```java
+tela.triangulo(x, y, x + 22, y + 30, x + 44, y, Cor.CIANO);
+```
+
+Os valores consultados na nave chegam aos parâmetros `x` e `y`. A operação
+solicita um triângulo cujos três vértices usam essa posição. As outras formas
+completam sua aparência. Quando `x` muda no modelo, os vértices são calculados
+mais à direita no desenho seguinte. A origem da tela lógica fica embaixo
+à esquerda; `x` cresce para a direita e `y`, para cima.
+
+**Leia a cena do esquema:** o segundo quadro mostra a nave mais à direita,
+na mesma altura. Qual informação mudou, quem a alterou e quem a consultou
+para produzir a imagem? Apenas chamar `desenhar` novamente explicaria isso?
+
+??? "Ver resposta"
+
+    - O `x` da mesma nave mudou de `458` para `497`; `y` permaneceu `126`.
+    - `Nave.atualizar`, chamado pela partida, alterou a posição.
+    - `JogoMegamania.desenhar` consultou `getX()` e `getY()` e passou os
+      valores a `desenharNave`.
+    - Apenas desenhar novamente preservaria a posição. O movimento depende
+      das atualizações entre os dois quadros.
+
+A nave pode piscar durante a proteção, mas essa escolha visual não altera
+sua posição ou suas vidas. Assim, estar momentaneamente invisível também
+não significa que o objeto deixou de existir.
+
+### Agora podemos abrir o cálculo do movimento
+
 Em `Nave.atualizar`, a posição é alterada por esta instrução:
 
 ```java
@@ -95,32 +186,6 @@ saia da área de jogo?
     A regra está em `Nave.atualizar`. A apresentação solicita o movimento;
     a própria nave protege sua posição.
 
-### A posição muda antes de ser desenhada
-
-Em `JogoMegamania.desenhar`, a apresentação recupera a nave da partida:
-
-```java
-Nave nave = partida.getNave();
-```
-
-Quando a nave deve ficar visível, a chamada é:
-
-```java
-desenharNave(tela, nave.getX(), nave.getY());
-```
-
-`desenharNave` solicita formas geométricas nas coordenadas consultadas.
-Quem guarda a posição é o objeto do modelo. A nave pode piscar durante a
-proteção, mas essa escolha visual não altera sua posição ou suas vidas.
-
-Se `desenhar` for chamado duas vezes sem uma atualização entre elas, a nave
-se desloca duas vezes?
-
-??? "Ver resposta"
-
-    Não. O desenho consulta a posição atual. O deslocamento ocorre em
-    `Nave.atualizar`, chamado pelo caminho de atualização da partida.
-
 No seu projeto inicial, `MeuJogo.atualizar` chama `Jogador.mover` diretamente.
 No Megamania existe uma `Partida` entre a apresentação e os participantes,
 pois há vários objetos e consequências para coordenar.
@@ -132,6 +197,12 @@ pois há vários objetos e consequências para coordenar.
     consulta o resultado para desenhá-lo.
 
 ## Percurso 2 — Do espaço pressionado ao projétil em movimento
+
+![Dois quadros esquemáticos: um tiro aparece perto da nave e depois mais acima; é o mesmo participante.](../assets/aula-20/disparo.svg)
+
+Na tela, um tiro aparece e depois sobe. Para explicar isso, precisamos
+separar três passos: criar um objeto, mantê-lo entre atualizações e desenhar
+sua posição atual. Desenhar uma forma, sozinho, não cria um `Projetil` no modelo.
 
 O espaço é consultado por `entrada.acao()`. Enquanto estiver pressionado,
 a partida pode receber várias solicitações de disparo. Em `Partida.atualizar`:
@@ -208,6 +279,21 @@ Em cada atualização, a partida percorre a coleção e chama
 marca-se como inativo quando sai da área. Depois, a apresentação percorre
 `partida.getProjeteis()` para desenhar os objetos que permaneceram na lista.
 
+Este recorte de `JogoMegamania.desenhar` mostra a forma principal de cada tiro:
+
+```java
+for (Projetil projetil : partida.getProjeteis()) {
+    Cor cor = projetil.isDoJogador() ? Cor.CIANO : Cor.LARANJA;
+    tela.retangulo(projetil.getX(), projetil.getY(), 6, 16, cor);
+}
+```
+
+A expressão com `?` escolhe ciano para um projétil do jogador e laranja
+para um projétil inimigo. A cada passagem do laço, a apresentação consulta
+um participante e solicita seu retângulo. O código completo também desenha
+um contorno. O mesmo objeto pode aparecer em muitos quadros, em posições
+diferentes; não é necessário criar outro projétil para cada imagem.
+
 Se a lista fosse substituída por uma lista vazia a cada atualização, o que
 aconteceria com os disparos já em movimento?
 
@@ -222,6 +308,13 @@ O caminho completo é: **solicitar → decidir → criar → guardar → atualiz
 objetos criados durante a partida, mesmo que eles não sejam tiros.
 
 ## Percurso 3 — Do impacto à pontuação
+
+![Antes do acerto: um inimigo e um tiro, placar 00000. Depois da limpeza e do novo desenho: ambos ausentes, placar 00100.](../assets/aula-20/impacto.svg)
+
+Considere um acerto isolado, sem outros impactos nessa atualização. Na tela,
+o inimigo e o tiro desaparecem e o placar passa de `00000` para `00100`.
+Vamos decompor essa mudança: verificar o encontro, alterar os participantes,
+registrar pontos, limpar as coleções e desenhar o novo estado.
 
 Mover um projétil não garante que ele tenha atingido alguém. Depois de
 atualizá-lo, `Partida` investiga os possíveis alvos. Para um projétil do
@@ -361,6 +454,34 @@ e não há invasão. Quem decide a vitória e em que momento?
 Nas atualizações seguintes, `Partida.atualizar` retorna sem avançar suas
 regras quando o estado não é `JOGANDO`. A apresentação consulta o estado
 para mostrar o painel correspondente.
+
+### Fechar o caminho: o que será desenhado depois do impacto?
+
+O esquema inicial compara o quadro anterior ao acerto com o quadro produzido
+depois da atualização completa. Nesse segundo quadro:
+
+| Mudança no modelo | Consequência na apresentação |
+| --- | --- |
+| `pontos` passa de `0` para `100`. | `getPontos()` fornece o novo número ao desenho do placar. |
+| O inimigo morto sai de `inimigos`. | O laço de desenho não encontra mais esse inimigo. |
+| O projétil inativo sai de `projeteis`. | O laço de desenho não encontra mais esse tiro. |
+
+Em `JogoMegamania.desenhar`, o placar é produzido por este trecho:
+
+```java
+tela.texto(String.format("%05d", partida.getPontos()),
+        556, 659, 1.5, Cor.CIANO);
+```
+
+`String.format("%05d", ...)` apresenta o inteiro com pelo menos cinco
+dígitos, completando com zeros à esquerda. Ele transforma `100` em `00100`
+para exibição; quem alterou os pontos foi a partida.
+
+O mesmo princípio explica o desaparecimento: a apresentação percorre as
+coleções atuais. Ela não precisa receber uma ordem para apagar cada figura
+antiga. A engine limpa o quadro anterior e o jogo desenha a cena novamente.
+Isso também preserva a distinção entre sair da cena e deixar de existir:
+remover uma referência da coleção não apaga outras referências ao objeto.
 
 !!! synthesis "Síntese — uma consequência atravessa vários objetos"
 
