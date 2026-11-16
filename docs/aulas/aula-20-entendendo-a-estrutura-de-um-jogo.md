@@ -9,6 +9,8 @@ Vamos acompanhar essas ações no código para descobrir quem faz cada parte.
 Esse caminho ajudará você a consultar o exemplo com uma intenção concreta
 ao desenvolver seu próprio jogo.
 
+**Slides:** [Apresentação HTML](../slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.html) · [PDF](../slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.pdf)
+
 !!! lesson-question "Pergunta da aula"
 
     Como encontro, no Megamania, uma solução que me ajude a desenvolver meu jogo?
