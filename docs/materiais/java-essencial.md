@@ -114,7 +114,22 @@ class ItemPedido {
 }
 ```
 
-`null` significa que a referência não aponta para nenhum objeto naquele momento. Outros efeitos e usos serão apresentados somente quando forem necessários.
+`null` significa que a referência não aponta para nenhum objeto naquele momento.
+
+Na [Aula 20](../aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md),
+`Nave.tentarDisparar()` devolve um `Projetil` quando aceita o disparo e
+`null` quando recusa. O cliente verifica a referência antes de usá-la:
+
+```java
+Projetil novo = nave.tentarDisparar();
+if (novo != null) {
+    projeteis.add(novo);
+}
+```
+
+Esse é o contrato dessa operação. Chamar um método por uma referência
+`null` causa `NullPointerException`; a condição permite tratar a ausência
+do objeto no fluxo normal dessa tentativa.
 
 ## Métodos simples
 
@@ -291,7 +306,37 @@ interno da lista, não uma identidade que o cliente de `Pedido` deve conhecer. O
 importante no Projeto 1 não é decorar a API de listas: é que `Pedido` percorre
 e altera sua lista privada porque mantém a coleção e suas regras.
 
+### Remover vários elementos durante um percurso
+
+Na [Aula 20](../aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md),
+a partida remove os projéteis inativos percorrendo os índices de trás
+para a frente:
+
+```java
+for (int i = projeteis.size() - 1; i >= 0; i--) {
+    if (!projeteis.get(i).estaAtivo()) {
+        projeteis.remove(i);
+    }
+}
+```
+
+Remover uma posição desloca as seguintes. O percurso decrescente preserva
+os índices menores ainda por visitar. A lista vazia começa com índice
+`-1`, e o corpo não executa. Remover a referência da coleção não apaga
+outras referências ao mesmo objeto.
+
 ## Controle de acesso e alteração do estado
+
+### `final` em um campo de referência
+
+```java
+private final List<Projetil> projeteis = new ArrayList<>();
+```
+
+`final` impede reatribuir o campo a outra lista depois da inicialização.
+Não impede executar `add` ou `remove` na lista existente nem torna seus
+objetos imutáveis. O modificador `private` continua controlando o acesso
+direto ao campo.
 
 ### `private` e `public`
 
@@ -620,6 +665,27 @@ inicializam campos; não chamam métodos sobrescrevíveis.
 Java permite estender uma única classe diretamente e cumprir várias interfaces.
 Guardar outro objeto e delegar a ele continua sendo uma alternativa distinta,
 usada na composição com prefixo do Projeto 2.
+
+## Estados nomeados com `enum`
+
+Um `enum` define um tipo com um conjunto de valores nomeados. A
+[Aula 20](../aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md) lê esta
+declaração dentro de `Partida`:
+
+```java
+public enum Estado {
+    JOGANDO,
+    VITORIA,
+    DERROTA
+}
+
+private Estado estado = Estado.JOGANDO;
+```
+
+O campo guarda um estado por vez. `estado = Estado.VITORIA` altera o valor;
+`estado == Estado.JOGANDO` compara com um dos valores nomeados. Fora de
+`Partida`, o exemplo usa `Partida.Estado.JOGANDO` para identificar esse tipo
+declarado dentro da classe.
 
 ## Estilo e convenções essenciais
 

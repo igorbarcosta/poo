@@ -148,6 +148,16 @@ depois conectar comando, consulta visual e reinício. A escolha da regra e do
 domínio permanece com o aluno. O download inclui a engine e o Megamania.
 Prazos e orientações de entrega continuam no Classroom.
 
+## Continuidade após o Laboratório 19
+
+A Aula 20 será dedicada à compreensão do Megamania como referência para os
+jogos individuais, sem acrescentar uma mecânica nova ao exemplo. O desenho
+aprovado está em [Planejamento da Aula 20](planejamento-aula-20.md): acompanhar
+movimento, disparo e impacto para localizar responsabilidades e transferir
+o raciocínio ao próprio projeto. Os avanços no exemplo comum ficam para os
+encontros seguintes; o laboratório relacionado ainda terá seu incremento
+delimitado em roteiro específico.
+
 ## Planejamento que permanece evolutivo
 
 - Capacidades e limites da primeira distribuição da engine, após verificar

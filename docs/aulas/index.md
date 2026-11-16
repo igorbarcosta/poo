@@ -35,4 +35,10 @@ Da colaboração com objetos concretos à necessidade de acomodar diferentes obj
 - [Aula 18 — Compartilhando regras sem perder os contratos](aula-18-compartilhando-regras-sem-perder-os-contratos.md) — prática no [Laboratório 18](laboratorio-18-compartilhando-a-contagem-dos-canais.md).
 - [Aula 19 — Correção da Prova da Unidade 02](aula-19-correcao-da-prova-da-unidade-02.md): resolução questão por questão, habilidades avaliadas e comparação das variantes.
 
+## Unidade 3 — Evolução de Software Orientado a Objetos
+
+Da leitura de uma aplicação executável à compreensão de suas responsabilidades e à evolução dos jogos individuais.
+
+- [Aula 20 — Entendendo a estrutura de um jogo orientado a objetos](aula-20-entendendo-a-estrutura-de-um-jogo.md): percursos de movimento, disparo e impacto no Megamania como referência para o próprio jogo.
+
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.
