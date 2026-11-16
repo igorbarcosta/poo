@@ -168,3 +168,63 @@ Uma questão profunda apresenta, em ordem visível, o estado inicial, a única m
 Uma auditoria classifica uma questão como “carga incidental baixa” e “compreensível de primeira”, mas não registra estados, regras, critérios simultâneos, percurso de resolução nem resultado de escaneamento.
 
 **Esperado:** considerar a justificativa insuficiente. Exigir inventário observável e percurso mínimo antes de concluir sobre legibilidade.
+
+## P27 — entidade do domínio sem relação estabelecida com o programa
+
+O cenário contém equipamentos e contratos. Uma questão começa com “A oficina oferece esta operação”, mostra um método solto e pede uma mudança na oficina, sem apresentar como ela participa do programa.
+
+**Esperado:** reconstruir separadamente o papel narrativo da oficina, a operação mostrada e o alvo da mudança. Registrar relações que tenham sido apenas inferidas. O código pode tornar a resposta calculável sem esclarecer a apresentação; não converter automaticamente esse custo em ambiguidade de resposta. Uma classe envolvente só deve ser exigida se tiver papel no entendimento do pedido.
+
+## P28 — acréscimo sem destino definido
+
+O programa permite declarar tipos, criar objetos e incluir itens em um inventário. O pedido diz “Acrescente um cristal ao sistema e adapte-o”, sem indicar se pede uma classe nova, uma instância na coleção ou uma alteração no objeto recebido por um método.
+
+**Esperado:** apontar as intervenções diferentes sustentadas pela redação e pedir que o enunciado identifique a mudança e seu destino. A independência entre questões não resolve a referência indefinida dentro da questão. Não completar o pedido usando o blueprint.
+
+## P29 — jargão de implementação como atalho editorial
+
+Uma questão pede selecionar um teste e começa com “Um defeito remove apenas a guarda de recarregar”. A expressão “guarda” não foi trabalhada com a turma. O trecho removido poderia ser mostrado diretamente:
+
+```java
+if (quantidade <= 0) {
+    return;
+}
+```
+
+**Esperado:** descrever a ação concreta sobre o método, informar que o restante permanece igual e mostrar o trecho. Preservar a tarefa de descobrir o teste discriminante, sem explicar antecipadamente qual entrada revela o efeito da remoção.
+
+## P30 — reparo narrativo que não resolve a dúvida registrada
+
+A revisão registra que falta saber que parte do programa deve mudar. A correção apenas acrescenta “A oficina é um local do jogo onde se recarregam itens”. O registro passa a declarar que a dúvida foi resolvida.
+
+**Esperado:** conferir a correção contra a dúvida original. Definir um lugar do jogo não identifica por si só uma classe, método, parâmetro ou coleção a alterar. Exigir o trecho revisado que apresenta a relação pertinente, sem demandar que todo lugar ou objeto do domínio tenha uma classe própria. Preservar divergências de leitura e não afirmar validação independente quando um leitor apenas recuperou a intenção por inferência.
+
+## P31 — controle positivo: extensão local explicitamente apresentada
+
+Somente nesta questão, uma nova versão do programa terá a classe `Oficina`, responsável por recarregar objetos. O método apresentado pertence a essa classe e inicialmente recebe `Equipamento`. A mesma versão terá a classe `Cristal`, com estado próprio e operações de recarga, fora da hierarquia de `Equipamento`. A pergunta pede quais declarações permitem ao método receber as duas famílias.
+
+**Esperado:** reconhecer que a relação com o programa, a introdução local dos tipos e o alvo da mudança estão apresentados. Não exigir que as duas classes já existam no cenário comum, nem descrever antecipadamente qual interface e qual parâmetro resolvem o problema.
+
+## P32 — controle positivo: comparação de versões com enunciado curto
+
+O cenário fornece `Equipamento.recarregar`. A questão informa que o trecho mostrado foi apagado desse método, que o restante não mudou e que cada alternativa começa com `new Cajado(2)`. Pergunta qual teste passa na versão original e falha após a remoção.
+
+**Esperado:** preservar a concisão: método afetado, mudança, estado inicial e resposta solicitada estão determinados. Não acrescentar personagem narrativo, uma explicação do efeito sobre valores negativos ou uma história de depuração. O raciocínio para selecionar o teste é a dificuldade pretendida.
+
+## P33 — pergunta determinada, mas pouco direta
+
+Uma questão apresenta `Personagem extends Inventario` para reutilizar métodos e pergunta “Qual avaliação considera a relação entre os objetos e o reaproveitamento dessas operações?”. Duas alternativas incorretas repetem a ideia de que a composição exige duplicação, uma da lista e outra das regras; a correta é visivelmente mais completa e construtiva.
+
+**Esperado:** avaliar a orientação ao estudante e o ganho marginal dos distratores, mesmo que o pedido possa ser reconstruído e haja resposta única. Identificar o trecho abstrato, a possível proximidade entre alternativas e a diferença de apresentação; avaliar se as razões realmente se distinguem antes de propor uma mudança. Uma reformulação deve indicar concretamente que compreensão melhora e preservar a decisão pedagógica.
+
+## P34 — controle positivo: paráfrase sem ganho demonstrado
+
+Uma questão informa que um trecho de `Equipamento.recarregar` foi removido, que o restante permanece igual e que cada teste começa com um cajado novo. Ela pede o teste que passa antes e falha depois. Uma revisão propõe trocar “Durante uma alteração...” por “Uma alteração foi feita...”, alegando que agora a comparação ficou contextualizada.
+
+**Esperado:** reconhecer que a situação e a comparação já foram apresentadas. Não afirmar melhoria de contexto sem mostrar informação nova ou redução concreta de dificuldade; preservar o original se a diferença for apenas preferência estilística. Uma sugestão opcional de estilo deve ser identificada como tal, sem ser registrada como defeito ou correção necessária.
+
+## P35 — mudança sem ponto de partida para o leitor
+
+O cenário mostra um personagem que equipa um item, mas ainda não possui inventário. Uma questão começa com “Cada personagem terá um inventário” e pede avaliar uma proposta de herança para reutilizar métodos. A resposta pode ser determinada, porém a abertura não orienta o leitor sobre a passagem do código atual para a necessidade nova.
+
+**Esperado:** considerar uma transição breve que recupere o que o personagem já faz, apresente a necessidade de guardar itens e só então situe a proposta a avaliar. Não exigir história adicional em questões cujo código e pedido já situem a tarefa; não antecipar a escolha entre herança e composição.

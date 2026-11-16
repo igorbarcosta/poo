@@ -13,4 +13,6 @@ Interface local de compatibilidade.
 4. Aplicar as restrições locais de Java e repertório ensinado sem promovê-las a políticas genéricas.
 5. Usar `avaliacoes/tests/regressao-pedagogica.md` como regressão contextual da disciplina.
 
+Na preparação da situação de uma questão de Java, distinguir a criação de uma classe, a criação de uma instância, a inclusão de um objeto em uma coleção e a alteração de um parâmetro. Nomear a mudança pretendida sem antecipar o mecanismo avaliado. Usar o procedimento de leitura estudantil da skill genérica para conferir essas relações; a existência do código e do gabarito não demonstra clareza do enunciado.
+
 Não produzir variantes nem renderização nesta etapa.
