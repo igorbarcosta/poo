@@ -1,0 +1,35 @@
+plugins {
+    id 'application'
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    // Backend nativo atualizado para o Java 25 usado na disciplina.
+    implementation enforcedPlatform('org.lwjgl:lwjgl-bom:3.4.0')
+    implementation 'com.badlogicgames.gdx:gdx:1.14.2'
+    implementation 'com.badlogicgames.gdx:gdx-backend-lwjgl3:1.14.2'
+    // Rasteriza a fonte no tamanho real da janela, inclusive em telas HiDPI.
+    implementation 'com.badlogicgames.gdx:gdx-freetype:1.14.2'
+    runtimeOnly 'com.badlogicgames.gdx:gdx-platform:1.14.2:natives-desktop'
+    runtimeOnly 'com.badlogicgames.gdx:gdx-freetype-platform:1.14.2:natives-desktop'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+application {
+    mainClass = 'br.edu.ifpb.jogos.desktop.Principal'
+    applicationDefaultJvmArgs = ['--enable-native-access=ALL-UNNAMED']
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) {
+        applicationDefaultJvmArgs += ['-XstartOnFirstThread']
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+test { useJUnitPlatform() }
+
