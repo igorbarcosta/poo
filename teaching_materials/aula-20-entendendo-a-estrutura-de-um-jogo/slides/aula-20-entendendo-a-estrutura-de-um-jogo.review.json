@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula-20-projection-01",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-20-01",
+      "sha256": "51517d50e82fad20534ea9668b922a4db8d450108e5dda3bc396a4e795a3a864",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-20",
+        "path": "lesson-design.md",
+        "sha256": "d9a3e34652680377de2feafc8cc0510cc3deb063b63108d8e6d608d3c33ec255"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-20",
+        "path": "lesson.md",
+        "sha256": "6af9d041f1ee0dd709290e5661e13b5cb4ab3f0ee525b7e30a57643292042f5d"
+      },
+      "combined_semantic_sha256": "8d3961c24a57b4bf81ad7f3e7b9c2821b250ada0912196b48451b090c922793a"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-20-01",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-20-01",
+      "source_lesson": "lesson-poo-aula-20",
+      "source_approval": "lesson-approval-poo-aula-20-01",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "8d3961c24a57b4bf81ad7f3e7b9c2821b250ada0912196b48451b090c922793a",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-11-16T10:08:45-03:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_PROJECTION_DECISION",
+  "reviewer_provenance": {
+    "identity": "codex-aula20-source-review",
+    "source": "Read-only self-review against the approved lesson and consumer profile: three execution paths, Java dependencies, testable collision scenario, shared-responsibility map, individual transfer, immediate visible answers, and exclusions preserved. No independent reviewer or visual approval claimed. Schema validation uses the current jsonschema Registry API with unchanged schemas; deterministic ReviewRun construction and semantic checks remain enabled."
+  },
+  "created_at": "2026-11-16T13:10:43+00:00",
+  "context_refs": [
+    "slides/presentation-profile.md",
+    "specs/planejamento-aula-20.md",
+    "specs/padrao-slides.md"
+  ]
+}

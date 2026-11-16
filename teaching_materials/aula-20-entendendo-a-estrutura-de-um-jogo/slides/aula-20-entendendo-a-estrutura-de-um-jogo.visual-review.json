@@ -1,0 +1,40 @@
+{
+  "kind": "poo-visual-review",
+  "created_at": "2026-11-16T13:11:40+00:00",
+  "reviewer": "Codex; self-review, no independent auditor",
+  "artifacts": {
+    "slides/aula-20-entendendo-a-estrutura-de-um-jogo.md": "51517d50e82fad20534ea9668b922a4db8d450108e5dda3bc396a4e795a3a864",
+    "slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.html": "aaec4f542221aec3aab4018b6674159e81f31370787ccef39f4dad0cc5a28532",
+    "slides/rendered/aula-20-entendendo-a-estrutura-de-um-jogo.pdf": "edc8c6747c469e6384895cfef79d5de49f22723ca1f084b0830d430eb2f07f41"
+  },
+  "counts": {
+    "source": 48,
+    "html": 48,
+    "pdf": 48
+  },
+  "global_review": "All 48 frames inspected in two contact sheets rendered in Chrome print media. Narrative, density, contrast and visual pauses checked.",
+  "enlarged_frames": [
+    6,
+    10,
+    14,
+    19,
+    21,
+    25,
+    29,
+    40,
+    43
+  ],
+  "geometry_check": "No content outside slide bounds or within the reserved footer margin after adjustment.",
+  "activity_frames": [
+    8,
+    17,
+    22,
+    28,
+    35,
+    41,
+    43
+  ],
+  "activity_response_review": "All seven activity frames followed immediately by a visible answer and justification.",
+  "findings": [],
+  "limitations": "Local visual review at 1280x720; classroom projection conditions were not tested. PDF page count validated by official rendering entrypoint; visual captures use HTML print media."
+}

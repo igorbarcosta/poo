@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-20-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-20",
+    "path": "lesson-design.md",
+    "sha256": "d9a3e34652680377de2feafc8cc0510cc3deb063b63108d8e6d608d3c33ec255",
+    "version": "aula-20-baseline-01"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-20",
+    "path": "lesson.md",
+    "sha256": "6af9d041f1ee0dd709290e5661e13b5cb4ab3f0ee525b7e30a57643292042f5d",
+    "version": "aula-20-baseline-01"
+  },
+  "combined_semantic_sha256": "8d3961c24a57b4bf81ad7f3e7b9c2821b250ada0912196b48451b090c922793a",
+  "approved_at": "2026-11-16T10:06:02-03:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "display_name": "Professor da disciplina de POO",
+    "source": "Explicit user acceptance of the implemented lesson, authorization to publish, and subsequent request: ok. faça os slides."
+  },
+  "consumer_context_refs": [
+    "slides/presentation-profile.md",
+    "specs/planejamento-aula-20.md"
+  ]
+}
