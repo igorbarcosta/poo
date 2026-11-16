@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import importlib.util
 import os
+import re
 from pathlib import Path
 
 
@@ -24,6 +25,13 @@ if _spec is None or _spec.loader is None:
     raise RuntimeError(f"não foi possível carregar {DOCEMAS_MODULE_PATH}")
 _docemas = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_docemas)
+
+# Compatibilidade com a numeração Q1 aceita pelo parser de instrumentos v2.
+# O leitor de gabaritos do Docemas ainda exige dois algarismos (Q01).
+# Preservar também Q01, sem normalizar ou renumerar fontes aprovadas.
+_docemas.ANSWER_RE = re.compile(
+    r"^###\s+(Q\d+)(?:\s|$)", re.MULTILINE | re.IGNORECASE
+)
 
 for _name, _value in vars(_docemas).items():
     if not _name.startswith("__"):

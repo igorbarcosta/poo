@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -15,6 +16,36 @@ import workflow  # noqa: E402
 
 
 class DocemasIntegrationTestCase(unittest.TestCase):
+    def test_variant_answers_follow_the_approved_question_labels(self) -> None:
+        for label in ("Q1", "Q01"):
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                (root / "variants").mkdir()
+                assessment = (
+                    "---\ntype: exam\nidentifier: labels\ntotal_points: 5\n---\n"
+                    f"## {label} [2 points] {{#q-labels-001}}\n"
+                    "### a) [1 points] {#q-labels-001-a}\nPrimeira.\n"
+                    "### b) [1 points] {#q-labels-001-b}\nSegunda.\n"
+                    "## Q10 [3 points] {#q-labels-010}\nTerceira.\n"
+                )
+                for name in ("base.md", "variants/variant-a.md", "variants/variant-b.md"):
+                    (root / name).write_text(assessment, encoding="utf-8")
+                for name in ("blueprint.md", "base-review.md", "equivalence-review.md"):
+                    (root / name).write_text("Registro de teste.\n", encoding="utf-8")
+                key = "".join(
+                    f"## Variant {variant}\n### {label}\n"
+                    "#### a)\n1\n#### b)\n2\n### Q10\n3\n"
+                    for variant in "AB"
+                )
+                answer_path = root / "answer-key.md"
+                answer_path.write_text(key, encoding="utf-8")
+                data = {"schema_version": 2, "instrument": {"type": "exam", "identifier": "labels"}}
+                with patch.object(workflow._docemas, "validate_preview", return_value=[]):
+                    self.assertEqual([], workflow.validate_content(root, data, "variants_approved"))
+                    answer_path.write_text(key + f"\n### {label}\nDuplicada.\n", encoding="utf-8")
+                    errors = workflow.validate_content(root, data, "variants_approved")
+                    self.assertTrue(any("each question must appear exactly once" in error for error in errors))
+
     def test_wrapper_loads_sibling_docemas(self) -> None:
         expected = POO_ROOT.parent / "docemas" / "assessments" / "scripts" / "workflow.py"
         self.assertEqual(expected.resolve(), workflow.DOCEMAS_MODULE_PATH)
