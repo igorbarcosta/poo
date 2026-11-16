@@ -1,0 +1,46 @@
+schema_version: 2
+instrument:
+  type: exam
+  identifier: unidade-02
+state: maturing
+provenance:
+  maturation: null
+  escalation: null
+  candidate: null
+direction:
+  status: recorded
+  decision: 'Direcionamento aprovado em conversa: jogo em Java comum; até Aula 18
+    sem exceções; primeira versão completa em Typst seguindo Unidade 01.'
+  blueprint_sha256: b71451aa3cc62fe4b9f7c16e27c6ccfcd5dd385ae4124238f3c18dfea7905c27
+  recorded_at: '2026-11-10T16:08:24+00:00'
+gates:
+  base_approved:
+    status: pending
+    artifacts:
+    - base.md
+    - blueprint.md
+    hash: null
+    base_sha256: null
+    blueprint_sha256: null
+    candidate_combined_semantic_sha256: null
+    decision: null
+    resulting_state: base_approved
+    approved_at: null
+  variants_approved:
+    status: pending
+    artifacts:
+    - variants
+    - answer-key.md
+    - equivalence-review.md
+    hash: null
+    decision: null
+    resulting_state: variants_approved
+    approved_at: null
+  released_for_print:
+    status: pending
+    artifacts:
+    - rendered
+    hash: null
+    decision: null
+    resulting_state: released_for_print
+    approved_at: null

@@ -1,0 +1,15 @@
+{
+  "a": {
+    "markdown_sha256": "f274ac908cabe904c62249308e7eaa484b3e5f970a9fd3cc1cddec7fa6e14e4b",
+    "typst_sha256": "f4daea5660c702d64c6e1e02844b2f3116b1957d726946098b583ec6bde8d569",
+    "pdf_sha256": "14523a8599e271848b811adaf2979ce09a38c17ae51bbda030069cfeefa5a23d",
+    "pages": 6
+  },
+  "b": {
+    "markdown_sha256": "d5e216500aeec0830efc4b53a19b967aab9b05a0dedeb6210c2bbc585b6eb791",
+    "typst_sha256": "ad4ad244cd3c0bf8d017e02464afb7d279cd79ba472811409fdf98b1e60f9b3d",
+    "pdf_sha256": "e9b5e1b1a1092266db00cbbfe9a33ecb5efc2b3aafde47bff70906f8f6ca2ec5",
+    "pages": 6
+  },
+  "page_swap_note": "Página 2 (Q9–Q13) trocada entre A e B por solicitação do professor. Gabaritos answer-key.md e gabarito.md ajustados aos PDFs. Markdown das variantes preserva a composição anterior."
+}

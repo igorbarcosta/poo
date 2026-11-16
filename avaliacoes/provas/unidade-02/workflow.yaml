@@ -1,0 +1,61 @@
+schema_version: 2
+instrument:
+  type: exam
+  identifier: unidade-02
+state: variants_authoring
+provenance:
+  maturation: null
+  escalation:
+    kind: manual_escalation
+    authority: professor, em conversa
+    reason: Revisão humana iterativa concluída; registrar o caminho humano, sem alegar
+      maturação automática por auditores independentes.
+    combined_semantic_sha256: 76952f54a84dd91f2efc7b99a5d0c226914e089a0c1aa6e6b7b66ae2e5f082fc
+    recorded_at: '2026-11-11T01:34:51+00:00'
+  candidate:
+    kind: human_candidate
+    authority: professor, em conversa
+    reason: 'A versão final revisada foi explicitamente aprovada: A prova está aprovada.
+      POde fazer a variante.'
+    base_sha256: f274ac908cabe904c62249308e7eaa484b3e5f970a9fd3cc1cddec7fa6e14e4b
+    blueprint_sha256: 3bd55cc2947f867933a07591a678f3b7a8bd011a100c9e81029b95802496a92f
+    combined_semantic_sha256: 76952f54a84dd91f2efc7b99a5d0c226914e089a0c1aa6e6b7b66ae2e5f082fc
+    recorded_at: '2026-11-11T01:34:52+00:00'
+direction:
+  status: recorded
+  decision: 'Direcionamento aprovado em conversa: jogo em Java comum; até Aula 18
+    sem exceções; primeira versão completa em Typst seguindo Unidade 01.'
+  blueprint_sha256: b71451aa3cc62fe4b9f7c16e27c6ccfcd5dd385ae4124238f3c18dfea7905c27
+  recorded_at: '2026-11-10T16:08:24+00:00'
+gates:
+  base_approved:
+    status: approved
+    artifacts:
+    - base.md
+    - blueprint.md
+    hash: 76952f54a84dd91f2efc7b99a5d0c226914e089a0c1aa6e6b7b66ae2e5f082fc
+    base_sha256: 717af0b3c4f23679e9f4d332347427f7d2c7a3e133be4bd4e34c2542d3a6287f
+    blueprint_sha256: 8f2e6ed94e3e2270f748ad43e3de4cfe9a623634376ad08a22ee9ee9856a5138
+    candidate_combined_semantic_sha256: 76952f54a84dd91f2efc7b99a5d0c226914e089a0c1aa6e6b7b66ae2e5f082fc
+    decision: 'Professor aprovou explicitamente a versão final e autorizou gerar a
+      variante: A prova está aprovada. POde fazer a variante.'
+    resulting_state: base_approved
+    approved_at: '2026-11-11T01:34:53+00:00'
+  variants_approved:
+    status: pending
+    artifacts:
+    - variants
+    - answer-key.md
+    - equivalence-review.md
+    hash: null
+    decision: null
+    resulting_state: variants_approved
+    approved_at: null
+  released_for_print:
+    status: pending
+    artifacts:
+    - rendered
+    hash: null
+    decision: null
+    resulting_state: released_for_print
+    approved_at: null

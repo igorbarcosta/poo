@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="und">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="assessment-source-sha256" content="f274ac908cabe904c62249308e7eaa484b3e5f970a9fd3cc1cddec7fa6e14e4b">
+  <meta name="assessment-preview-version" content="1">
+  <title>Semantic base preview — unidade-02</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172033; background: #eef2f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 2rem 1rem 4rem; }
+    main { max-width: 58rem; margin: 0 auto; padding: 2.5rem 3rem; background: #fff; border: 1px solid #d8dee9; border-radius: 12px; box-shadow: 0 8px 28px rgb(31 41 55 / 8%); }
+    .preview-label { margin: 0 0 2rem; padding-bottom: 1rem; color: #526075; border-bottom: 1px solid #e2e7ef; font-size: .9rem; }
+    h1, h2, h3 { color: #102a43; line-height: 1.25; }
+    h1 { margin-top: 0; font-size: 1.75rem; }
+    h2 { margin-top: 2.4rem; padding-top: .6rem; border-top: 1px solid #e5eaf1; font-size: 1.35rem; }
+    h3 { margin-top: 1.7rem; font-size: 1.1rem; }
+    p, li { line-height: 1.62; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; }
+    th, td { padding: .65rem .75rem; border: 1px solid #d8dee9; text-align: left; vertical-align: top; }
+    th { background: #f4f7fa; }
+    code { font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace; font-size: .92em; }
+    :not(pre) > code { padding: .12rem .3rem; border-radius: 4px; background: #eef2f6; }
+    pre.hljs { overflow-x: auto; margin: 1rem 0 1.4rem; padding: 1rem 1.15rem; border: 1px solid #dbe2ea; border-radius: 8px; background: #f6f8fa; line-height: 1.5; }
+    .hljs-keyword, .hljs-type { color: #7c3aed; }
+    .hljs-title, .hljs-title.class_, .hljs-title.function_ { color: #075985; }
+    .hljs-number, .hljs-literal { color: #b45309; }
+    .hljs-string { color: #166534; }
+    .hljs-comment { color: #64748b; font-style: italic; }
+    footer { max-width: 58rem; margin: 1rem auto 0; color: #68758a; font-size: .8rem; text-align: center; }
+    @media (max-width: 700px) { main { padding: 1.5rem 1.2rem; } body { padding: .75rem .5rem 2rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="preview-label">Preview derived from <code>base.md</code> for human review. It is not an application artifact.</p>
+<h1>Programação Orientada a Objetos — Unidade 02</h1>
+<p>O código do jogo está ao final da prova. As questões são independentes; classes e alterações apresentadas valem apenas na própria questão.</p>
+<p>Todos os tipos públicos estão em arquivos separados, no mesmo projeto, sem <code>package</code>. Considere disponíveis <code>List</code>, <code>ArrayList</code> e, nos testes, <code>assertEquals</code> do JUnit. Os argumentos são não nulos, os índices são válidos e os valores iniciais respeitam os limites dos objetos.</p>
+<h1>Questões de saída</h1>
+<h2>Q1 [6 points] {#q-u02-001}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">88</span>);
+p.recuperarVida(<span class="hljs-number">19</span>);
+p.receberDano(-<span class="hljs-number">8</span>);
+System.out.println(p.getVida());
+p.receberDano(<span class="hljs-number">130</span>);
+p.recuperarVida(<span class="hljs-number">7</span>);
+p.recuperarVida(-<span class="hljs-number">5</span>);
+System.out.println(p.getVida());
+</code></pre>
+<h3>a) [3 points] {#q-u02-001-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-001-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q2 [3 points] {#q-u02-002}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Equipamento</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">0</span>);
+item.recarregar(<span class="hljs-number">5</span>);
+item.usar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">61</span>));
+System.out.println(item.descrever());
+</code></pre>
+<h2>Q3 [6 points] {#q-u02-003}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Inventario</span> <span class="hljs-variable">inventario</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Inventario</span>();
+<span class="hljs-type">Pocao</span> <span class="hljs-variable">pocao</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pocao</span>();
+inventario.adicionar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">2</span>));
+inventario.adicionar(pocao);
+pocao.usar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">36</span>));
+inventario.listar();
+</code></pre>
+<h3>a) [3 points] {#q-u02-003-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-003-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q4 [6 points] {#q-u02-004}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">cajado</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>);
+<span class="hljs-type">Inventario</span> <span class="hljs-variable">inventario</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Inventario</span>();
+inventario.adicionar(cajado);
+inventario.adicionar(cajado);
+<span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">40</span>);
+<span class="hljs-type">Usavel</span> <span class="hljs-variable">primeiro</span> <span class="hljs-operator">=</span> (Usavel) inventario.obter(<span class="hljs-number">0</span>);
+<span class="hljs-type">Usavel</span> <span class="hljs-variable">segundo</span> <span class="hljs-operator">=</span> (Usavel) inventario.obter(<span class="hljs-number">1</span>);
+primeiro.usar(alvo);
+System.out.println(segundo.usar(alvo));
+System.out.println(alvo.getVida());
+</code></pre>
+<h3>a) [3 points] {#q-u02-004-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-004-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q5 [3 points] {#q-u02-005}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">usuario</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">74</span>);
+<span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">50</span>);
+<span class="hljs-type">Usavel</span> <span class="hljs-variable">escolha</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>);
+usuario.equipar(escolha);
+escolha = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">2</span>);
+usuario.usarEquipadoEm(alvo);
+System.out.println(alvo.getVida());
+</code></pre>
+<h2>Q6 [6 points] {#q-u02-006}</h2>
+<p>Escreva a saída do trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">32</span>);
+<span class="hljs-type">Personagem</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">68</span>);
+a.equipar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>));
+b.equipar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">1</span>));
+a.usarEquipadoEm(b);
+b.usarEquipadoEm(a);
+System.out.println(a.getVida());
+System.out.println(b.getVida());
+</code></pre>
+<h3>a) [3 points] {#q-u02-006-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-006-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q7 [3 points] {#q-u02-007}</h2>
+<p>Escreva a saída produzida pelo trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Item</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>);
+<span class="hljs-type">Usavel</span> <span class="hljs-variable">uso</span> <span class="hljs-operator">=</span> (Usavel) item;
+<span class="hljs-type">Recarregavel</span> <span class="hljs-variable">recarga</span> <span class="hljs-operator">=</span> (Recarregavel) item;
+System.out.println(uso == recarga);
+</code></pre>
+<h2>Q8 [6 points] {#q-u02-008}</h2>
+<p>Escreva a saída produzida pelo trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">100</span>);
+<span class="hljs-type">Amuleto</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">1</span>);
+System.out.println(item.usar(alvo));
+System.out.println(item.getCargas());
+</code></pre>
+<h3>a) [3 points] {#q-u02-008-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-008-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q9 [6 points] {#q-u02-009}</h2>
+<p>Escreva a saída produzida pelo trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">49</span>);
+System.out.println(p.usarEquipadoEm(p));
+p.equipar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pocao</span>());
+<span class="hljs-keyword">if</span> (p.usarEquipadoEm(p)) {
+    p.receberDano(<span class="hljs-number">6</span>);
+}
+<span class="hljs-keyword">if</span> (p.usarEquipadoEm(p)) {
+    p.receberDano(<span class="hljs-number">6</span>);
+}
+System.out.println(p.getVida());
+</code></pre>
+<h3>a) [3 points] {#q-u02-009-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-009-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q10 [3 points] {#q-u02-010}</h2>
+<p>Considere a classe <code>CajadoLivre</code>, apresentada apenas nesta questão. Escreva a saída do trecho que a utiliza.</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CajadoLivre</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Cajado</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CajadoLivre</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">super</span>(<span class="hljs-number">0</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">usar</span><span class="hljs-params">(Personagem alvo)</span> {
+        alvo.receberDano(<span class="hljs-number">5</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+}
+</code></pre>
+<pre class="hljs"><code><span class="hljs-type">Equipamento</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CajadoLivre</span>();
+<span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">43</span>);
+item.usar(alvo);
+System.out.println(alvo.getVida());
+</code></pre>
+<h2>Q11 [6 points] {#q-u02-011}</h2>
+<p>Escreva a saída produzida pelo trecho abaixo.</p>
+<pre class="hljs"><code><span class="hljs-type">Inventario</span> <span class="hljs-variable">inventario</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Inventario</span>();
+<span class="hljs-type">Amuleto</span> <span class="hljs-variable">amuleto</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">0</span>);
+inventario.adicionar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pocao</span>());
+inventario.adicionar(amuleto);
+inventario.adicionar(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>));
+<span class="hljs-type">int</span> <span class="hljs-variable">recarregados</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+    <span class="hljs-type">Item</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> inventario.obter(i);
+    <span class="hljs-keyword">if</span> (item <span class="hljs-keyword">instanceof</span> Recarregavel) {
+        <span class="hljs-type">Recarregavel</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> (Recarregavel) item;
+        r.recarregar(<span class="hljs-number">1</span>);
+        recarregados++;
+    }
+}
+System.out.println(recarregados);
+System.out.println(amuleto.getCargas());
+</code></pre>
+<h3>a) [3 points] {#q-u02-011-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-011-b}</h3>
+<p>2ª linha impressa.</p>
+<h2>Q12 [6 points] {#q-u02-012}</h2>
+<p>Para acrescentar uma recuperação de vida ao uso de um item, foi criada a classe <code>UsavelComCura</code>, válida apenas nesta questão. Escreva a saída do trecho que a utiliza.</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UsavelComCura</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Usavel</span> {
+    <span class="hljs-keyword">private</span> Usavel base;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">UsavelComCura</span><span class="hljs-params">(Usavel base)</span> {
+        <span class="hljs-built_in">this</span>.base = base;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">usar</span><span class="hljs-params">(Personagem alvo)</span> {
+        <span class="hljs-keyword">if</span> (!base.usar(alvo)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        alvo.recuperarVida(<span class="hljs-number">5</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+}
+</code></pre>
+<pre class="hljs"><code><span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">97</span>);
+<span class="hljs-type">Usavel</span> <span class="hljs-variable">uso</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsavelComCura</span>(
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsavelComCura</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>)));
+uso.usar(alvo);
+System.out.println(alvo.getVida());
+uso.usar(alvo);
+System.out.println(alvo.getVida());
+</code></pre>
+<h3>a) [3 points] {#q-u02-012-a}</h3>
+<p>1ª linha impressa.</p>
+<h3>b) [3 points] {#q-u02-012-b}</h3>
+<p>2ª linha impressa.</p>
+<h1>Questões de múltipla escolha</h1>
+<h2>Q13 [5 points] {#q-u02-013}</h2>
+<p>Uma desenvolvedora tenta mostrar a descrição do item que será usado:</p>
+<pre class="hljs"><code><span class="hljs-type">Usavel</span> <span class="hljs-variable">escolha</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Amuleto</span>(<span class="hljs-number">1</span>);
+System.out.println(escolha.descrever());
+</code></pre>
+<p>O compilador rejeita a chamada a <code>descrever</code>. Qual explicação está correta?</p>
+<p>A) Uma variável declarada com uma interface não pode receber um objeto de uma classe concreta.</p>
+<p>B) A chamada só poderia ser verificada durante a execução, quando o objeto de <code>escolha</code> fosse conhecido.</p>
+<p>C) <code>Amuleto</code> precisa declarar novamente <code>descrever</code>, pois métodos herdados não podem ser chamados por clientes.</p>
+<p>D) O tipo <code>Usavel</code> não oferece <code>descrever</code>, embora o objeto guardado em <code>escolha</code> possua esse método.</p>
+<p>E) O método <code>descrever</code> de <code>Equipamento</code> não pode ser usado porque essa classe é abstrata.</p>
+<h2>Q14 [5 points] {#q-u02-015}</h2>
+<p>Na próxima versão do jogo, cada personagem deverá guardar e consultar seus itens. Durante a implementação, uma desenvolvedora apresenta esta proposta:</p>
+<p>“A classe <code>Inventario</code> já tem os métodos <code>adicionar</code>, <code>obter</code> e <code>listar</code>. Podemos fazer <code>Personagem</code> herdar de <code>Inventario</code> para aproveitar esses métodos.”</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Personagem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Inventario</span> {
+    <span class="hljs-comment">// Campos e métodos do personagem.</span>
+}
+</code></pre>
+<p>Você está revisando essa proposta. Qual comentário orienta melhor a decisão de projeto?</p>
+<p>A) “A herança é adequada: se o personagem precisa desses métodos, isso é suficiente para defini-lo como uma especialização de inventário.”</p>
+<p>B) “A herança não permite esse reaproveitamento: como a lista de itens é privada, os métodos herdados não conseguem acessá-la.”</p>
+<p>C) “Seria melhor colocar um inventário dentro do personagem, embora isso exija copiar para <code>Personagem</code> a implementação dos três métodos.”</p>
+<p>D) “Podemos manter a herança e sobrescrever os três métodos: assim, o personagem aproveita o código sem ser tratado como um inventário.”</p>
+<p>E) “A herança permite o reaproveitamento, mas torna o personagem um tipo de inventário. Ele poderia ter um inventário e usar os métodos desse objeto.”</p>
+<h2>Q15 [5 points] {#q-u02-018}</h2>
+<p>Atualmente, <code>Personagem.equipar</code> recebe um <code>Usavel</code>. Um desenvolvedor propõe trocar o tipo do parâmetro para <code>Equipamento</code>, mantendo o campo <code>equipado</code> e o corpo do método:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">equipar</span><span class="hljs-params">(Equipamento item)</span> {
+    equipado = item;
+}
+</code></pre>
+<p>Ele justifica a mudança dizendo que o personagem precisa de um objeto com o método <code>usar</code>. Qual avaliação está correta?</p>
+<p>A) A mudança não afeta as chamadas existentes, pois o tipo do parâmetro apenas documenta o argumento recebido.</p>
+<p>B) O método deixa de compilar, pois um campo do tipo <code>Usavel</code> não pode guardar uma referência recebida como <code>Equipamento</code>.</p>
+<p>C) O método continua aceitando poções, pois <code>Pocao</code> possui a mesma assinatura de <code>usar</code> que os equipamentos.</p>
+<p>D) Chamadas com poções deixam de compilar, embora <code>Usavel</code> já ofereça a operação de que o personagem precisa.</p>
+<p>E) A mudança faz todo item equipado executar <code>Equipamento.usar</code>, mesmo quando sua classe sobrescreve esse método.</p>
+<h2>Q16 [5 points] {#q-u02-016}</h2>
+<p>Durante uma revisão, foi proposta esta nova implementação de <code>Equipamento.recarregar</code>:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">recarregar</span><span class="hljs-params">(<span class="hljs-type">int</span> quantidade)</span> {
+    <span class="hljs-keyword">if</span> (quantidade &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span>;
+    }
+    cargas = quantidade;
+    <span class="hljs-keyword">if</span> (cargas &gt; maximo) {
+        cargas = maximo;
+    }
+}
+</code></pre>
+<p>Qual teste passa na implementação original e falha na proposta? Considere cada alternativa independentemente.</p>
+<p>A)</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">0</span>);
+item.recarregar(<span class="hljs-number">1</span>);
+assertEquals(<span class="hljs-number">1</span>, item.getCargas());
+</code></pre>
+<p>B)</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">2</span>);
+item.recarregar(<span class="hljs-number">3</span>);
+assertEquals(<span class="hljs-number">3</span>, item.getCargas());
+</code></pre>
+<p>C)</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>);
+item.recarregar(<span class="hljs-number">1</span>);
+assertEquals(<span class="hljs-number">2</span>, item.getCargas());
+</code></pre>
+<p>D)</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">3</span>);
+item.recarregar(<span class="hljs-number">5</span>);
+assertEquals(<span class="hljs-number">3</span>, item.getCargas());
+</code></pre>
+<p>E)</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">2</span>);
+item.recarregar(<span class="hljs-number">0</span>);
+assertEquals(<span class="hljs-number">2</span>, item.getCargas());
+</code></pre>
+<h2>Q17 [5 points] {#q-u02-014}</h2>
+<p>A equipe decidiu acrescentar uma restrição ao uso dos equipamentos: se o alvo estiver com vida zero, a tentativa deverá retornar <code>false</code>, sem alterar sua vida nem gastar cargas. Essa regra ainda não está implementada. Ela deverá valer tanto pelo uso via personagem quanto por uma chamada direta a <code>equipamento.usar(alvo)</code>.</p>
+<p>Onde inserir a verificação <code>alvo.getVida() == 0</code> para cumprir essa regra?</p>
+<p>A) Em <code>Personagem.recuperarVida</code>, retornando antes de alterar a vida.</p>
+<p>B) Em <code>Equipamento.usar</code>, retornando <code>false</code> antes de chamar <code>aplicarEm</code> e de diminuir as cargas.</p>
+<p>C) Em <code>Equipamento.usar</code>, retornando <code>false</code> depois de chamar <code>aplicarEm</code>, antes de diminuir as cargas.</p>
+<p>D) Em <code>Equipamento.aplicarEm</code>, retornando antes de realizar o efeito, sem mudar <code>Equipamento.usar</code>.</p>
+<p>E) Em <code>Personagem.usarEquipadoEm</code>, retornando <code>false</code> antes de delegar, sem mudar os equipamentos.</p>
+<h2>Q18 [5 points] {#q-u02-017}</h2>
+<p>A equipe preparou dois testes para o uso do cajado. Cada teste começa com seus próprios objetos novos:</p>
+<pre class="hljs"><code><span class="hljs-type">Cajado</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cajado</span>(<span class="hljs-number">1</span>);
+<span class="hljs-type">Personagem</span> <span class="hljs-variable">alvo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Personagem</span>(<span class="hljs-number">46</span>);
+</code></pre>
+<p>Teste I:</p>
+<pre class="hljs"><code>assertEquals(<span class="hljs-literal">true</span>, item.usar(alvo));
+</code></pre>
+<p>Teste II:</p>
+<pre class="hljs"><code>item.usar(alvo);
+assertEquals(<span class="hljs-number">34</span>, alvo.getVida());
+</code></pre>
+<p>Qual comportamento incorreto de <code>usar</code> seria identificado somente pelo Teste II?</p>
+<p>A) Consumir uma carga e retornar <code>true</code>, sem causar dano ao alvo.</p>
+<p>B) Consumir uma carga, causar 12 pontos de dano e retornar <code>false</code>.</p>
+<p>C) Retornar <code>false</code> sem alterar o alvo nem consumir uma carga.</p>
+<p>D) Causar 12 pontos de dano e retornar <code>true</code>, sem consumir uma carga.</p>
+<p>E) Consumir uma carga, causar 24 pontos de dano e retornar <code>false</code>.</p>
+<h2>Q19 [5 points] {#q-u02-019}</h2>
+<p>Ao revisar <code>Equipamento</code>, uma desenvolvedora propõe substituir seu método abstrato por:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getVariacaoVida</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><code>Equipamento</code> continua abstrata e seus outros métodos são mantidos. Com essa mudança, ela acrescenta:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Orbe</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Equipamento</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Orbe</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;Orbe&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+    }
+}
+</code></pre>
+<p>Qual consequência da proposta está correta?</p>
+<p>A) <code>Orbe</code> não pode ser instanciada, pois toda subclasse de uma classe abstrata também é abstrata.</p>
+<p>B) <code>Orbe</code> pode ser instanciada sem sobrescrever <code>getVariacaoVida</code>; <code>Cajado</code> e <code>Amuleto</code> mantêm suas próprias variações.</p>
+<p>C) <code>Orbe</code> não compila, pois precisa declarar diretamente todos os métodos das interfaces de <code>Equipamento</code>.</p>
+<p>D) <code>Orbe</code> precisa declarar novamente os campos <code>nome</code>, <code>cargas</code> e <code>maximo</code> para utilizar os métodos herdados.</p>
+<p>E) <code>Cajado</code> e <code>Amuleto</code> também passam a usar a variação zero, pois o método concreto da base substitui suas sobrescritas.</p>
+<h2>Q20 [5 points] {#q-u02-020}</h2>
+<p>O inventário passará a guardar no máximo três itens. O método <code>Inventario.adicionar</code> já foi alterado para impedir novas inclusões ao atingir esse limite. A equipe propõe acrescentar este método:</p>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> List&lt;Item&gt; <span class="hljs-title function_">getItens</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> itens;
+}
+</code></pre>
+<p>Com esse método, outro código consegue ultrapassar o limite de três itens? Por quê?</p>
+<p>A) Não. Como o campo <code>itens</code> é privado, a lista devolvida só pode ser modificada pelos métodos de <code>Inventario</code>.</p>
+<p>B) Não. Ao devolver a lista, o método cria uma cópia; alterações nessa cópia não afetam o inventário.</p>
+<p>C) Sim. Outro código pode chamar <code>add</code> na lista devolvida, sem executar a verificação de <code>Inventario.adicionar</code>.</p>
+<p>D) Sim. A referência devolvida permite substituir o campo privado <code>itens</code> por outra lista criada fora do inventário.</p>
+<p>E) Não. Sem um método <code>setItens</code>, outro código pode consultar a lista devolvida, mas não acrescentar elementos.</p>
+<h1>Cenário {#src-u02-aventura}</h1>
+<h3>Item.java {#src-u02-item}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Item</span> {
+    String <span class="hljs-title function_">descrever</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3>Usavel.java {#src-u02-usavel}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Usavel</span> {
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">usar</span><span class="hljs-params">(Personagem alvo)</span>;
+}
+</code></pre>
+<h3>Recarregavel.java {#src-u02-recarregavel}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Recarregavel</span> {
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">recarregar</span><span class="hljs-params">(<span class="hljs-type">int</span> quantidade)</span>;
+    <span class="hljs-type">int</span> <span class="hljs-title function_">getCargas</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3>Personagem.java {#src-u02-personagem}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Personagem</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> vida;
+    <span class="hljs-keyword">private</span> Usavel equipado;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Personagem</span><span class="hljs-params">(<span class="hljs-type">int</span> vidaInicial)</span> {
+        vida = vidaInicial;
+        equipado = <span class="hljs-literal">null</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">receberDano</span><span class="hljs-params">(<span class="hljs-type">int</span> quantidade)</span> {
+        <span class="hljs-keyword">if</span> (quantidade &gt; <span class="hljs-number">0</span>) {
+            vida -= quantidade;
+            <span class="hljs-keyword">if</span> (vida &lt; <span class="hljs-number">0</span>) {
+                vida = <span class="hljs-number">0</span>;
+            }
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">recuperarVida</span><span class="hljs-params">(<span class="hljs-type">int</span> quantidade)</span> {
+        <span class="hljs-keyword">if</span> (quantidade &gt; <span class="hljs-number">0</span>) {
+            vida += quantidade;
+            <span class="hljs-keyword">if</span> (vida &gt; <span class="hljs-number">100</span>) {
+                vida = <span class="hljs-number">100</span>;
+            }
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getVida</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> vida; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">equipar</span><span class="hljs-params">(Usavel item)</span> {
+        equipado = item;
+    }
+
+    <span class="hljs-keyword">public</span> Usavel <span class="hljs-title function_">getEquipado</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> equipado;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">usarEquipadoEm</span><span class="hljs-params">(
+            Personagem alvo)</span> {
+        <span class="hljs-keyword">if</span> (equipado == <span class="hljs-literal">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-keyword">return</span> equipado.usar(alvo);
+    }
+}
+</code></pre>
+<h3>Equipamento.java {#src-u02-equipamento}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Equipamento</span>
+        <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Item</span>, Usavel, Recarregavel {
+    <span class="hljs-keyword">private</span> String nome;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> cargas;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> maximo;
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-title function_">Equipamento</span><span class="hljs-params">(String nome,
+                          <span class="hljs-type">int</span> cargasIniciais,
+                          <span class="hljs-type">int</span> maximo)</span> {
+        <span class="hljs-built_in">this</span>.nome = nome;
+        cargas = cargasIniciais;
+        <span class="hljs-built_in">this</span>.maximo = maximo;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">usar</span><span class="hljs-params">(Personagem alvo)</span> {
+        <span class="hljs-keyword">if</span> (cargas == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        aplicarEm(alvo);
+        cargas--;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">recarregar</span><span class="hljs-params">(<span class="hljs-type">int</span> quantidade)</span> {
+        <span class="hljs-keyword">if</span> (quantidade &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span>;
+        }
+        cargas += quantidade;
+        <span class="hljs-keyword">if</span> (cargas &gt; maximo) {
+            cargas = maximo;
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCargas</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> cargas; }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">descrever</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> nome + <span class="hljs-string">&quot;: &quot;</span> + cargas
+            + <span class="hljs-string">&quot;/&quot;</span> + maximo;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aplicarEm</span><span class="hljs-params">(Personagem alvo)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">variacao</span> <span class="hljs-operator">=</span> getVariacaoVida();
+        <span class="hljs-keyword">if</span> (variacao &lt; <span class="hljs-number">0</span>) {
+            alvo.receberDano(-variacao);
+        } <span class="hljs-keyword">else</span> {
+            alvo.recuperarVida(variacao);
+        }
+    }
+
+    <span class="hljs-comment">// Variação de vida aplicada por usar:</span>
+    <span class="hljs-comment">// negativa: dano; positiva: recuperação.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getVariacaoVida</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3>Cajado.java {#src-u02-cajado}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Cajado</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Equipamento</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Cajado</span><span class="hljs-params">(<span class="hljs-type">int</span> cargasIniciais)</span> {
+        <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;Cajado&quot;</span>, cargasIniciais, <span class="hljs-number">3</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getVariacaoVida</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">12</span>;
+    }
+}
+</code></pre>
+<h3>Amuleto.java {#src-u02-amuleto}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Amuleto</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Equipamento</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Amuleto</span><span class="hljs-params">(<span class="hljs-type">int</span> cargasIniciais)</span> {
+        <span class="hljs-built_in">super</span>(<span class="hljs-string">&quot;Amuleto&quot;</span>, cargasIniciais, <span class="hljs-number">2</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getVariacaoVida</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">15</span>;
+    }
+}
+</code></pre>
+<h3>Pocao.java {#src-u02-pocao}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Pocao</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Item</span>, Usavel {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">consumida</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">usar</span><span class="hljs-params">(Personagem alvo)</span> {
+        <span class="hljs-keyword">if</span> (consumida) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        alvo.recuperarVida(<span class="hljs-number">20</span>);
+        consumida = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">descrever</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (consumida) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Poção vazia&quot;</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Poção cheia&quot;</span>;
+    }
+}
+</code></pre>
+<h3>Inventario.java {#src-u02-inventario}</h3>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Inventario</span> {
+    <span class="hljs-keyword">private</span> List&lt;Item&gt; itens;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Inventario</span><span class="hljs-params">()</span> {
+        itens = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">adicionar</span><span class="hljs-params">(Item item)</span> {
+        itens.add(item);
+    }
+
+    <span class="hljs-keyword">public</span> Item <span class="hljs-title function_">obter</span><span class="hljs-params">(<span class="hljs-type">int</span> indice)</span> {
+        <span class="hljs-keyword">return</span> itens.get(indice);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listar</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">for</span> (Item item : itens) {
+            System.out.println(
+                item.descrever());
+        }
+    }
+}
+</code></pre>
+  </main>
+  <footer>Source SHA-256: <code>f274ac908cabe904c62249308e7eaa484b3e5f970a9fd3cc1cddec7fa6e14e4b</code></footer>
+</body>
+</html>

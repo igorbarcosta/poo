@@ -1,0 +1,1 @@
+../variants/variant-b.md

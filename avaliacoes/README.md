@@ -2,6 +2,11 @@
 
 Este diretório contém instrumentos concretos, retrospectivas e artefatos finais da disciplina. A infraestrutura genérica pertence ao domínio de avaliações do Docemas.
 
+## Provas de unidade
+
+- Unidade 01: `provas/unidade_01.typ` e `provas/unidade_01.pdf`.
+- [Unidade 02](provas/unidade-02/README.md): primeira versão para revisão, com fonte Typst, PDF, base, blueprint, gabarito, código Java e prévias.
+
 ## Integração local de desenvolvimento
 
 Por padrão, POO procura o checkout irmão em:
