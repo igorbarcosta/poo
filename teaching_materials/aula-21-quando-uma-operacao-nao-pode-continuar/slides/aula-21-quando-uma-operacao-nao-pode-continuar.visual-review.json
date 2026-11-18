@@ -1,0 +1,36 @@
+{
+  "kind": "poo-visual-review",
+  "created_at": "2026-11-18T19:20:35.620187+00:00",
+  "reviewer": "Codex; self-review, no independent auditor",
+  "artifacts": {
+    "slides/aula-21-quando-uma-operacao-nao-pode-continuar.md": "c8dc0c57913a3ea3db6e06a5f81147ac5779f95337646de364dd06d1a2f461e4",
+    "slides/rendered/aula-21-quando-uma-operacao-nao-pode-continuar.html": "1944c36e1da0142cd926cae7550ff75fa047541c19822d943b8901d565c178ae",
+    "slides/rendered/aula-21-quando-uma-operacao-nao-pode-continuar.pdf": "1836de4ead4fc4ecee4d937b6556499636dae0ac3da06e6f52819eb80eec44a9"
+  },
+  "counts": {
+    "source": 39,
+    "html": 39,
+    "pdf": 39
+  },
+  "global_review": "All 39 frames inspected in two Chrome print-media contact sheets; narrative, density, contrast and pauses checked.",
+  "enlarged_frames": [
+    3,
+    10,
+    26,
+    29,
+    38
+  ],
+  "geometry_check": "No content outside slide bounds or within reserved footer margin.",
+  "activity_frames": [
+    3,
+    10,
+    17,
+    22,
+    27,
+    35,
+    37
+  ],
+  "activity_response_review": "All seven activities have visible answers and justification on the immediately following frame.",
+  "findings": [],
+  "limitations": "Visual review uses HTML print media at 1280x720. Official rendering entrypoint validates PDF pages. Actual classroom projection and Java/JUnit execution were not tested."
+}

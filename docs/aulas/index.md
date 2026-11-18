@@ -40,5 +40,6 @@ Da colaboração com objetos concretos à necessidade de acomodar diferentes obj
 Da leitura de uma aplicação executável à compreensão de suas responsabilidades e à evolução dos jogos individuais.
 
 - [Aula 20 — Entendendo a estrutura de um jogo orientado a objetos](aula-20-entendendo-a-estrutura-de-um-jogo.md): percursos de movimento, disparo e impacto no Megamania como referência para o próprio jogo.
+- [Aula 21 — Quando uma operação não pode continuar](aula-21-quando-uma-operacao-nao-pode-continuar.md): exceções, proteção de contratos e diagnóstico de falhas no Megamania.
 
 As páginas serão adicionadas somente à medida que os encontros forem planejados. A sequência detalhada poderá evoluir conforme o desenvolvimento da turma.

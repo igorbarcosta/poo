@@ -158,6 +158,12 @@ o raciocínio ao próprio projeto. Os avanços no exemplo comum ficam para os
 encontros seguintes; o laboratório relacionado ainda terá seu incremento
 delimitado em roteiro específico.
 
+A Aula 21 aborda exceções a partir dos contratos e das falhas observáveis
+no Megamania, conforme o [desenho acordado](planejamento-aula-21.md).
+Inclui cinco tipos comuns, leitura do percurso de chamadas, fluxo de
+lançamento e captura e verificação com JUnit. O incremento do laboratório
+permanece para definição posterior.
+
 ## Planejamento que permanece evolutivo
 
 - Capacidades e limites da primeira distribuição da engine, após verificar

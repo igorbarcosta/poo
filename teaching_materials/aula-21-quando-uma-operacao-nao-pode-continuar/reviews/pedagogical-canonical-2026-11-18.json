@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula21-canonical-20261118",
+  "review_domain": "canonical_lesson",
+  "reviewed_snapshot": {
+    "snapshot_type": "canonical",
+    "semantic_hash_version": "docemas-lesson-semantic-v1",
+    "lesson_design": {
+      "identity": "lesson-design-poo-aula-21",
+      "path": "lesson-design.md",
+      "sha256": "c2b04678c6994d4df2df1506e21f8157c3b41bcf65337d7f3475619f293e874e"
+    },
+    "lesson": {
+      "identity": "lesson-poo-aula-21",
+      "path": "lesson.md",
+      "sha256": "8ed5c370f3ef49811146315d65b20e460f58f4a9722d79921170feb851f958c7"
+    },
+    "combined_semantic_sha256": "ae82e99da227669e9d9a872bc0d9bb98b635f3fb7d18b523a2d79a8c6c5ba034"
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_HUMAN_SEMANTIC_REVIEW",
+  "reviewer_provenance": {
+    "identity": "codex-main-aula21-review",
+    "source": "Revisão delimitada pelo agente principal após o pedido de continuidade do professor. Leitura integral do roteiro, desenho e planejamento; confronto dos recortes com Corpo, Partida, Nave e Projetil do Megamania. Conferidas previsões e respostas, progressão a partir da Aula 20, escopo dos cinco tipos, suporte de linguagem, transferência para jogos individuais e dimensionamento de referência de 90 minutos. Build anterior sem erros e âncora de Java essencial conferida no HTML. Limites: sem execução Java/JUnit por ausência de runtime; sem observação em sala ou revisão independente. O resultado não é aprovação semântica nem autorização de publicação. Os caminhos canônicos do snapshot são papéis lógicos: lesson-design.md corresponde ao arquivo neste pacote e lesson.md a docs/aulas/aula-21-quando-uma-operacao-nao-pode-continuar.md; o planejamento complementar está em specs/planejamento-aula-21.md."
+  },
+  "created_at": "2026-11-18T19:07:45.684850+00:00",
+  "context_refs": [
+    "specs/planejamento-aula-21.md",
+    "specs/projeto-pedagogico.md",
+    "specs/padrao-aula.md",
+    "specs/estrutura-site.md",
+    "docs/aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md",
+    "docs/materiais/java-essencial.md",
+    "retrospectivas/2026-2.md",
+    "jogos/exemplo-megamania/src/main/java/br/edu/ifpb/jogos/megamania/modelo"
+  ]
+}

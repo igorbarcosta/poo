@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "lesson-approval-poo-aula-21-01",
+  "decision": "approved",
+  "semantic_hash_version": "docemas-lesson-semantic-v1",
+  "lesson_design": {
+    "identity": "lesson-design-poo-aula-21",
+    "path": "lesson-design.md",
+    "sha256": "c2b04678c6994d4df2df1506e21f8157c3b41bcf65337d7f3475619f293e874e"
+  },
+  "lesson": {
+    "identity": "lesson-poo-aula-21",
+    "path": "lesson.md",
+    "sha256": "8ed5c370f3ef49811146315d65b20e460f58f4a9722d79921170feb851f958c7"
+  },
+  "combined_semantic_sha256": "ae82e99da227669e9d9a872bc0d9bb98b635f3fb7d18b523a2d79a8c6c5ba034",
+  "approved_at": "2026-11-18T19:15:25.508505+00:00",
+  "approver": {
+    "identity": "human-professor-poo",
+    "source": "Professor respondeu \"pode seguir\" após receber a revisão pedagógica concluída sem ajustes necessários ou recomendados. Aceitação contextual do roteiro revisado para prosseguir à etapa de slides; não autoriza publicação."
+  },
+  "consumer_context_refs": [
+    "specs/planejamento-aula-21.md",
+    "slides/presentation-profile.md"
+  ]
+}

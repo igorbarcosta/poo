@@ -687,6 +687,68 @@ O campo guarda um estado por vez. `estado = Estado.VITORIA` altera o valor;
 `Partida`, o exemplo usa `Partida.Estado.JOGANDO` para identificar esse tipo
 declarado dentro da classe.
 
+## Exceções
+
+Na [Aula 21](../aulas/aula-21-quando-uma-operacao-nao-pode-continuar.md),
+uma chamada inválida pode ser recusada com `throw`:
+
+```java
+if (movimento == null) {
+    throw new IllegalArgumentException("A partida precisa de um movimento.");
+}
+```
+
+`new` cria o objeto de exceção e `throw` o lança, interrompendo o fluxo normal.
+Sem captura no método, a exceção se propaga ao chamador. Um tratador compatível
+pode recebê-la:
+
+```java
+try {
+    Partida partida = new Partida(null);
+    System.out.println("Criada");
+} catch (IllegalArgumentException erro) {
+    System.out.println(erro.getMessage());
+}
+System.out.println("Depois");
+```
+
+O exemplo de diagnóstico imprime a mensagem da exceção e depois `Depois`.
+Não imprime `Criada`. A captura não retoma a instrução que falhou nem desfaz
+alterações anteriores; deve corresponder a uma resposta definida para a falha.
+
+| Tipo | Causa típica nos exemplos da aula |
+| --- | --- |
+| `IllegalArgumentException` | Argumento rejeitado pelo contrato. |
+| `NullPointerException` | Chamada de método de instância por referência `null`. |
+| `ClassCastException` | Cast incompatível com o objeto alcançado. |
+| `IndexOutOfBoundsException` | Acesso fora das posições existentes da lista. |
+| `UnsupportedOperationException` | Alteração pela visão não modificável de uma lista. |
+
+Esses tipos pertencem à família de `RuntimeException`: não exigem declaração
+com `throws` nem captura para compilar. Um stack trace apresenta o tipo, a
+mensagem quando disponível e os quadros de chamada; investigue a origem do
+valor ou da operação inválida, além do ponto que detectou o problema.
+
+### Esperar uma exceção em um teste
+
+Com o import estático de `org.junit.jupiter.api.Assertions.assertThrows`:
+
+```java
+Partida partida = new Partida();
+double xAntes = partida.getNave().getX();
+
+assertThrows(IllegalArgumentException.class,
+        () -> partida.atualizar(0.01, 2, false));
+
+assertEquals(xAntes, partida.getNave().getX());
+```
+
+`Tipo.class` identifica o tipo esperado. `() -> ...` fornece a ação que o
+JUnit executará dentro da verificação. `assertThrows` passa se ela lançar
+o tipo esperado ou um subtipo; caso contrário, falha. A comparação seguinte
+verifica uma propriedade do estado após a rejeição. `assertEquals` usa o
+mesmo import estático apresentado na seção de JUnit.
+
 ## Estilo e convenções essenciais
 
 ### Nomes

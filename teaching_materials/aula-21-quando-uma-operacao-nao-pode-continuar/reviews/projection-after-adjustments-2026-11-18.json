@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "review_id": "review-poo-aula21-projection-after-adjustments-20261118",
+  "review_domain": "slide_projection",
+  "reviewed_snapshot": {
+    "snapshot_type": "projection",
+    "deck": {
+      "identity": "slide-deck-poo-aula-21",
+      "sha256": "c8dc0c57913a3ea3db6e06a5f81147ac5779f95337646de364dd06d1a2f461e4",
+      "hash_version": "docemas-deck-source-raw-v1"
+    },
+    "canonical": {
+      "snapshot_type": "canonical",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "lesson_design": {
+        "identity": "lesson-design-poo-aula-21",
+        "path": "lesson-design.md",
+        "sha256": "2b8eb238760b7cd8030b2e0df9f2cd7620fa9f436b73e9aad00cc5e2e5576507"
+      },
+      "lesson": {
+        "identity": "lesson-poo-aula-21",
+        "path": "lesson.md",
+        "sha256": "c8532bced868a8be72acbdea135c71c3a5b35fb3cbbe83532f6abbd96dc0d644"
+      },
+      "combined_semantic_sha256": "3a9d66c2ae9d6bddbb095bbef612ecd600b8ccf1904f6df19f5c3d4bb4dde5e8"
+    },
+    "lesson_approval_id": "lesson-approval-poo-aula-21-02",
+    "provenance": {
+      "schema_version": "1.0",
+      "deck_identity": "slide-deck-poo-aula-21",
+      "source_lesson": "lesson-poo-aula-21",
+      "source_approval": "lesson-approval-poo-aula-21-02",
+      "semantic_hash_version": "docemas-lesson-semantic-v1",
+      "approved_combined_semantic_sha256": "3a9d66c2ae9d6bddbb095bbef612ecd600b8ccf1904f6df19f5c3d4bb4dde5e8",
+      "presentation_profile": {
+        "identity": "poo-marp-v1",
+        "reference": "slides/presentation-profile.md",
+        "format": "Marp Markdown",
+        "syntax": "Marp front matter with POO deck classes, components, and notes",
+        "renderer": "Marp CLI, invoked only by the POO rendering boundary",
+        "theme": "slides/theme/poo.css",
+        "accessibility": "Portuguese pedagogical content, readable code, and explicit slide structure",
+        "density": "one central idea per frame with progressive code and activity pauses",
+        "delivery_context": "90-minute presencial POO lesson"
+      },
+      "derived_at": "2026-11-18T19:37:10.546045+00:00"
+    },
+    "presentation_profile": {
+      "reference": "slides/presentation-profile.md",
+      "content_sha256": "65b769b3475244bb11a6918af777e694818f7f58e0e99f61cd4f568e7016cb7d",
+      "hash_version": "docemas-profile-normalized-v1"
+    }
+  },
+  "findings": [],
+  "recommendation": "READY_FOR_PROJECTION_DECISION",
+  "reviewer_provenance": {
+    "identity": "codex-post-adjustment-projection-review",
+    "source": "Nova conferência do mesmo fonte de 39 slides contra o par atualizado somente em links de distribuição e estado documental. Sem alterações no conteúdo pedagógico ou no deck; inspeção visual anterior continua vinculada aos mesmos hashes de fonte/HTML/PDF. Validação executada com resolução local de schemas corrigida no Docemas; sem contornar contratos."
+  },
+  "created_at": "2026-11-18T19:37:10.546045+00:00",
+  "context_refs": [
+    "slides/presentation-profile.md",
+    "specs/padrao-slides.md"
+  ]
+}

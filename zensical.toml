@@ -39,6 +39,7 @@ nav = [
     { "18 — Compartilhando regras sem perder os contratos" = "aulas/aula-18-compartilhando-regras-sem-perder-os-contratos.md" },
     { "19 — Correção da Prova da Unidade 02" = "aulas/aula-19-correcao-da-prova-da-unidade-02.md" },
     { "20 — Entendendo a estrutura de um jogo orientado a objetos" = "aulas/aula-20-entendendo-a-estrutura-de-um-jogo.md" },
+    { "21 — Quando uma operação não pode continuar" = "aulas/aula-21-quando-uma-operacao-nao-pode-continuar.md" },
   ] },
   { "Laboratórios" = [
     { "Laboratórios" = "laboratorios/index.md" },
