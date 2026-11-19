@@ -59,10 +59,12 @@ projeção; os registros anteriores são preservados como histórico. O deck pos
 39 slides, com distribuições HTML/PDF e inspeção visual registradas. A revisão
 da projeção foi validada após a correção da resolução de schemas no Docemas.
 
-O incremento do laboratório permanece em aberto. Esta aula prepara a análise
-de contratos dos jogos individuais, sem exigir exceções artificiais, definir
-entrega, nota ou uma nova arquitetura. Nas atividades ligadas ao Projeto 3,
-vale IA Nível 3 — Colaborador, conforme o projeto pedagógico.
+O [Laboratório 21](planejamento-laboratorio-21.md), definido posteriormente,
+evolui participantes e interações do jogo e não exige aplicação do tema desta
+aula. Na Unidade 03, o professor definiu maior independência entre os percursos
+teórico e prático. A aula permanece como repertório para análise de contratos,
+sem impor exceções artificiais, entrega, nota ou arquitetura. Nas atividades
+ligadas ao Projeto 3, vale IA Nível 3 — Colaborador, conforme o projeto pedagógico.
 
 ## Referências
 

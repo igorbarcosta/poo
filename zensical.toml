@@ -60,6 +60,7 @@ nav = [
     { "16 — Acrescentando informação antes do envio" = "aulas/laboratorio-16-acrescentando-informacao-antes-do-envio.md" },
     { "18 — Compartilhando a contagem dos canais" = "aulas/laboratorio-18-compartilhando-a-contagem-dos-canais.md" },
     { "19 — Iniciando seu jogo" = "aulas/laboratorio-19-iniciando-seu-jogo.md" },
+    { "21 — Objetos que interagem no seu jogo" = "aulas/laboratorio-21-objetos-que-interagem-no-seu-jogo.md" },
   ] },
   { "Avaliações" = [
     { "Avaliações" = "avaliacoes/index.md" },

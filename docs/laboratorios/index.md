@@ -4,7 +4,7 @@ icon: lucide/flask-conical
 
 # Laboratórios
 
-Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incrementalmente os projetos da disciplina. Os detalhes operacionais de entrega ficam no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5) quando aplicável.
+Os laboratórios aplicam o repertório de POO e evoluem incrementalmente os projetos da disciplina. Os detalhes operacionais de entrega ficam no [Google Classroom](https://classroom.google.com/c/ODcwOTgzNDMyMjc5) quando aplicável.
 
 ## Unidade 1 — Objetos e Responsabilidades
 
@@ -30,6 +30,11 @@ Os laboratórios aplicam o embasamento da aula teórica anterior e evoluem incre
 
 ## Unidade 3 — Evolução de Software Orientado a Objetos
 
+O jogo segue um percurso de evolução próprio, sem correspondência obrigatória
+com o tema da aula teórica de mesmo número. As aulas e o Megamania oferecem
+referências para as necessidades de cada projeto.
+
 - [Laboratório 19 — Iniciando seu jogo](../aulas/laboratorio-19-iniciando-seu-jogo.md) — início do Projeto 3, com engine comum, jogo próprio e Megamania como referência.
+- [Laboratório 21 — Objetos que interagem no seu jogo](../aulas/laboratorio-21-objetos-que-interagem-no-seu-jogo.md) — participante visível, interação, testes e reinício.
 
 Novas práticas serão publicadas progressivamente, conforme a evolução da turma e dos projetos.

@@ -2,6 +2,11 @@
 
 Este documento registra o padrão dos laboratórios de POO. Laboratórios são diferentes das aulas teóricas: são predominantemente práticos e aplicam o embasamento trabalhado anteriormente na aula de POO.
 
+Na Unidade 03, conforme decisão do professor, o jogo segue um percurso mais
+independente: não é obrigatória a associação ao tema da aula imediatamente
+anterior ou de mesmo número. Os requisitos usam o repertório acumulado e
+devem oferecer apoio aos mecanismos necessários à evolução proposta.
+
 ## Identificação
 
 - Aulas e laboratórios possuem séries de numeração independentes.
@@ -151,8 +156,8 @@ Informações administrativas, política de IA, acompanhamento e critérios de c
 ## Princípios de uso
 
 - O laboratório deve priorizar a prática e a evolução do projeto da unidade.
-- Cada laboratório aplica e consolida o que foi preparado na aula teórica imediatamente anterior. Se o laboratório pedir que o estudante escreva uma construção Java, a aula anterior deve tê-la ensinado ao menos para reconhecer, ler, compreender sua função e usar no nível exigido.
-- Antes de finalizar o roteiro, mapear cada exigência obrigatória — inclusive operações pequenas, organização de arquivos e procedimentos — para a aula anterior em que foi preparada. Conhecimento novo indispensável não deve ser introduzido pela primeira vez no laboratório.
+- Nas Unidades 01 e 02, cada laboratório aplica e consolida o que foi preparado na aula teórica imediatamente anterior. Se pedir uma construção Java, a aula deve tê-la preparado ao menos para reconhecer, ler, compreender sua função e usar no nível exigido. Na Unidade 03, vale a articulação mais independente registrada no início deste documento.
+- Antes de finalizar o roteiro, mapear cada exigência obrigatória — inclusive operações pequenas, organização de arquivos e procedimentos — ao repertório que a prepara. Não pressupor um mecanismo novo indispensável sem preparação ou apoio explícito; na Unidade 03, esse apoio pode acompanhar a evolução no próprio roteiro, sem exigir correspondência temática com a aula anterior.
 - Instruções conceituais devem se limitar ao necessário para realizar a atividade.
 - Critérios de conclusão devem permitir verificação objetiva sem prescrever arquitetura.
 - Quando o objetivo envolver comportamento de código, o laboratório pode usar a gramática **prever → modificar → executar → observar → compreender**. Esse formato é especialmente útil para referências, fluxo, efeitos de alterações e leitura de código, mas não é obrigatório em todos os laboratórios nem implica exigir um registro formal de cada etapa.

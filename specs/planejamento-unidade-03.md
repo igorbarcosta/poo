@@ -28,6 +28,12 @@ distribuição aos alunos. Não estabelece datas ou uma quantidade de encontros.
 
 ## Articulação entre teoria e laboratório
 
+Na Unidade 03, o jogo segue um percurso de evolução mais independente das
+aulas teóricas de mesmo número, conforme decisão do professor na preparação
+do Laboratório 21. Os laboratórios mobilizam o repertório acumulado e as
+necessidades do projeto; não há correspondência temática obrigatória a cada
+encontro. Isso não dispensa apoio aos mecanismos necessários à prática.
+
 | Aulas teóricas | Laboratórios |
 | --- | --- |
 | Compreender e evoluir o Megamania como aplicação comum. | Compreender a base recebida e evoluir o próprio jogo. |
@@ -161,8 +167,11 @@ delimitado em roteiro específico.
 A Aula 21 aborda exceções a partir dos contratos e das falhas observáveis
 no Megamania, conforme o [desenho acordado](planejamento-aula-21.md).
 Inclui cinco tipos comuns, leitura do percurso de chamadas, fluxo de
-lançamento e captura e verificação com JUnit. O incremento do laboratório
-permanece para definição posterior.
+lançamento e captura e verificação com JUnit.
+
+O [Laboratório 21](planejamento-laboratorio-21.md) evolui o jogo com um
+participante visível e uma interação com o jogador, verificada no modelo e
+integrada à apresentação e ao reinício. Não exige aplicação de exceções.
 
 ## Planejamento que permanece evolutivo
 
