@@ -1,5 +1,30 @@
 # Validação da base de desenvolvimento
 
+## Ampliação — quatro exemplos independentes
+
+Foram acrescentados mapa/câmera, salas conectadas, chave/porta e patrulha,
+sem alterar a engine ou as dependências. Esta verificação complementa o
+histórico da base original, preservado nas seções seguintes.
+
+| Verificação | Resultado |
+| --- | --- |
+| Compilação e JUnit, Linux/WSL, Temurin 25.0.5.1 | `verificar` passou: 47 testes, incluindo 21 dos novos exemplos, sem falhas ou erros. |
+| Distribuições executáveis | `installDist` dos quatro módulos passou; inicializadores abrem cada demonstração separadamente. |
+| Janela e comandos em Xvfb com renderização por software | Os quatro exemplos abriram, responderam aos comandos, reiniciaram por R e encerraram por Esc com código zero. |
+| Mapa | Movimento além da área visível, acompanhamento da câmera, painel fixo e retorno ao início conferidos na janela; bordas verificadas nos testes. |
+| Salas | Luz da sala 1 ligada, ida à sala 2 com luz independente, retorno à sala 1 com luz preservada e reinício conferidos. |
+| Chave/porta | Coleta por contato, posse indicada no painel, abertura por Enter, consumo, travessia e reinício conferidos; recusa sem chave e bloqueios verificados por JUnit. |
+| Patrulha | Movimento sem teclado, indicação da direção e reinício observados; inversão e preservação do deslocamento verificadas por JUnit. |
+| Configurações VS Code | Seis configurações F5 com `projectName` e `mainClass` correspondentes aos fontes; JSONs válidos e sem caminhos locais de JDK. |
+| Pacote | Quatro READMEs, catálogo `EXEMPLOS.md`, modelos, testes e configurações incluídos; sem caches ou classes compiladas e com permissão de execução no wrapper Unix. |
+| ZIP extraído em pasta nova com espaços, Linux | `verificar` recompilou os seis projetos e executou os mesmos 47 testes sem falhas, usando apenas as dependências em cache. |
+
+As capturas da página de exemplos foram feitas nas janelas reais sob Xvfb.
+A execução usa a mesma engine da base anterior. As novas opções de F5 não
+foram exercitadas dentro do VS Code da turma, nem as quatro novas janelas no
+Windows/macOS. O teste Linux usa dependências em cache; uma primeira importação
+sem cache continua precisando de rede.
+
 ## Escopo executado
 
 A distribuição foi conferida em pastas novas, seguindo o roteiro do

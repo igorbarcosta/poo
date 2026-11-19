@@ -5,15 +5,56 @@
             "label": "Verificar meu jogo",
             "type": "process",
             "command": "${workspaceFolder}/gradlew",
-            "args": ["--console=plain", "test"],
+            "args": [
+                "--console=plain",
+                "test"
+            ],
             "windows": {
                 "command": "cmd.exe",
-                "args": ["/d", "/c", "gradlew.bat --console=plain test"]
+                "args": [
+                    "/d",
+                    "/c",
+                    "gradlew.bat --console=plain test"
+                ]
             },
-            "options": {"cwd": "${workspaceFolder}"},
-            "group": {"kind": "test", "isDefault": true},
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "problemMatcher": [],
-            "presentation": {"reveal": "always", "panel": "dedicated"}
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Verificar todos os jogos e exemplos",
+            "type": "process",
+            "command": "${workspaceFolder}/gradlew",
+            "args": [
+                "--console=plain",
+                "verificar"
+            ],
+            "windows": {
+                "command": "cmd.exe",
+                "args": [
+                    "/d",
+                    "/c",
+                    "gradlew.bat --console=plain verificar"
+                ]
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "test",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
         }
     ]
 }

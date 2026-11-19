@@ -37,10 +37,21 @@ tasks.register('megamania') {
     dependsOn ':exemplo-megamania:run'
 }
 
+// Cada demonstração tem execução própria e depende apenas da engine.
+['mapa', 'salas', 'chave-porta', 'patrulha'].each { nome ->
+    tasks.register(nome) {
+        group = 'application'
+        description = "Abre a demonstração ${nome}."
+        dependsOn ":exemplo-${nome}:run"
+    }
+}
+
 tasks.register('verificar') {
     group = 'verification'
     description = 'Compila os jogos e executa os testes sem abrir janela.'
     dependsOn 'test', ':engine:build', ':exemplo-megamania:test'
+    dependsOn ':exemplo-mapa:test', ':exemplo-salas:test',
+            ':exemplo-chave-porta:test', ':exemplo-patrulha:test'
 }
 
 // Nomes neutros evitam alterar exclusões globais do Gradle/Ant entre projetos.
@@ -69,7 +80,7 @@ tasks.register('prepararDistribuicao', Zip) {
         from(rootDir) {
             include '*.md', '*.gradle', '*.cmd', '*.sh', 'gradlew', 'gradlew.bat'
             include '.vscode/*.json', 'gradle/**', 'src/**'
-            include 'engine/**', 'exemplo-megamania/**'
+            include 'engine/**', 'exemplo-*/**'
             exclude '**/build/**', '**/bin/**', '**/.gradle/**', '**/.idea/**'
             exclude '**/*.iml', '**/.classpath', '**/.project', '**/.settings/**'
             exclude 'gradlew', 'jogar.sh'

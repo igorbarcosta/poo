@@ -24,6 +24,54 @@
             "osx": {
                 "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
             }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Exemplo — Mapa e câmera",
+            "mainClass": "br.edu.ifpb.jogos.exemplos.mapa.IniciarMapa",
+            "projectName": "exemplo-mapa",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Exemplo — Salas conectadas",
+            "mainClass": "br.edu.ifpb.jogos.exemplos.salas.IniciarSalas",
+            "projectName": "exemplo-salas",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Exemplo — Chave e porta",
+            "mainClass": "br.edu.ifpb.jogos.exemplos.chaveporta.IniciarChavePorta",
+            "projectName": "exemplo-chave-porta",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Exemplo — Inimigo em patrulha",
+            "mainClass": "br.edu.ifpb.jogos.exemplos.patrulha.IniciarPatrulha",
+            "projectName": "exemplo-patrulha",
+            "cwd": "${workspaceFolder}",
+            "vmArgs": "--enable-native-access=ALL-UNNAMED",
+            "osx": {
+                "vmArgs": "--enable-native-access=ALL-UNNAMED -XstartOnFirstThread"
+            }
         }
     ]
 }

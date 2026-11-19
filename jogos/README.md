@@ -4,8 +4,13 @@ Esta pasta é seu projeto de desenvolvimento. Ela já contém um jogo mínimo qu
 abre uma janela, desenha um quadrado e permite movê-lo. Você vai evoluí-lo com
 os objetos e as regras do seu jogo ao longo dos laboratórios.
 
-O Megamania está incluído como exemplo para consultar e executar. Os dois
+O Megamania está incluído como exemplo para consultar e executar. Todos os
 jogos usam a mesma engine.
+
+**[Exemplos para observar e adaptar](EXEMPLOS.md):** mapa e câmera, salas
+conectadas, chave e porta e inimigo em patrulha. Cada um tem opção própria
+de F5, guia de leitura e testes. Abra uma cópia nova da distribuição em outra
+pasta se precisar consultá-los sem alterar seu jogo em andamento.
 
 ## Começar no VS Code no Windows
 
@@ -70,7 +75,7 @@ Para executar pelo PowerShell, na pasta deste README:
 `:run` abre apenas seu jogo. Para abrir o exemplo, use a configuração
 **Exemplo Megamania** ou o comando indicado na próxima seção.
 
-`test` também verifica os testes do exemplo incluído. O relatório dos testes
+`test` também verifica os testes dos exemplos incluídos. O relatório dos testes
 do seu jogo fica em `build/reports/tests/test/index.html`.
 
 Como atalho fora do VS Code, `jogar.cmd` abre seu jogo e `testar.cmd` executa

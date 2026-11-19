@@ -84,3 +84,11 @@ Os testes não precisam chamar `Iniciar` ou `Janela.abrir`.
 O pacote `modelo` do Megamania oferece exemplos de regras verificadas sem a
 interface. O modelo não importa tipos de libGDX. Preserve essa separação
 ao evoluir o seu domínio.
+
+## Comportamentos de referência
+
+O [catálogo de exemplos](EXEMPLOS.md) apresenta quatro demonstrações
+independentes: mapa e câmera, salas conectadas, chave e porta e patrulha.
+Elas usam os contratos acima, sem novas operações na engine. No mapa, as
+posições pertencem ao mundo; a câmera converte essas posições apenas para
+desenho. O tamanho lógico da tela continua sendo 960 × 720.

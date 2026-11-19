@@ -1,2 +1,3 @@
 rootProject.name = 'meu-jogo'
 include 'engine', 'exemplo-megamania'
+include 'exemplo-mapa', 'exemplo-salas', 'exemplo-chave-porta', 'exemplo-patrulha'

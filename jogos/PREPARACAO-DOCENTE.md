@@ -7,9 +7,11 @@ Não deve editar o inicializador gráfico ou os arquivos de dependências.
 ## Organização mantida pelo professor
 
 - O projeto raiz é o jogo do aluno, com um exemplo mínimo e testes.
-- `engine` é a única implementação da infraestrutura usada pelos dois jogos.
+- `engine` é a única implementação da infraestrutura usada por todos os jogos.
 - `exemplo-megamania` é uma aplicação independente que depende dessa mesma engine.
-- `.vscode` configura as duas execuções e uma tarefa de testes, sem caminhos
+- `exemplo-mapa`, `exemplo-salas`, `exemplo-chave-porta` e `exemplo-patrulha`
+  são demonstrações independentes, cada uma com seu README e seus testes.
+- `.vscode` configura as seis execuções e tarefas de testes, sem caminhos
   absolutos para a máquina do professor.
 - `gradlew` e `gradlew.bat` fixam a ferramenta de build. Não há instalação
   global de Gradle como requisito.
@@ -32,7 +34,7 @@ Linux/macOS: `./gradlew prepararDistribuicao`.
 A tarefa compila e testa os projetos e gera
 `build/distribuicoes/base-jogo-poo.zip`. O ZIP contém a pasta `meu-jogo` com
 fontes, testes, wrapper, configuração do VS Code, recursos licenciados, engine
-e exemplo. Não contém caches, classes compiladas, caminhos de JDK ou metadados
+e os cinco exemplos. Não contém caches, classes compiladas, caminhos de JDK ou metadados
 de IDE gerados pela máquina do professor.
 
 No repositório da disciplina, o download publicado é a cópia desse ZIP em
@@ -62,6 +64,11 @@ Para executar toda a verificação sem janela:
 5. Alterar o título, salvar, parar e executar novamente; conferir a nova versão.
 6. Executar **Verificar meu jogo** e confirmar que os testes não abrem janela.
 7. Executar **Exemplo Megamania**; conferir início e controles.
+8. Executar as quatro demonstrações de [EXEMPLOS.md](EXEMPLOS.md); conferir
+   mapa, troca de salas, chave/porta e patrulha seguindo os guias individuais.
+
+Para alunos que já começaram o jogo, orientar a extração da nova distribuição
+em uma pasta separada para consulta. Não substituir o projeto desenvolvido.
 
 Conferir também **Run** acima de `main` em `src/main/java/meujogo/Iniciar.java`.
 No Windows 11, verificar o estado do Controle Inteligente de Aplicativos.

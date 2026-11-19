@@ -236,6 +236,7 @@ Consulte as orientações de entrega no
 
 ## Materiais relacionados
 
+- [Exemplos para o seu jogo](../materiais/projeto-03/exemplos.md): quatro demonstrações independentes, com guias para observar e adaptar.
 - [Laboratório 19 — Iniciando seu jogo](laboratorio-19-iniciando-seu-jogo.md): base, execução e primeira regra própria.
 - [Aula 20 — Entendendo a estrutura de um jogo orientado a objetos](aula-20-entendendo-a-estrutura-de-um-jogo.md): referência para consultar colaborações no Megamania.
 - [Aula 06 — Colaboração entre objetos](aula-06-colaboracao-entre-objetos.md).
